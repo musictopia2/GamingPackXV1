@@ -1,0 +1,9 @@
+﻿@typeparam S
+
+@if (AnimatePiece == null || _animates.CurrentLocation.X == -1000 || _animates.CurrentLocation.Y == -1000)
+{
+    return;
+}
+<CascadingValue Value="_animates.CurrentLocation">
+    @ChildContent!(AnimatePiece)
+</CascadingValue>

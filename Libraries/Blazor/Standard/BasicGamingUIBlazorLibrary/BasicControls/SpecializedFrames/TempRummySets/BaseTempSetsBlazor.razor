@@ -1,0 +1,22 @@
+﻿@typeparam SU
+@typeparam CO
+@typeparam RU
+@using BasicGamingUIBlazorLibrary.BasicControls.SpecializedFrames.Hands 
+@if (TempPiles == null || ChildContent == null)
+{
+    return;
+}
+@foreach (var pile in TempPiles.SetList)
+{
+    <HorizontalDiv RightOnly="10px">
+        <BaseHandBlazor D="RU" Hand="pile"
+                        HandType="EnumHandList.Vertical"
+                        AdditionalSpacing="@AdditionalSpacing"
+                        Divider="@Divider"
+                        TargetContainerSize="@TargetContainerSize"
+                        PaddingRight="20"
+                        Context="item">
+            @ChildContent(GetTempInfo(item, pile))
+        </BaseHandBlazor>
+    </HorizontalDiv>
+}

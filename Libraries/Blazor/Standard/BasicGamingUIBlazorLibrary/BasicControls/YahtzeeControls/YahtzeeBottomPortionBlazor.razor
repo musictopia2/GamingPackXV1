@@ -1,0 +1,28 @@
+﻿@using BasicGameFrameworkLibrary.SpecializedGameTypes.YahtzeeStyleHelpers.Logic
+@if (BottomList.Count == 0 || BottomScore == null)
+{
+    return;
+}
+<CascadingValue Value="true">
+    <HorizontalDiv LeftOnly="5px">
+        <BaseFrameBlazor Text="Bottom Portion">
+            <div style="margin: 5px">
+                <svg style="height: 85vh" viewBox="@GetViewBox">
+                    <YahtzeeHeader />
+                    @foreach (var row in BottomList)
+                    {
+                        <YahtzeeRowBlazor RowNumber="@GetRow(row)"
+                                          Header="@row.Description"
+                                          Possible="@row.RenderPointsPossible()"
+                                          Obtained="@row.RenderPointsObtained()"
+                                          Highlighted="row.IsRecent"
+                                          RowClicked="() => RowClicked.InvokeAsync(row)" />
+                    }
+                    <YahtzeeFooter Text="Total Bottom Portion"
+                                   RowNumber="@GetBottomRow"
+                                   TotalScore="@BottomScore.RenderPointsObtained()" />
+                </svg>
+            </div>
+        </BaseFrameBlazor>
+    </HorizontalDiv>
+</CascadingValue>

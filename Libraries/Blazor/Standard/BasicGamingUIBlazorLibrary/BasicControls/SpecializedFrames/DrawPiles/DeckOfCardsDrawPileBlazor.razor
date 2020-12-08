@@ -1,0 +1,10 @@
+﻿@typeparam R
+@inherits KeyComponentBase
+<BaseDrawPileBlazor D="R" DeckAnimationTag="@DeckAnimationTag" DeckPile="@DeckPile">
+    <CanvasTemplate Context="Card">
+        <DeckOfCardsImageBlazor R="R" TargetHeight="@RealHeight" DeckObject="Card" />
+    </CanvasTemplate>
+    <MainTemplate Context="Card">
+        <DeckOfCardsImageBlazor R="R" TargetHeight="@RealHeight" DeckObject="Card" CommandParameter="Card" CommandObject="DeckPile!.DeckObjectClickedCommand" />
+    </MainTemplate>
+</BaseDrawPileBlazor>

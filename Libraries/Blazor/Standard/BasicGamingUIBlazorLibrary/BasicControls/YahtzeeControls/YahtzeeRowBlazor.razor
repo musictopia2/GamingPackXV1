@@ -1,0 +1,32 @@
+﻿@using BasicGamingUIBlazorLibrary.BasicControls.GameBoards
+@using gg = BasicGamingUIBlazorLibrary.BasicControls.YahtzeeControls.YahtzeeControlGlobalSettings;
+<YahtzeeField Highlighted="@Highlighted"
+              Row="@RowNumber"
+              Column="1">
+    <CenteredSvgText FontSize="@gg.DescriptionFontSize"
+                     Text="@Header" />
+</YahtzeeField>
+<YahtzeeField Highlighted="@Highlighted"
+              Extra="@MiddleExtra"
+              Row="@RowNumber"
+              Column="2">
+    <CenteredSvgText FontSize="@gg.ScoreFontSize"
+                     TextColor="Red"
+                     Text="@Possible" />
+</YahtzeeField>
+<YahtzeeField Highlighted="@Highlighted"
+              Row="@RowNumber"
+              Column="3">
+    <CenteredSvgText FontSize="@gg.ScoreFontSize"
+                     Text="@Obtained" />
+</YahtzeeField>
+@if (RowClicked.HasDelegate)
+{
+
+    <BlankClickableSquare SpaceClicked="PrivateClicked" SpaceLocation="@GetLocation" SpaceSize="@GetSize" />
+
+    @*<BlankClickableSquare SpaceClicked="PrivateClicked"
+                          SpaceLocation=""
+                          SpaceSize="new SizeF(900, GetY)" />*@
+
+}

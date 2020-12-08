@@ -1,0 +1,18 @@
+﻿@if (DataContext == null || DataContext.CardList.Count == 0)
+{
+    return;
+}
+@{ 
+    SizeF size = GetViewSize();
+}
+<svg @key="DataContext" width="@TargetWidth" viewBox="0 0 @size.Width @size.Height">
+    @foreach (var card in DataContext.CardList)
+    {
+        <FlexibleDeckRenderComponent D="SolitaireCard" DeckObject="card">
+            <DeckOfCardsImageBlazor CommandObject="DataContext.CardCommand"
+                                    R="SolitaireCard"
+                                    DeckObject="card" Location="card.Location"
+                                    CommandParameter="card" DataContext="DataContext" />
+        </FlexibleDeckRenderComponent>
+    }
+</svg>

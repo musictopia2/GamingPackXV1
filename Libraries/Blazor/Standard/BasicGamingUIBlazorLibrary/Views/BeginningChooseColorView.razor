@@ -1,0 +1,11 @@
+﻿@typeparam E
+@typeparam P
+@using BasicGamingUIBlazorLibrary.BasicControls.ChoicePickers
+@if (DataContext == null || DataContext.Turn == "")
+{
+    return;
+}
+<EnumPickerBlazor E="E" Context="Piece" ListPicker="DataContext.GetColorPicker">
+    @ChildContent!(Piece)
+</EnumPickerBlazor>
+<LabelGridComponent DataContext="DataContext" Labels="_labels" />

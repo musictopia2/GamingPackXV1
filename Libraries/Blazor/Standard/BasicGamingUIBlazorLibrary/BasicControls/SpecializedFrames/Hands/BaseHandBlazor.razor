@@ -1,0 +1,62 @@
+﻿@inherits KeyComponentBase
+@typeparam D
+@if (Hand == null || Hand.Visible == false || _points.Count != Hand.HandList.Count)
+{
+    return;
+}
+@{
+    int x = 0;
+}
+
+<CascadingValue Value="this">
+    @if (Hand.HasFrame)
+    {
+        <fieldset @key="Hand" @onclick="BoardClicked" style="@GetContainerStyle() @GetColorStyle()" disabled="@IsDisabled">
+            <legend>@Hand.Text</legend>
+            <svg style="@GetSvgStyle()" viewBox="@GetViewBox()">
+
+                @foreach (var item in Hand.HandList)
+                {
+                    var point = _points[x];
+                    if (Rotated == false)
+                    {
+                        <FlexibleDeckRenderComponent D="D" DeckObject="item">
+                            <svg x="@point.X" y="@point.Y" width="@item.DefaultSize.Width" height="@item.DefaultSize.Height">
+                                @ChildContent!(item)
+                            </svg>
+                        </FlexibleDeckRenderComponent>
+                        
+                    }
+                    else
+                    {
+                        <FlexibleDeckRenderComponent D="D" DeckObject="item">
+                            <svg x="@point.X" y="@point.Y" width="@item.DefaultSize.Height" height="@item.DefaultSize.Width">
+                                @ChildContent!(item)
+                            </svg>
+                        </FlexibleDeckRenderComponent>
+                    }
+                    x++;
+                }
+               
+            </svg>
+        </fieldset>
+    }
+    else
+    {
+
+        <div @key="Hand" @onclick="BoardClicked" style="@GetContainerStyle() display:inline-block; margin: 0px;">
+            <svg style="@GetSvgStyle()" viewBox="@GetViewBox()">
+                @foreach (var item in Hand.HandList)
+                {
+                    var point = _points[x];
+                    <FlexibleDeckRenderComponent D="D" DeckObject="item">
+                        <svg x="@point.X" y="@point.Y" width="@item.DefaultSize.Width" height="@item.DefaultSize.Height">
+                            @ChildContent!(item)
+                        </svg>
+                    </FlexibleDeckRenderComponent>
+                    x++;
+                }
+            </svg>
+        </div>
+    }
+</CascadingValue>

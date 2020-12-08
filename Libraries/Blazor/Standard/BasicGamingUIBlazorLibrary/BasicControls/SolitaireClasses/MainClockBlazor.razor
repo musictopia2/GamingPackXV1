@@ -1,0 +1,20 @@
+﻿@if (DataContext == null || DataContext.ClockList == null)
+{
+    return;
+}
+<CascadingValue Value="DataContext">
+    <div class="mainclockrelative">
+        @if (ChildContent != null)
+        {
+            <div>
+                @ChildContent
+            </div>
+        }
+        @foreach (var clock in DataContext.ClockList)
+        {
+            <div class="mainclockabsolute" style=" @GetPositionStyle(clock) ">
+                <IndividualClockBlazor SingleClock="clock" />
+            </div>
+        }
+    </div>
+</CascadingValue>

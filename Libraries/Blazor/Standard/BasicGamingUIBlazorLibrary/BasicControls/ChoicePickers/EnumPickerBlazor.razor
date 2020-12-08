@@ -1,0 +1,28 @@
+﻿@typeparam E
+@if (ListPicker == null)
+{
+    return;
+}
+else
+{
+    int rows = TotalRows();
+    int columns = TotalColumns();
+    int index = 0;
+    @for (int r = 0; r < rows; r++)
+    {
+        <div>
+            @for (int c = 0; c < columns; c++)
+            {
+                if (index < ListPicker.ItemList.Count)
+                {
+                    var piece = ListPicker.ItemList[index];
+                    <BasePieceGraphics @key="@piece" IsSelected="@piece.IsSelected" TargetSize="@TargetSize" CommandParameter="@piece" CommandObject="@ListPicker.EnumChosenCommand">
+                        @ChildContent!(piece)
+                    </BasePieceGraphics>
+                    index++;
+                }
+
+            }
+        </div>
+    }
+}

@@ -1,0 +1,30 @@
+﻿@if (DataContext == null || SingleClock == null)
+{
+    return;
+}
+@{
+    LinkCard(); //i think this is needed
+}
+@if (_currentCard == null)
+{
+    return;
+}
+@if (DataContext.ShowCenter)
+{
+    <div class="centerText">
+        @SingleClock.NumberGuide
+    </div>
+}
+<div>
+    <FlexibleDeckRenderComponent D="SolitaireCard" DeckObject="_currentCard!">
+        <DeckOfCardsImageBlazor R="SolitaireCard" CommandObject="DataContext.ClockCommand"
+                                TargetHeight="@TargetHeight.HeightString()"
+                                DeckObject="_currentCard"
+                                CommandParameter="_currentCard"
+                                DataContext="DataContext" />
+    </FlexibleDeckRenderComponent>
+    
+</div>
+<div class="centerText">
+    @SingleClock.LeftGuide
+</div>

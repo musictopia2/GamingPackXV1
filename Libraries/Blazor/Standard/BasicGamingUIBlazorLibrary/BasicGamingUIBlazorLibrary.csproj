@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\deckofcardback.svg" />
+    <None Remove="Resources\Dice1.svg" />
+    <None Remove="Resources\Dice2.svg" />
+    <None Remove="Resources\Dice3.svg" />
+    <None Remove="Resources\Dice4.svg" />
+    <None Remove="Resources\Dice5.svg" />
+    <None Remove="Resources\Dice6.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\deckofcardback.svg" />
+    <EmbeddedResource Include="Resources\Dice1.svg" />
+    <EmbeddedResource Include="Resources\Dice2.svg" />
+    <EmbeddedResource Include="Resources\Dice3.svg" />
+    <EmbeddedResource Include="Resources\Dice4.svg" />
+    <EmbeddedResource Include="Resources\Dice5.svg" />
+    <EmbeddedResource Include="Resources\Dice6.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BasicBlazorLibrary" Version="1.0.0" />
+    <PackageReference Include="CommonBasicStandardLibraries" Version="3.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web.Extensions" Version="5.0.0-preview9.20513.1" />
+    <PackageReference Include="SvgHelper.Blazor" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
+  </ItemGroup>
+
+
+</Project>

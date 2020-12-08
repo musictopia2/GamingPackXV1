@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="136" height="176">
+	<rect fill="rgb(0,0,0)" fill-opacity="0" stroke="none" width="136" height="176"/>
+	<path fill="rgb(139,0,0)" stroke="none" d="M98.5967 81.5363L82.5855 130.239L53.4145 105.761L98.5967 81.5363Z"/>
+	<path fill="rgb(139,0,0)" stroke="none" d="M114.877 109.734L71.3063 136.751L64.6937 99.2493L114.877 109.734Z"/>
+	<path fill="rgb(139,0,0)" stroke="none" d="M109.223 141.8L58.48 134.489L77.52 101.511L109.223 141.8Z"/>
+	<path fill="rgb(139,0,0)" stroke="none" d="M84.2802 162.729L50.1082 124.512L85.8917 111.488L84.2802 162.729Z"/>
+	<path fill="rgb(139,0,0)" stroke="none" d="M51.7198 162.729L50.1083 111.488L85.8917 124.512L51.7198 162.729Z"/>
+	<path fill="rgb(139,0,0)" stroke="none" d="M26.7772 141.8L58.48 101.511L77.52 134.489L26.7772 141.8Z"/>
+	<path fill="rgb(139,0,0)" stroke="none" d="M21.1232 109.734L71.3063 99.2493L64.6937 136.751L21.1232 109.734Z"/>
+	<path fill="rgb(139,0,0)" stroke="none" d="M37.4033 81.5363L82.5855 105.761L53.4145 130.239L37.4033 81.5363Z"/>
+	<path fill="rgb(139,0,0)" stroke="none" d="M68 70.4L87.04 118L48.96 118L68 70.4Z"/>
+	<ellipse fill="rgb(255,255,255)" stroke="none" cx="68" cy="118" rx="23.800001" ry="23.799999"/>
+	<ellipse fill="none" stroke="rgb(139,0,0)" stroke-width="1" stroke-miterlimit="4" cx="68" cy="118" rx="23.800001" ry="23.799999"/>
+	<text fill="rgb(0,0,0)" stroke="none" font-size="44" font-family="Tahoma" x="25.316406" y="36">
+			SUM
+	</text>
+</svg>

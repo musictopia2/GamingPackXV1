@@ -1,0 +1,30 @@
+﻿<CascadingValue Value="this">
+    @if (ListPicker == null)
+    {
+        return;
+    }
+    else
+    {
+        int rows = TotalRows(ListPicker.TextList.Count);
+        int columns = DisplayColumns();
+        int index = 0;
+        @for (int r = 0; r < rows; r++)
+        {
+            <div>
+                @for (int c = 0; c < columns; c++)
+                {
+                    if (index < ListPicker.TextList.Count)
+                    {
+                        var piece = ListPicker.TextList[index];
+                        <BasePieceGraphics IsSelected="@piece.IsSelected" CommandParameter="@piece" CommandObject="@ListPicker.ItemSelectedCommand">
+                            <ListViewPiece DataContext="piece" TextColor="@TextColor" CanHighlight="@CanHighlight" />
+                        </BasePieceGraphics>
+                        index++;
+                    }
+                }
+            </div>
+        }
+    }
+
+
+</CascadingValue>

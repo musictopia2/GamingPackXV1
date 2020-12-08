@@ -1,0 +1,16 @@
+﻿@using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
+@inherits KeyComponentBase
+@if (IsVisible())
+{
+    //for now, keep this way.  may eventually create another control that has logic of whether its wrapped with a div or not.
+    if (StartOnNewLine == false)
+    {
+        <button @key="GetKey" class="basicbutton" style="font-size:@FontSize; background-color: @BackgroundColor.ToWebColor(); color: @GetTextColor(); @ExtraInfo() " disabled="@IsDisabled()" @onclick="Submit">@Display</button>
+    }
+    else
+    {
+        <div>
+            <button @key="GetKey" class="basicbutton" style="font-size:@FontSize; background-color: @BackgroundColor.ToWebColor(); color: @GetTextColor(); @ExtraInfo() " disabled="@IsDisabled()" @onclick="Submit">@Display</button>
+        </div>
+    }
+}

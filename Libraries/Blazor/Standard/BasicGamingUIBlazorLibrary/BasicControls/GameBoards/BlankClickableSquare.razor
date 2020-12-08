@@ -1,0 +1,7 @@
+﻿@if (SpaceClicked.HasDelegate == false)
+{
+    return;
+}
+<svg x="@SpaceLocation.X" y="@SpaceLocation.Y" width="@SpaceSize.Width" height="@SpaceSize.Height" @onclick="SpaceClicked">
+    <rect fill="aqua" class="blankrectangle" />
+</svg>

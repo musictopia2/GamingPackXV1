@@ -1,0 +1,15 @@
+﻿@using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
+<svg x="@SpaceLocation.X" y="@SpaceLocation.Y" @onclick="ProcessClickAsync" width="@SpaceSize.Width" height="@SpaceSize.Height" viewBox="@ViewBox()">
+    @if (ShapeCategory == EnumShapeCategory.Rectangle)
+    {
+        <rect width="100%" height="100%" fill="@FillColor.ToWebColor()" />
+    }
+    else
+    {
+        <ellipse cx="@RadiusX" cy="@RadiusY" rx="@RadiusX" ry="@RadiusY" fill="@FillColor.ToWebColor()" />
+    }
+    @if (ChildContent != null)
+    {
+        @ChildContent
+    }
+</svg>

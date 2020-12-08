@@ -1,0 +1,37 @@
+﻿@typeparam P
+@typeparam B
+@typeparam S
+@typeparam T
+@if (DataContext == null || ChildContent == null || DataContext.ViewList == null)
+{
+    return;
+}
+<FlexibleRenderComponent Visible="DataContext.Visible">
+    <div style="@GetEntireCss">
+        <div class="severalplayersrelative">
+            @foreach (var trick in DataContext.ViewList)
+            {
+                var card = GetCardInfo(trick);
+                <div style="@GetLabelCss(trick)">
+                    @if (trick.Text != "")
+                    {
+                        if (trick.Visible)
+                        {
+                            <BoldLabel Text="@trick.Text" />
+                        }
+                    }
+                    else
+                    {
+                        <BoldLabel Text="@DataContext.GetSpecificPlayer(trick.Player).NickName" />
+                    }
+                </div>
+                <div style="@GetCardCss(card)">
+                    <FlexibleDeckRenderComponent D="T" DeckObject="card">
+                        @ChildContent(card)
+                    </FlexibleDeckRenderComponent>
+                </div>
+            }
+        </div>
+    </div>
+</FlexibleRenderComponent>
+

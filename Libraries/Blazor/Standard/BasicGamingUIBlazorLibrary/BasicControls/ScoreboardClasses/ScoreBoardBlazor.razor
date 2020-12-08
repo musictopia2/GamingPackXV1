@@ -1,0 +1,57 @@
+﻿@typeparam P
+@if (Players == null || Columns == null || Players.Count == 0 || Columns.Count == 0)
+{
+    return;
+}
+<div style="height: @Height; width: @Width; overflow: auto; display:inline-block">
+
+    <table class="a" style="width: @Width">
+        <thead>
+            <tr>
+
+                @foreach (var c in Columns)
+                {
+                    if (c.IsHorizontal)
+                    {
+                        <th style="vertical-align: bottom; padding-right: 10px">@c.Header</th>
+                    }
+                    else
+                    {
+                        <th style="vertical-align: bottom; padding-right: 10px;">
+                            <div style="margin-top: 8px">
+                                @foreach (var item in c.Header)
+                                {
+                                    //attempting to push up a little for the scoreboard (?)
+                                    @if (string.IsNullOrWhiteSpace(item.ToString()) == false)
+                                    {
+                                        <div class="vertical" style="margin-top: -8px;">@item</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="vertical" style="margin-top: -8px;">&nbsp;</div>
+                                    }
+                                }
+                            </div>
+                            
+                        </th>
+                    }
+                }
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var p in Players)
+            {
+                <tr>
+                    @foreach (var c in Columns)
+                    {
+                        <td style="margin-left: 2px; margin-right: 2px;">@TextToDisplay(p, c)</td>
+                    }
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>

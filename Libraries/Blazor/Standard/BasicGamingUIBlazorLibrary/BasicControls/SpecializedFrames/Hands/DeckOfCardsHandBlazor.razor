@@ -1,0 +1,8 @@
+﻿@inherits KeyComponentBase
+@typeparam R
+<BaseHandBlazor D="R" Hand="Hand" AdditionalSpacing="AdditionalSpacing" Divider="Divider"
+                HandType="HandType" TargetContainerSize="@TargetContainerSize"
+                Rotated="Rotated"
+                TargetImageSize="@TargetImageSize" Context="DeckObject">
+    <DeckOfCardsImageBlazor  CommandParameter="DeckObject" DeckObject="DeckObject" CommandObject="Hand!.ObjectSingleClickCommand" R="R" />
+</BaseHandBlazor>

@@ -1,0 +1,26 @@
+﻿@typeparam SU
+@typeparam CO
+@typeparam RU
+@typeparam SE
+@typeparam T
+@if (MainSet == null || DataContext == null || DataContext.HandList.Count != _points.Count)
+{
+    return;
+}
+@{
+    int x = 0;
+}
+<div @key="DataContext" @onclick="BoardClicked" class="baserummymain" style="display:inline-block; margin: 0px;">
+    <svg style="@GetSvgStyle()" viewBox="@GetViewBox()">
+        @foreach (var item in DataContext.HandList)
+        {
+            var point = _points[x];
+            <FlexibleDeckRenderComponent D="RU" DeckObject="item">
+                <svg x="@point.X" y="@point.Y" width="@item.DefaultSize.Width" height="@item.DefaultSize.Height">
+                    @ChildContent!(item)
+                </svg>
+            </FlexibleDeckRenderComponent>
+            x++;
+        }
+    </svg>
+</div>

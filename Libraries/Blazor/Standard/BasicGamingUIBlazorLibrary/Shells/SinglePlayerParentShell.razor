@@ -1,0 +1,16 @@
+﻿<CascadingValue Value="BasicData">
+    @* 
+    currently, its preview that requires extenstion.
+       may use child content instead of setting value.  if that changes, that will require a change on my side in future version of game package.
+    *@
+    <Title Value="@_game.GameName">
+
+    </Title>
+    @if (BasicData.GameDataLoading)
+    {
+        <div>Game Data Is Loading</div>
+        return;
+    }
+    @ChildContent
+    
+</CascadingValue>

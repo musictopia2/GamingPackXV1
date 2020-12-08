@@ -1,0 +1,31 @@
+﻿@using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
+@if (BorderWidth == 0 || ChildContent == null || BorderColor == "")
+{
+    return;
+}
+
+@if (SpaceSize.Width == 0 || SpaceSize.Height == 0)
+{
+    if (ShapeCategory ==EnumShapeCategory.Oval)
+    {
+        return; //not sure if needed or not.  othrewise, iffy.
+    }
+
+    <svg @onclick="ProcessClickAsync">
+        <rect width="100%" height="100%" fill="@FillColor.ToWebColor()" style="@ShapeStyle()" />
+        @ChildContent
+    </svg>
+    return;
+}
+
+<svg x="@SpaceLocation.X" y="@SpaceLocation.Y" @onclick="ProcessClickAsync" width="@SpaceSize.Width" height="@SpaceSize.Height" viewBox="@ViewBox()">
+    @if (ShapeCategory == EnumShapeCategory.Rectangle)
+    {
+        <rect width="100%" height="100%" fill="@FillColor.ToWebColor()" style="@ShapeStyle()" />
+    }
+    else
+    {
+        <ellipse cx="@RadiusX" cy="@RadiusY" rx="@RadiusX" ry="@RadiusY" fill="@FillColor.ToWebColor()" style="@ShapeStyle()" />
+    }
+    @ChildContent
+</svg>

@@ -1,0 +1,19 @@
+﻿@typeparam R
+<BasicMultiplePilesBlazor D="R" Inline="@Inline" 
+                          AnimationTag="@AnimationTag"
+                          Piles="@Piles">
+    <CanvasTemplate Context="Card">
+        <DeckOfCardsImageBlazor R="R" TargetHeight="@TargetHeight.HeightString()" DeckObject="Card" />
+    </CanvasTemplate>
+    <MainTemplate Context="Pile">
+        <PrivateBasicIndividualPileBlazor Context="Card" D="R" IndividualPile="Pile">
+            <DeckOfCardsImageBlazor
+                                    R="R"
+                                    TargetHeight="@TargetHeight.HeightString()" 
+                                    DeckObject="Card" 
+                                    DataContext="@Piles" 
+                                    CommandParameter="Pile" 
+                                    CommandObject="Piles!.PileCommand" />
+        </PrivateBasicIndividualPileBlazor>
+    </MainTemplate>
+</BasicMultiplePilesBlazor>

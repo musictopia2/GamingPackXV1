@@ -1,0 +1,19 @@
+﻿@typeparam D
+@if (Cup == null || Cup.CanShowDice == false)
+{
+    <svg height="@TargetHeight">
+
+    </svg>
+    return;
+}
+@foreach (var dice in Cup.DiceList)
+{
+    @if (OnChange != null)
+    {
+        <StandardDiceBlazor CommandParameter="dice" Dice="dice" AfterChange="OnChange!" CommandObject="Cup.DiceCommand" TargetHeight="@TargetHeight" />
+    }
+    else
+    {
+        <StandardDiceBlazor CommandParameter="dice" Dice="dice" CommandObject="Cup.DiceCommand" TargetHeight="@TargetHeight" />
+    }
+}

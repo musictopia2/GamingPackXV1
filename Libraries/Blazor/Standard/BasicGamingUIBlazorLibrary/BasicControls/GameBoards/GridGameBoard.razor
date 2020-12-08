@@ -1,0 +1,36 @@
+﻿@typeparam S
+@if (CanInit() == false)
+{
+    return;
+}
+<CascadingValue Value="this">
+    <svg height="@GridHeight" width="@GridWidth" preserveAspectRatio="@PreserveAspectRatio" viewBox="0 0 @ImageWidth @ImageHeight">
+
+
+        
+
+
+        @if (ColumnList.Count > 0 && RowList.Count > 0)
+        {
+            <ColumnRowHeaderBlazor S="S" />
+        }
+        @for (int r = 0; r < SpaceList!.GetTotalRows(); r++)
+        {
+            @for (int c = 0; c < SpaceList.GetTotalColumns(); c++)
+            {
+                if (CanAddControl(SpaceList, r + 1, c + 1))
+                {
+                    var item = SpaceList[r + 1, c + 1];
+                    var point = GetControlLocation(r + 1, c + 1);
+                    <svg x="@point.X" y="@point.Y" height="@TargetSpaceHeight" width="@TargetSpaceWidth">
+                        @ItemTemplate!(item)
+                    </svg>
+                }
+            }
+        }
+        @if (Canvas != null)
+        {
+            @Canvas;
+        }
+    </svg>
+</CascadingValue>

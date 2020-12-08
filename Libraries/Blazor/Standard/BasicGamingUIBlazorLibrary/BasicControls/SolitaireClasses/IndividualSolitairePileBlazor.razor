@@ -1,0 +1,18 @@
+﻿@if (SinglePile == null || _points.Count != SinglePile.CardList.Count)
+{
+    return;
+}
+@{ 
+    int x = 0;
+}
+<svg @key="CustomKey" @onclick="@ClickSinglePile" width="@GetWidth" viewBox="@GetViewBox()">
+    <rect width="100%" height="100%" fill="@GetFill()" />
+    @foreach (var card in SinglePile.CardList)
+    {
+        PointF point = _points[x];
+        <FlexibleDeckRenderComponent DeckObject="card" D="SolitaireCard">
+            <DeckOfCardsImageBlazor DeckObject="card" R="SolitaireCard" ExtraSolitaireSuit="true" Location="point" />
+        </FlexibleDeckRenderComponent>
+        x++;
+    }
+</svg>

@@ -1,0 +1,22 @@
+﻿@typeparam P
+@if (GameData == null || DataContext == null)
+{
+    return;
+}
+@if (PlayOption == EnumPlayOptions.ComputerExtra && DataContext.ExtraOptionsVisible == false)
+{
+    return; //if this is extras, then if not visible, then can't consider.
+}
+@if (PlayOption == EnumPlayOptions.Solitaire)
+{
+    var temps = SolitaireData();
+    <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="@temps.Display" MethodName="@temps.Method" />
+}
+@foreach (var id in _completeList)
+{
+    var data = CommandData(id);
+    if (data.Display != "")
+    {
+        <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="@data.Display" MethodName="@data.Method" CommandParameter="@data.Parameter" />
+    }
+}

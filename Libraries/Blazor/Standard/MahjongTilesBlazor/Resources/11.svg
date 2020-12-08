@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="136" height="176">
+	<rect fill="rgb(0,0,0)" fill-opacity="0" stroke="none" width="136" height="176"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M54.4 25.52L62.56 17.6L73.44 17.6L81.6 25.52L73.44 33.44L62.56 33.44L54.4 25.52Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M54.4 48.4L62.56 40.48L73.44 40.48L81.6 48.4L73.44 56.32L62.56 56.32L54.4 48.4Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M54.4 71.28L62.56 63.36L73.44 63.36L81.6 71.28L73.44 79.2L62.56 79.2L54.4 71.28Z"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="62.560005" y="17.6" width="10.880005" height="52.800003"/>
+	<rect fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" x="62.560005" y="17.6" width="10.880005" height="52.800003"/>
+	<path fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" d="M54.4 48.4L62.56 40.48L73.44 40.48L81.6 48.4L73.44 56.32L62.56 56.32L54.4 48.4Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M54.4 113.52L62.56 105.6L73.44 105.6L81.6 113.52L73.44 121.44L62.56 121.44L54.4 113.52Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M54.4 136.4L62.56 128.48L73.44 128.48L81.6 136.4L73.44 144.32L62.56 144.32L54.4 136.4Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M54.4 159.28L62.56 151.36L73.44 151.36L81.6 159.28L73.44 167.2L62.56 167.2L54.4 159.28Z"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="62.560005" y="105.60001" width="10.880005" height="52.800003"/>
+	<rect fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" x="62.560005" y="105.60001" width="10.880005" height="52.800003"/>
+	<path fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" d="M54.4 136.4L62.56 128.48L73.44 128.48L81.6 136.4L73.44 144.32L62.56 144.32L54.4 136.4Z"/>
+</svg>

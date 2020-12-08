@@ -1,0 +1,52 @@
+﻿@typeparam D
+@if (Piles == null)
+{
+    return;
+}
+ @{ 
+     PopulateCardToShow();
+ }
+<CascadingValue Value="this">
+    <GridEvenContent Rows="GetRowCount" Inline="@Inline" Columns="Piles.Columns">
+        <GridRepeater TotalColumns="Piles.Columns" Context="item" TotalRows="GetRowCount">
+            @if (MiscRowTemplate != null && RowPlaceAfter > 0 && RowPlaceAfter + 1 == item.row && item.column == 1)
+            {
+                <GridItem Row="item.row" Column="item.column" ColumnSpan="Piles.Columns">
+                    @MiscRowTemplate
+                </GridItem>
+            }
+            @{
+                int row;
+                if (RowPlaceAfter == 0 || RowPlaceAfter <= item.row)
+                {
+                    row = item.row;
+                }
+                else
+                {
+                    row = item.row + 1;
+                }
+                var pile = GetPile(item.column, row);
+                if (pile != null)
+                {
+                    <GridItem Row="row" Column="item.column">
+                        <div style="position: relative">
+                            @MainTemplate!(pile)
+                            
+                            
+                            @if (AnimationTag != "" && _animates.CurrentYLocation != -1000 && AnimatePile != null && AnimatePile.Column == pile.Column && AnimatePile.Row == pile.Row)
+                            {
+                                if (CanvasTemplate != null)
+                                {
+                                    <div style="position: absolute; @GetTopText">
+                                        @CanvasTemplate!(CurrentObject!)
+                                    </div>
+
+                                }
+                            }
+                        </div>
+                    </GridItem>
+                }
+            }
+        </GridRepeater>
+    </GridEvenContent>
+</CascadingValue>

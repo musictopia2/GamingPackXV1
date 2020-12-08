@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="136" height="176">
+	<rect fill="rgb(0,0,0)" fill-opacity="0" stroke="none" width="136" height="176"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M13.6 25.52L21.76 17.6L32.64 17.6L40.8 25.52L32.64 33.44L21.76 33.44L13.6 25.52Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M13.6 48.4L21.76 40.48L32.64 40.48L40.8 48.4L32.64 56.32L21.76 56.32L13.6 48.4Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M13.6 71.28L21.76 63.36L32.64 63.36L40.8 71.28L32.64 79.2L21.76 79.2L13.6 71.28Z"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="21.759998" y="17.6" width="10.880001" height="52.800003"/>
+	<rect fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" x="21.759998" y="17.6" width="10.880001" height="52.800003"/>
+	<path fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" d="M13.6 48.4L21.76 40.48L32.64 40.48L40.8 48.4L32.64 56.32L21.76 56.32L13.6 48.4Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M95.2 25.52L103.36 17.6L114.24 17.6L122.4 25.52L114.24 33.44L103.36 33.44L95.2 25.52Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M95.2 48.4L103.36 40.48L114.24 40.48L122.4 48.4L114.24 56.32L103.36 56.32L95.2 48.4Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M95.2 71.28L103.36 63.36L114.24 63.36L122.4 71.28L114.24 79.2L103.36 79.2L95.2 71.28Z"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="103.36" y="17.6" width="10.879997" height="52.800003"/>
+	<rect fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" x="103.36" y="17.6" width="10.879997" height="52.800003"/>
+	<path fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" d="M95.2 48.4L103.36 40.48L114.24 40.48L122.4 48.4L114.24 56.32L103.36 56.32L95.2 48.4Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M13.6 113.52L21.76 105.6L32.64 105.6L40.8 113.52L32.64 121.44L21.76 121.44L13.6 113.52Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M13.6 136.4L21.76 128.48L32.64 128.48L40.8 136.4L32.64 144.32L21.76 144.32L13.6 136.4Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M13.6 159.28L21.76 151.36L32.64 151.36L40.8 159.28L32.64 167.2L21.76 167.2L13.6 159.28Z"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="21.759998" y="105.60001" width="10.880001" height="52.800003"/>
+	<rect fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" x="21.759998" y="105.60001" width="10.880001" height="52.800003"/>
+	<path fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" d="M13.6 136.4L21.76 128.48L32.64 128.48L40.8 136.4L32.64 144.32L21.76 144.32L13.6 136.4Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M95.2 113.52L103.36 105.6L114.24 105.6L122.4 113.52L114.24 121.44L103.36 121.44L95.2 113.52Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M95.2 136.4L103.36 128.48L114.24 128.48L122.4 136.4L114.24 144.32L103.36 144.32L95.2 136.4Z"/>
+	<path fill="rgb(0,0,139)" stroke="none" d="M95.2 159.28L103.36 151.36L114.24 151.36L122.4 159.28L114.24 167.2L103.36 167.2L95.2 159.28Z"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="103.36" y="105.60001" width="10.879997" height="52.800003"/>
+	<rect fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" x="103.36" y="105.60001" width="10.879997" height="52.800003"/>
+	<path fill="none" stroke="rgb(0,0,139)" stroke-width="1" stroke-miterlimit="4" d="M95.2 136.4L103.36 128.48L114.24 128.48L122.4 136.4L114.24 144.32L103.36 144.32L95.2 136.4Z"/>
+	<path fill="rgb(255,0,0)" stroke="none" d="M54.4 69.52L62.56 61.6L73.44 61.6L81.6 69.52L73.44 77.44L62.56 77.44L54.4 69.52Z"/>
+	<path fill="rgb(255,0,0)" stroke="none" d="M54.4 92.4L62.56 84.48L73.44 84.48L81.6 92.4L73.44 100.32L62.56 100.32L54.4 92.4Z"/>
+	<path fill="rgb(255,0,0)" stroke="none" d="M54.4 115.28L62.56 107.36L73.44 107.36L81.6 115.28L73.44 123.2L62.56 123.2L54.4 115.28Z"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="62.560005" y="61.599998" width="10.880005" height="52.800003"/>
+	<rect fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" x="62.560005" y="61.599998" width="10.880005" height="52.800003"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M54.4 92.4L62.56 84.48L73.44 84.48L81.6 92.4L73.44 100.32L62.56 100.32L54.4 92.4Z"/>
+</svg>

@@ -1,0 +1,15 @@
+﻿@inherits LayoutComponentBase
+@using BasicBlazorLibrary.Components.Toasts
+@using BasicBlazorLibrary.Layouts; 
+@*
+
+    here could decide to display something different depending on sizes.  since this is an experiment version, not this time.
+    even this version will not do anything with sizes.
+    decided to use css isolation.  if i run into problems will have to run lots of experiments.
+*@
+<BlazoredToasts Timeout="3" />
+<StartLayout>
+    <div class="beginning">
+        @Body
+    </div>
+</StartLayout>

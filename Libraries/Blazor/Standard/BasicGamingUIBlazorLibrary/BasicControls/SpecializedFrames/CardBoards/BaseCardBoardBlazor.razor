@@ -1,0 +1,74 @@
+﻿@typeparam D
+@if (DataContext == null )
+{
+    return;
+}
+<FlexibleRenderComponent Visible="DataContext.Visible">
+
+    @{
+        SizeF size = GetViewSize();
+        int rows = DataContext.Rows;
+        int columns = DataContext.Columns;
+        int z = 0;
+        float x;
+        float y = 0;
+    }
+    @if (DataContext.HasFrame == false)
+    {
+        <svg @key="DataContext" height="@GetTargetString" viewBox="0 0 @size.Width @size.Height">
+
+            @for (int r = 0; r < rows; r++)
+            {
+                x = 0;
+                for (int c = 0; c < columns; c++)
+                {
+                    if (z + 1 > DataContext.ObjectList.Count)
+                    {
+                        break;
+                    }
+                    var card = DataContext.ObjectList[z];
+                    //i was able to do it if i wrap under svg first.
+                    //had to set x and y.
+                    <svg x="@x" y="@y">
+                        <FlexibleDeckRenderComponent D="D" DeckObject="card">
+                            @ChildContent!(card)
+                        </FlexibleDeckRenderComponent>
+                    </svg>
+
+                    x += DefaultSize.Width;
+                    z++;
+                }
+                y += DefaultSize.Height;
+            }
+        </svg>
+    }
+    else
+    {
+        <BaseFrameBlazor @key="DataContext" Text="@DataContext.Text">
+            <svg height="@GetTargetString" viewBox="0 0 @size.Width @size.Height">
+
+                @for (int r = 0; r < rows; r++)
+                {
+                    x = 0;
+                    for (int c = 0; c < columns; c++)
+                    {
+                        if (z + 1 > DataContext.ObjectList.Count)
+                        {
+                            break;
+                        }
+                        var card = DataContext.ObjectList[z];
+                        <svg x="@x" y="@y">
+                            <FlexibleDeckRenderComponent D="D" DeckObject="card">
+                                @ChildContent!(card)
+                            </FlexibleDeckRenderComponent>
+                        </svg>
+                        
+                        x += DefaultSize.Width;
+                        z++;
+                    }
+                    y += DefaultSize.Height;
+                }
+            </svg>
+        </BaseFrameBlazor>
+    }
+</FlexibleRenderComponent>

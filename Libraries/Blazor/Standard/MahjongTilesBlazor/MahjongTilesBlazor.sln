@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MahjongTilesBlazor", "MahjongTilesBlazor.csproj", "{038AD902-9357-4999-B525-0B09BF1656F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicGameFrameworkLibrary", "..\..\..\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj", "{4D549180-598F-422F-8EFD-C7A9130F27D6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicGamingUIBlazorLibrary", "..\BasicGamingUIBlazorLibrary\BasicGamingUIBlazorLibrary.csproj", "{E09BAB9C-3855-4837-8C30-DC1B6481051B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{038AD902-9357-4999-B525-0B09BF1656F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{038AD902-9357-4999-B525-0B09BF1656F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{038AD902-9357-4999-B525-0B09BF1656F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{038AD902-9357-4999-B525-0B09BF1656F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D549180-598F-422F-8EFD-C7A9130F27D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D549180-598F-422F-8EFD-C7A9130F27D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D549180-598F-422F-8EFD-C7A9130F27D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D549180-598F-422F-8EFD-C7A9130F27D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E09BAB9C-3855-4837-8C30-DC1B6481051B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E09BAB9C-3855-4837-8C30-DC1B6481051B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E09BAB9C-3855-4837-8C30-DC1B6481051B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E09BAB9C-3855-4837-8C30-DC1B6481051B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79ADEC48-DD9B-4D9D-95A7-D8F64C943217}
+	EndGlobalSection
+EndGlobal

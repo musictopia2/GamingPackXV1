@@ -1,0 +1,39 @@
+﻿@typeparam SU
+@typeparam CO
+@typeparam RU
+@typeparam SE
+@typeparam T
+@if (DataContext == null || ChildContent == null)
+{
+    return;
+}
+@if (ContainerHeight == "" && ContainerWidth == "")
+{
+    return;
+}
+<CascadingValue Value="this">
+    @if (DataContext.HasFrame)
+    {
+        <fieldset style="@GetContainerStyle()" disabled="@IsDisabled">
+            <legend>@DataContext.Text</legend>
+            @foreach (var set in DataContext.SetList)
+            {
+                <HorizontalDiv RightOnly="5px">
+                    @ChildContent(set)
+                </HorizontalDiv>
+            }
+        </fieldset>
+    }
+    else
+    {
+        //no frame
+        <div style="@GetContainerStyle()">
+            @foreach (var set in DataContext.SetList)
+            {
+                <HorizontalDiv RightOnly="5px">
+                    @ChildContent(set)
+                </HorizontalDiv>
+            }
+        </div>
+    }
+</CascadingValue>

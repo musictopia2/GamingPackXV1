@@ -1,0 +1,5 @@
+﻿@using BasicGamingUIBlazorLibrary.GameGraphics.Dominos 
+@typeparam D
+<BaseCardBoardBlazor D="D" DataContext="DataContext" Context="Domino">
+    <BasicDominoBlazor D="D" PartOfBoard="true" CommandObject="DataContext!.ObjectCommand" DeckObject="Domino" DataContext="DataContext" CommandParameter="Domino" />
+</BaseCardBoardBlazor>

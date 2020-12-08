@@ -1,0 +1,24 @@
+﻿@typeparam S
+@if (Board == null)
+{
+    return;
+}
+@{
+    float c = Board.HeaderWidth;
+    foreach (var column in Board.ColumnList)
+    {
+
+        <svg width="@Board.TargetSpaceWidth" height="@Board.HeaderHeight" x="@c">
+            @((MarkupString)Board.HeaderString(column))
+        </svg>
+        c += Board.TargetSpaceWidth;
+    }
+    c = Board.HeaderHeight;
+    foreach (var row in Board.RowList)
+    {
+        <svg y="@c" width="@Board.HeaderWidth" height="@Board.TargetSpaceHeight">
+            @((MarkupString)Board.HeaderString(row))
+        </svg>
+        c += Board.TargetSpaceHeight;
+    }
+}

@@ -1,0 +1,5 @@
+﻿@ChildContent
+@if (Opened == true)
+{
+    <ConfirmationBlazor Message="@_warning!.Message" Title="Confirm Mark Off" Results="ConfirmAsync" />
+}

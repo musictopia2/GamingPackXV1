@@ -1,0 +1,9 @@
+﻿@if (ChildContent == null)
+{
+    return;
+}
+<CascadingValue Value="this">
+    <svg x="@X" y="@Y" style="@GetSvgStyle()" viewBox="@GetViewBox()">
+        @ChildContent
+    </svg>
+</CascadingValue>

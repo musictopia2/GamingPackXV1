@@ -1,0 +1,24 @@
+﻿@if (MainPiles == null)
+{
+    return;
+}
+@{ 
+    int x = 0;
+}
+<CascadingValue Value="MainPiles">
+    <div>
+        @foreach (var pile in MainPiles.PileList)
+        {
+            <HorizontalDiv LeftOnly="0">
+                <IndividualSolitairePileBlazor SinglePile="pile" />
+                @{ 
+                    x++;
+                }
+                @if (x == PlaceAfter && ChildContent != null)
+                {
+                    @ChildContent
+                }
+            </HorizontalDiv>
+        }
+    </div>
+</CascadingValue>

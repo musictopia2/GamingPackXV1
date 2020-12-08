@@ -1,0 +1,119 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\1.svg" />
+    <None Remove="Resources\10.svg" />
+    <None Remove="Resources\11.svg" />
+    <None Remove="Resources\12.svg" />
+    <None Remove="Resources\13.svg" />
+    <None Remove="Resources\14.svg" />
+    <None Remove="Resources\15.svg" />
+    <None Remove="Resources\16.svg" />
+    <None Remove="Resources\17.svg" />
+    <None Remove="Resources\18.svg" />
+    <None Remove="Resources\19.svg" />
+    <None Remove="Resources\2.svg" />
+    <None Remove="Resources\20.svg" />
+    <None Remove="Resources\21.svg" />
+    <None Remove="Resources\22.svg" />
+    <None Remove="Resources\23.svg" />
+    <None Remove="Resources\24.svg" />
+    <None Remove="Resources\25.svg" />
+    <None Remove="Resources\26.svg" />
+    <None Remove="Resources\27.svg" />
+    <None Remove="Resources\28.svg" />
+    <None Remove="Resources\29.svg" />
+    <None Remove="Resources\3.svg" />
+    <None Remove="Resources\30.svg" />
+    <None Remove="Resources\31.svg" />
+    <None Remove="Resources\32.svg" />
+    <None Remove="Resources\33.svg" />
+    <None Remove="Resources\34.svg" />
+    <None Remove="Resources\35.svg" />
+    <None Remove="Resources\36.svg" />
+    <None Remove="Resources\37.svg" />
+    <None Remove="Resources\38.svg" />
+    <None Remove="Resources\39.svg" />
+    <None Remove="Resources\4.svg" />
+    <None Remove="Resources\40.svg" />
+    <None Remove="Resources\41.svg" />
+    <None Remove="Resources\42.svg" />
+    <None Remove="Resources\5.svg" />
+    <None Remove="Resources\6.svg" />
+    <None Remove="Resources\7.svg" />
+    <None Remove="Resources\8.svg" />
+    <None Remove="Resources\9.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\1.svg" />
+    <EmbeddedResource Include="Resources\10.svg" />
+    <EmbeddedResource Include="Resources\11.svg" />
+    <EmbeddedResource Include="Resources\12.svg" />
+    <EmbeddedResource Include="Resources\13.svg" />
+    <EmbeddedResource Include="Resources\14.svg" />
+    <EmbeddedResource Include="Resources\15.svg" />
+    <EmbeddedResource Include="Resources\16.svg" />
+    <EmbeddedResource Include="Resources\17.svg" />
+    <EmbeddedResource Include="Resources\18.svg" />
+    <EmbeddedResource Include="Resources\19.svg" />
+    <EmbeddedResource Include="Resources\2.svg" />
+    <EmbeddedResource Include="Resources\20.svg" />
+    <EmbeddedResource Include="Resources\21.svg" />
+    <EmbeddedResource Include="Resources\22.svg" />
+    <EmbeddedResource Include="Resources\23.svg" />
+    <EmbeddedResource Include="Resources\24.svg" />
+    <EmbeddedResource Include="Resources\25.svg" />
+    <EmbeddedResource Include="Resources\26.svg" />
+    <EmbeddedResource Include="Resources\27.svg" />
+    <EmbeddedResource Include="Resources\28.svg" />
+    <EmbeddedResource Include="Resources\29.svg" />
+    <EmbeddedResource Include="Resources\3.svg" />
+    <EmbeddedResource Include="Resources\30.svg" />
+    <EmbeddedResource Include="Resources\31.svg" />
+    <EmbeddedResource Include="Resources\32.svg" />
+    <EmbeddedResource Include="Resources\33.svg" />
+    <EmbeddedResource Include="Resources\34.svg" />
+    <EmbeddedResource Include="Resources\35.svg" />
+    <EmbeddedResource Include="Resources\36.svg" />
+    <EmbeddedResource Include="Resources\37.svg" />
+    <EmbeddedResource Include="Resources\38.svg" />
+    <EmbeddedResource Include="Resources\39.svg" />
+    <EmbeddedResource Include="Resources\4.svg" />
+    <EmbeddedResource Include="Resources\40.svg" />
+    <EmbeddedResource Include="Resources\41.svg" />
+    <EmbeddedResource Include="Resources\42.svg" />
+    <EmbeddedResource Include="Resources\5.svg" />
+    <EmbeddedResource Include="Resources\6.svg" />
+    <EmbeddedResource Include="Resources\7.svg" />
+    <EmbeddedResource Include="Resources\8.svg" />
+    <EmbeddedResource Include="Resources\9.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommonBasicStandardLibraries" Version="3.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+	<PackageReference Include="SvgHelper.Blazor" Version="1.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
+    <ProjectReference Include="..\BasicGamingUIBlazorLibrary\BasicGamingUIBlazorLibrary.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\Net5\BlazorBasicLibraries\BasicBlazorLibrary\BasicBlazorLibrary.csproj" />
+    <ProjectReference Include="..\..\..\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,60 @@
+﻿@typeparam P
+
+@if (DataContext == null || GameData == null)
+{
+    <div>Help</div>
+    return;
+}
+<div>
+    @if (GameData!.CanHaveExtraComputerPlayers)
+    {
+        <LoadPlayerOptionsComponent P="P" PlayOption="EnumPlayOptions.ComputerExtra" />
+    }
+    @if (GameData.MinPlayers == 2 && DataContext.HostCanStart)
+    {
+        <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" CommandParameter="0" Display="Start Game With No Extra Players" MethodName="@StartMethod" />
+
+    }
+    @if (DataContext.HostCanStart)
+    {
+        <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="Auto Resume Networked Game" MethodName="@AutoResumeNetworkMethod" />
+    }
+    <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="Auto Resume Local Game" MethodName="@AutoResumeLocalMethod" />
+
+
+    @if (DataContext.CanShowSingleOptions)
+    {
+        @if (_canComputer && _canHuman)
+        {
+            <HorizontalDiv LeftOnly ="0px">
+                <LoadPlayerOptionsComponent P="P" PlayOption="EnumPlayOptions.ComputerLocal" />
+            </HorizontalDiv>
+            <HorizontalDiv LeftOnly="10px">
+                <LoadPlayerOptionsComponent P="P" PlayOption="EnumPlayOptions.HumanLocal" />
+            </HorizontalDiv>
+        }
+        else if (_canHuman)
+        {
+            <LoadPlayerOptionsComponent P="P" PlayOption="EnumPlayOptions.HumanLocal" />
+        }
+        else if (_canComputer)
+        {
+            <LoadPlayerOptionsComponent P="P" PlayOption="EnumPlayOptions.ComputerLocal" />
+        }
+        else if (GameData.SinglePlayerChoice == EnumPlayerChoices.Solitaire)
+        {
+            <LoadPlayerOptionsComponent P="P" PlayOption="EnumPlayOptions.Solitaire" />
+        }
+    }
+
+    <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="Start Network Game (Host)" MethodName="@HostMethod" />
+
+    <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="Join Network Game" MethodName="@ConnectMethod" />
+    <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="Cancel Selection" MethodName="@CancelMethod" />
+
+    @if (DataContext.HostCanStart)
+    {
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    }
+
+</div>

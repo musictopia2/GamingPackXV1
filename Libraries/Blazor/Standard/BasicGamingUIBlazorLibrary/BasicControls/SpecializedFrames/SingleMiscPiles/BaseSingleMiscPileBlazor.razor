@@ -1,0 +1,59 @@
+﻿@typeparam D
+@* 
+hint.  may have to make it more flexible anyways.  for now, okay but should rethink.
+    because may have to be used for cards as well.
+*@
+
+
+
+@if (SinglePile == null)
+{
+    return;
+}
+
+<FlexibleRenderComponent Visible="SinglePile.Visible">
+    <BaseFrameBlazor @key="SinglePile" IsEnabled="SinglePile.IsEnabled" Text="@SinglePile.Text">
+        <div style="position:relative">
+
+            @if (_animates.CurrentYLocation != -1000)
+            {
+                <div style="position: absolute; @GetTopText">
+                    @CanvasTemplate!(AnimateDeckImage!)
+                </div>
+            }
+
+            <FlexibleRenderComponent CanRender="(_animates.CurrentYLocation == -1000 || _showPrevious)">
+                @if (AltShowImage != null)
+                {
+                    @*<PlainComponent @key="Guid.NewGuid().ToString()">
+                        @MainTemplate!(AltShowImage);
+                    </PlainComponent>*@
+                    <FlexibleDeckRenderComponent D="D" DeckObject="AltShowImage">
+                        @MainTemplate!(AltShowImage);
+                    </FlexibleDeckRenderComponent>
+
+                }
+                else if (AnimateDeckImage != null)
+                {
+                    @*<PlainComponent @key="Guid.NewGuid().ToString()">
+                        @MainTemplate!(AnimateDeckImage);
+                    </PlainComponent>*@
+                    <FlexibleDeckRenderComponent D="D" DeckObject="AnimateDeckImage">
+                        @MainTemplate!(AnimateDeckImage);
+                    </FlexibleDeckRenderComponent>
+
+                }
+                else
+                {
+                    @*<PlainComponent @key="Guid.NewGuid().ToString()">
+                        @MainTemplate!(SinglePile.CurrentCard)
+                    </PlainComponent>*@
+                    <FlexibleDeckRenderComponent D="D" DeckObject="SinglePile.CurrentCard">
+                        @MainTemplate!(SinglePile.CurrentCard)
+                    </FlexibleDeckRenderComponent>
+                }
+            </FlexibleRenderComponent>
+        </div>
+    </BaseFrameBlazor>
+</FlexibleRenderComponent>
+

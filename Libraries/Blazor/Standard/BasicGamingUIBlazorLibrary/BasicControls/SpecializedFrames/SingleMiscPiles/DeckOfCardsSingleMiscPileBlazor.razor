@@ -1,0 +1,12 @@
+﻿@typeparam R
+@inherits KeyComponentBase
+<BaseSingleMiscPileBlazor D="R" PileAnimationTag="@PileAnimationTag" SinglePile="SinglePile">
+    <CanvasTemplate Context="Card">
+        <DeckOfCardsImageBlazor R="R" TargetHeight="@RealHeight" DeckObject="Card" />
+    </CanvasTemplate>
+    <MainTemplate Context="Card">
+        <FlexibleDeckRenderComponent D="R" DeckObject="Card">
+            <DeckOfCardsImageBlazor R="R" TargetHeight="@RealHeight" DeckObject="Card" CommandParameter="Card" CommandObject="SinglePile!.PileObjectClickedCommand" />
+        </FlexibleDeckRenderComponent>
+    </MainTemplate>
+</BaseSingleMiscPileBlazor>

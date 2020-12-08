@@ -1,0 +1,25 @@
+﻿@typeparam D
+@if (MainGroup == null || MainGroup.Piles == null || _card == null)
+{
+    return;
+}
+@if (MainGroup.Piles.HasFrame)
+{
+    <BaseFrameBlazor Text="@IndividualPile!.Text" IsEnabled="@IndividualPile.IsEnabled">
+        <FlexibleDeckRenderComponent D="D" DeckObject="_card">
+            @ChildContent!(_card)
+        </FlexibleDeckRenderComponent>
+        
+    </BaseFrameBlazor>
+    return;
+}
+@if (_card.Visible == false)
+{
+    <svg viewBox="@GetViewBox(_card)" style="height: @GetString">
+        <rect fill="none" width="100%" height="100%" />
+    </svg>
+    return;
+}
+<FlexibleDeckRenderComponent D="D" DeckObject="_card">
+    @ChildContent!(_card)
+</FlexibleDeckRenderComponent>

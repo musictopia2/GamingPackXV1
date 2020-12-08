@@ -1,0 +1,58 @@
+﻿@inherits GraphicsCommand
+@using BasicGameFrameworkLibrary.Dice;
+@if (Dice == null || Dice.DotColor == "" || Dice.Visible == false)
+{
+    return;
+}
+<svg xmlns="http://www.w3.org/2000/svg" x="@X" y="@Y" preserveAspectRatio="xMinYMin meet" xmlns:xlink="http://www.w3.org/1999/xlink" height="@TargetHeight" @onclick="@Submit" viewBox="0 0 100 100">
+    @((MarkupString)RectString())
+    @if (Dice.IsSelected || Dice.Hold)
+    {
+        <rect fill="red" opacity=".1" rx="6" ry="6" x="3" y="3" width="94" height="94" />
+    }
+    @if (Dice.Style == EnumDiceStyle.DrawWhiteNumber)
+    {
+        @((MarkupString)WhiteString())
+    }
+    else
+    {
+        @switch (Dice.Value)
+        {
+            case 1:
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="50%" cy="50%" r="@DiceRadius" />
+                break;
+            case 2:
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="25%" cy="25%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="75%" cy="75%" r="@DiceRadius" />
+                break;
+            case 3:
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="25%" cy="25%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="50%" cy="50%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="75%" cy="75%" r="@DiceRadius" />
+                break;
+            case 4:
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="25%" cy="25%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="25%" cy="75%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="75%" cy="25%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="75%" cy="75%" r="@DiceRadius" />
+                break;
+            case 5:
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="25%" cy="25%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="25%" cy="75%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="75%" cy="25%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="75%" cy="75%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="50%" cy="50%" r="@DiceRadius" />
+                break;
+            case 6:
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="25%" cy="50%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="75%" cy="50%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="25%" cy="25%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="25%" cy="75%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="75%" cy="25%" r="@DiceRadius" />
+                <circle fill="@GetRealColor(Dice.DotColor)" cx="75%" cy="75%" r="@DiceRadius" />
+                break;
+            default:
+                break;
+        }
+    }
+</svg>

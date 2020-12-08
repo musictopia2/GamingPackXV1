@@ -1,0 +1,37 @@
+﻿@if (BasicData == null || GameData == null)
+{
+    return;
+}
+@{ 
+    SetNickNameAsync();
+}
+@if (_loading)
+{
+    <p>Loading Game Package</p>
+    return;
+}
+<CascadingValue Value="TestData">
+    <CascadingValue Value="BasicData">
+        <CascadingValue Value="GameData">
+
+            <Title Value="@GameData.GameName"></Title>
+
+            @if (BasicData.NickName == "")
+            {
+                <p>Enter Nick Name</p>
+                <div>
+                    <input type="text" @bind-value="BasicData.NickName" />
+                </div>
+                <div>
+                    <button @onclick="ProcessNickNameAsync" style="font-size: 10vh; background-color: aqua; color: navy; margin: 5px; padding: 5px; border-color: white; border-width: 2px; border-radius: 2px;">Submit</button>
+                </div>
+            }
+            else
+            {
+                @ChildContent
+            }
+
+        </CascadingValue>
+    </CascadingValue>
+</CascadingValue>
+

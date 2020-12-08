@@ -1,0 +1,58 @@
+﻿
+
+.beginning {
+    flex: 1;
+}
+
+
+
+/*has to ignore the warnings.  since the docs here https://docs.microsoft.com/en-us/aspnet/core/blazor/components/css-isolation?view=aspnetcore-5.0 showed doing this to show its for descendents as well.*/
+
+::deep button:disabled {
+    color: lightgray;
+}
+
+
+::deep .layout {
+    flex: 1;
+}
+
+::deep .horizontalDiv {
+    display: inline;
+}
+
+::deep fieldset {
+    border-color: white;
+    border-width: 2px;
+    border-radius: 4px;
+    border-style: groove;
+    display: inline-block;
+    box-sizing: initial;
+    border-image: initial;
+    /*padding-right: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 0.5rem !important;*/
+}
+
+::deep legend {
+    width: initial;
+    max-width: initial;
+    margin-bottom: initial;
+    font-size: initial;
+    line-height: initial;
+    white-space: initial;
+    border-bottom: none;
+}
+
+::deep .scrollableField {
+    overflow: auto;
+    /*hopefully simple enough to do that to scroll if necessary.*/
+}
+
+::deep .fullframe {
+    display: block;
+}
+
+::deep .centerText {
+    text-align: center;
+}

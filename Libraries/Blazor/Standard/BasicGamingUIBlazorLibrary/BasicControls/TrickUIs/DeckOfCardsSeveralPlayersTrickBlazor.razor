@@ -1,0 +1,17 @@
+﻿@using BasicGameFrameworkLibrary.RegularDeckOfCards;
+@typeparam P
+@typeparam B
+@typeparam T
+@if (DataContext == null)
+{
+    return;
+}
+<BaseSeveralPlayersTrickBlazor S="EnumSuitList"
+                               T="T"
+                               B="B"
+                               P="P"
+                               ExtraLongSecondColumn="ExtraLongSecondColumn"
+                               DataContext="DataContext"
+                               Context="Card">
+    <DeckOfCardsImageBlazor R="T" TargetHeight="@RealHeight" DeckObject="Card" CommandParameter="Card" CommandObject="DataContext!.CardSingleClickCommand" />
+</BaseSeveralPlayersTrickBlazor>

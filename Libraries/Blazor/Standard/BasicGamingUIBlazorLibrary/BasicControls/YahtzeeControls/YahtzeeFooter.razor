@@ -1,0 +1,9 @@
+﻿@using gg = BasicGamingUIBlazorLibrary.BasicControls.YahtzeeControls.YahtzeeControlGlobalSettings; 
+<YahtzeeField Row="@RowNumber"
+             Column="1"
+             SpanColumn="true">
+    <CenteredSvgText FontSize="@gg.DescriptionFontSize" Text="@Text" IsBold="true" />
+</YahtzeeField>
+<YahtzeeField Row="@RowNumber" Column="3">
+    <CenteredSvgText FontSize="@gg.ScoreFontSize" Text="@TotalScore.ToString()" />
+</YahtzeeField>

@@ -1,0 +1,39 @@
+﻿@typeparam D
+@if (DeckPile == null)
+{
+    return;
+}
+@if (DeckPile.DrawInCenter == false)
+{
+    <BaseFrameBlazor @key="DeckPile" IsEnabled="DeckPile.IsEnabled" Text="@DeckPile.TextToAppear">
+        <div class="drawrelative">
+
+            @if (_animates.CurrentYLocation != -1000)
+            {
+                <div class="drawabsolute" style=" @GetTopText">
+                    @CanvasTemplate!(AnimateDeckImage!)
+                </div>
+            }
+            <FlexibleDeckRenderComponent D="D" DeckObject="DeckPile.CurrentCard">
+                @MainTemplate!(DeckPile.CurrentCard)
+            </FlexibleDeckRenderComponent>
+        </div>
+    </BaseFrameBlazor>
+}
+else
+{
+    <div style="@GetMarginsForTextCenter()">
+        <div class="drawrelative" >
+
+            @if (_animates.CurrentYLocation != -1000)
+            {
+                <div class="drawabsolute" style=" @GetTopText">
+                    @CanvasTemplate!(AnimateDeckImage!)
+                </div>
+            }
+            <FlexibleDeckRenderComponent D="D" DeckObject="DeckPile.CurrentCard">
+                @MainTemplate!(DeckPile.CurrentCard)
+            </FlexibleDeckRenderComponent>
+        </div>
+    </div>
+}

@@ -1,0 +1,16 @@
+﻿@using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
+@if (ButtonClicked.HasDelegate == false)
+{
+    return;
+}
+<svg x="@ButtonLocation.X" y="@ButtonLocation.Y" width="@ButtonSize.Width" height="@ButtonSize.Height" @onclick="ButtonClicked">
+    <rect fill="aqua" style="opacity: 0; stroke-width: @BorderWidth; stroke:  @BorderColor.ToWebColor(); " width="100%" height="100%" />
+    @* the other rectangle has to be there or the clicking does not work *@
+    <rect fill="none" style="stroke-width: @BorderWidth; stroke:  @BorderColor.ToWebColor(); " width="100%" height="100%" />
+    @if (Text != "")
+    {
+        <CenteredTextBlazor Text="@Text"
+                            TextColor="@TextColor"
+                            FontSize="@FontSize" />
+    }
+</svg>

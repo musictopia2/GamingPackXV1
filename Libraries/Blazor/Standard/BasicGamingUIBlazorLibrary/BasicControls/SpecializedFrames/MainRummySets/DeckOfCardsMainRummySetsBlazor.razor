@@ -1,0 +1,27 @@
+﻿@using BasicGameFrameworkLibrary.RegularDeckOfCards
+@typeparam RU
+@typeparam SE
+@typeparam T
+<BaseMainRummySetsBlazor SU="EnumSuitList"
+                         CO="EnumRegularColorList"
+                         SE="SE"
+                         RU="RU"
+                         T="T"
+                         ContainerHeight="@ContainerHeight"
+                         ContainerWidth="@ContainerWidth"
+                         DataContext="DataContext"
+                         Context="Details">
+    <BaseIndividualRummySetBlazor SU="EnumSuitList"
+                                  CO="EnumRegularColorList"
+                                  SE="SE"
+                                  RU="RU"
+                                  T="T"
+                                  Context="Item"
+                                  DataContext="Details">
+        <DeckOfCardsImageBlazor R="RU"
+                                DataContext="Details"
+                                CommandObject="Details.ObjectSingleClickCommand"
+                                CommandParameter="Item"
+                                DeckObject="Item" />
+    </BaseIndividualRummySetBlazor>
+</BaseMainRummySetsBlazor>

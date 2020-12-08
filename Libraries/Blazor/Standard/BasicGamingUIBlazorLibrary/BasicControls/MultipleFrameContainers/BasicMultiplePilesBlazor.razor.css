@@ -1,0 +1,7 @@
+﻿.multiplepilesrelative{
+    position: relative;
+}
+.multiplepilesabsolute{
+    position: absolute;
+    left: 2px;
+}

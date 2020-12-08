@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="136" height="176">
+	<rect fill="rgb(0,0,0)" fill-opacity="0" stroke="none" width="136" height="176"/>
+	<defs>
+		<pattern id="pattern_0" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse" width="100" height="100" x="0" y="0">
+			<image id="img_0" x="0" y="0" width="100" height="100" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABHNCSVQICAgIfAhkiAAAAWxJREFUeJzt1bFtA0EUxNC9zlSUCrj83PM4caAORMDvJwQ3XmKuc57X9n5d18/Z3ge/y7PtPufZ5/Hv+TnnuT8f8cvcdu/vSj/lv7pCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSblCapwNSfkvFQwqAzCFQqAAAAAASUVORK5CYII="/>
+		</pattern>
+	</defs>
+	<ellipse fill="url(#pattern_0)" stroke="none" cx="68" cy="88" rx="52.888885" ry="52.888885"/>
+	<ellipse fill="none" stroke="rgb(0,0,139)" stroke-width="2" stroke-miterlimit="4" cx="68" cy="88" rx="52.888885" ry="52.888885"/>
+	<ellipse fill="none" stroke="rgb(0,0,139)" stroke-width="2" stroke-miterlimit="4" cx="68" cy="88" rx="34" ry="34"/>
+	<defs>
+		<pattern id="pattern_1" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse" width="100" height="100" x="0" y="0">
+			<image id="img_1" x="0" y="0" width="100" height="100" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABHNCSVQICAgIfAhkiAAAAStJREFUeJzt07EJw1AQRMH7woWpM5V+TgwuQS+YaNKF5Z2duWf3nnNmdofv+vmd8RTG8MxVGMG/V2EEFZJVITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExFRJTITEVElMhMRUSUyExv1KXFU9OXl40AAAAAElFTkSuQmCC"/>
+		</pattern>
+	</defs>
+	<ellipse fill="url(#pattern_1)" stroke="none" cx="68" cy="88" rx="32" ry="32"/>
+	<ellipse fill="none" stroke="rgb(255,0,0)" stroke-width="2" stroke-miterlimit="4" cx="68" cy="88" rx="32" ry="32"/>
+</svg>

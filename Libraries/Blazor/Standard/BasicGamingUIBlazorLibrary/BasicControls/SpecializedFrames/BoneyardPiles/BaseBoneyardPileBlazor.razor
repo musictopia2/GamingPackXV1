@@ -1,0 +1,11 @@
+﻿@typeparam D
+@typeparam LI
+@if (BoneyardPile == null || ChildContent == null)
+{
+    return;
+}
+<BaseFrameBlazor @key="BoneyardPile" IsEnabled="BoneyardPile.IsEnabled" Text="@BoneyardPile.TextToAppear">
+    <div @onclick="BoardClickedAsync" class="boneyardrelative">
+        @ChildContent
+    </div>
+</BaseFrameBlazor>

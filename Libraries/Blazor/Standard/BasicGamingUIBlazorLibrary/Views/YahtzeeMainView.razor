@@ -1,0 +1,23 @@
+﻿@using BasicGamingUIBlazorLibrary.BasicControls.YahtzeeControls
+@using BasicGameFrameworkLibrary.SpecializedGameTypes.YahtzeeStyleHelpers.ViewModels
+@using BasicGameFrameworkLibrary.SpecializedGameTypes.YahtzeeStyleHelpers.Data
+@using BasicGamingUIBlazorLibrary.BasicControls.ScoreboardClasses
+@using BasicGamingUIBlazorLibrary.BasicControls.Misc
+@typeparam D
+@inherits BasicGameView<YahtzeeMainViewModel<D>>
+<ParentControl VM="YahtzeeScoresheetViewModel<D>">
+    <YahtzeeGameScoresheet D="D"
+                           CommandContainer="DataContext!.CommandContainer"
+                           ScoreContainer="GetContainer()"
+                           BottomDescriptionWidth="_bottomDescriptionWidth" />
+</ParentControl>
+<HorizontalDiv LeftOnly="5px">
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </div>
+    <div>
+        <ScoreBoardBlazor P="YahtzeePlayerItem<D>" Columns="@_scores" Players="@DataContext!.PlayerList" />
+    </div>
+    <GameButtonComponent DataContext="@DataContext" StartOnNewLine="true" MethodName="@RollMethod" Display="Roll Dice" />
+    <DiceListConrolBlazor D="D" Cup="@DataContext!.GetCup" TargetHeight="15vh" />
+</HorizontalDiv>

@@ -1,0 +1,24 @@
+﻿@typeparam T
+@if (DataContext == null)
+{
+    return;
+}
+@{
+    int x = 0;
+}
+<svg viewBox="@GetViewBox()" width="@GetWidth()">
+    @foreach (var card in DataContext.CardList)
+    {
+        PointF point = _points[x];
+        <svg x="@point.X" y="@point.Y">
+            <FlexibleDeckRenderComponent D="T" DeckObject="card">
+                <DeckOfCardsImageBlazor CommandParameter="card"
+                                        DeckObject="card"
+                                        R="T"
+                                        CommandObject="DataContext.CardCommand" />
+            </FlexibleDeckRenderComponent>
+            
+        </svg>
+        x++;
+    }
+</svg>

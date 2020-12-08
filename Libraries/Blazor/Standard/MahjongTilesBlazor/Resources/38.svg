@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="136" height="176">
+	<rect fill="rgb(0,0,0)" fill-opacity="0" stroke="none" width="136" height="176"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M109.223 94.2L26.7772 141.8"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M93.8383 86.5931L88.6114 106.1L108.118 111.327"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M109.223 141.8L26.7772 94.2"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M108.118 124.673L88.6114 129.9L93.8383 149.407"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M68 165.6L68 70.4"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M82.28 156.08L68 141.8L53.72 156.08"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M26.7772 141.8L109.223 94.2"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M42.1617 149.407L47.3886 129.9L27.8818 124.673"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M26.7772 94.2L109.223 141.8"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M27.8817 111.327L47.3886 106.1L42.1618 86.5932"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M68 70.4L68 165.6"/>
+	<path fill="none" stroke="rgb(255,0,0)" stroke-width="1" stroke-miterlimit="4" d="M53.72 79.92L68 94.2L82.28 79.92"/>
+	<text fill="rgb(0,0,0)" stroke="none" font-size="44" font-family="Tahoma" x="25.952148" y="35">
+			WIN
+	</text>
+</svg>
