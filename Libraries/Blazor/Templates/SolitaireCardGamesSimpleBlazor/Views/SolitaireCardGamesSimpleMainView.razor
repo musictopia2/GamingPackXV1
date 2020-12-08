@@ -1,0 +1,23 @@
+@inherits BasicGameView<SolitaireCardGamesSimpleMainViewModel>
+<p>Welcome to SolitaireCardGamesSimple</p>
+@if (DataContext!.DeckPile != null)
+{
+    <DeckOfCardsDrawPileBlazor R="SolitaireCard" DeckPile="DataContext.DeckPile" />
+    <DeckOfCardsSingleMiscPileBlazor R="SolitaireCard" SinglePile="DataContext.MainDiscardPile" />
+    //can put in any order we want.  bad news is can't test template since its that complex this time.
+    //may use a label grid because we may have more than one part to do.
+
+    <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+
+    <GameButtonComponent DataContext="@DataContext" MethodName="@AutoMoveName" Display="Auto Make Move" />
+
+    <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetMainPiles()" />
+    <div>
+        <SolitairePilesBlazor MainPiles="@GetWastePiles()" />
+    </div>
+    //there can be a discard multiple pile as well.  its here
+
+    //<DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetMainPiles()" />
+
+    //just change to the proper pilelist objects.
+}

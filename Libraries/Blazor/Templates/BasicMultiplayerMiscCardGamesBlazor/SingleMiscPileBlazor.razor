@@ -1,0 +1,8 @@
+﻿<BaseSingleMiscPileBlazor D="BasicMultiplayerMiscCardGamesCardInformation" PileAnimationTag="@PileAnimationTag" SinglePile="SinglePile">
+    <CanvasTemplate Context="Card">
+        <CardGraphicsBlazor TargetHeight="@RealHeight" DeckObject="Card" />
+    </CanvasTemplate>
+    <MainTemplate Context="Card">
+        <CardGraphicsBlazor ClickBlank="true" @key="GetKey" TargetHeight="@RealHeight" DeckObject="Card" CommandParameter="Card" CommandObject="SinglePile!.PileObjectClickedCommand" />
+    </MainTemplate>
+</BaseSingleMiscPileBlazor>

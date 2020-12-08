@@ -1,0 +1,54 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicMultiplayerGamesBlazor", "BasicMultiplayerGamesBlazor.csproj", "{9367D10D-5B99-4C56-A6BE-C2D78971C65A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SinglePlayerMiscGamesCP", "..\..\..\CrossPlatform\Templates\SinglePlayerMiscGamesCP\SinglePlayerMiscGamesCP.csproj", "{76A50876-3768-4B53-AE35-40D520F22793}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicGameFrameworkLibrary", "..\..\..\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj", "{F3085CAD-DA14-49C8-952A-B20B095254FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicGamingUIBlazorLibrary", "..\..\Standard\BasicGamingUIBlazorLibrary\BasicGamingUIBlazorLibrary.csproj", "{35BAB31A-C7A5-4D4F-9535-C4CCC10A5135}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicBlazorLibrary", "..\..\..\..\..\..\..\Standard2.1\BlazorLibraries\BasicBlazorLibrary\BasicBlazorLibrary.csproj", "{E4CB9D0C-0034-4F5F-8FC8-4832C5046124}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SvgHelper.Blazor", "..\..\..\..\..\..\..\Standard2.1\BlazorLibraries\SvgHelper.Blazor\SvgHelper.Blazor.csproj", "{707CD1BE-D3E1-4A64-88B5-18C4AF3926AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9367D10D-5B99-4C56-A6BE-C2D78971C65A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9367D10D-5B99-4C56-A6BE-C2D78971C65A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9367D10D-5B99-4C56-A6BE-C2D78971C65A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9367D10D-5B99-4C56-A6BE-C2D78971C65A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76A50876-3768-4B53-AE35-40D520F22793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A50876-3768-4B53-AE35-40D520F22793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76A50876-3768-4B53-AE35-40D520F22793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76A50876-3768-4B53-AE35-40D520F22793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3085CAD-DA14-49C8-952A-B20B095254FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3085CAD-DA14-49C8-952A-B20B095254FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3085CAD-DA14-49C8-952A-B20B095254FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3085CAD-DA14-49C8-952A-B20B095254FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35BAB31A-C7A5-4D4F-9535-C4CCC10A5135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35BAB31A-C7A5-4D4F-9535-C4CCC10A5135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35BAB31A-C7A5-4D4F-9535-C4CCC10A5135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35BAB31A-C7A5-4D4F-9535-C4CCC10A5135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4CB9D0C-0034-4F5F-8FC8-4832C5046124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4CB9D0C-0034-4F5F-8FC8-4832C5046124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4CB9D0C-0034-4F5F-8FC8-4832C5046124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4CB9D0C-0034-4F5F-8FC8-4832C5046124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{707CD1BE-D3E1-4A64-88B5-18C4AF3926AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{707CD1BE-D3E1-4A64-88B5-18C4AF3926AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{707CD1BE-D3E1-4A64-88B5-18C4AF3926AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{707CD1BE-D3E1-4A64-88B5-18C4AF3926AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51203122-40F1-4158-ABA2-62A7A70D373E}
+	EndGlobalSection
+EndGlobal

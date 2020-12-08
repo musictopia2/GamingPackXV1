@@ -1,0 +1,6 @@
+@inherits BasicGameView<SinglePlayerCardGamesMainViewModel>
+<p>Welcome to SinglePlayerCardGames</p>
+@if (DataContext!.DeckPile != null)
+{
+    <DeckOfCardsDrawPileBlazor R="SinglePlayerCardGamesCardInfo" DeckPile="DataContext.DeckPile" />
+}

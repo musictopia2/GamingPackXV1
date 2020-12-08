@@ -1,0 +1,10 @@
+@inherits BasicGameView<PlainBoardGamesMultiplayerMainViewModel>
+<p>Welcome to PlainBoardGamesMultiplayer</p>
+<GameButtonComponent Display="End Turn" DataContext="DataContext" MethodName="@EndMethod" />
+<LabelGridComponent DataContext="DataContext" Labels="_labels" />
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

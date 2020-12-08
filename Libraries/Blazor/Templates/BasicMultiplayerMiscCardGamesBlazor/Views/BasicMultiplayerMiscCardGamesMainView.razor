@@ -1,0 +1,30 @@
+@inherits BasicGameView<BasicMultiplayerMiscCardGamesMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<p>Welcome to BasicMultiplayerMiscCardGames</p>
+<HorizontalDiv Margins="5px">
+    <DrawPileBlazor DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<div>
+    <HandBlazor Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+<div>
+    <ScoreBoardBlazor P="BasicMultiplayerMiscCardGamesPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</div>
+@* can adjust as needed.  what is shown is most common for misc card games. *@
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

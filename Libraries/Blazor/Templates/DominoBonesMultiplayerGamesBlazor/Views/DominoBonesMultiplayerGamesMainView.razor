@@ -1,0 +1,18 @@
+@inherits BasicGameView<DominoBonesMultiplayerGamesMainViewModel>
+<p>Welcome to DominoBonesMultiplayerGames</p>
+
+<BaseBoneyardPileBlazor D="SimpleDominoInfo" BoneyardPile="DataContext!.BoneYard" LI="DominosBasicShuffler<SimpleDominoInfo>">
+    <BasicDominoBlazor D="SimpleDominoInfo" DeckObject="GetDomino" TargetHeight="10vh" />
+</BaseBoneyardPileBlazor>
+<BaseHandBlazor Hand="DataContext.PlayerHand" AdditionalSpacing="0" Context="Domino" D="SimpleDominoInfo">
+    <BasicDominoBlazor PartOfBoard="true" D="SimpleDominoInfo" DeckObject="Domino" CommandObject="DataContext.PlayerHand.ObjectSingleClickCommand" CommandParameter="Domino" />
+</BaseHandBlazor>
+<ScoreBoardBlazor P="DominoBonesMultiplayerGamesPlayerItem" Players="DataContext.GetPlayerList" Columns="_scores" />
+
+<LabelGridComponent DataContext="DataContext" Labels="_labels" />
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

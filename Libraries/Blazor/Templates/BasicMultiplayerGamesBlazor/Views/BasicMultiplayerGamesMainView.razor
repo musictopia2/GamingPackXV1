@@ -1,0 +1,9 @@
+@inherits BasicGameView<BasicMultiplayerGamesMainViewModel>
+<p>Welcome to BasicMultiplayerGames</p>
+<LabelGridComponent DataContext="DataContext" Labels="_labels" />
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

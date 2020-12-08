@@ -1,0 +1,35 @@
+@inherits BasicGameView<BasicMultiplayerTrickCardGamesMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<p>Welcome to BasicMultiplayerTrickCardGames</p>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsDrawPileBlazor R="BasicMultiplayerTrickCardGamesCardInformation" DeckPile="_vmData.Deck1" />
+    @*<DrawPileBlazor DeckPile="_vmData.Deck1" />*@
+</HorizontalDiv>
+@*<HorizontalDiv Margins="5px">
+        <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+    </HorizontalDiv>*@
+<div>
+    <DeckOfCardsTwoPlayerTrickBlazor T="BasicMultiplayerTrickCardGamesCardInformation" DataContext="_vmData.TrickArea1" />
+</div>
+<div>
+    <DeckOfCardsHandBlazor R="BasicMultiplayerTrickCardGamesCardInformation" Hand="_vmData.PlayerHand1" />
+    @*<HandBlazor Hand="_vmData.PlayerHand1" />*@
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+<div>
+    <ScoreBoardBlazor P="BasicMultiplayerTrickCardGamesPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</div>
+@* can adjust as needed.  what is shown is most common for regular card games. *@
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
