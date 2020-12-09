@@ -64,7 +64,7 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SimpleControls
             {
                 return false; //because no data.
             }
-            return (bool)_visibleProperty.GetValue(DataContext);
+            return (bool)_visibleProperty.GetValue(DataContext)!;
         }
         private string ExtraInfo()
         {
@@ -178,7 +178,9 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SimpleControls
             base.OnParametersSet();
         }
 
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
         public void Dispose()
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
         {
             CommandContainer command = aa.cons!.Resolve<CommandContainer>();
             if (_command is IGameCommand other)

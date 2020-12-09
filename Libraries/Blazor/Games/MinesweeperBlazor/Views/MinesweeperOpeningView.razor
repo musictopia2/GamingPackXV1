@@ -1,0 +1,5 @@
+﻿@inherits BasicGameView<MinesweeperOpeningViewModel>
+<div style="margin-top:5px;">
+    <ListChooserBlazor ListPicker="DataContext!.LevelPicker" />
+    <p>Mines Needed @DataContext.HowManyMinesNeeded</p>
+</div>

@@ -180,7 +180,10 @@ namespace BasicGamingUIBlazorLibrary.GameGraphics.Base
             {
                 if (disposing && _didAdd)
                 {
-
+                    if (aa.cons == null)
+                    {
+                        return; //this can be the solution.  will allow loaders to work even if the di is not set at this moment.
+                    }
                     CommandContainer command = aa.cons!.Resolve<CommandContainer>();
                     if (_command is IGameCommand other)
                     {
@@ -196,7 +199,6 @@ namespace BasicGamingUIBlazorLibrary.GameGraphics.Base
         }
         public virtual void Dispose()
         {
-            Console.WriteLine("Disposing Graphics Command");
             // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: true);
             GC.SuppressFinalize(this);

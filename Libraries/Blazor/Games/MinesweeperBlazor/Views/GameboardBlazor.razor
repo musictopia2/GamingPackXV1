@@ -1,0 +1,19 @@
+﻿@if (SquareList == null || SquareList.Count == 0)
+{
+    return;
+}
+<CascadingValue Value="this">
+    <HorizontalDiv>
+        @for (int r = 0; r < MainGame.NumberOfRows; r++)
+        {
+            <div>
+                @for (int c = 0; c < MainGame.NumberOfColumns; c++)
+                {
+                    var piece = GetSquare(r + 1, c + 1);
+                    <MineSquareBlazor DataContext="DataContext" CommandParameter="piece" AfterChange="StateChanged!" MethodName="@MethodName" />
+                }
+            </div>
+        }
+    </HorizontalDiv>
+</CascadingValue>
+

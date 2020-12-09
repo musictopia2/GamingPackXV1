@@ -1,0 +1,10 @@
+@inherits BasicGameView<MinesweeperMainViewModel>
+<GameboardBlazor StateChanged="ShowChange" />
+<HorizontalDiv>
+    <GameButtonComponent DataContext="DataContext" Display="@GetDisplay()"
+                         AfterChange="ShowChange" MethodName="@GetMethodName"
+                         BackgroundColor="@BackgroundColor()" />
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </div>
+</HorizontalDiv>
