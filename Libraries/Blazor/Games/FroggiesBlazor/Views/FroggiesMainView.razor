@@ -1,0 +1,10 @@
+@inherits BasicGameView<FroggiesMainViewModel>
+<GameBoardBlazor @key="DataContext!.DrawVersion" />
+<HorizontalDiv LeftOnly="5px">
+    <div>
+        <GameButtonComponent DataContext="DataContext" MethodName="@MethodName" AfterChange="@ShowChange" Display="Redo Game" />
+    </div>
+    <div>
+        <LabelGridComponent Labels="@Labels" DataContext="DataContext" />
+    </div>
+</HorizontalDiv>

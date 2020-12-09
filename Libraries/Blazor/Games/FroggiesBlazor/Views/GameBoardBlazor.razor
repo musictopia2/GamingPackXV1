@@ -1,0 +1,15 @@
+﻿@inherits BasicGameView<FroggiesMainViewModel>
+@using System.Drawing;
+@if (Lilies == null)
+{
+    return;
+}
+<svg  height="640" width="640">
+    @foreach (var item in Lilies)
+    {
+        Point point = GetPoint(item);
+        <svg x="@point.X" y="@point.Y" width="64" height="64">
+            <LilyPadBlazor AfterChange="@ShowChange" DataContext="DataContext" MethodName="@MethodName" CommandParameter="item" Space="item" />
+        </svg>
+    }
+</svg>
