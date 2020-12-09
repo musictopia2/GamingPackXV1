@@ -1,0 +1,22 @@
+@inherits BasicGameView<BuncoDiceGameMainViewModel>
+<HorizontalDiv>
+    <ScoreBoardBlazor Columns="ScoreList" Players="GetPlayers()" P="PlayerItem" />
+</HorizontalDiv>
+<HorizontalDiv LeftOnly="5px">
+    <div>
+        <HorizontalDiv Margins="">
+            <GameButtonComponent DataContext="DataContext" MethodName="@RollMethod" Display="Roll" />
+            <DiceListConrolBlazor Cup="DataContext!.ThisCup" D="SimpleDice" />
+        </HorizontalDiv>
+
+
+    </div>
+    <div>
+        <HorizontalDiv Margins="">
+            <GameButtonComponent DataContext="DataContext" MethodName="@BuncoMethod" Display="Bunco" />
+            <GameButtonComponent DataContext="DataContext" MethodName="@Has21Method" Display="Has 21" />
+            <GameButtonComponent DataContext="DataContext" MethodName="@EndTurnMethod" Display="End Turn" />
+        </HorizontalDiv>
+    </div>
+    <DetailGameInformationBlazor DataContext="GetStats()" Labels="@Details" Text="Your Statistics" />
+</HorizontalDiv>
