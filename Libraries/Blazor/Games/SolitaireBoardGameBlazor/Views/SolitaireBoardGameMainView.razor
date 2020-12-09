@@ -1,0 +1,15 @@
+@inherits BasicGameView<SolitaireBoardGameMainViewModel>
+<SolitaireGameBoard SpaceList="GetSpaceList()"
+                    GridWidth="100%" GridHeight="80vh"
+                    TargetSpaceHeight="125" TargetSpaceWidth="125">
+    <ItemTemplate Context="Space">
+        <BasePieceGraphics LongestSize="125" MethodName="@MethodName" CommandParameter="Space" DataContext="DataContext" AfterChange="ShowChange">
+            <CheckerPiece HasImage="@Space.HasImage" MainColor="@Space.Color" PieceCategory="EnumCheckerPieceCategory.OnlyPiece" />
+        </BasePieceGraphics>
+    </ItemTemplate>
+    <Canvas>
+        <AnimationVectorCanvas S="GameSpace" Context="Space">
+            <AnimateCheckers Color="@Space.Color" LongestSize="125" PieceCategory="EnumCheckerPieceCategory.OnlyPiece" />
+        </AnimationVectorCanvas>
+    </Canvas>
+</SolitaireGameBoard>
