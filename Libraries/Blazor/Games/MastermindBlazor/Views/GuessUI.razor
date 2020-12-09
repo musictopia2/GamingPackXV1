@@ -1,0 +1,12 @@
+﻿@inherits BasicGameView<GameBoardViewModel>
+@using gg = MastermindBlazor.Global;
+@if (Guess == null || Guess.YourBeads.Count == 0)
+{
+    return;
+}
+@foreach (Bead bead in Guess!.YourBeads)
+{
+    <BasePieceGraphics CommandParameter="bead" DataContext="DataContext" MethodName="@MethodName" TargetWidth="@gg.BeadHeight">
+        <CirclePiece NeedsWhiteBorders="true" MainColor="@bead.UIColor" />
+    </BasePieceGraphics>
+}

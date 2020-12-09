@@ -1,0 +1,28 @@
+﻿@using gg = MastermindBlazor.Global;
+@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString;
+@if (YourGuess == null)
+{
+    return;
+}
+
+@for (int i = 0; i < YourGuess.HowManyBlacks; i++)
+{
+    <BasePieceGraphics TargetWidth="@gg.BeadHeight">
+        <CirclePiece NeedsWhiteBorders="true" MainColor="@cc.Black" />
+    </BasePieceGraphics>
+}
+@for (int i = 0; i < YourGuess.HowManyAquas; i++)
+{
+    <BasePieceGraphics TargetWidth="@gg.BeadHeight">
+        <CirclePiece NeedsWhiteBorders="true" MainColor="@cc.Aqua" />
+    </BasePieceGraphics>
+}
+@{
+    int leftovers = LeftOvers;
+}
+@for (int i = 0; i < LeftOvers; i++)
+{
+    <BasePieceGraphics TargetWidth="@gg.BeadHeight">
+        <CirclePiece NeedsWhiteBorders="true" MainColor="@cc.Transparent" />
+    </BasePieceGraphics>
+}

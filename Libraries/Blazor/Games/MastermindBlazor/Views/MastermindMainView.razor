@@ -1,0 +1,22 @@
+@inherits BasicGameView<MastermindMainViewModel>
+@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString;
+<ParentControl VM="GameBoardViewModel">
+    <GameBoardView />
+</ParentControl>
+<HorizontalDiv Margins="10px" BackgroundColor="@cc.Brown">
+    <EnumPickerBlazor E="EnumColorPossibilities" Context="Piece" Rows="10" TargetSize="11vh" ListPicker="DataContext!.Color1">
+        <CirclePiece MainColor="@Piece.GetColorFromEnum()" />
+    </EnumPickerBlazor>
+</HorizontalDiv>
+<HorizontalDiv>
+    <div>
+        <GameButtonComponent MethodName="@AcceptName" DataContext="@DataContext" AfterChange="@ShowChange" Display="Accept" />
+    </div>
+    <div>
+        <GameButtonComponent MethodName="@GiveUpName" DataContext="@DataContext" AfterChange="@ShowChange" Display="Give Up" />
+    </div>
+    <div>
+        Level Chosen: @DataContext!.LevelChosen
+    </div>
+</HorizontalDiv>
+

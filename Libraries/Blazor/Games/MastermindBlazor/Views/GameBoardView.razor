@@ -1,0 +1,21 @@
+﻿@inherits BasicGameView<GameBoardViewModel>
+@if (DataContext == null || DataContext.GuessList.Count == 0)
+{
+    return;
+}
+<HorizontalDiv LeftOnly="0px;">
+    @foreach (var guess in DataContext.GuessList)
+    {
+        <div>
+            <GuessUI Guess="@guess" />
+        </div>
+    }
+</HorizontalDiv>
+<HorizontalDiv LeftOnly="20px">
+    @foreach (var guess in DataContext.GuessList)
+    {
+        <div>
+            <HintUI YourGuess="@guess" />
+        </div>
+    }
+</HorizontalDiv>

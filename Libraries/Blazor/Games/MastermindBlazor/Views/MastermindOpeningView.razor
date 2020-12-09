@@ -1,0 +1,8 @@
+﻿@inherits BasicGameView<MastermindOpeningViewModel>
+Choose Level:
+<div>
+    <ListChooserBlazor ListPicker="DataContext!.LevelPicker" />
+</div>
+<div>
+    <GameButtonComponent Display="Level Information" DataContext="@DataContext" MethodName="@MethodName" AfterChange="ShowChange" />
+</div>

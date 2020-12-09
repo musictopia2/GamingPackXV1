@@ -1,0 +1,11 @@
+﻿@inherits BasicGameView<SolutionViewModel>
+@if (DataContext!.SolutionList.Count != 4)
+{
+    return;
+}
+@foreach (var bead in DataContext.SolutionList)
+{
+    <BasePieceGraphics TargetWidth="17vw">
+        <CirclePiece NeedsWhiteBorders="true" MainColor="@bead.UIColor" />
+    </BasePieceGraphics>
+}
