@@ -1,0 +1,25 @@
+@inherits BasicGameView<XPuzzleMainViewModel>
+@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString;
+<GridGameBoard S="XPuzzleSpaceInfo" SpaceList="GetSpaceList()"
+                Context="Item" GridWidth="100%" GridHeight="80vh"
+                TargetSpaceHeight="300" TargetSpaceWidth="300">
+    <ItemTemplate>
+        @* 
+        if i needed a way to improve performance for this game, then needs to be smart about whether its fixed or not.  most likely based on color for border space.
+        only issue is even if color does not change, its possible that text would change.
+            good news is xpuzzle had no performance problems so no issue here.
+        *@
+        <BorderedSpace
+                       BorderColor="@cc.Black" 
+                       BorderWidth="3"
+                       FillColor="@Item.Color"
+                       SpaceClicked="() => ClickedAsync(Item)">
+            <CenteredTextBlazor TextColor="@cc.White"
+                                BorderWidth="3" 
+                                BorderColor="@cc.Black"
+                                Text="@Item.Text"
+                                FontSize="300"
+                                />
+        </BorderedSpace>
+    </ItemTemplate>
+</GridGameBoard>
