@@ -1,0 +1,10 @@
+﻿<BasicMultiplePilesBlazor Piles="WastePiles" D="SolitaireCard" RowPlaceAfter="1">
+    <MiscRowTemplate>
+        <DeckOfCardsMultiplePilesBlazor Piles="MainPiles" R="SolitaireCard" />
+    </MiscRowTemplate>
+    <MainTemplate Context="Pile">
+        <PrivateBasicIndividualPileBlazor Context="Card" D="SolitaireCard" IndividualPile="Pile">
+            <DeckOfCardsImageBlazor @key="Card.Deck" R="SolitaireCard" TargetHeight="@TargetHeight.HeightString()" DeckObject="Card" DataContext="@WastePiles" CommandParameter="Pile" CommandObject="WastePiles!.PileCommand" />
+        </PrivateBasicIndividualPileBlazor>
+    </MainTemplate>
+</BasicMultiplePilesBlazor>

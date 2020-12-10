@@ -1,0 +1,13 @@
+@inherits BasicGameView<LittleSpiderSolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <HorizontalDiv LeftOnly="0">
+        <DeckOfCardsDrawPileBlazor R="SolitaireCard" DeckPile="DataContext.DeckPile" />
+        <div>
+            <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+        </div>
+    </HorizontalDiv>
+    <div>
+        <CustomWasteUI MainPiles="@GetMainPiles()" WastePiles="@GetWastePiles()" />
+    </div>
+}
