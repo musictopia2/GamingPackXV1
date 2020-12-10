@@ -1,0 +1,19 @@
+@inherits BasicGameView<PersianSolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <HorizontalDiv LeftOnly="0">
+        <SolitairePilesBlazor MainPiles="@GetWastePiles()" />
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="5px">
+        <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetMainPiles()" />
+    </HorizontalDiv>
+    <HorizontalDiv>
+        <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+        <div>
+            <GameButtonComponent DataContext="@DataContext" MethodName="@AutoMoveName" Display="Auto Make Move" />
+        </div>
+        <div>
+            <GameButtonComponent DataContext="@DataContext" MethodName="@DealMethod" Display="New Deal" />
+        </div>
+    </HorizontalDiv>
+}
