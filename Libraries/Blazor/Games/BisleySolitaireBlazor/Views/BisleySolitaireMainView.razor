@@ -1,0 +1,12 @@
+@inherits BasicGameView<BisleySolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <GameButtonComponent DataContext="@DataContext" MethodName="@AutoMoveName" Display="Auto Make Move" />
+    <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+    <div>
+        <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetMainPiles()" />
+    </div>
+    <div style="margin-top: -14.5vh;">
+        <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetWastePiles()" />
+    </div>
+}
