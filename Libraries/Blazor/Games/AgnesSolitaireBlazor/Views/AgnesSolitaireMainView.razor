@@ -1,0 +1,14 @@
+@inherits BasicGameView<AgnesSolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <HorizontalDiv LeftOnly="0">
+        <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetMainPiles()" />
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="5px">
+        <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+        <GameButtonComponent DataContext="@DataContext" MethodName="@AutoMoveName" Display="Auto Make Move" />
+    </HorizontalDiv>
+    <div>
+        <SolitairePilesBlazor MainPiles="@GetWastePiles()" />
+    </div>
+}
