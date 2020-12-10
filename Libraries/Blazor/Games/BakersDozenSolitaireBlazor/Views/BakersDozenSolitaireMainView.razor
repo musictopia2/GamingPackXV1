@@ -1,0 +1,16 @@
+@inherits BasicGameView<BakersDozenSolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <HorizontalDiv LeftOnly="0px">
+        <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+        <div>
+            <GameButtonComponent DataContext="@DataContext" MethodName="@AutoMoveName" Display="Auto Make Move" />
+        </div>
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="5px">
+        <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetMainPiles()" />
+    </HorizontalDiv>
+    <div>
+        <SolitairePilesBlazor MainPiles="@GetWastePiles()" />
+    </div>
+}
