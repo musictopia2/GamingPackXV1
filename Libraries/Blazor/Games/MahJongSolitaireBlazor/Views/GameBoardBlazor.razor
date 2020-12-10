@@ -1,0 +1,61 @@
+﻿@inherits BasicGameView<MahJongSolitaireMainViewModel>
+@using System.Drawing;
+@if (BoardList == null)
+{
+    <p></p>
+    return;
+}
+@* 
+hopefully does not need @key anymore for mahjongpiles.   if i am wrong, has to really rethink now.
+    because otherwise, performance problems.
+*@
+<HorizontalDiv >
+    <svg @key="@GetGameKey" height="85vh" viewBox="0 0 2040 1408">
+        @foreach (var board in BoardList)
+        {
+            foreach (var tile in board.TileList)
+            {
+                //using plain component works.
+                //even using the flexible one does not work.
+                //try to emulate what the flexible one does.
+                //the visible one works.
+
+                @*<VisibleHiddenComponent Visible="@Visible">
+                    <RefreshComponent CanRender="@CanRender"
+                                      Key="@Key">
+                        @ChildContent
+                    </RefreshComponent>
+                </VisibleHiddenComponent>*@
+
+                @*<VisibleHiddenComponent Visible="true">
+                    <PlainComponent>
+                        <MahjongTilesComponent @key="tile.Deck" DataContext="@DataContext" MethodName="@MethodName" DeckObject="tile" CommandParameter="tile" Location="new PointF(tile.Left, tile.Top)" />
+                    </PlainComponent>
+                </VisibleHiddenComponent>*@
+
+                @*<RefreshComponent Key="tile.Deck" CanRender="true">
+                    <MahjongTilesComponent DataContext="@DataContext" MethodName="@MethodName" DeckObject="tile" CommandParameter="tile" Location="new PointF(tile.Left, tile.Top)" />
+                </RefreshComponent>*@
+
+                
+
+
+                @*<PlainComponent>
+                    <MahjongTilesComponent @key="tile.Deck" DataContext="@DataContext" MethodName="@MethodName" DeckObject="tile" CommandParameter="tile" Location="new PointF(tile.Left, tile.Top)" />
+                </PlainComponent>*@
+
+                @*<FlexibleRenderComponent CanRender="true" Key="tile.Deck">
+                    <MahjongTilesComponent DataContext="@DataContext" MethodName="@MethodName" DeckObject="tile" CommandParameter="tile" Location="new PointF(tile.Left, tile.Top)" />
+                </FlexibleRenderComponent>*@
+
+                <FlexibleDeckRenderComponent @key="tile" ConsiderEnabled="true" D="MahjongSolitaireTileInfo" DeckObject="tile">
+                    <MahjongTilesComponent DataContext="@DataContext" MethodName="@MethodName" DeckObject="tile" CommandParameter="tile" Location="new PointF(tile.Left, tile.Top)" />
+                </FlexibleDeckRenderComponent>
+
+                @*<svg>
+                    <MahjongTilesComponent @key="GetTileKey(tile)" DataContext="@DataContext" MethodName="@MethodName" DeckObject="tile" CommandParameter="tile"  Location="new PointF(tile.Left, tile.Top)" />
+                </svg>*@
+            }
+        }
+    </svg>
+</HorizontalDiv>

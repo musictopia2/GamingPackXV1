@@ -99,6 +99,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BasicBlazorLibrary" Version="1.0.0" />
     <PackageReference Include="CommonBasicStandardLibraries" Version="3.0.19" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
 	<PackageReference Include="SvgHelper.Blazor" Version="1.0.0" />
@@ -112,7 +113,6 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\..\Net5\BlazorBasicLibraries\BasicBlazorLibrary\BasicBlazorLibrary.csproj" />
     <ProjectReference Include="..\..\..\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
   </ItemGroup>
 

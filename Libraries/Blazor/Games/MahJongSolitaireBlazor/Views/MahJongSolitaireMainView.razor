@@ -1,0 +1,21 @@
+@inherits BasicGameView<MahJongSolitaireMainViewModel>
+<div>
+    <GameBoardBlazor BoardList="@BoardList" />
+    <HorizontalDiv LeftOnly="5px">
+
+        @* had to remove undo move for now because the ui does not update properly for undo moves.
+            one possibility of it working would be via records.  but no guarantees though.
+            *@
+
+        @*<div>
+            <GameButtonComponent DataContext="DataContext" Display="Undo Move" MethodName="@UndoMethod" AfterChange="ShowChange" />
+        </div>*@
+
+        <div>
+            <GameButtonComponent DataContext="DataContext" Display="Hint" MethodName="@HintMethod" />
+        </div>
+        <div>
+            Tiles Gone: @DataContext!.TilesGone
+        </div>
+    </HorizontalDiv>
+</div>
