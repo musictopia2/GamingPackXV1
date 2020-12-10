@@ -1,0 +1,22 @@
+@inherits BasicGameView<SpiderSolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+
+    <HorizontalDiv LeftOnly="0px">
+        <SolitairePilesBlazor MainPiles="@GetWastePiles()" />
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="5px">
+        <div style="user-select: none;">
+            <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+        </div>
+        <div>
+            <DeckOfCardsDrawPileBlazor R="SolitaireCard" DeckPile="DataContext.DeckPile" />
+        </div>
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="5px">
+        <GameButtonComponent DataContext="DataContext" Display="End Game" MethodName="@MethodName" />
+        <div>
+            <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetMainPiles()" />
+        </div>
+    </HorizontalDiv>
+}
