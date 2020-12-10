@@ -1,0 +1,47 @@
+@inherits BasicGameView<BlackjackMainViewModel>
+@if (DataContext == null)
+{
+    return;
+}
+@if (DataContext.DeckPile == null)
+{
+    return;
+}
+
+<HorizontalDiv>
+    <div>
+        <DeckOfCardsDrawPileBlazor R="BlackjackCardInfo" DeckPile="DataContext.DeckPile" />
+    </div>
+    <div>
+        <LabelGridComponent Labels="WinLabels" DataContext="DataContext" />
+    </div>
+</HorizontalDiv>
+<HorizontalDiv LeftOnly="0">
+
+    <div>
+        <DeckOfCardsHandBlazor R="BlackjackCardInfo" Hand="DataContext.ComputerStack" />
+    </div>
+    <div>
+        <DeckOfCardsHandBlazor R="BlackjackCardInfo" Hand="DataContext.HumanStack" />
+    </div>
+    <div>
+        <LabelGridComponent Labels="PointLabels" DataContext="DataContext" />
+    </div>
+
+    <HorizontalDiv LeftOnly="0">
+        <div>
+            <GameButtonComponent DataContext="@DataContext" MethodName="@HitName" Display="Hit Me" />
+        </div>
+        <div>
+            <GameButtonComponent DataContext="@DataContext" MethodName="@StayName" Display="Stay" />
+        </div>
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="30">
+        <div>
+            <GameButtonComponent DataContext="@DataContext" VisibleName="@AceChoice" CommandParameter="BlackjackMainViewModel.EnumAceChoice.Low" MethodName="@AceName" Display="Use Ace As One (1)" />
+        </div>
+        <div>
+            <GameButtonComponent DataContext="@DataContext" VisibleName="@AceChoice" CommandParameter="BlackjackMainViewModel.EnumAceChoice.High" MethodName="@AceName" Display="Use Ace As 11 (11)" />
+        </div>
+    </HorizontalDiv>
+</HorizontalDiv>
