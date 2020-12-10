@@ -1,0 +1,17 @@
+﻿@if (DataContext!.PackagePicker!.TextList.Count == 0)
+{
+    return;
+}
+@if (DataContext.GameName == "")
+{
+    <Title Value="@DataContext.Title">
+
+    </Title>
+    <div style="margin: 5px">
+        <ListChooserBlazor ListPicker="DataContext.PackagePicker"
+                           TotalColumns="5"
+                           TextWidth="175"
+                           TextHeight="4vh" />
+    </div>
+}
+@DataContext.GameRendered
