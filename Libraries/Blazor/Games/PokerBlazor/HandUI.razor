@@ -1,0 +1,18 @@
+﻿@inherits BasicDeckView<PokerMainViewModel>
+@if (GlobalClass.PokerList == null)
+{
+    return;
+}
+@foreach (var card in GlobalClass.PokerList)
+{
+    <HorizontalDiv LeftOnly="0px">
+        <div>
+            <FlexibleDeckRenderComponent D="PokerCardInfo" DeckObject="card.CurrentCard">
+                <DeckOfCardsImageBlazor MethodName="@MethodName" DeckObject="card.CurrentCard" TargetHeight="@HeightString" CommandParameter="card" DataContext="DataContext" R="PokerCardInfo" />
+            </FlexibleDeckRenderComponent>
+        </div>
+        <div>
+            <b>@card.Text</b>
+        </div>
+    </HorizontalDiv>
+}

@@ -1,0 +1,16 @@
+@inherits BasicGameView<PokerMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+
+    <DeckOfCardsDrawPileBlazor R="PokerCardInfo" DeckPile="DataContext.DeckPile" />
+    <HorizontalDiv LeftOnly="60px">
+        <BetUI />
+        <GameButtonComponent MethodName="@MethodName" DataContext="DataContext" Display="New Round" />
+    </HorizontalDiv>
+    <div>
+        <LabelGridComponent Labels="Labels" DataContext="DataContext" />
+    </div>
+    <div>
+        <HandUI />
+    </div>
+}

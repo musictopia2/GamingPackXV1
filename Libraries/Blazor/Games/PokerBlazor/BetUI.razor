@@ -1,0 +1,4 @@
+﻿@inherits BasicGameView<PokerMainViewModel>
+<BaseFrameBlazor Text="Bet Information" IsEnabled="DataContext!.Bet1.IsEnabled">
+    <NumberChooserBlazor Columns="3" Rows="1" NumberPicker="DataContext!.Bet1" TextHeight="20vh" />
+</BaseFrameBlazor>
