@@ -1,0 +1,22 @@
+@inherits BasicGameView<RaglanSolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <HorizontalDiv LeftOnly="0px">
+        <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetMainPiles()" />
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="20px">
+        <DeckOfCardsHandBlazor R="SolitaireCard" Hand="DataContext!.Stock1" />
+    </HorizontalDiv>
+    <div>
+        <HorizontalDiv LeftOnly="0">
+            <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+            <div>
+                <GameButtonComponent DataContext="@DataContext" MethodName="@AutoMoveName" Display="Auto Make Move" />
+            </div>
+        </HorizontalDiv>
+        <HorizontalDiv LeftOnly="0px">
+            <SolitairePilesBlazor MainPiles="@GetWastePiles()" />
+        </HorizontalDiv>
+
+    </div>
+}
