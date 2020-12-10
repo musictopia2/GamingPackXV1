@@ -1,19 +1,17 @@
+using Microsoft.AspNetCore.Components;
 using System;
-using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.BasicDataFunctions;
 namespace GameLoaderBlazorLibrary
 {
     public partial class BasicLoaderPage : IDisposable
     {
-        //use custom here too.
+        [Inject]
+        public ILoaderVM? DataContext { get; set; }
 
-
-        private ILoaderVM? DataContext { get; set; } //attempt to not make it static (?)
         private bool _disposedValue;
 
         protected override void OnInitialized()
         {
-            DataContext = cc.cons!.Resolve<ILoaderVM>();
-            DataContext.StateChanged = () => InvokeAsync(StateHasChanged);
+            DataContext!.StateChanged = () => InvokeAsync(StateHasChanged);
             base.OnInitialized();
         }
 

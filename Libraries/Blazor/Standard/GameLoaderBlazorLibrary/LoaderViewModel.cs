@@ -1,18 +1,18 @@
 ﻿using BasicGameFrameworkLibrary.BasicGameDataClasses;
 using BasicGameFrameworkLibrary.ChooserClasses;
 using BasicGameFrameworkLibrary.CommonInterfaces;
+using BasicGamingUIBlazorLibrary.Bootstrappers;
+using BasicGamingUIBlazorLibrary.StartupClasses;
 using CommonBasicStandardLibraries.CollectionClasses;
-using CommonBasicStandardLibraries.MVVMFramework.Blazor.ViewModels;
-using static CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.BasicDataFunctions;
+using CommonBasicStandardLibraries.Exceptions;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Threading.Tasks;
-using BasicGamingUIBlazorLibrary.Bootstrappers;
-using CommonBasicStandardLibraries.Exceptions;
-using BasicGamingUIBlazorLibrary.StartupClasses;
-using Microsoft.AspNetCore.Components;
+
 namespace GameLoaderBlazorLibrary
 {
-    public abstract class LoaderViewModel : BlazorScreenViewModel, ILoaderVM
+    //decided to not use a screen.  since i decided to use a different approach this time.
+    public abstract class LoaderViewModel : ILoaderVM
     {
         public GamePackageLoaderPickerCP? PackagePicker { get; set; }
         public Action? StateChanged { get; set; }
@@ -24,9 +24,10 @@ namespace GameLoaderBlazorLibrary
         protected EnumGamePackageMode Mode;
         protected CustomBasicList<string> GameList = new CustomBasicList<string>();
         //the one being used must be registered here.
-        public LoaderViewModel()
+        public LoaderViewModel(IStartUp starts)
         {
-            Starts = cons!.Resolve<IStartUp>(); //use custom di.
+            //Starts = cons!.Resolve<IStartUp>(); //use custom di.
+            Starts = starts;
             //BasicLoaderPage.Multiplayer = Multiplayer;
             GenerateGameList();
             PackagePicker = new GamePackageLoaderPickerCP();
@@ -36,12 +37,12 @@ namespace GameLoaderBlazorLibrary
 
             GlobalStartUp.StartBootStrap = () =>
             {
-                IGameBootstrapper _ = ChooseGame(GameName);
+                IGameBootstrapper _ = ChooseGame();
             };
 
         }
         protected abstract void GenerateGameList();
-        protected abstract IGameBootstrapper ChooseGame(string gameChosen);
+        protected abstract IGameBootstrapper ChooseGame();
         protected abstract Type GetGameType();
         private Task PackagePicker_ItemSelectedAsync(int selectedIndex, string selectedText)
         {
