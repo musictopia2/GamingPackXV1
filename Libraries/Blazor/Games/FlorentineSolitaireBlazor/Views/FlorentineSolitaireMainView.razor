@@ -1,0 +1,20 @@
+@inherits BasicGameView<FlorentineSolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <HorizontalDiv>
+        <DeckOfCardsDrawPileBlazor R="SolitaireCard" DeckPile="DataContext.DeckPile" />
+        <DeckOfCardsSingleMiscPileBlazor R="SolitaireCard" SinglePile="DataContext.MainDiscardPile" />
+        <div>
+            <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+        </div>
+        <div>
+            <GameButtonComponent DataContext="@DataContext" MethodName="@AutoMoveName" Display="Auto Make Move" />
+        </div>
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="30px">
+        <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetMainPiles()" />
+        <div>
+            <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="GetWastePiles()" />
+        </div>
+    </HorizontalDiv>
+}
