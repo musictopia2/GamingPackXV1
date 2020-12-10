@@ -1,0 +1,18 @@
+@inherits BasicGameView<CalculationSolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <GridTwoByTwo ColumnGap="5px">
+        <GridItem>
+            <DeckOfCardsDrawPileBlazor R="SolitaireCard" DeckPile="DataContext.DeckPile" />
+        </GridItem>
+        <GridItem Row="2">
+            <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+        </GridItem>
+        <GridItem Column="2">
+            <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetMainPiles()" />
+        </GridItem>
+        <GridItem Row="2" Column="2">
+            <SolitairePilesBlazor MainPiles="@GetWastePiles()" />
+        </GridItem>
+    </GridTwoByTwo>
+}
