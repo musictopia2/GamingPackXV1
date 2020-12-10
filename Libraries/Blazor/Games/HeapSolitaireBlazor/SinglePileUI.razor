@@ -1,0 +1,28 @@
+﻿@inherits BasicDeckView<HeapSolitaireMainViewModel>
+@if (Pile == null || DataContext == null)
+{
+    return;
+}
+<svg @key="Pile" style="margin-right:10px; margin-bottom: 10px;" height="@HeightString" viewBox="0 0 413 216">
+
+    @foreach (var item in Pile.ObjectList)
+    {
+        item.IsSelected = false;
+    }
+    @if (Pile.IsSelected)
+    {
+        Pile.ObjectList.Last().IsSelected = true;
+    }
+    @{
+        float x = 0;
+    }
+    @foreach (var item in Pile.ObjectList)
+    {
+        <svg x="@x">
+            <FlexibleDeckRenderComponent D="HeapSolitaireCardInfo" DeckObject="item">
+                <DeckOfCardsImageBlazor PartOfBoard="true" R="HeapSolitaireCardInfo" CommandObject="DataContext!.Waste1.PileCommand" DeckObject="item" CommandParameter="Pile" DataContext="DataContext!.Waste1" />
+            </FlexibleDeckRenderComponent>
+        </svg>
+        x += 82.5f;
+    }
+</svg>

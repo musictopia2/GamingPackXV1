@@ -1,0 +1,22 @@
+﻿@inherits BasicGameView<HeapSolitaireMainViewModel>
+@if (DataContext == null)
+{
+    return;
+}
+@{ 
+    int x = 0;
+}
+@for (int r = 0; r < 5; r++)
+{
+    <div>
+        @for (int c = 0; c < 5; c++)
+        {
+            @if (x < DataContext.Waste1!.PileList!.Count)
+            {
+                <SinglePileUI Pile="DataContext!.Waste1!.PileList![x]"  />
+
+            }
+            x++;
+        }
+    </div>
+}
