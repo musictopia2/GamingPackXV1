@@ -1,0 +1,16 @@
+﻿@inherits BasicDeckView<AccordianSolitaireMainViewModel>
+@if (DataContext!.GameBoard1 == null)
+{
+    return;
+}
+@foreach (var card in DataContext.GameBoard1!.HandList)
+{
+    //somehow if using my custom horizontaldiv, that is cause major problems.
+    <HorizontalDiv @key="card.Deck" Margins="-5px">
+        <FlexibleDeckRenderComponent D="AccordianSolitaireCardInfo" DeckObject="card">
+            <DeckOfCardsImageBlazor R="AccordianSolitaireCardInfo" DataContext="DataContext" CommandParameter="card" DeckObject="card" TargetHeight="@HeightString" CommandObject="DataContext.GameBoard1.ObjectSingleClickCommand" />
+        </FlexibleDeckRenderComponent>
+    </HorizontalDiv>
+
+
+}
