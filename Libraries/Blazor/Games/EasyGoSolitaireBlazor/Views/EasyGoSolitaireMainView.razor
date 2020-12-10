@@ -1,0 +1,22 @@
+@inherits BasicGameView<EasyGoSolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <GridTwoByTwo>
+        <GridItem>
+            <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetMainPiles()" />
+        </GridItem>
+        <GridItem RowSpan="2" Column="2">
+            <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+            <div>
+                <GameButtonComponent DataContext="@DataContext" MethodName="@AutoMoveName" Display="Auto Make Move" />
+            </div>
+            <div>
+                <DeckOfCardsDrawPileBlazor R="SolitaireCard" DeckPile="DataContext.DeckPile" />
+                <DeckOfCardsSingleMiscPileBlazor R="SolitaireCard" SinglePile="DataContext.MainDiscardPile" />
+            </div>
+        </GridItem>
+        <GridItem Row="2">
+            <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="@GetWastePiles()" />
+        </GridItem>
+    </GridTwoByTwo>
+}
