@@ -1,0 +1,11 @@
+@inherits BasicGameView<BeleaguredCastleMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+    <div>
+        <GameButtonComponent DataContext="@DataContext" MethodName="@AutoMoveName" Display="Auto Make Move" />
+    </div>
+    <div>
+        <CustomWasteUI MainPiles="@GetMainPiles()" WastePiles="@GetWastePiles()" />
+    </div>
+}

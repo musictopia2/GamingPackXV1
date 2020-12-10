@@ -1,0 +1,24 @@
+﻿<CascadingValue Value="WastePiles">
+    @if (WastePiles!.PileList.Count == 0)
+    {
+        return; //only run once we have the waste piles.
+    }
+
+    <GridEvenContent ColumnGap="20px" Rows="4" Columns="3">
+        <SimpleRepeater HowMany="4" Context="Index">
+            <GridItem Row="Index">
+                <SinglePileUI SinglePile="WastePiles!.PileList[Index - 1]" />
+            </GridItem>
+        </SimpleRepeater>
+        <SimpleRepeater HowMany="4" Context="Index">
+            <GridItem Column="3" Row="Index">
+                <SinglePileUI SinglePile="WastePiles!.PileList[Index + 3]" />
+            </GridItem>
+        </SimpleRepeater>
+        <GridItem Column="2" RowSpan="4">
+            <DeckOfCardsMultiplePilesBlazor R="SolitaireCard" Piles="MainPiles" />
+        </GridItem>
+    </GridEvenContent>
+
+   
+</CascadingValue>

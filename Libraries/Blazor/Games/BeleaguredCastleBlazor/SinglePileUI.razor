@@ -1,0 +1,26 @@
+﻿@if (_points.Count != SinglePile!.CardList.Count)
+{
+    return;
+}
+<svg @onclick="@Submit" height="@TargetHeight.HeightString()" viewBox="@GetViewBox()">
+    @{
+        SolitaireCard? currentCard = null;
+        if (SinglePile!.CardList.Count > 0)
+        {
+            currentCard = SinglePile.CardList.Last();
+            currentCard.IsSelected = SinglePile.IsSelected;
+        }
+        int x = 0;
+    }
+    @foreach (var card in SinglePile!.CardList)
+    {
+        PointF point = _points[x];
+        <svg x="@point.X" y="@point.Y">
+            <FlexibleDeckRenderComponent D="SolitaireCard" DeckObject="card">
+                <DeckOfCardsImageBlazor DeckObject="card" R="SolitaireCard" />
+            </FlexibleDeckRenderComponent>
+            
+        </svg>
+        x++;
+    }
+</svg>
