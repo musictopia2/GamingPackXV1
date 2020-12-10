@@ -1,0 +1,21 @@
+﻿<BaseFrameBlazor PaddingHeight="10" Text="@Score!.Text">
+    <HorizontalDiv>
+        <div class="handGrid">
+            @foreach (var card in Score.CardList)
+            {
+                <div>
+                    <DeckOfCardsImageBlazor TargetHeight="@HeightString" R="CribbageCard" DeckObject="card" />
+                    @*<FlexibleDeckRenderComponent D="CribbageCard">
+                        <DeckOfCardsImageBlazor TargetHeight="@HeightString" R="CribbageCard" DeckObject="card" />
+                    </FlexibleDeckRenderComponent>*@
+                </div>
+            }
+        </div>
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="10px">
+        @foreach (var score in Score.Scores)
+        {
+            <div>@score.Description - @score.Points</div>
+        }
+    </HorizontalDiv>
+</BaseFrameBlazor>

@@ -1,0 +1,24 @@
+@inherits BasicGameView<CribbagePatienceMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <div class="firstGrid">
+        <div>
+
+            <DeckOfCardsDrawPileBlazor R="CribbageCard" DeckPile="DataContext.DeckPile" />
+            <DeckOfCardsSingleMiscPileBlazor R="CribbageCard" SinglePile="DataContext.StartPile" />
+            <div>
+                <DeckOfCardsHandBlazor R="CribbageCard" Hand="DataContext.Hand1" />
+            </div>
+            <div>
+                <GameButtonComponent DataContext="DataContext" Display="To Crib" MethodName="@CribMethod" />
+                <GameButtonComponent DataContext="DataContext" Display="Continue" MethodName="@ContinueMethod" />
+            </div>
+        </div>
+        <div class="grid-container">
+            <ScoreSummaryUI Scores="DataContext.Scores!.ScoreList" />
+            <ScoreHandCribUI Score="DataContext.GetScoreHand(EnumHandCategory.Crib)" />
+            <ScoreHandCribUI Score="DataContext.GetScoreHand(EnumHandCategory.Hand1)" />
+            <ScoreHandCribUI Score="DataContext.GetScoreHand(EnumHandCategory.Hand2)" />
+        </div>
+    </div>
+}

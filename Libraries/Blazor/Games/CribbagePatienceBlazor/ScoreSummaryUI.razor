@@ -1,0 +1,20 @@
+﻿<BaseFrameBlazor PaddingHeight="10" Text="Score Summary">
+    @if (Scores.Count == 0)
+    {
+        return;
+    }
+    @foreach (var index in Scores)
+    {
+        int id = Scores.IndexOf(index) + 1;
+        <div style="display: grid; grid-template-columns: 150px auto">
+            <div>
+                Round @id
+            </div>
+            <div>@index</div>
+        </div>
+    }
+    <div style="display: grid; grid-template-columns: 150px auto">
+        <div><b>Final Score</b></div>
+        <div>@Scores.Sum()</div>
+    </div>
+</BaseFrameBlazor>
