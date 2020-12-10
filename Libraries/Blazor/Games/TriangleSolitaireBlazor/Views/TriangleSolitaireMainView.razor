@@ -1,0 +1,7 @@
+@inherits BasicGameView<TriangleSolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <DeckOfCardsDrawPileBlazor R="SolitaireCard" DeckPile="DataContext.DeckPile" />
+    <DeckOfCardsSingleMiscPileBlazor R="SolitaireCard" SinglePile="DataContext.Pile1" />
+    <TriangleBlazor DataContext="DataContext.Triangle1" />
+}
