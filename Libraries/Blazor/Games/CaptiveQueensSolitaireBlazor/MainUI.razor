@@ -1,0 +1,28 @@
+﻿@if (DataContext == null || Main == null || Main.PileList == null || Main.PileList.Count != 8 || _points.Count != 8)
+{
+    return;
+}
+@{
+    int x = 0;
+}
+<svg width="@TargetWidth" viewBox="@GetViewBox()">
+    @foreach (var pile in Main.PileList)
+    {
+        var point = _points[x];
+        var card = Main.GetLastCard(pile);
+        if (card.Deck > 0)
+        {
+            <DeckOfCardsImageBlazor @key="@card.Deck" Location="point" R="SolitaireCard" EmptyBorders="true"
+                                    DeckObject="card" CommandObject="Main.PileCommand" DataContext="@Main" CommandParameter="pile" />
+        }
+        else
+        {
+            <DeckOfCardsImageBlazor @key="@pile" Location="point" R="SolitaireCard" EmptyBorders="true"
+                                    DeckObject="card" CommandObject="Main.PileCommand" DataContext="@Main" CommandParameter="pile" />
+        }
+        x++;
+    }
+    <svg x="@_queenLocation.X" y="@_queenLocation.Y">
+        <SimpleWasteUI />
+    </svg>
+</svg>

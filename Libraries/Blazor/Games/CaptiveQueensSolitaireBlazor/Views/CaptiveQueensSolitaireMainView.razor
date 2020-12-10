@@ -1,0 +1,14 @@
+@inherits BasicGameView<CaptiveQueensSolitaireMainViewModel>
+@if (DataContext!.DeckPile != null)
+{
+    <HorizontalDiv>
+        <DeckOfCardsDrawPileBlazor R="SolitaireCard" DeckPile="DataContext.DeckPile" />
+        <DeckOfCardsSingleMiscPileBlazor R="SolitaireCard" SinglePile="DataContext.MainDiscardPile" />
+        <div>
+            <LabelGridComponent DataContext="@DataContext" Labels="@_labels" />
+        </div>
+    </HorizontalDiv>
+    <HorizontalDiv>
+        <MainUI Main="@GetMainPiles()" />
+    </HorizontalDiv>
+}

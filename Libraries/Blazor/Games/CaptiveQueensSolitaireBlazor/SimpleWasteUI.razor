@@ -1,0 +1,13 @@
+﻿@if (Waste == null || Waste.CardList.Count != 4 || _points.Count != 4)
+{
+    return;
+}
+@{ 
+    int x = 0;
+}
+@foreach (var card in Waste.CardList)
+{
+    var point = _points[x];
+    <DeckOfCardsImageBlazor Location="point" DeckObject="card" @key="card.Deck" R="SolitaireCard" />
+    x++;
+}
