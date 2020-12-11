@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\GamingPackXV1\Libraries\Blazor\Standard\BasicGamingUIBlazorLibrary\BasicGamingUIBlazorLibrary.csproj" />
+    <ProjectReference Include="..\..\..\GamingPackXV1\Libraries\Blazor\Standard\GameLoaderBlazorLibrary\GameLoaderBlazorLibrary.csproj" />
+    <ProjectReference Include="..\..\..\GamingPackXV1\Libraries\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\BlackjackCP\BlackjackCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\BlackjackBlazor\BlackjackBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\BuncoDiceGameCP\BuncoDiceGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\BuncoDiceGameBlazor\BuncoDiceGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\FroggiesCP\FroggiesCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\FroggiesBlazor\FroggiesBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\MastermindCP\MastermindCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\MastermindBlazor\MastermindBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\MinesweeperCP\MinesweeperCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\MinesweeperBlazor\MinesweeperBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\PokerCP\PokerCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\PokerBlazor\PokerBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\SolitaireBoardGameCP\SolitaireBoardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\SolitaireBoardGameBlazor\SolitaireBoardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\XPuzzleCP\XPuzzleCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\XPuzzleBlazor\XPuzzleBlazor.csproj" />
+  </ItemGroup>
+
+</Project>
