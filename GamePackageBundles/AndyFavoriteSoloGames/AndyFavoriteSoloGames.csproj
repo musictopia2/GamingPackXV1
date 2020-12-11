@@ -11,9 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\GamingPackXV1\Libraries\Blazor\Standard\BasicGamingUIBlazorLibrary\BasicGamingUIBlazorLibrary.csproj" />
-    <ProjectReference Include="..\..\..\GamingPackXV1\Libraries\Blazor\Standard\GameLoaderBlazorLibrary\GameLoaderBlazorLibrary.csproj" />
-    <ProjectReference Include="..\..\..\GamingPackXV1\Libraries\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
+    
+    <ProjectReference Include="..\..\Libraries\Blazor\Standard\BasicGamingUIBlazorLibrary\BasicGamingUIBlazorLibrary.csproj" />
+    
+    <ProjectReference Include="..\..\Libraries\Blazor\Standard\GameLoaderBlazorLibrary\GameLoaderBlazorLibrary.csproj" />
+    
     <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\MahJongSolitaireCP\MahJongSolitaireCP.csproj" />
     <ProjectReference Include="..\..\Libraries\Blazor\Games\MahJongSolitaireBlazor\MahJongSolitaireBlazor.csproj" />
     <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\KlondikeSolitaireCP\KlondikeSolitaireCP.csproj" />
@@ -40,6 +42,7 @@
     <ProjectReference Include="..\..\Libraries\Blazor\Games\GrandfathersClockBlazor\GrandfathersClockBlazor.csproj" />
     <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\PyramidSolitaireCP\PyramidSolitaireCP.csproj" />
     <ProjectReference Include="..\..\Libraries\Blazor\Games\PyramidSolitaireBlazor\PyramidSolitaireBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
   </ItemGroup>
 
 </Project>
