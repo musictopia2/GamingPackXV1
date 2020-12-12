@@ -13,10 +13,6 @@ namespace MultiplayerSignalRHubClasses
     {
         private static readonly ConcurrentDictionary<string, ConnectionInfo> _playerList = new ConcurrentDictionary<string, ConnectionInfo>();
         private static string _hostName = "";
-        public override Task OnConnectedAsync()
-        {
-            return base.OnConnectedAsync();
-        }
         public override Task OnDisconnectedAsync(Exception? exception)
         {
             ConnectionInfo thisCon = _playerList!.Where(x => x.Value.ConnectionID == Context.ConnectionId).Select(Items => Items.Value).SingleOrDefault()!;
