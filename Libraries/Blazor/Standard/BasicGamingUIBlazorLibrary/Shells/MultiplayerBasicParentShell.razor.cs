@@ -2,7 +2,6 @@ using BasicBlazorLibrary.Helpers;
 using BasicGameFrameworkLibrary.BasicGameDataClasses;
 using BasicGameFrameworkLibrary.CommonInterfaces;
 using BasicGameFrameworkLibrary.TestUtilities;
-using CommonBasicStandardLibraries.MVVMFramework.UIHelpers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Threading.Tasks;

@@ -15,7 +15,7 @@ namespace BasicGamingUIBlazorLibrary.LocalStorageClasses
     {
         private readonly IGameInfo _game;
         private readonly BasicData _data;
-        private IJSRuntime _js;
+        private readonly IJSRuntime _js;
         public static int RecentOne { get; set; } = 0; //0 means will be most recent.  otherwise, will show a past one.  helpful in testing.
         private LimitedList<IMappable>? _list;
         private IMappable? _previousObject;
@@ -29,7 +29,7 @@ namespace BasicGamingUIBlazorLibrary.LocalStorageClasses
             _game = game;
             _data = data;
         }
-
+       
         Task<bool> ISaveSinglePlayerClass.CanOpenSavedSinglePlayerGameAsync()
         {
             if (_game.CanAutoSave == false)

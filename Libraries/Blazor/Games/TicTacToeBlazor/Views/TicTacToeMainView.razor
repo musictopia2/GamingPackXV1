@@ -1,0 +1,40 @@
+@inherits BasicGameView<TicTacToeMainViewModel>
+@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString;
+@{
+    GetWin();
+}
+@if (_save == null)
+{
+    return;
+}
+<GridGameBoard SpaceList="_save.GameBoard" S="SpaceInfoCP"
+               Context="Item" GridWidth="100%" GridHeight="80vh"
+               TargetSpaceHeight="300" TargetSpaceWidth="300">
+    <ItemTemplate Context="Space">
+        <BorderedCommandSpace DataContext="DataContext"
+                              CommandParameter="Space"
+                              MethodName="@MethodName"
+                              FillColor="@cc.White"
+                              BorderWidth="5"
+                              BorderColor="@cc.Black">
+            <CenteredTextBlazor TextColor="@cc.White"
+                                BorderWidth="5"
+                                FontSize="300"
+                                Text="@GetText(Space)"
+                                BorderColor="@cc.Blue" />
+        </BorderedCommandSpace>
+    </ItemTemplate>
+    <Canvas>
+        @if (_win != null && _win.WinList.Count == 3)
+        {
+            <LineComponent Win="_win" />
+        }
+    </Canvas>
+</GridGameBoard>
+<LabelGridComponent DataContext="DataContext" Labels="_labels" />
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
