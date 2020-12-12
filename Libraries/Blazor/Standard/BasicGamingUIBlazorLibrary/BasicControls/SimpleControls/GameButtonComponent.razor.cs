@@ -51,7 +51,10 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SimpleControls
         public bool StartOnNewLine { get; set; } = false;
 
         [Parameter]
-        public bool Hints { get; set; } = false;
+        public EventCallback CustomCallBack { get; set; }
+
+        //[Parameter]
+        //public bool Hints { get; set; } = false;
 
         private bool IsVisible()
         {
@@ -84,6 +87,10 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SimpleControls
         }
         private bool IsDisabled()
         {
+            if (CustomCallBack.HasDelegate)
+            {
+                return false; //because a callback has to always allow.
+            }
             if (_command == null)
             {
                 return true;
@@ -96,6 +103,11 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SimpleControls
 
         private async Task Submit()
         {
+            if (CustomCallBack.HasDelegate)
+            {
+                await CustomCallBack.InvokeAsync(); //in this case, always allow no matter what.
+                return;
+            }
             if (_command == null)
             {
                 return; //nothing to submit
@@ -182,7 +194,11 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SimpleControls
         public void Dispose()
 #pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
         {
-            CommandContainer command = aa.cons!.Resolve<CommandContainer>();
+            if (aa.cons == null)
+            {
+                return;
+            }
+            CommandContainer command = aa.cons.Resolve<CommandContainer>();
             if (_command is IGameCommand other)
             {
                 command.RemoveCommand(other, AfterChange!);
