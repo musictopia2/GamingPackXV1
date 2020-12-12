@@ -17,7 +17,7 @@ namespace MultiplayerSignalRHubClasses
         {
             return base.OnConnectedAsync();
         }
-        public override Task OnDisconnectedAsync(Exception exception)
+        public override Task OnDisconnectedAsync(Exception? exception)
         {
             ConnectionInfo thisCon = _playerList!.Where(x => x.Value.ConnectionID == Context.ConnectionId).Select(Items => Items.Value).SingleOrDefault()!;
             if (thisCon != null)
@@ -30,6 +30,10 @@ namespace MultiplayerSignalRHubClasses
         {
             await Clients.Caller.SendAsync("ConnectionError", errorMessage);
         }
+
+        private readonly static CustomBasicList<string> _excludeList = new CustomBasicList<string>();
+        public static CustomBasicList<string> ExcludedList => _excludeList; //if there is any on the list, then only those can host.  this would stop the problems where 2 people are hosting the same time.
+
         public async Task HostingAsync(string nickName) //send message only to user.
         {
             _playerList.Clear();
@@ -37,6 +41,14 @@ namespace MultiplayerSignalRHubClasses
             {
                 await SendErrorAsync("You must have a nick name in order to host");
                 return;
+            }
+            if (ExcludedList.Count > 0)
+            {
+                if (ExcludedList.Any(xx => xx.ToLower() == nickName.ToLower()) == false)
+                {
+                    await SendErrorAsync("You do not have permission to host game");
+                    return;
+                }
             }
             ConnectionInfo connect = new ConnectionInfo()
             {

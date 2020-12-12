@@ -8,6 +8,8 @@
   <ItemGroup>
     <PackageReference Include="CommonBasicStandardLibraries" Version="3.0.19" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.Azure.SignalR" Version="1.6.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
