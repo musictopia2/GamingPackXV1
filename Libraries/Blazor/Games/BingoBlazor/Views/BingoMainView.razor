@@ -1,0 +1,28 @@
+@inherits BasicGameView<BingoMainViewModel>
+<GridContainer Columns="@ColumnText">
+    <GridItem>
+        <div style="font-size: 8vh">
+            Number Called: @DataContext!.NumberCalled
+        </div>
+        <GridGameBoard S="SpaceInfoCP"
+                       SpaceList="_save!.BingoBoard"
+                       GridHeight="80vh"
+                       GridWidth="100%"
+                       TargetSpaceHeight="100"
+                       TargetSpaceWidth="100">
+            <ItemTemplate Context="Space">
+                <BingoSpaceBlazor DataContext="DataContext" CommandParameter="Space" MethodName="@SpaceName" />
+            </ItemTemplate>
+        </GridGameBoard>
+    </GridItem>
+    <GridItem Column="2">
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        <GameButtonComponent DataContext="DataContext" Display="Bingo" MethodName="@BingoName" StartOnNewLine="true" />
+        @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+        {
+            <ParentControl VM="RestoreViewModel">
+                <RestoreView />
+            </ParentControl>
+        }
+    </GridItem>
+</GridContainer>
