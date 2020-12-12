@@ -1,4 +1,10 @@
 ﻿@page "/"
+@if (_loadedOnce == false)
+{
+    <div>Loading Game Package Loader........</div>
+    return;
+}
+
 @if (DataContext!.PackagePicker!.TextList.Count == 0)
 {
     return;
@@ -8,11 +14,28 @@
     <Title Value="@DataContext.Title">
 
     </Title>
-    <div style="margin: 5px">
-        <ListChooserBlazor ListPicker="DataContext.PackagePicker"
-                           TotalColumns="500"
-                           TextWidth="170"
-                           TextHeight="5vh" />
-    </div>
+    @if (_showSettings)
+    {
+        <GameSettingsComponent CloseSettings="ClosedSettings" />
+        return;
+    }
+    @if (GlobalClass.Multiplayer)
+    {
+        <div>
+            <GameButtonComponent CustomCallBack="OpenSettings" Display="Show Settings" />
+        </div>
+    }
+    @if (CanShowGameList())
+    {
+        <div style="margin: 5px">
+            <ListChooserBlazor ListPicker="DataContext.PackagePicker"
+                               TotalColumns="500"
+                               TextWidth="170"
+                               TextHeight="5vh" />
+        </div>
+    }
+
+    return;
+
 }
 @DataContext.GameRendered

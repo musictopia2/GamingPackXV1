@@ -1,0 +1,80 @@
+﻿@using BasicGameFrameworkLibrary.StandardImplementations.Settings; 
+@if (GlobalDataModel.DataContext == null)
+{
+    return;
+}
+<GridContainer ColumnGap="20px"
+               RowGap="10px"
+               Columns="@GetColumns"
+               Rows="@GetRows">
+    <GridItem Row="1" Column="1">
+        <div class="margins">
+            Server Option Chosen
+        </div>
+    </GridItem>
+    <GridItem Row="1" Column="2">
+        <div class="margins">
+            @GlobalDataModel.DataContext.ServerMode
+        </div>
+
+    </GridItem>
+    <GridItem Row="2" Column="1">
+        <div class="margins">
+            Nick Name
+        </div>
+
+    </GridItem>
+    <GridItem Row="2" Column="2">
+        <input @ref="_nickElement" class="margins" @bind="GlobalDataModel.DataContext.NickName" @bind:event="oninput" />
+    </GridItem>
+
+    @if (GlobalDataModel.DataContext.ServerMode == EnumAzureMode.Custom)
+    {
+        <GridItem Row="3" Column="1">
+            Server Address
+        </GridItem>
+    }
+
+
+    <GridItem Row="3" Column="2">
+        @if (GlobalDataModel.DataContext.ServerMode == EnumAzureMode.Custom)
+        {
+            <input class="margins" @ref="_customElement" @bind="GlobalDataModel.DataContext.CustomAzureEndPoint" />
+        }
+        else
+        {
+            <GameButtonComponent CustomCallBack="() => UpdateServerOptions(EnumAzureMode.Custom)" Display="Use Custom Server" />
+        }
+    </GridItem>
+    <GridItem Row="4" Column="1">
+
+    </GridItem>
+    <GridItem Row="4" Column="2">
+        <GameButtonComponent CustomCallBack="() => UpdateServerOptions(EnumAzureMode.Public)" Display="Use Public Server" />
+    </GridItem>
+    <GridItem Row="5" Column="1">
+
+    </GridItem>
+    <GridItem Row="5" Column="2">
+        <GameButtonComponent CustomCallBack="() => UpdateServerOptions(EnumAzureMode.Private)" Display="Use Private Server" />
+        <div class="margins">
+            For private option, only a few select people can host a game.
+        </div>
+    </GridItem>
+
+    <GridItem Row="6" Column="1">
+
+    </GridItem>
+    <GridItem Row="6" Column="2">
+        <GameButtonComponent CustomCallBack="SaveChangesAsync" Display="Save Changes" />
+        @if (_beginaccept)
+        {
+            <GameButtonComponent CustomCallBack="CancelAsync" Display="Cancel" />
+        }
+    </GridItem>
+</GridContainer>
+
+@code{
+    ElementReference _nickElement;
+    ElementReference _customElement;
+}

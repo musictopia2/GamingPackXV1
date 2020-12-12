@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CommonBasicStandardLibraries.Exceptions;
+using Newtonsoft.Json;
 namespace BasicGameFrameworkLibrary.StandardImplementations.Settings
 {
     //eventually will add support for desktop/mobile native in .net 6.
@@ -26,5 +27,14 @@ namespace BasicGameFrameworkLibrary.StandardImplementations.Settings
         public static string LocalStorageKey => "settingsv1";
         [JsonIgnore] //just to make sure this gets ignored.
         public static GlobalDataModel? DataContext { get; set; }
+
+        public static bool NickNameAcceptable()
+        {
+            if (DataContext == null)
+            {
+                throw new BasicBlankException("Settings data failed to load.");
+            }
+            return string.IsNullOrWhiteSpace(DataContext.NickName) == false;
+        }
     }
 }
