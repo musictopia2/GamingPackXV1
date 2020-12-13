@@ -72,7 +72,10 @@ namespace GameLoaderBlazorLibrary
         protected override void OnInitialized()
         {
             DataContext!.StateChanged = () => InvokeAsync(StateHasChanged);
-
+            if (GlobalClass.Multiplayer == false)
+            {
+                _loadedOnce = true; //because not important since not using the settings.
+            }
             base.OnInitialized();
         }
 

@@ -53,6 +53,7 @@ namespace GameLoaderBlazorLibrary
             if (GlobalDataModel.NickNameAcceptable() == false)
             {
                 ToastPlatform.ShowError("Needs to enter nick name at least");
+                await _nickElement.FocusAsync();
                 return;
             }
             await JS.SaveGlobalDataAsync();
