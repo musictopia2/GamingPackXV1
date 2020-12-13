@@ -1,0 +1,41 @@
+@inherits BasicGameView<HorseshoeCardGameMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<GridContainer Inline="true" Columns="auto auto">
+    <GridItem>
+        <DeckOfCardsSeveralPlayersTrickBlazor T="HorseshoeCardGameCardInformation"
+                                              P="HorseshoeCardGamePlayerItem"
+                                              B="HorseshoeTrickAreaCP"
+                                              ExtraLongSecondColumn="true"
+                                              DataContext="_vmData.TrickArea1" />
+        <GridContainer Inline="true" Columns="auto auto" ColumnGap="5px">
+            <GridItem>
+                <DeckOfCardsHandBlazor R="HorseshoeCardGameCardInformation" Hand="_vmData.PlayerHand1" />
+                <div>
+                    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+                </div>
+            </GridItem>
+            <GridItem Column="2">
+                <ScoreBoardBlazor P="HorseshoeCardGamePlayerItem"
+                                  Columns="_scores"
+                                  Players="_gameContainer.SaveRoot.PlayerList" />
+            </GridItem>
+        </GridContainer>
+        @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+        {
+            <ParentControl VM="RestoreViewModel">
+                <RestoreView />
+            </ParentControl>
+        }
+    </GridItem>
+    <GridItem Column="2">
+        @foreach (var player in _players)
+        {
+            <div>
+                <RegularCardsPlayerBoardBlazor T="HorseshoeCardGameCardInformation" DataContext="player.TempHand" />
+            </div>
+        }
+    </GridItem>
+</GridContainer>
