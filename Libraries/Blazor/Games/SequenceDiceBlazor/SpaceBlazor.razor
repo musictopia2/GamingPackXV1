@@ -1,0 +1,48 @@
+﻿@inherits GraphicsCommand
+@using System.Drawing;
+@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString;
+@if (_space == null || _space.Number == 0)
+{
+    return;
+}
+<svg @onclick="Submit">
+    @if (_space.Number != 2 && _space.Number != 12)
+    {
+        <rect width="100%" height="100%" fill="@GetFillRegular" stroke="black" stroke-width="1" />
+        <CenteredTextBlazor TextColor="@cc.Red"
+                            BorderColor="@cc.Black"
+                            BorderWidth="1"
+                            FontSize="47"
+                            Text="@_space.Number.ToString()" />
+    }
+    else
+    {
+        SimpleDice firstDice;
+        SimpleDice secondDice;
+        firstDice = GetDiceInfo();
+        secondDice = GetDiceInfo();
+        SizeF diceSize = GetDiceSize;
+        PointF firstPoint = GetDiceLocation(1);
+        PointF secondPoint = GetDiceLocation(2);
+        <rect width="100%" height="100%" fill="gray" stroke="black" stroke-width="1" />
+        <StandardDiceBlazor Dice="firstDice"
+                            X="firstPoint.X"
+                            Y="firstPoint.Y"
+                            TargetHeight="@diceSize.Height.ToString()" />
+        <StandardDiceBlazor Dice="secondDice"
+                            X="secondPoint.X"
+                            Y="secondPoint.Y"
+                            TargetHeight="@diceSize.Height.ToString()" />
+    }
+    @if (_space.Color != cc.Transparent)
+    {
+        <BasePieceGraphics LongestSize="50">
+            <CheckerPiece MainColor="@_space.Color" />
+        </BasePieceGraphics>
+        <CenteredTextBlazor TextColor="@cc.Aqua"
+                            BorderColor="@cc.Black"
+                            BorderWidth="1"
+                            FontSize="@FontSize()"
+                            Text="@_space.Number.ToString()" />
+    }
+</svg>
