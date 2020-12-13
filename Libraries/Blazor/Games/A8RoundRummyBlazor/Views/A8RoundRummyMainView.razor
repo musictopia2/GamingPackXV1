@@ -1,0 +1,36 @@
+@inherits BasicGameView<A8RoundRummyMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<GridContainer Columns="@GetColumns" ColumnGap="10px">
+    <GridItem>
+        <HandBlazor Hand="_vmData.PlayerHand1" />
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
+        <HorizontalDiv Margins="5px">
+            <DrawPileBlazor DeckPile="_vmData.Deck1" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+            <GameButtonComponent DataContext="DataContext"
+                                 MethodName="@GoOutMethod"
+                                 Display="Go Out" />
+        </HorizontalDiv>
+        <div>
+            <ScoreBoardBlazor P="A8RoundRummyPlayerItem"
+                              Columns="_scores"
+                              Players="_gameContainer.SaveRoot.PlayerList" />
+        </div>
+    </GridItem>
+    <GridItem Column="2">
+        <RoundUI Rounds="@_gameContainer.SaveRoot.RoundList" />
+    </GridItem>
+</GridContainer>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

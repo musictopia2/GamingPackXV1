@@ -1,0 +1,8 @@
+﻿@if (Rounds == null || Rounds.Count == 0)
+{
+    return;
+}
+@foreach (var round in Rounds)
+{
+    <BoldLabel Style="font-size: 4vh; margin-right: 5px; margin-bottom: 10px;" Text="@round.Description" StartsOnNextLine="true" />
+}
