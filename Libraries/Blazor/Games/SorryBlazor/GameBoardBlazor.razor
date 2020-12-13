@@ -1,0 +1,127 @@
+﻿@using System.Drawing;
+@using BasicBlazorLibrary.Components.Basic;
+@using BasicBlazorLibrary.Components.RenderHelpers; 
+@inherits KeyComponentBase   
+@if (GraphicsData == null || GraphicsData.Container.SingleInfo == null)
+{
+    return;
+}
+<RawGameBoard TargetHeight="@TargetHeight" BoardSize="GraphicsData.OriginalSize">
+    <ResourceImage Height="100%" Width="100%" Assembly="@GetAssembly" FileName="SorryGameBoard.png" />
+    <BasePieceGraphics LongestSize="80" Location="new PointF(GraphicsData.DiscardLocation.Left, GraphicsData.DiscardLocation.Bottom + 5)">
+        <PawnPiece MainColor="@GetColor(GraphicsData.Container.SingleInfo)" />
+    </BasePieceGraphics>
+    @if (GraphicsData.Container.SaveRoot.DidDraw)
+    {
+       
+        <RefreshComponent CanRender="CanRenderBeginnings()">
+            <CardGraphicsBlazor DeckObject="GraphicsData.Container.SaveRoot.CurrentCard"
+                                Location="GraphicsData.DiscardLocation.Location"
+                                LongestSize="GraphicsData.DiscardLocation.Height"
+                                Container="GraphicsData.Container"
+                                PartOfBoard="true" />
+        </RefreshComponent>
+        
+
+
+    }
+
+    <RefreshComponent CanRender="CanRenderBeginnings()">
+        @foreach (var player in GraphicsData.Container.PlayerList!)
+        {
+            foreach (var piece in player.PieceList)
+            {
+                var space = GraphicsData.SpaceList[piece];
+                <BasePieceGraphics LongestSize="GraphicsData.PieceHeight"
+                                   @key="@GetKey"
+                                   Location="space.Location">
+                    <PawnPiece MainColor="@GetColor(player)" />
+                </BasePieceGraphics>
+            }
+            @if (player.HowManyHomePieces > 0)
+            {
+                var homeRect = GraphicsData.HomeSpaces[(int)player.Color];
+                var homeList = GraphicsData.GetFourHomeRectangles(homeRect);
+                for (int i = 0; i < player.HowManyHomePieces; i++)
+                {
+                    <BasePieceGraphics LongestSize="GraphicsData.PieceHeight"
+                                       @key="GetKey"
+                                       Location="homeList[i].Location">
+                        <PawnPiece MainColor="@GetColor(player)" />
+                    </BasePieceGraphics>
+                }
+            }
+        }
+    </RefreshComponent>
+
+
+    @if (GraphicsData.Container.SaveRoot.SpacesLeft > 0)
+    {
+        var leftRect = new RectangleF(GraphicsData.DiscardLocation.X, GraphicsData.DiscardLocation.Top - (GraphicsData.DiscardLocation.Height / 2), GraphicsData.DiscardLocation.Width, GraphicsData.DiscardLocation.Height / 2);
+        <RawRectangle Rectangle="leftRect">
+            <CenteredSvgText Text="@GraphicsData.Container.SaveRoot.SpacesLeft.ToString()" FontSize="90" TextColor="black" />
+        </RawRectangle>
+    }
+    @if (GraphicsData.Container.Animates.AnimationGoing)
+    {
+        var tempPlayer = GraphicsData!.Container.PlayerList![GraphicsData.Container.PlayerGoingBack];
+        <UpdatePortionBoard>
+            <BasePieceGraphics LongestSize="GraphicsData.PieceHeight"
+                               @key="GetKey"
+                               Location="GraphicsData.Container.Animates.CurrentLocation">
+                <PawnPiece MainColor="@GetColor(tempPlayer)" />
+            </BasePieceGraphics>
+        </UpdatePortionBoard>
+    }
+    @if (GraphicsData.Container.MovePlayer > 0 && GraphicsData.Container.Animates.AnimationGoing == false)
+    {
+        RectangleF moveRect;
+        if (GraphicsData.Container.MovePlayer < 100)
+        {
+            moveRect = GraphicsData.SpaceList[GraphicsData.Container.MovePlayer];
+        }
+        else
+        {
+            moveRect = GraphicsData.HomeSpaces[(int)GraphicsData.Container.SaveRoot.OurColor];
+        }
+        <BasePieceGraphics LongestSize="GraphicsData.PieceHeight"
+                           @key="GetKey"
+                           Location="moveRect.Location">
+            <PawnPiece MainColor="@GetColor(GraphicsData.Container.SingleInfo)" />
+        </BasePieceGraphics>
+    }
+    @if (GraphicsData.Container.MovePlayer == 0 && GraphicsData.Container.Animates.AnimationGoing == false)
+    {
+        foreach (var item in GraphicsData.Container.SaveRoot.HighlightList)
+        {
+            RectangleF hRect;
+            if (item < 100)
+            {
+                hRect = GraphicsData.SpaceList[item];
+            }
+            else
+            {
+                hRect = GraphicsData.HomeSpaces[(int)GraphicsData.Container.SaveRoot.OurColor];
+            }
+            <RawRectangle Rectangle="hRect">
+                <svg>
+                    <rect height="100%" width="100%" fill="none" stroke="Fuchsia" stroke-width="3" />
+                </svg>
+            </RawRectangle>
+        }
+    }
+    @*last part now is for clickable spaces.  otherwise, can't click anything.*@
+    @if (GraphicsData.Container.SaveRoot.DidDraw == true)
+    {
+        @foreach (var space in GraphicsData.SpaceList)
+        {
+            <BlankClickableSquare Fixed="true" SpaceLocation="space.Value.Location" SpaceSize="space.Value.Size" SpaceClicked="() => SpaceClicked(space.Key)" />
+        }
+        var clickHome = GraphicsData.HomeSpaces[(int)GraphicsData.Container.SingleInfo.Color];
+        <BlankClickableSquare Fixed="true" SpaceLocation="clickHome.Location" SpaceSize="clickHome.Size" SpaceClicked="HomeClicked" />
+    }
+    else
+    {
+        <BlankClickableSquare Fixed="true" SpaceLocation="GraphicsData.DeckLocation.Location" SpaceClicked="DrawClicked" SpaceSize="GraphicsData.DeckLocation.Size" />
+    }
+</RawGameBoard>

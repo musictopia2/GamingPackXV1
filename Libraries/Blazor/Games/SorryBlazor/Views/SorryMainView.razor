@@ -1,0 +1,22 @@
+@inherits BasicGameView<SorryMainViewModel>
+<HorizontalDiv Width="30vw">
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </div>
+    <div>
+        <div>Cards Details:</div>
+        <div>
+            @DataContext!.CardDetails
+        </div>
+    </div>
+    <GameButtonComponent Display="End Turn" DataContext="DataContext" MethodName="@EndMethod" />
+</HorizontalDiv>
+<HorizontalDiv>
+    <GameBoardBlazor GraphicsData="_graphics" TargetHeight="95vh" />
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
