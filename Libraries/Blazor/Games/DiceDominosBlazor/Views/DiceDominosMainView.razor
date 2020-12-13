@@ -1,0 +1,19 @@
+@inherits BasicGameView<DiceDominosMainViewModel>
+<CascadingValue Value="8">
+    <DominosGridBoardBlazor D="SimpleDominoInfo" DataContext="DataContext!.GameBoard" />
+</CascadingValue>
+<div style="height: 22vh">
+    <GameButtonComponent DataContext="@DataContext" MethodName="@RollMethod" Display="Roll Dice" />
+    <GameButtonComponent DataContext="@DataContext" MethodName="@EndMethod" Display="End Turn" />
+    <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
+</div>
+<LabelGridComponent DataContext="DataContext" Labels="_labels" />
+<div>
+    <ScoreBoardBlazor P="DiceDominosPlayerItem" Columns="@_scores" Players="@DataContext!.PlayerList" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
