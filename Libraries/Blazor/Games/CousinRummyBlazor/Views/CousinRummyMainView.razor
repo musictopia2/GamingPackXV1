@@ -1,0 +1,70 @@
+@inherits BasicGameView<CousinRummyMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<div>
+    <DeckOfCardsHandBlazor R="RegularRummyCard" Hand="_vmData.PlayerHand1" />
+</div>
+<GridContainer Rows="@GetFirstRows" Columns="@GetFirstColumns" RowGap="5px" ColumnGap="5px" Inline="true">
+    <GridItem>
+        <div>
+            <GameButtonComponent DataContext="DataContext"
+                                 MethodName="@InitMethod"
+                                 StartOnNewLine="true"
+                                 Display="Lay Down Initial Sets" />
+            <GameButtonComponent DataContext="DataContext"
+                                 MethodName="@OtherMethod"
+                                 StartOnNewLine="true"
+                                 Display="Lay Down Other Sets" />
+        </div>
+        <div>
+            <HorizontalDiv Margins="5px">
+                <ScoreBoardBlazor P="CousinRummyPlayerItem"
+                                  Columns="_scores"
+                                  Players="_gameContainer.SaveRoot.PlayerList" />
+            </HorizontalDiv>
+            <GridContainer Rows="@GetFirstRows" Columns="@GetSecondColumns" RowGap="5px" ColumnGap="5px" Inline="true">
+                <GridItem>
+                    <GameButtonComponent DataContext="DataContext"
+                                         MethodName="@PassMethod"
+                                         StartOnNewLine="true"
+                                         Display="Pass" />
+                </GridItem>
+                <GridItem Column="2">
+                    <GameButtonComponent DataContext="DataContext"
+                                         MethodName="@BuyMethod"
+                                         StartOnNewLine="true"
+                                         Display="Buy" />
+                </GridItem>
+                <GridItem Row="2">
+                    <DeckOfCardsDrawPileBlazor R="RegularRummyCard" DeckPile="_vmData.Deck1" />
+                </GridItem>
+                <GridItem Row="2" Column="2">
+                    <DeckOfCardsSingleMiscPileBlazor R="RegularRummyCard" SinglePile="_vmData.Pile1" />
+                </GridItem>
+                <GridItem Column="3" Row="1" RowSpan="2">
+                    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+                </GridItem>
+            </GridContainer>
+        </div>
+    </GridItem>
+    <GridItem Column="2">
+        <DeckOfCardsTempSetsBlazor RU="RegularRummyCard"
+                                   TargetContainerSize="50vh"
+                                   TempPiles="_vmData.TempSets" />
+    </GridItem>
+    <GridItem Row="2" Column="1" ColumnSpan="2">
+        <DeckOfCardsMainRummySetsBlazor RU="RegularRummyCard"
+                                        SE="PhaseSet"
+                                        T="SavedSet"
+                                        ContainerHeight="35vh"
+                                        DataContext="_vmData.MainSets" />
+    </GridItem>
+</GridContainer>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
