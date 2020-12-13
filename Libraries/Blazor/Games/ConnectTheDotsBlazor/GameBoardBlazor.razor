@@ -1,0 +1,64 @@
+﻿@using System.Drawing; 
+@if (Container == null || Graphics == null)
+{
+    return;
+}
+<RawGameBoard TargetHeight="@TargetHeight" BoardSize="Graphics.OriginalSize">
+
+    <RawRectangle Rectangle="@Graphics.WhiteRect">
+        <svg>
+            <rect width="100%" height="100%" fill="white" />
+        </svg>
+    </RawRectangle>
+    <svg>
+        @foreach (var line in Container.LineList!)
+        {
+            if (line.Value.IsTaken)
+            {
+                <line x1="@line.Value.StartingPoint.X"
+                      y1="@line.Value.StartingPoint.Y"
+                      x2="@line.Value.FinishingPoint.X"
+                      y2="@line.Value.FinishingPoint.Y"
+                      stroke="@LineColor(line.Value)" 
+                      stroke-width="2" />
+            }
+        }
+        @{ 
+            var tempList = Container.SquareList!.Values.Where(x => x.Player > 0);
+        }
+        @foreach (var square in tempList)
+        {
+            string firstColor = SquareColor(square);
+            <RawRectangle Rectangle="square.Rectangle">
+                <svg>
+                    <circle cx="50%" cy="50%" r="50%" fill="@firstColor" />
+                </svg>
+            </RawRectangle>
+        }
+        @foreach (var dot in Container.DotList!)
+        {
+            RectangleF rect;
+            if (dot.Value.IsSelected)
+            {
+                rect = dot.Value.Bounds;
+            }
+            else
+            {
+                rect = dot.Value.Dot;
+            }
+            <RawRectangle Rectangle="rect">
+                <svg>
+                    @if (dot.Value.IsSelected)
+                    {
+                        <circle cx="50%" cy="50%" r="45%" stroke-width="4" fill="yellow" stroke="black" />
+                    }
+                    else
+                    {
+                        <circle cx="50%" cy="50%" r="50%" fill="black" />
+                    }
+                </svg>
+            </RawRectangle>
+            <BlankClickableSquare SpaceLocation="dot.Value.Bounds.Location" SpaceClicked="() => MakeMoveAsync(dot.Key)" SpaceSize="dot.Value.Bounds.Size" />
+        }
+    </svg>
+</RawGameBoard>

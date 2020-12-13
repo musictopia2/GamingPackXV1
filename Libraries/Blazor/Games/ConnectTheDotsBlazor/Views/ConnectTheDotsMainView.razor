@@ -1,0 +1,16 @@
+@inherits BasicGameView<ConnectTheDotsMainViewModel>
+<div style="margin-top: 5px; margin-left: 5px">
+    <HorizontalDiv>
+        <GameBoardBlazor Container="_container" Graphics="_graphics" TargetHeight="95vh" />
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="5px">
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        <ScoreBoardBlazor P="ConnectTheDotsPlayerItem" Columns="_scores" Players="_container!.PlayerList" />
+    </HorizontalDiv>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
