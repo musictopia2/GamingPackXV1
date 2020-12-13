@@ -1,0 +1,91 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="CommonBasicStandardLibraries" Version="3.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+    <PackageReference Include="BasicBlazorLibrary" Version="1.0.0" />
+    <PackageReference Include="SvgHelper.Blazor" Version="1.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
+    <ProjectReference Include="..\..\Standard\BasicGamingUIBlazorLibrary\BasicGamingUIBlazorLibrary.csproj" />
+    <ProjectReference Include="..\..\..\CrossPlatform\Games\ClueBoardGameCP\ClueBoardGameCP.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\blackaqualightupwards.png" />
+    <None Remove="Resources\blacksilverlightupwards.png" />
+    <None Remove="Resources\board.svg" />
+    <None Remove="Resources\Candlestick.svg" />
+    <None Remove="Resources\card1.png" />
+    <None Remove="Resources\card10.png" />
+    <None Remove="Resources\card11.png" />
+    <None Remove="Resources\card12.png" />
+    <None Remove="Resources\card13.png" />
+    <None Remove="Resources\card14.png" />
+    <None Remove="Resources\card15.png" />
+    <None Remove="Resources\card16.png" />
+    <None Remove="Resources\card17.png" />
+    <None Remove="Resources\card18.png" />
+    <None Remove="Resources\card19.png" />
+    <None Remove="Resources\card2.png" />
+    <None Remove="Resources\card20.png" />
+    <None Remove="Resources\card21.png" />
+    <None Remove="Resources\card3.png" />
+    <None Remove="Resources\card4.png" />
+    <None Remove="Resources\card5.png" />
+    <None Remove="Resources\card6.png" />
+    <None Remove="Resources\card7.png" />
+    <None Remove="Resources\card8.png" />
+    <None Remove="Resources\card9.png" />
+    <None Remove="Resources\Knife.svg" />
+    <None Remove="Resources\LeadPipe.svg" />
+    <None Remove="Resources\Revolver.svg" />
+    <None Remove="Resources\Rope.svg" />
+    <None Remove="Resources\Wrench.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\board.svg" />
+    <EmbeddedResource Include="Resources\Candlestick.svg" />
+    <EmbeddedResource Include="Resources\card1.png" />
+    <EmbeddedResource Include="Resources\card10.png" />
+    <EmbeddedResource Include="Resources\card11.png" />
+    <EmbeddedResource Include="Resources\card12.png" />
+    <EmbeddedResource Include="Resources\card13.png" />
+    <EmbeddedResource Include="Resources\card14.png" />
+    <EmbeddedResource Include="Resources\card15.png" />
+    <EmbeddedResource Include="Resources\card16.png" />
+    <EmbeddedResource Include="Resources\card17.png" />
+    <EmbeddedResource Include="Resources\card18.png" />
+    <EmbeddedResource Include="Resources\card19.png" />
+    <EmbeddedResource Include="Resources\card2.png" />
+    <EmbeddedResource Include="Resources\card20.png" />
+    <EmbeddedResource Include="Resources\card21.png" />
+    <EmbeddedResource Include="Resources\card3.png" />
+    <EmbeddedResource Include="Resources\card4.png" />
+    <EmbeddedResource Include="Resources\card5.png" />
+    <EmbeddedResource Include="Resources\card6.png" />
+    <EmbeddedResource Include="Resources\card7.png" />
+    <EmbeddedResource Include="Resources\card8.png" />
+    <EmbeddedResource Include="Resources\card9.png" />
+    <EmbeddedResource Include="Resources\Knife.svg" />
+    <EmbeddedResource Include="Resources\LeadPipe.svg" />
+    <EmbeddedResource Include="Resources\Revolver.svg" />
+    <EmbeddedResource Include="Resources\Rope.svg" />
+    <EmbeddedResource Include="Resources\Wrench.svg" />
+  </ItemGroup>
+  
+  
+  
+</Project>

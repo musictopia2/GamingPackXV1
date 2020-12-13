@@ -1,0 +1,106 @@
+﻿@inherits KeyComponentBase
+@using CommonBasicStandardLibraries.CollectionClasses;
+@if (GraphicsData == null)
+{
+    return;
+}
+<RawGameBoard TargetHeight="@TargetHeight" BoardSize="GraphicsData.OriginalSize">
+    <ResourceImage Assembly="@GetAssembly"
+                   FileName="board.svg"
+                   Width="@GraphicsData.OriginalSize.Width.ToString()"
+                   Height="@GraphicsData.OriginalSize.Height.ToString()" />
+
+    @if (GraphicsData.GameContainer!.RoomList.Count != 9)
+    {
+        return;
+    }
+    @{
+        int x = 0;
+        CustomBasicList<WeaponInfo> weaponList;
+        CustomBasicList<CharacterInfo> characterList;
+        SizeF spaceSize = new SizeF(GraphicsData.SpaceSize, GraphicsData.SpaceSize);
+        PointF location;
+        RectangleF rect;
+        //RoomWeaponKeyClass wKey;
+        //CharacterStartKey cSKey;
+    }
+    @foreach (var room in GraphicsData.GameContainer.RoomList.Values)
+    {
+        x++;
+        if (room.Space == null)
+        {
+            return; //try this way.  did it before and somehow worked (?)
+        }
+        weaponList = GraphicsData.GameContainer.WeaponsInRoom(x);
+        characterList = GraphicsData.GameContainer.CharactersInRoom(x);
+        GraphicsData.GameContainer.Position.ClearArea(room.Space);
+        foreach (var weapon in weaponList)
+        {
+            location = GraphicsData.GameContainer.Position.GetPosition(room.Space, weapon.DefaultSize);
+            rect = new RectangleF(location, weapon.DefaultSize);
+            room.Space.PieceList.Add(rect);
+            GraphicsData.GameContainer.Position.AddRectToArea(room.Space, rect);
+            <BasePieceGraphics @key="GetKey" Location="location">
+                <WeaponBlazor Weapon="weapon" />
+            </BasePieceGraphics>
+        }
+        foreach (var character in characterList)
+        {
+            location = GraphicsData.GameContainer.Position.GetPosition(room.Space, spaceSize);
+            rect = new RectangleF(location, spaceSize);
+            //var roomKey = GetCharacterRoomKey(character, x);
+            room.Space.PieceList.Add(rect);
+            GraphicsData.GameContainer.Position.AddRectToArea(room.Space, rect);
+            <BasePieceGraphics @key="GetKey" Location="@location" LongestSize="@GraphicsData.SpaceSize">
+                <PawnPiece MainColor="@character.MainColor" />
+            </BasePieceGraphics>
+        }
+    }
+    @{
+        characterList = GraphicsData.GameContainer.CharactersOnStart();
+    }
+    @foreach (var character in characterList)
+    {
+        location = GraphicsData.PositionForStartSpace(character.FirstNumber);
+        //cSKey = GetCharacterStartKey(character);
+        <BasePieceGraphics @key="GetKey" Location="@location" LongestSize="@GraphicsData.SpaceSize">
+            <PawnPiece MainColor="@character.MainColor" />
+        </BasePieceGraphics>
+    }
+    @{
+        characterList = GraphicsData.GameContainer.CharactersOnBoard();
+    }
+    @foreach (var character in characterList)
+    {
+        location = GraphicsData.PositionForBoardPiece(character.Space);
+        //var tempKey = GetCharacterSpaceKey(character, character.Space);
+        <BasePieceGraphics @key="GetKey" Location="@location" LongestSize="@GraphicsData.SpaceSize">
+            <PawnPiece MainColor="@character.MainColor" />
+        </BasePieceGraphics>
+    }
+    @if (GraphicsData.GameContainer.Command.IsExecuting || GraphicsData.GameContainer.CanClickSpace() == false)
+    {
+        return; //because if executing then no need for clicking options.
+    }
+    @* click processes last *@
+    @{
+        var clickRoomList = GraphicsData.ClickRoomList();
+    }
+
+    @foreach (var item in clickRoomList)
+    {
+        <BlankClickableSquare SpaceLocation="item.rect.Location"
+                              SpaceSize="item.rect.Size"
+                              SpaceClicked="() => RoomClickedAsync(item.id)" />
+    }
+    @* take advantage that the square will override the room part. *@
+    @{
+        var clickSquareList = GraphicsData.ClickSquareList();
+    }
+    @foreach (var item in clickSquareList)
+    {
+        <BlankClickableSquare SpaceLocation="item.rect.Location"
+                              SpaceSize="item.rect.Size"
+                              SpaceClicked="() => SpaceClickedAsync(item.id)" />
+    }
+</RawGameBoard>

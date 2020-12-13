@@ -1,0 +1,5 @@
+﻿<BaseSingleMiscPileBlazor D="CardInfo" SinglePile="SinglePile">
+    <MainTemplate Context="Card">
+        <ClueCardBlazor ClickBlank="true" @key="Card.Deck" TargetHeight="@RealHeight" DeckObject="Card" CommandParameter="Card" CommandObject="SinglePile!.PileObjectClickedCommand" />
+    </MainTemplate>
+</BaseSingleMiscPileBlazor>

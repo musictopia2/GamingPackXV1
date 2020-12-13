@@ -1,0 +1,32 @@
+﻿@if (DetectiveList == null || DataContext == null)
+{
+    return;
+}
+@if (DetectiveCategory == EnumDetectiveCategory.Prediction)
+{
+    <div style="margin-bottom: 10px">
+        <DetectiveRawBoard TargetWidth="@pp.TargetGridWidth"
+                           BoardSize="pp.HeaderSize">
+            <RawRectangle Rectangle="pp.RoomHeaderLocation">
+
+                <CenteredSvgText Text="Rooms" FontSize="@pp.HeaderFontSize" IsBold="true" TextColor="white" />
+            </RawRectangle>
+            <RawRectangle Rectangle="pp.CharacterHeaderLocation">
+                <CenteredSvgText Text="Characters" FontSize="@pp.HeaderFontSize" IsBold="true" TextColor="white" />
+            </RawRectangle>
+            <RawRectangle Rectangle="pp.WeaponHeaderLocation">
+                <CenteredSvgText Text="Weapons" FontSize="@pp.HeaderFontSize" IsBold="true" TextColor="white" />
+            </RawRectangle>
+        </DetectiveRawBoard>
+    </div>
+}
+<DetectiveRawBoard TargetWidth="@pp.TargetGridWidth"
+                   BoardSize="@pp.MainSize">
+    @foreach (var item in DetectiveList.Values)
+    {
+        var current = GetButtonLocation(item);
+        <DetectiveButton DataContext="DataContext"
+                         Bounds="current"
+                         CommandParameter="item" />
+    }
+</DetectiveRawBoard>

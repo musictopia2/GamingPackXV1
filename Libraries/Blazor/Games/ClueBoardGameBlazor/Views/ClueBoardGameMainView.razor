@@ -1,0 +1,49 @@
+@inherits BasicGameView<ClueBoardGameMainViewModel>
+<HorizontalDiv Margins="5px">
+    <GameBoardBlazor GraphicsData="_graphicsData"
+                     TargetHeight="87vh" />
+    <div>
+        <HorizontalDiv Margins="5px">
+            <BasePieceGraphics LongestSize="50" TargetHeight="9vh">
+                <PawnPiece MainColor="@GetColor" />
+            </BasePieceGraphics>
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </HorizontalDiv>
+    </div>
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <ClueHandBlazor Hand="DataContext!.GetHand" />
+    <div>
+        <CascadingValue Value="EnumDetectiveCategory.Prediction">
+            <DetectiveGraphicsBlazor DetectiveList="_graphicsData!.GameContainer!.DetectiveList" />
+        </CascadingValue>
+    </div>
+    <div style="margin-top: 20px">
+        <CascadingValue Value="EnumDetectiveCategory.Notebook">
+            <DetectiveGraphicsBlazor DetectiveList="_graphicsData!.GameContainer!.DetectiveList" />
+        </CascadingValue>
+    </div>
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <CluePileBlazor SinglePile="DataContext!.GetPile" />
+    <div>
+        Instructions: @DataContext.Instructions
+    </div>
+    <div style="font-size: 20vh; color: white">
+        @DataContext.LeftToMove
+        <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
+    </div>
+    <GameButtonComponent DataContext="@DataContext" MethodName="@RollMethod" StartOnNewLine="true" Display="Roll Dice" />
+    <GameButtonComponent DataContext="@DataContext" MethodName="@PredictMethod" StartOnNewLine="true" Display="Predict" />
+    <GameButtonComponent DataContext="@DataContext" MethodName="@AccusationMethod" StartOnNewLine="true" Display="Accusation" />
+    <GameButtonComponent DataContext="@DataContext" StartOnNewLine="true" MethodName="@EndMethod" Display="End Turn" />
+    <LabelGridComponent DataContext="DataContext" Labels="_clues" />
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

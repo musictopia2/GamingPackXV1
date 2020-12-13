@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="37">
+	<defs>
+		<pattern id="pattern_0" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse" width="100" height="100" x="0" y="0">
+			<image id="img_0" x="0" y="0" width="100" height="100" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABHNCSVQICAgIfAhkiAAAAU1JREFUeJzt1bENAkEQBMH5F4GRGaEfBogQUBt1XnkjrXR97Zzntue27bq2c/Z7/Hc/9jnGqzCGz+7SGN7u0hje7tIYvr5fVmQMa0jOGhKzhsSsITFrSMwaErOGxKwhMWtIzBoSs4bErCExa0jMGhKzhsSsITFrSMwaErOGxKwhMWtIzBoSs4bErCExa0jMGhKzhsSsITFrSMwaErOGxKwhMWtIzBoSs4bErCExa0jMGhKzhsSsITFrSMwaErOGxKwhMWtIzBoSs4bErCExa0jMGhKzhsSsITFrSMwaErOGxKwhMWtIzBoSs4bErCExa0jMGhKzhsSsITFrSMwaErOGxKwhMWtIzBoSs4bErCExa0jMGhKzhsSsITFrSMwaErOGxKwhMWtIzBoSs4bErCExa0jMGhKzhsSsITFrSMwaErOGxKwhMWtIzBoS8xtFw4sm3wM2cAAAAABJRU5ErkJggg=="/>
+		</pattern>
+	</defs>
+	<path fill="url(#pattern_0)" stroke="none" d="M0 0L15 0L15 37L0 37L0 0Z"/>
+	<path fill="none" stroke="rgb(0,0,0)" stroke-width="1" stroke-miterlimit="4" d="M0 0L15 0L15 37L0 37L0 0Z"/>
+	<path fill="rgb(0,255,255)" stroke="none" d="M0 7.4L15 7.4L15 29.6L0 29.6L0 7.4Z"/>
+	<path fill="none" stroke="rgb(0,0,0)" stroke-width="1" stroke-miterlimit="4" d="M0 7.4L15 7.4L15 29.6L0 29.6L0 7.4Z"/>
+</svg>
