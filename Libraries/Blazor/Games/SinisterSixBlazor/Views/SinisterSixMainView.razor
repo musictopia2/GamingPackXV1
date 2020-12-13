@@ -1,0 +1,19 @@
+@inherits BasicGameView<SinisterSixMainViewModel>
+<div style="height: 22vh">
+    <GameButtonComponent DataContext="@DataContext" MethodName="@RollMethod" Display="Roll Dice" />
+    <GameButtonComponent DataContext="@DataContext" MethodName="@EndMethod" Display="End Turn" />
+    <DiceListConrolBlazor D="EightSidedDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
+</div>
+<div>
+    <GameButtonComponent DataContext="@DataContext" MethodName="@RemoveSelectedMethod" Display="Remove Selected Dice" />
+</div>
+<LabelGridComponent DataContext="DataContext" Labels="_labels" />
+<div>
+    <ScoreBoardBlazor P="SinisterSixPlayerItem" Columns="@_scores" Players="@DataContext!.PlayerList" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
