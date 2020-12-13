@@ -1,0 +1,9 @@
+@inherits KeyComponentBase
+<BaseDrawPileBlazor D="Pinochle2PlayerCardInformation" DeckAnimationTag="@DeckAnimationTag" DeckPile="@DeckPile">
+    <CanvasTemplate Context="Card">
+        <CardGraphicsBlazor TargetHeight="@RealHeight" DeckObject="Card" />
+    </CanvasTemplate>
+    <MainTemplate Context="Card">
+        <CardGraphicsBlazor ClickBlank="true" @key="GetKey" TargetHeight="@RealHeight" DeckObject="Card" CommandParameter="Card" CommandObject="DeckPile!.DeckObjectClickedCommand" />
+    </MainTemplate>
+</BaseDrawPileBlazor>

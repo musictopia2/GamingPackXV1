@@ -1,0 +1,86 @@
+﻿@using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
+@if (GameData == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="Scoring Guide">
+    <GridContainer Rows="@GetRows"  Columns="340px auto">
+        <GridItem Style="margin-left: 5px; margin-right: 5px;">
+            <BoldLabel Style="font-size: 2rem;" Text="Point Values:" />
+        </GridItem>
+        @{
+            int row = 2;
+        }
+        @foreach (var score in GameData.Guide1.PointValueList)
+        {
+            <GridItem Style="margin-left: 5px; margin-right: 5px;" Row="row">
+                @score.Description
+            </GridItem>
+            <GridItem Style="margin-left: 5px; margin-right: 5px;" Row="row"
+                      Column="2">
+                @score.Score.ConvertToSpecificStrings(3)
+            </GridItem>
+            row++;
+        }
+        <GridItem Style="margin-left: 5px; margin-right: 5px; margin-top: 10px" Row="row">
+            <BoldLabel Style="font-size: 2rem; " Text="Value Of Melds:" />
+        </GridItem>
+        @{ 
+            row++;
+        }
+        <GridItem Style="margin-left: 5px; margin-right: 5px;" Row="row">
+            <div style="margin-top: 20px">
+                <BoldLabel Style="font-size: 1.5rem;" Text="Class A" />
+            </div>
+        </GridItem>
+        @foreach (var score in GameData.Guide1.ClassAList)
+        {
+            row++;
+            <GridItem Style="margin-left: 5px; margin-right: 5px;" Row="row">
+                @score.Description
+            </GridItem>
+            <GridItem Style="margin-left: 5px; margin-right: 5px;" Row="row"
+                      Column="2">
+                @score.Score.ConvertToSpecificStrings(3)
+            </GridItem>
+        }
+        @{
+            row++;
+        }
+        <GridItem Style="margin-left: 5px; margin-right: 5px;" Row="row">
+            <div style="margin-top: 20px">
+                <BoldLabel Style="font-size: 1.5rem;" Text="Class B" />
+            </div>
+        </GridItem>
+        @foreach (var score in GameData.Guide1.ClassBList)
+        {
+            row++;
+            <GridItem Style="margin-left: 5px; margin-right: 5px;" Row="row">
+                @score.Description
+            </GridItem>
+            <GridItem Style="margin-left: 5px; margin-right: 5px;" Row="row"
+                      Column="2">
+                @score.Score.ConvertToSpecificStrings(3)
+            </GridItem>
+        }
+        @{
+            row++;
+        }
+        <GridItem Style="margin-left: 5px; margin-right: 5px;" Row="row">
+            <div style="margin-top: 20px">
+                <BoldLabel Style="font-size: 1.5rem;" Text="Class C" />
+            </div>
+        </GridItem>
+        @foreach (var score in GameData.Guide1.ClassCList)
+        {
+            row++;
+            <GridItem Style="margin-left: 5px; margin-right: 5px;" Row="row">
+                @score.Description
+            </GridItem>
+            <GridItem Style="margin-left: 5px; margin-right: 5px;" Row="row"
+                      Column="2">
+                @score.Score.ConvertToSpecificStrings(3)
+            </GridItem>
+        }
+    </GridContainer>
+</BaseFrameBlazor>

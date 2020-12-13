@@ -1,0 +1,64 @@
+@inherits BasicGameView<Pinochle2PlayerMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<GridContainer Columns="70vw auto">
+    <GridItem>
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsSingleMiscPileBlazor R="Pinochle2PlayerCardInformation" SinglePile="_vmData.Pile1" />
+            <DeckOfCardsDrawPileBlazor R="Pinochle2PlayerCardInformation" DeckPile="_vmData.Deck1" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsTwoPlayerTrickBlazor T="Pinochle2PlayerCardInformation" DataContext="_vmData.TrickArea1" />
+        </HorizontalDiv>
+        <div>
+            <DeckOfCardsHandBlazor R="Pinochle2PlayerCardInformation" Hand="_vmData.PlayerHand1" />
+        </div>
+        <div>
+            <HorizontalDiv Margins="5px">
+                <GameButtonComponent StartOnNewLine="true"
+                                     DataContext="DataContext"
+                                     MethodName="@MeldMethod"
+                                     Display="Meld" />
+                <GameButtonComponent StartOnNewLine="true"
+                                     DataContext="DataContext"
+                                     MethodName="@EndMethod"
+                                     Display="End Turn" />
+            </HorizontalDiv>
+            <HorizontalDiv Margins="5px">
+                <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+            </HorizontalDiv>
+            <HorizontalDiv Margins="5px">
+                <DeckOfCardsHandBlazor HandType="EnumHandList.Vertical"
+                                       Divider="1.5"
+                                       TargetContainerSize="60vh"
+                                       Hand="_vmData.YourMelds"
+                                       R="Pinochle2PlayerCardInformation" />
+            </HorizontalDiv>
+            <HorizontalDiv Margins="5px">
+                <DeckOfCardsHandBlazor HandType="EnumHandList.Vertical"
+                                       Divider="1.5"
+                                       TargetContainerSize="60vh"
+                                       Hand="_vmData.OpponentMelds"
+                                       R="Pinochle2PlayerCardInformation" />
+            </HorizontalDiv>
+            <HorizontalDiv Margins="5px">
+                <ScoreBoardBlazor P="Pinochle2PlayerPlayerItem"
+                                  Columns="_scores"
+                                  Players="_gameContainer.SaveRoot.PlayerList" />
+            </HorizontalDiv>
+        </div>
+        @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+        {
+            <ParentControl VM="RestoreViewModel">
+                <RestoreView />
+            </ParentControl>
+        }
+    </GridItem>
+    <GridItem Column="2">
+        <div>
+            <GuideUI GameData="_vmData" />
+        </div>
+    </GridItem>
+</GridContainer>
