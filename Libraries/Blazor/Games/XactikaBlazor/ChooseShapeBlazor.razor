@@ -1,0 +1,20 @@
+﻿@using BasicBlazorLibrary.Components.RenderHelpers; 
+@if (ShapeData == null )
+{
+    return;
+}
+<VisibleHiddenComponent Visible="ShapeData.Visible">
+    @foreach (var piece in ShapeData.PieceList)
+    {
+        <HorizontalDiv Margins="5px">
+            <BasePieceGraphics CommandObject="ShapeData.ShapeSelectedCommand"
+                               CommandParameter="piece"
+                               @key="piece"
+                               IsSelected="piece.IsSelected"
+                               TargetHeight="@TargetHeight">
+                <PieceBlazor HowMany="piece.HowMany"
+                             ShapeUsed="piece.ShapeUsed" />
+            </BasePieceGraphics>
+        </HorizontalDiv>
+    }
+</VisibleHiddenComponent>

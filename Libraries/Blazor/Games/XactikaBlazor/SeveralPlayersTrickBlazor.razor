@@ -1,0 +1,13 @@
+﻿@if (DataContext == null)
+{
+    return;
+}
+<BaseSeveralPlayersTrickBlazor S="EnumShapes"
+                                T="XactikaCardInformation"
+                                B="SeveralPlayersTrickObservable<EnumShapes, XactikaCardInformation, XactikaPlayerItem, XactikaSaveInfo>"
+                                P="XactikaPlayerItem"
+                                ExtraLongSecondColumn="ExtraLongSecondColumn"
+                                DataContext="GetTricks()"
+                                Context="Card">
+    <CardGraphicsBlazor TargetHeight="@RealHeight" DeckObject="Card" CommandParameter="Card" CommandObject="DataContext!.CardSingleClickCommand" />
+</BaseSeveralPlayersTrickBlazor>

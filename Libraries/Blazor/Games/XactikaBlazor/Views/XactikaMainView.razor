@@ -1,0 +1,48 @@
+@inherits BasicGameView<XactikaMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<GridContainer Inline="true" Columns="65vw auto">
+    <GridItem>
+        <HorizontalDiv Margins="5px">
+            <SeveralPlayersTrickBlazor DataContext="_vmData.TrickArea1" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <ChooseShapeBlazor TargetHeight="15vh"
+                               ShapeData="_vmData.ShapeChoose1" />
+            <ParentControl VM="XactikaSubmitShapeViewModel">
+                <div>
+                    <XactikaSubmitShapeView />
+                </div>
+            </ParentControl>
+            <ParentControl VM="XactikaBidViewModel">
+                <XactikaBidView />
+            </ParentControl>
+        </HorizontalDiv>
+        <div>
+            <HandBlazor Hand="_vmData.PlayerHand1" />
+        </div>
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
+    </GridItem>
+    <GridItem Column="2">
+        <HorizontalDiv Margins="5px">
+            <ScoreBoardBlazor P="XactikaPlayerItem"
+                              Columns="_scores"
+                              Players="_gameContainer.SaveRoot.PlayerList" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <RawGameBoard BoardSize="new SizeF(121, 225)" TargetHeight="75vh">
+                <StatsBoardBlazor />
+            </RawGameBoard>
+        </HorizontalDiv>
+    </GridItem>
+</GridContainer>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

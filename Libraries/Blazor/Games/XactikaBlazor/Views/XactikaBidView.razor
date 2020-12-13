@@ -1,0 +1,17 @@
+﻿@inherits BasicGameView<XactikaBidViewModel>
+@if (DataContext == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="Bid Info">
+    <div>
+        <NumberChooserBlazor Columns="5"
+                             Rows="2"
+                             NumberPicker="DataContext.Model.Bid1" />
+    </div>
+    <div>
+        <GameButtonComponent DataContext="DataContext"
+                             MethodName="@BidMethod"
+                             Display="Place Bid" />
+    </div>
+</BaseFrameBlazor>
