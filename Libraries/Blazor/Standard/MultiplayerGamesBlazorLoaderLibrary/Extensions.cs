@@ -13,6 +13,7 @@ namespace MultiplayerGamesBlazorLoaderLibrary
             services.AddTransient<ILoaderVM, V>();
             services.AddTransient<IStartUp, MainStartUp>();
             GlobalStartUp.KeysToSave.Clear(); //go ahead and clear just in case.
+            GlobalClass.Multiplayer = true; //this is multiplayer.
             //i think here is a good place to go ahead and add to list exception.
             GlobalStartUp.KeysToSave.Add(GlobalDataModel.LocalStorageKey); //if i change it, will change everywhere.
         }
