@@ -1,0 +1,28 @@
+@inherits BasicGameView<GermanWhistMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsDrawPileBlazor R="GermanWhistCardInformation" DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<div>
+    <DeckOfCardsTwoPlayerTrickBlazor T="GermanWhistCardInformation" DataContext="_vmData.TrickArea1" />
+</div>
+<div>
+    <DeckOfCardsHandBlazor R="GermanWhistCardInformation" Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+<div>
+    <ScoreBoardBlazor P="GermanWhistPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
