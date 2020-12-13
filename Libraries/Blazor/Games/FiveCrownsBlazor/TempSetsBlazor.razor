@@ -1,0 +1,11 @@
+﻿<BaseTempSetsBlazor CO="EnumColorList"
+                    SU="EnumSuitList"
+                    RU="FiveCrownsCardInformation"
+                    TargetContainerSize="@TargetContainerSize"
+                    TempPiles="@TempPiles"
+                    Context="Details">
+    <CardGraphicsBlazor DataContext="Details.Hand"
+                        CommandObject="Details.Hand!.ObjectSingleClickCommand"
+                        CommandParameter="Details.Image"
+                        DeckObject="Details.Image" />
+</BaseTempSetsBlazor>

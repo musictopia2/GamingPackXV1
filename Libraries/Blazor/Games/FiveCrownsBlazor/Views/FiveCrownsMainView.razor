@@ -1,0 +1,44 @@
+@inherits BasicGameView<FiveCrownsMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <HandBlazor Hand="_vmData.PlayerHand1" />
+    <GameButtonComponent DataContext="DataContext"
+                         Display="Lay Down"
+                         MethodName="@LayDownMethod" />
+    <GameButtonComponent DataContext="DataContext"
+                         Display="Back"
+                         MethodName="@BackMethod" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DrawPileBlazor DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <ScoreBoardBlazor P="FiveCrownsPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</HorizontalDiv>
+<div>
+    <HorizontalDiv Margins="5px">
+        <TempSetsBlazor TargetContainerSize="70vh"
+                        TempPiles="_vmData.TempSets" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <MainRummySetsBlazor ContainerHeight="70vh"
+                             DataContext="_vmData.MainSets" />
+    </HorizontalDiv>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
