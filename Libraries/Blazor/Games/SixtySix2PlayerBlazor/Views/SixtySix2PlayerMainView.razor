@@ -1,0 +1,47 @@
+@inherits BasicGameView<SixtySix2PlayerMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<GridContainer Inline="true" Columns="60vw auto">
+    <GridItem>
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsSingleMiscPileBlazor R="SixtySix2PlayerCardInformation" SinglePile="_vmData.Pile1" />
+            <DeckOfCardsDrawPileBlazor R="SixtySix2PlayerCardInformation" DeckPile="_vmData.Deck1" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsTwoPlayerTrickBlazor T="SixtySix2PlayerCardInformation" DataContext="_vmData.TrickArea1" />
+        </HorizontalDiv>
+        <div>
+            <DeckOfCardsHandBlazor R="SixtySix2PlayerCardInformation" Hand="_vmData.PlayerHand1" />
+        </div>
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
+        <div>
+            <ScoreBoardBlazor P="SixtySix2PlayerPlayerItem"
+                              Columns="_scores"
+                              Players="_gameContainer.SaveRoot.PlayerList" />
+        </div>
+        <div>
+            <GameButtonComponent DataContext="DataContext"
+                                 MethodName="@OutMethod"
+                                 Display="Go Out" />
+            <GameButtonComponent DataContext="DataContext"
+                                 MethodName="@MarriageMethod"
+                                 Display="Announce Marriage" />
+        </div>
+        <div>
+            <DeckOfCardsHandBlazor R="SixtySix2PlayerCardInformation" Hand="_vmData.Marriage1" />
+        </div>
+    </GridItem>
+    <GridItem Column="2">
+        <GuideUI GameData="_vmData" />
+    </GridItem>
+</GridContainer>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

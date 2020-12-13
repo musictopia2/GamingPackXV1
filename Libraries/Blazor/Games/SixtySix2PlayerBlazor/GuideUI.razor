@@ -1,0 +1,17 @@
+﻿@using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
+@if (GameData == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="Scoring Guide">
+    <BoldLabel Style="font-size: 2rem" Text="Point Values:" />
+    <table cellpadding="4">
+        @foreach (var score in _scores)
+        {
+            <tr>
+                <td>@score.Description</td>
+                <td>@score.Score.ConvertToSpecificStrings(2)</td>
+            </tr>
+        }
+    </table>
+</BaseFrameBlazor>
