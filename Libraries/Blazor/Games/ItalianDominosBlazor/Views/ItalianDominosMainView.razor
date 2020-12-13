@@ -1,0 +1,24 @@
+@inherits BasicGameView<ItalianDominosMainViewModel>
+<BaseBoneyardPileBlazor D="SimpleDominoInfo" BoneyardPile="DataContext!.BoneYard" LI="DominosBasicShuffler<SimpleDominoInfo>">
+    <BasicDominoBlazor D="SimpleDominoInfo" DeckObject="GetDomino" TargetHeight="10vh" />
+</BaseBoneyardPileBlazor>
+<div>
+    <BaseHandBlazor Hand="DataContext.PlayerHand" AdditionalSpacing="0" Context="Domino" D="SimpleDominoInfo">
+        <BasicDominoBlazor D="SimpleDominoInfo" PartOfBoard="true" DeckObject="Domino" CommandObject="DataContext.PlayerHand.ObjectSingleClickCommand" CommandParameter="Domino" />
+    </BaseHandBlazor>
+</div>
+<div>
+    <GameButtonComponent DataContext="DataContext" Display="Play" MethodName="@PlayMethod" />
+    <HorizontalDiv LeftOnly="5px">
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="5px">
+        <ScoreBoardBlazor UseAbbreviationForTrueFalse="false" P="ItalianDominosPlayerItem" Players="DataContext.GetPlayerList" Columns="_scores" />
+    </HorizontalDiv>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
