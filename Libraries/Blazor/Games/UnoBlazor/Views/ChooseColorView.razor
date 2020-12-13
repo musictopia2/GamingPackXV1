@@ -1,0 +1,10 @@
+﻿@if (_data == null || DataContext == null)
+{
+    return;
+}
+<EnumPickerBlazor E="EnumColorTypes" Context="Piece" ListPicker="_data.ColorPicker">
+    <CheckerPiece MainColor="@GetColor(Piece)" />
+</EnumPickerBlazor>
+<div>
+    <HandBlazor Hand="_data.PlayerHand1" />
+</div>

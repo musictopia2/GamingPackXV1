@@ -1,0 +1,38 @@
+@inherits BasicGameView<UnoMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DrawPileBlazor DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <GameButtonComponent DataContext="DataContext"
+                         Display="End Turn"
+                         MethodName="@EndTurnMethod" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <ParentControl VM="SayUnoViewModel">
+        <SayUnoView />
+    </ParentControl>
+</HorizontalDiv>
+<div>
+    <HandBlazor Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+<div>
+    <ScoreBoardBlazor P="UnoPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
