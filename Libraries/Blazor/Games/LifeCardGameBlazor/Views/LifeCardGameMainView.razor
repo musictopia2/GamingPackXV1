@@ -1,0 +1,57 @@
+@inherits BasicGameView<LifeCardGameMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<CascadingValue Value="_vmData">
+    <GridContainer Inline="true" Columns="@GetColums" ColumnGap="5px">
+        <GridItem>
+            <HorizontalDiv Margins="5px">
+                <DrawPileBlazor DeckPile="_vmData.Deck1" />
+            </HorizontalDiv>
+            <HorizontalDiv Margins="5px">
+                <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+            </HorizontalDiv>
+            <HorizontalDiv Margins="5px">
+                <SingleMiscPileBlazor SinglePile="_vmData.CurrentPile" PileAnimationTag="" />
+            </HorizontalDiv>
+            <div>
+                <GameButtonComponent DataContext="DataContext"
+                                     MethodName="@YearsMethod"
+                                     Display="Years Passed" />
+                <GameButtonComponent DataContext="DataContext"
+                                     MethodName="@PlayMethod"
+                                     Display="Play Card" />
+                <ParentControl VM="OtherViewModel">
+                    <OtherView />
+                </ParentControl>
+            </div>
+            <div>
+                <HandBlazor Hand="_vmData.PlayerHand1" />
+            </div>
+            <div>
+                <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+            </div>
+            <div>
+                <ScoreBoardBlazor P="LifeCardGamePlayerItem"
+                                  Columns="_scores"
+                                  Players="_gameContainer.SaveRoot.PlayerList" />
+            </div>
+        </GridItem>
+        <GridItem Column="2">
+            @foreach (var player in _players)
+            {
+                <HandBlazor Hand="player.LifeStory"
+                            HandType="EnumHandList.Vertical"
+                            TargetContainerSize="90vh"
+                            Divider="4" />
+            }
+        </GridItem>
+    </GridContainer>
+    @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+    {
+        <ParentControl VM="RestoreViewModel">
+            <RestoreView />
+        </ParentControl>
+    }
+</CascadingValue>

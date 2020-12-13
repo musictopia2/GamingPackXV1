@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20">
+	<rect fill="rgb(255,0,0)" stroke="none" width="20" height="20"/>
+	<path fill="rgb(255,255,255)" stroke="none" d="M2 14L2 9L4 8L6 2L14 2L16 8L18 9L18 14L2 14Z"/>
+	<path fill="none" stroke="rgb(0,0,0)" stroke-width="0.40000001" stroke-miterlimit="4" d="M2 14L2 9L4 8L6 2L14 2L16 8L18 9L18 14L2 14Z"/>
+	<path fill="rgb(255,255,255)" stroke="none" d="M6 7L7 3L13 3L14 7L6 7Z"/>
+	<path fill="none" stroke="rgb(0,0,0)" stroke-width="0.40000001" stroke-miterlimit="4" d="M6 7L7 3L13 3L14 7L6 7Z"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="3" y="14.5" width="2" height="4"/>
+	<rect fill="none" stroke="rgb(0,0,0)" stroke-width="0.40000001" stroke-miterlimit="4" x="3" y="14.5" width="2" height="4"/>
+	<rect fill="rgb(255,255,255)" stroke="none" x="15" y="14.5" width="2" height="4"/>
+	<rect fill="none" stroke="rgb(0,0,0)" stroke-width="0.40000001" stroke-miterlimit="4" x="15" y="14.5" width="2" height="4"/>
+	<ellipse fill="rgb(255,255,255)" stroke="none" cx="5.666667" cy="11.666666" rx="0.66666675" ry="0.66666651"/>
+	<ellipse fill="rgb(255,255,255)" stroke="none" cx="15.666667" cy="11.666666" rx="0.66666698" ry="0.66666651"/>
+</svg>

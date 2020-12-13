@@ -1,0 +1,5 @@
+﻿@if (GameData == null || DataContext == null)
+{
+    return;
+}
+<GameButtonComponent DataContext="DataContext" MethodName="@SubmitMethod" Display="@GameData.OtherText" />
