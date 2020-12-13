@@ -32,6 +32,7 @@ namespace BasicGamingUIBlazorLibrary.Shells
             if (BasicData.NickName != "")
             {
                 _hadNickName = true; //because it got it somehow even if from native or other external process.
+                _loading = false; //try this.
             }
             base.OnInitialized();
         }
@@ -42,7 +43,7 @@ namespace BasicGamingUIBlazorLibrary.Shells
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            if (BasicData == null || JS == null)
+            if (BasicData == null || JS == null || _hadNickName)
             {
                 return;
             }
