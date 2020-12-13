@@ -1,0 +1,35 @@
+@inherits BasicGameView<DominosMexicanTrainMainViewModel>
+<BaseHandBlazor Hand="DataContext!.PlayerHand" AdditionalSpacing="0" Context="Domino" D="MexicanDomino">
+    <BasicDominoBlazor PartOfBoard="true" D="SimpleDominoInfo" DeckObject="Domino" CommandObject="DataContext.PlayerHand.ObjectSingleClickCommand" CommandParameter="Domino" />
+</BaseHandBlazor>
+<div>
+    <HorizontalDiv>
+        <div>
+            <BaseBoneyardPileBlazor D="MexicanDomino" BoneyardPile="DataContext!.BoneYard" LI="DominosBasicShuffler<MexicanDomino>">
+                <BasicDominoBlazor D="MexicanDomino" DeckObject="GetDomino" TargetHeight="10vh" />
+            </BaseBoneyardPileBlazor>
+        </div>
+        <div>
+            <GameButtonComponent MethodName="@EndMethod" Display="End Turn" DataContext="DataContext" />
+            <GameButtonComponent MethodName="@LongestMethod" Display="Longest Train" DataContext="DataContext" />
+        </div>
+        <ScoreBoardBlazor P="DominosMexicanTrainPlayerItem" Players="DataContext.GetPlayerList" Columns="_scores" />
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
+    </HorizontalDiv>
+    <HorizontalDiv>
+        <TrainStationBlazor TargetWidth="39" GameBoard="DataContext.GameBoard" />
+    </HorizontalDiv>
+</div>
+<div>
+    <BaseHandBlazor Hand="DataContext.PrivateTrain" AdditionalSpacing="0" Context="Domino" D="MexicanDomino">
+        <BasicDominoBlazor PartOfBoard="true" D="SimpleDominoInfo" DeckObject="Domino" CommandObject="DataContext.PrivateTrain.ObjectSingleClickCommand" CommandParameter="Domino" />
+    </BaseHandBlazor>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
