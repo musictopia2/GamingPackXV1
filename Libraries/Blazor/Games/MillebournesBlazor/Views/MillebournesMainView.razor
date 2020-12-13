@@ -1,0 +1,55 @@
+@inherits BasicGameView<MillebournesMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<CascadingValue Value="_gameContainer">
+    <GridContainer Columns="@GetColumns" Rows="@GetRows">
+        <GridItem RowSpan="3">
+            <HorizontalDiv Margins="5px">
+                <DrawPileBlazor DeckPile="_vmData.Deck1" />
+            </HorizontalDiv>
+            <HorizontalDiv Margins="5px">
+                <SingleMiscPileBlazor SinglePile="_vmData.Pile2" />
+            </HorizontalDiv>
+            <HorizontalDiv Margins="5px">
+                <SingleMiscPileBlazor SinglePile="_vmData.Pile1" PileAnimationTag="" />
+            </HorizontalDiv>
+            <HorizontalDiv Margins="5px">
+                <ParentControl VM="CoupeViewModel">
+                    <CoupeView />
+                </ParentControl>
+            </HorizontalDiv>
+            <div>
+                <HandBlazor Hand="_vmData.PlayerHand1" />
+            </div>
+            <div>
+                <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+            </div>
+            <div>
+                <ScoreBoardBlazor P="MillebournesPlayerItem"
+                                  Columns="_scores"
+                                  Players="_gameContainer.SaveRoot.PlayerList" />
+            </div>
+        </GridItem>
+        @{
+            int x = 0;
+        }
+        @foreach (var team in _gameContainer.TeamList)
+        {
+            x++;
+            <GridItem Row="@x" Column="2">
+
+                <HorizontalDiv Margins="0px">
+                    <div style="text-align: center">
+                        <BoldLabel Text="@team.Text" />
+                    </div>
+                    <MultiplePilesBlazor AnimationTag="@GetAnimationTag(team)" Piles="team.CardPiles" />
+                </HorizontalDiv>
+                <HorizontalDiv Margins="0px">
+                    <SafetiesBlazor Team="team" />
+                </HorizontalDiv>
+            </GridItem>
+        }
+    </GridContainer>
+</CascadingValue>

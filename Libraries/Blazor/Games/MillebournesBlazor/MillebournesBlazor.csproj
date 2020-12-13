@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="CommonBasicStandardLibraries" Version="3.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+    <PackageReference Include="BasicBlazorLibrary" Version="1.0.0" />
+    <PackageReference Include="SvgHelper.Blazor" Version="1.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
+    <ProjectReference Include="..\..\Standard\BasicGamingUIBlazorLibrary\BasicGamingUIBlazorLibrary.csproj" />
+    <ProjectReference Include="..\..\..\CrossPlatform\Games\MillebournesCP\MillebournesCP.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Accident.svg" />
+    <None Remove="Resources\DrivingAce.svg" />
+    <None Remove="Resources\EndOfLimit.svg" />
+    <None Remove="Resources\ExtraTank.svg" />
+    <None Remove="Resources\FlatTire.svg" />
+    <None Remove="Resources\Gasoline.svg" />
+    <None Remove="Resources\OutOfGas.svg" />
+    <None Remove="Resources\PunctureProof.svg" />
+    <None Remove="Resources\Repairs.svg" />
+    <None Remove="Resources\RightOfWay.svg" />
+    <None Remove="Resources\Roll.svg" />
+    <None Remove="Resources\Spare.svg" />
+    <None Remove="Resources\SpeedLimit.svg" />
+    <None Remove="Resources\Stop.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Accident.svg" />
+    <EmbeddedResource Include="Resources\DrivingAce.svg" />
+    <EmbeddedResource Include="Resources\EndOfLimit.svg" />
+    <EmbeddedResource Include="Resources\ExtraTank.svg" />
+    <EmbeddedResource Include="Resources\FlatTire.svg" />
+    <EmbeddedResource Include="Resources\Gasoline.svg" />
+    <EmbeddedResource Include="Resources\OutOfGas.svg" />
+    <EmbeddedResource Include="Resources\PunctureProof.svg" />
+    <EmbeddedResource Include="Resources\Repairs.svg" />
+    <EmbeddedResource Include="Resources\RightOfWay.svg" />
+    <EmbeddedResource Include="Resources\Roll.svg" />
+    <EmbeddedResource Include="Resources\Spare.svg" />
+    <EmbeddedResource Include="Resources\SpeedLimit.svg" />
+    <EmbeddedResource Include="Resources\Stop.svg" />
+  </ItemGroup>
+  
+  
+  
+  
+</Project>

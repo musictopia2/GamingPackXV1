@@ -1,0 +1,25 @@
+﻿@if (GameContainer == null || Team == null || GameContainer.SingleInfo == null)
+{
+    return;
+}
+@foreach (var safety in Team.SafetyList)
+{
+    @if (safety.WasCoupe)
+    {
+        <BoldLabel StartsOnNextLine="true" Text="@safety.SafetyName" />
+    }
+    else
+    {
+        <div>
+            @safety.SafetyName
+        </div>
+    }
+}
+@if (Team.SafetyEnabled && GameContainer.SingleInfo.Team == Team.TeamNumber)
+{
+    <GameButtonComponent StartOnNewLine="true"
+                         Display="Safety"
+                         MethodName="@ClickName"
+                         CommandParameter="Team"
+                         DataContext="DataContext" />
+}

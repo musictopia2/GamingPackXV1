@@ -1,0 +1,17 @@
+﻿<BasicMultiplePilesBlazor D="MillebournesCardInformation" Inline="@Inline"
+                          AnimationTag="@AnimationTag"
+                          Piles="@Piles">
+    <CanvasTemplate Context="Card">
+        <CardGraphicsBlazor TargetHeight="@RealHeight" DeckObject="Card" />
+    </CanvasTemplate>
+    <MainTemplate Context="Pile">
+        <PrivateBasicIndividualPileBlazor Context="Card" D="MillebournesCardInformation" IndividualPile="Pile">
+            <CardGraphicsBlazor ClickBlank="true"
+                                TargetHeight="@RealHeight"
+                                DeckObject="Card"
+                                DataContext="Piles"
+                                CommandParameter="Pile"
+                                CommandObject="Piles!.PileCommand" />
+        </PrivateBasicIndividualPileBlazor>
+    </MainTemplate>
+</BasicMultiplePilesBlazor>

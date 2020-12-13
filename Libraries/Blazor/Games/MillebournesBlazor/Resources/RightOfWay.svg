@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="55" height="72">
+	<path fill="none" stroke="rgb(0,0,255)" stroke-width="1.1" stroke-miterlimit="4" d="M6 22L50 36"/>
+	<path fill="none" stroke="rgb(0,0,255)" stroke-width="1.1" stroke-miterlimit="4" d="M6 29L50 29"/>
+	<path fill="none" stroke="rgb(0,0,255)" stroke-width="1.1" stroke-miterlimit="4" d="M6 36L50 22"/>
+	<path fill="rgb(255,255,255)" stroke="none" d=""/>
+	<path fill="rgb(0,0,255)" stroke="none" d="M18.3333 21.6Q27.5 18 36.6667 21.6L37 36L18 36L18.3333 21.6Z"/>
+	<path fill="rgb(255,255,255)" stroke="none" d="M22.9167 27Q27.5 24 32.0833 27L32 32L23 32L22.9167 27Z"/>
+	<rect fill="rgb(0,0,0)" stroke="none" x="13.75" y="36" width="27.5" height="7.2000008"/>
+</svg>
