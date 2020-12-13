@@ -1,0 +1,39 @@
+@inherits BasicGameView<SorryCardGameMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<CascadingValue Value="_gameContainer">
+    <HorizontalDiv Margins="5px">
+        <DrawPileBlazor DeckPile="_vmData.Deck1" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <SingleMiscPileBlazor PileAnimationTag="otherpile" SinglePile="_vmData.OtherPile" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <BoldLabel Style="font-size: 8vh;" Text="@DataContext.UpTo.ToString()" />
+    </HorizontalDiv>
+    <div>
+        <HandBlazor Hand="_vmData.PlayerHand1" />
+    </div>
+    <div>
+        @foreach (var player in _playerList)
+        {
+            <HorizontalDiv Margins="5px">
+                <BoardBlazor Player="player" />
+            </HorizontalDiv>
+        }
+    </div>
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </div>
+    @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+    {
+        <ParentControl VM="RestoreViewModel">
+            <RestoreView />
+        </ParentControl>
+    }
+</CascadingValue>
