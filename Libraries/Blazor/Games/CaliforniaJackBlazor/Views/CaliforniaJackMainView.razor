@@ -1,0 +1,28 @@
+@inherits BasicGameView<CaliforniaJackMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsDrawPileBlazor R="CaliforniaJackCardInformation" DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<div>
+    <DeckOfCardsTwoPlayerTrickBlazor T="CaliforniaJackCardInformation" DataContext="_vmData.TrickArea1" />
+</div>
+<div>
+    <DeckOfCardsHandBlazor R="CaliforniaJackCardInformation" Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+<div>
+    <ScoreBoardBlazor P="CaliforniaJackPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
