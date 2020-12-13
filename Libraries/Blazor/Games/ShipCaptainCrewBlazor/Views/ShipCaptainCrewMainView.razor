@@ -1,0 +1,15 @@
+@inherits BasicGameView<ShipCaptainCrewMainViewModel>
+<div style="height: 22vh">
+    <GameButtonComponent DataContext="@DataContext" MethodName="@RollMethod" Display="Roll Dice" />
+    <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
+</div>
+<LabelGridComponent DataContext="DataContext" Labels="_labels" />
+<div>
+    <ScoreBoardBlazor P="ShipCaptainCrewPlayerItem" Columns="@_scores" Players="@DataContext!.PlayerList" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
