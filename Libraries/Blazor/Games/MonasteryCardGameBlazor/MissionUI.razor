@@ -1,0 +1,46 @@
+﻿@if (DataContext == null || Missions == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="Mission List">
+
+    <GridContainer Rows="@GetRowsColumn" Columns="@GetRowsColumn">
+        @{
+            int x;
+            int y;
+            x = 1;
+            y = 1;
+        }
+        @foreach (var mission in Missions)
+        {
+        <GridItem Column="x" Row="y">
+            <GameButtonComponent CommandParameter="mission"
+                                 Display="@mission.Description"
+                                 DataContext="DataContext"
+                                 FontSize="2vh"
+                                 MethodName="@SelectMethod"
+                                 BackgroundColor="@BackgroundColor(mission)"
+                                 StartOnNewLine="false"
+                                 Width="@MissionColumnWidth" />
+        </GridItem>
+            x++;
+            if (x > 3)
+            {
+                x = 1;
+                y++;
+            }
+        }
+    </GridContainer>
+    <div style="margin-top: 20px">
+        <GameButtonComponent DataContext="DataContext"
+                             MethodName="@CompleteMethod"
+                             FontSize="2vh"
+                             Display="Complete Mission" />
+        <GameButtonComponent DataContext="DataContext"
+                             Hints="true"
+                             FontSize="2vh"
+                             MethodName="@DescriptionMethod"
+                             Display="Mission Description" />
+
+    </div>
+</BaseFrameBlazor>
