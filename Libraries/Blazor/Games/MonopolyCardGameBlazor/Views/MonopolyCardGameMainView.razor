@@ -1,0 +1,52 @@
+@inherits BasicGameView<MonopolyCardGameMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<CascadingValue Value="_vmData">
+    <GridContainer Inline="true" Columns="75vw 25vw">
+        <GridItem>
+            <div>
+                <ShowCardBlazor />
+            </div>
+            <HorizontalDiv Margins="5px">
+                <DrawPileBlazor DeckPile="_vmData.Deck1" />
+            </HorizontalDiv>
+            <HorizontalDiv Margins="5px">
+                <GameButtonComponent Display="Resume"
+                                     DataContext="DataContext"
+                                     StartOnNewLine="true"
+                                     MethodName="@ResumeMethod" />
+                <GameButtonComponent Display="Go Out"
+                                     DataContext="DataContext"
+                                     StartOnNewLine="true"
+                                     MethodName="@OutMethod" />
+            </HorizontalDiv>
+            <div>
+                <HandBlazor Hand="_vmData.PlayerHand1" />
+            </div>
+            <div>
+                <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+            </div>
+            <div>
+                <ScoreBoardBlazor P="MonopolyCardGamePlayerItem"
+                                  Columns="_scores"
+                                  Players="_gameContainer.SaveRoot.PlayerList" />
+            </div>
+        </GridItem>
+        <GridItem Column="2">
+            @foreach (var player in _players)
+            {
+                <HorizontalDiv Margins="5px">
+                    <HandBlazor TargetContainerSize="95vh" Hand="player.TradePile" HandType="EnumHandList.Vertical" Divider="1.6" />
+                </HorizontalDiv>
+            }
+        </GridItem>
+    </GridContainer>
+    @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+    {
+        <ParentControl VM="RestoreViewModel">
+            <RestoreView />
+        </ParentControl>
+    }
+</CascadingValue>

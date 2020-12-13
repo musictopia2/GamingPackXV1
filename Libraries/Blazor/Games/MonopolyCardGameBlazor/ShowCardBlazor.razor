@@ -1,0 +1,17 @@
+﻿@using BasicGamingUIBlazorLibrary.GameGraphics.Base 
+@if (GameData == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="Card Information">
+    <div style="width: 50vw">
+        <HorizontalDiv Margins="2px">
+            <FlexibleDeckRenderComponent D="MonopolyCardGameCardInformation" DeckObject="GameData.AdditionalInfo1.CurrentCard">
+                <CardGraphicsBlazor TargetHeight="@RealHeight" DeckObject="GameData.AdditionalInfo1.CurrentCard"  />
+            </FlexibleDeckRenderComponent>
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            @GameData.AdditionalInfo1.CurrentCard.Description
+        </HorizontalDiv>
+    </div>
+</BaseFrameBlazor>

@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="CommonBasicStandardLibraries" Version="3.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+    <PackageReference Include="BasicBlazorLibrary" Version="1.0.0" />
+    <PackageReference Include="SvgHelper.Blazor" Version="1.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
+    <ProjectReference Include="..\..\Standard\BasicGamingUIBlazorLibrary\BasicGamingUIBlazorLibrary.csproj" />
+    <ProjectReference Include="..\..\..\CrossPlatform\Games\MonopolyCardGameCP\MonopolyCardGameCP.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Car.png" />
+    <None Remove="Resources\Dog.png" />
+    <None Remove="Resources\Electric.png" />
+    <None Remove="Resources\Hat.png" />
+    <None Remove="Resources\Horse.png" />
+    <None Remove="Resources\House.png" />
+    <None Remove="Resources\Iron.png" />
+    <None Remove="Resources\MrMonopoly.png" />
+    <None Remove="Resources\RailRoad.png" />
+    <None Remove="Resources\Ship.png" />
+    <None Remove="Resources\Waterworks.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Car.png" />
+    <EmbeddedResource Include="Resources\Dog.png" />
+    <EmbeddedResource Include="Resources\Electric.png" />
+    <EmbeddedResource Include="Resources\Hat.png" />
+    <EmbeddedResource Include="Resources\Horse.png" />
+    <EmbeddedResource Include="Resources\House.png" />
+    <EmbeddedResource Include="Resources\Iron.png" />
+    <EmbeddedResource Include="Resources\MrMonopoly.png" />
+    <EmbeddedResource Include="Resources\RailRoad.png" />
+    <EmbeddedResource Include="Resources\Ship.png" />
+    <EmbeddedResource Include="Resources\Waterworks.png" />
+  </ItemGroup>
+  
+  
+  
+</Project>
