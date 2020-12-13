@@ -1,0 +1,17 @@
+﻿@inherits BasicGameView<RookColorViewModel>
+@if (DataContext == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="Trump Info">
+    <EnumPickerBlazor E="EnumColorTypes" Context="Piece" ListPicker="DataContext.Model.Color1">
+        <CheckerPiece MainColor="@GetColor(Piece)" PieceCategory="EnumCheckerPieceCategory.OnlyPiece" />
+    </EnumPickerBlazor>
+    <div>
+        <GameButtonComponent
+                             DataContext="DataContext"
+                             Display="Choose Color"
+                             MethodName="@ChooseMethod"
+                             />
+    </div>
+</BaseFrameBlazor>

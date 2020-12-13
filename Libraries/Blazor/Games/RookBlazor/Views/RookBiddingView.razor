@@ -1,0 +1,18 @@
+﻿@inherits BasicGameView<RookBiddingViewModel>
+@if (DataContext == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="Bid Info">
+    <div>
+        <NumberChooserBlazor Columns="7" NumberPicker="DataContext.Model.Bid1" />
+    </div>
+    <div>
+        <GameButtonComponent DataContext="DataContext"
+                             MethodName="@BidMethod"
+                             Display="Place Bid" />
+        <GameButtonComponent DataContext="DataContext"
+                             MethodName="@PassMethod"
+                             Display="Pass" />
+    </div>
+</BaseFrameBlazor>

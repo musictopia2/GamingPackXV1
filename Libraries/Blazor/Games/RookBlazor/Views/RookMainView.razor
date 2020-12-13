@@ -1,0 +1,37 @@
+@inherits BasicGameView<RookMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <ScoreBoardBlazor P="RookPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <ParentControl VM="RookBiddingViewModel">
+        <RookBiddingView />
+    </ParentControl>
+    <ParentControl VM="RookColorViewModel">
+        <RookColorView />
+    </ParentControl>
+    <ParentControl VM="RookNestViewModel">
+        <RookNestView />
+    </ParentControl>
+    <SeveralPlayersTrickBlazor DataContext="_vmData.TrickArea1" />
+</HorizontalDiv>
+<div>
+    <HandBlazor Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <HandBlazor Hand="_vmData.Dummy1" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
