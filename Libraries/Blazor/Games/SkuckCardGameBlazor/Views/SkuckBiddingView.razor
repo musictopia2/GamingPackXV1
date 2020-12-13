@@ -1,0 +1,16 @@
+﻿@inherits BasicGameView<SkuckBiddingViewModel>
+@if (DataContext == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="Bid Info">
+    <NumberChooserBlazor Columns="9"
+                         NumberPicker="DataContext.Model.Bid1"
+                         TextHeight="10vh"
+                         />
+    <div>
+        <GameButtonComponent DataContext="DataContext"
+                             MethodName="@BidMethod"
+                             Display="Place Bid" />
+    </div>
+</BaseFrameBlazor>

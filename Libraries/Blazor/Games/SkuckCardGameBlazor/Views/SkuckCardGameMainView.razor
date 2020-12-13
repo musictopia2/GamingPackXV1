@@ -1,0 +1,50 @@
+@inherits BasicGameView<SkuckCardGameMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<GridContainer Inline="true" Columns="70vw auto">
+    <GridItem>
+        <ParentControl VM="SkuckBiddingViewModel">
+            <SkuckBiddingView />
+        </ParentControl>
+        <ParentControl VM="SkuckChoosePlayViewModel">
+            <SkuckChoosePlayView />
+        </ParentControl>
+        <ParentControl VM="SkuckSuitViewModel">
+            <SkuckSuitView />
+        </ParentControl>
+        <div>
+            <DeckOfCardsTwoPlayerTrickBlazor T="SkuckCardGameCardInformation" DataContext="_vmData.TrickArea1" />
+        </div>
+        <div>
+            <DeckOfCardsHandBlazor R="SkuckCardGameCardInformation" Hand="_vmData.PlayerHand1" />
+        </div>
+        <div>
+            <HorizontalDiv Margins="5px">
+                <ScoreBoardBlazor P="SkuckCardGamePlayerItem"
+                                  UseAbbreviationForTrueFalse="true"
+                                  Columns="_scores"
+                                  Players="_gameContainer.SaveRoot.PlayerList" />
+            </HorizontalDiv>
+            <HorizontalDiv Margins="5px">
+                <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+            </HorizontalDiv>
+        </div>
+    </GridItem>
+    <GridItem Column="2">
+        @foreach (var player in _players)
+        {
+            <div>
+                <RegularCardsPlayerBoardBlazor T="SkuckCardGameCardInformation"
+                                   DataContext="player.TempHand" />
+            </div>
+        }
+    </GridItem>
+</GridContainer>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
