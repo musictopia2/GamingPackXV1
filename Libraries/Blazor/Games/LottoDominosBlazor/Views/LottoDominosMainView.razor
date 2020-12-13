@@ -1,0 +1,19 @@
+@inherits BasicGameView<LottoDominosMainViewModel>
+<ParentControl VM="ChooseNumberViewModel">
+    <ChooseNumberView />
+</ParentControl>
+<ParentControl VM="MainBoardViewModel">
+    <MainBoardView />
+</ParentControl>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+<div>
+    <ScoreBoardBlazor P="LottoDominosPlayerItem" Players="DataContext!.GetPlayers" Columns="_scores" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
