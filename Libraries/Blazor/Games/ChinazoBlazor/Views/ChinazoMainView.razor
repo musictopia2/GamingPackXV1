@@ -1,0 +1,56 @@
+@inherits BasicGameView<ChinazoMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsHandBlazor R="ChinazoCard" TargetContainerSize="50vw" Hand="_vmData.PlayerHand1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <div>
+        <GameButtonComponent DataContext="DataContext"
+                             MethodName="@PassMethod"
+                             Display="Pass" />
+        <GameButtonComponent DataContext="DataContext"
+                             MethodName="@TakeMethod"
+                             Display="Take" />
+        <GameButtonComponent DataContext="DataContext"
+                             MethodName="@LayDownMethod"
+                             Display="Lay Down"
+                             StartOnNewLine="true" />
+    </div>
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsDrawPileBlazor R="ChinazoCard" DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsSingleMiscPileBlazor R="ChinazoCard" SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <ScoreBoardBlazor P="ChinazoPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</HorizontalDiv>
+<div>
+    <HorizontalDiv Margins="5px">
+        <DeckOfCardsTempSetsBlazor RU="ChinazoCard"
+                                   TargetContainerSize="40vh"
+                                   TempPiles="_vmData.TempSets" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <DeckOfCardsMainRummySetsBlazor RU="ChinazoCard"
+                                        SE="PhaseSet"
+                                        T="SavedSet"
+                                        ContainerHeight="40vh"
+                                        DataContext="_vmData.MainSets" />
+    </HorizontalDiv>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
