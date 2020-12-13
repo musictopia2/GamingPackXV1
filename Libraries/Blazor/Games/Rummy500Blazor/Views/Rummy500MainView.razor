@@ -1,0 +1,48 @@
+@inherits BasicGameView<Rummy500MainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsHandBlazor TargetContainerSize="95vh" Divider="1.7" HandType="EnumHandList.Vertical" R="RegularRummyCard" Hand="_vmData.DiscardList1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <div>
+        <DeckOfCardsHandBlazor TargetContainerSize="75vw" R="RegularRummyCard" Hand="_vmData.PlayerHand1" />
+    </div>
+    <div>
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsDrawPileBlazor R="RegularRummyCard" DeckPile="_vmData.Deck1" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <ScoreBoardBlazor P="Rummy500PlayerItem"
+                              Columns="_scores"
+                              Players="_gameContainer.SaveRoot.PlayerList" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <GameButtonComponent DataContext="DataContext"
+                                 MethodName="@DiscardCurrentMethod"
+                                 Display="Discard Current" />
+            <GameButtonComponent DataContext="DataContext"
+                                 MethodName="@CreateNewRummyMethod"
+                                 Display="Create New Rummy Set" />
+        </HorizontalDiv>
+    </div>
+    <div>
+        <DeckOfCardsMainRummySetsBlazor 
+                                        RU="RegularRummyCard"
+                                        SE="RummySet"
+                                        T="SavedSet"
+                                        ContainerHeight="40vh"
+                                        DataContext="_vmData.MainSets1" />
+    </div>
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
