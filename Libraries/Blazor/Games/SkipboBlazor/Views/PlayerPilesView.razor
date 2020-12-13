@@ -1,0 +1,10 @@
+﻿@if (DataContext == null || _player == null)
+{
+    return;
+}
+<HorizontalDiv LeftOnly="5px">
+    <MultiplePilesBlazor AnimationTag="@DiscardTag" Piles="DataContext.Model.DiscardPiles" />
+</HorizontalDiv>
+<HorizontalDiv LeftOnly="0px">
+    <MultiplePilesBlazor AnimationTag="@StockTag" Piles="DataContext.Model.StockPile.StockFrame" />
+</HorizontalDiv>
