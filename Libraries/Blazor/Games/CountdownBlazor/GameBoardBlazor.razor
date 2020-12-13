@@ -1,0 +1,10 @@
+﻿@if (GameContainer == null)
+{
+    return;
+}
+@foreach (var player in _players)
+{
+    <HorizontalDiv LeftOnly="5px">
+        <PlayerBoardBlazor TargetHeight="@TargetHeight" Player="player" />
+    </HorizontalDiv>
+}

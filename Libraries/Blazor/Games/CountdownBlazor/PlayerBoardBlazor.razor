@@ -1,0 +1,24 @@
+﻿@if (Player == null || BoardProcesses == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="@Player.NickName"
+                 IsEnabled="BoardProcesses.CanClickOnPlayer(Player)">
+    <RawGameBoard BoardSize="BoardProcesses.OriginalSize"
+                  TargetHeight="@TargetHeight"
+                  >
+        @foreach (var number in Player.NumberList)
+        {
+            <BasePieceGraphics IsSelected="number.IsSelected" Location="number.Location" LongestSize="60">
+                <CountdownPieceBlazor Number="number"
+                                      IsEnabled="BoardProcesses.CanClickOnPlayer(Player)" />
+            </BasePieceGraphics>
+            @if (CanShowClick(number))
+            {
+                <BlankClickableSquare SpaceClicked="() => ProcessClick(number)"
+                                      SpaceLocation="number.Location"
+                                      SpaceSize="BoardProcesses.SpaceSize" />
+            }
+        }
+    </RawGameBoard>
+</BaseFrameBlazor>

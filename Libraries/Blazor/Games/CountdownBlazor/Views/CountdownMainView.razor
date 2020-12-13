@@ -1,0 +1,17 @@
+@inherits BasicGameView<CountdownMainViewModel>
+<div>
+    <GameBoardBlazor GameContainer="_gameContainer"
+                     TargetHeight="25vh" />
+</div>
+<div style="height: 22vh">
+    <GameButtonComponent DataContext="@DataContext" MethodName="@EndMethod" Display="End Turn" />
+    <GameButtonComponent DataContext="@DataContext" MethodName="@HintsMethod" Display="Show Hints" />
+    <DiceListConrolBlazor D="CountdownDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
+</div>
+<LabelGridComponent DataContext="DataContext" Labels="_labels" />
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
