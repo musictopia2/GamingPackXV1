@@ -1,0 +1,5 @@
+@inherits KeyComponentBase
+<BaseHandBlazor D="GalaxyCardGameCardInformation" Hand="Hand" AdditionalSpacing="AdditionalSpacing" Divider="Divider"
+                HandType="HandType" TargetContainerSize="@TargetContainerSize" TargetImageSize="@TargetImageSize" Context="DeckObject">
+    <CardGraphicsBlazor DeckObject="DeckObject" @key="GetKey" CommandParameter="DeckObject" CommandObject="Hand!.ObjectSingleClickCommand" />
+</BaseHandBlazor>

@@ -1,0 +1,10 @@
+@inherits KeyComponentBase
+@if (DataContext == null)
+{
+    return;
+}
+<BaseTwoPlayerTrickBlazor S="EnumSuitList" T="GalaxyCardGameCardInformation"
+                          DataContext="DataContext"
+                          Context="Card">
+    <CardGraphicsBlazor  @key="GetKey" TargetHeight="@RealHeight" DeckObject="Card" CommandParameter="Card" CommandObject="DataContext!.CardSingleClickCommand"  />
+</BaseTwoPlayerTrickBlazor>

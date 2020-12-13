@@ -1,0 +1,65 @@
+@inherits BasicDeckView<GalaxyCardGameMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsTwoPlayerTrickBlazor T="GalaxyCardGameCardInformation" DataContext="_vmData.TrickArea1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsImageBlazor @key="@GetKey" R="GalaxyCardGameCardInformation" DeckObject="_gameContainer.SaveRoot.WinningCard" TargetHeight="@HeightString" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsDrawPileBlazor R="GalaxyCardGameCardInformation" DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<div>
+    @foreach (var player in _players)
+    {
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsMainRummySetsBlazor ContainerHeight="25vh"
+                                            ContainerWidth="45vw"
+                                            RU="GalaxyCardGameCardInformation"
+                                            SE="MoonClass"
+                                            T="SavedSet"
+                                            DataContext="player.Moons" />
+        </HorizontalDiv>
+    }
+</div>
+<div>
+    <HorizontalDiv Margins="5px">
+        <DeckOfCardsHandBlazor R="GalaxyCardGameCardInformation" Hand="_vmData.PlayerHand1" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        <div>
+            <GameButtonComponent DataContext="DataContext"
+                                 MethodName="@EndMethod"
+                                 Display="End Turn"
+                                 StartOnNewLine="true" />
+            <GameButtonComponent DataContext="DataContext"
+                                 MethodName="@MoonMethod"
+                                 Display="Create New Moon"
+                                 StartOnNewLine="true" />
+        </div>
+    </HorizontalDiv>
+</div>
+<div>
+    @foreach (var player in _players)
+    {
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsHandBlazor R="GalaxyCardGameCardInformation" Hand="player.PlanetHand" />
+        </HorizontalDiv>
+
+    }
+    <HorizontalDiv Margins="5px">
+        <ScoreBoardBlazor P="GalaxyCardGamePlayerItem"
+                          Columns="_scores"
+                          Players="_gameContainer.SaveRoot.PlayerList" />
+    </HorizontalDiv>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
