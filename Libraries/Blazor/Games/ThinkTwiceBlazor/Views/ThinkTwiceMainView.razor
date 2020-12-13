@@ -1,0 +1,46 @@
+@inherits BasicGameView<ThinkTwiceMainViewModel>
+@if (_categories == null || _multiplier == null)
+{
+    return;
+}
+<CascadingValue Value="@_diceHeight">
+    <div style="margin: 5px; height: @_diceHeight">
+        @if (_categories.Visible == true)
+        {
+            <ButtonDiceBlazor WillHold="@_categories.Hold"
+                              Value="@_categories.Value"
+                              ButtonClicked="CategoryClickedAsync" />
+        }
+        <HorizontalDiv LeftOnly="@_diceHeight">
+            @if (_multiplier.Visible)
+            {
+                <ButtonDiceBlazor Value="@_multiplier.Value.ToString()" />
+            }
+        </HorizontalDiv>
+    </div>
+</CascadingValue>
+<div>
+    <GameButtonComponent DataContext="@DataContext" MethodName="@MultMethod" Display="Roll Multiplier Dice" />
+</div>
+<div style="height: 22vh">
+    <GameButtonComponent DataContext="@DataContext" MethodName="@RollMethod" Display="Roll Dice" />
+    <GameButtonComponent DataContext="@DataContext" MethodName="@EndMethod" Display="End Turn" />
+    <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
+</div>
+<HorizontalDiv LeftOnly="5px">
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    <div>
+        <ScoreBoardBlazor P="ThinkTwicePlayerItem" Columns="@_scores" Players="@DataContext!.PlayerList" />
+    </div>
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <ParentControl VM="ScoreViewModel">
+        <ScoreView />
+    </ParentControl>
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

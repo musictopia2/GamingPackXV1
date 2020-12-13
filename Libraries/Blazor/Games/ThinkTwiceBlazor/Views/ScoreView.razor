@@ -1,0 +1,23 @@
+﻿<BaseFrameBlazor
+                 IsEnabled="@DataContext!.IsEnabled"
+                 Text="@VMData!.DisplayScoreText"
+                 >
+    @foreach (var text in VMData.TextList)
+    {
+        <GameButtonComponent DataContext="DataContext"
+                             BackgroundColor="@GetButtonColor(text)"
+                             Display="@text"
+                             CommandParameter="@text"
+                             MethodName="@ChangeMethod"
+                             StartOnNewLine="true"
+                             />
+    }
+    <div>
+        <GameButtonComponent MethodName="@ScoreMethod"
+                             Display="Your Score"
+                             DataContext="DataContext" />
+        <GameButtonComponent MethodName="@DescriptionMethod"
+                             Display="Description"
+                             DataContext="DataContext" />
+    </div>
+</BaseFrameBlazor>

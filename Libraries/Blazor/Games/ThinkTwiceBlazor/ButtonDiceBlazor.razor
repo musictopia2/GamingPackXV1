@@ -1,0 +1,28 @@
+﻿@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString
+@if (Value == "")
+{
+    return;
+}
+<RawGameBoard TargetHeight="@TargetHeight" BoardSize="new SizeF(100, 100)">
+    <RawRectangle Rectangle="new RectangleF(0, 0, 100, 100)">
+        <svg>
+            <rect width="100%" height="100%" rx="8" ry="8" fill="white" />
+            @if (WillHold)
+            {
+                <rect width="100%" height="100%" rx="8" ry="8" fill="red" opacity=".1" />
+            }
+        </svg>
+        <CenteredTextBlazor 
+                           FontSize="90" 
+                           BorderWidth="4"
+                           TextColor="@cc.Blue"
+                           Text="@Value" />
+        @if (ButtonClicked.HasDelegate)
+        {
+            <BlankClickableSquare SpaceClicked="PrivateClicked"
+                                  SpaceLocation="new PointF(0, 0)"
+                                  SpaceSize="new SizeF(100, 100)"
+                                  />
+        }
+    </RawRectangle>
+</RawGameBoard>
