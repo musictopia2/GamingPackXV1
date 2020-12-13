@@ -1,0 +1,41 @@
+@inherits BasicGameView<DutchBlitzMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<CascadingValue Value="_vmData">
+    <div>
+        <ScoreBoardBlazor P="DutchBlitzPlayerItem"
+                          Columns="_scores"
+                          Players="_gameContainer.SaveRoot.PlayerList" />
+    </div>
+    <div>
+        <PublicPilesBlazor />
+    </div>
+    <HorizontalDiv Margins="5px">
+        <DrawPileBlazor DeckPile="_vmData.Deck1" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <GameButtonComponent Display="Dutch" MethodName="@DutchMethod" DataContext="DataContext" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </HorizontalDiv>
+    <div>
+        <HorizontalDiv LeftOnly="5px">
+            <MultiplePilesBlazor Piles="_vmData.DiscardPiles" />
+        </HorizontalDiv>
+        <HorizontalDiv LeftOnly="0px">
+            <MultiplePilesBlazor Piles="_vmData.StockPile.StockFrame" />
+        </HorizontalDiv>
+    </div>
+    @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+    {
+        <ParentControl VM="RestoreViewModel">
+            <RestoreView />
+        </ParentControl>
+    }
+</CascadingValue>

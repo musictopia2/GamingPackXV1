@@ -1,0 +1,18 @@
+﻿@if (GameData == null)
+{
+    return;
+}
+<CascadingValue Value="GameData.PublicPiles1">
+
+    <div @onclick="() => NewClickedAsync()" style="height: @RealHeight; width: 100vw">
+        @foreach (var pile in GameData.PublicPiles1.PileList)
+        {
+            <HorizontalDiv LeftOnly="0px">
+                <div style="position: relative">
+                    <IndividualPileBlazor IndividualPile="pile" />
+
+                </div>
+            </HorizontalDiv>
+        }
+    </div>
+</CascadingValue>
