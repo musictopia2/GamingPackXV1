@@ -1,0 +1,14 @@
+﻿@if (Board == null || Board.HandList.Count != 2)
+{
+    return;
+}
+@foreach (var tile in Board.HandList)
+{
+    <HorizontalDiv LeftOnly="5px">
+        <TileCardBlazor @key="tile" DataContext="Board"
+                        CommandObject="Board.ObjectSingleClickCommand" 
+                        DeckObject="tile"
+                        TargetHeight="@TargetHeight"
+                        CommandParameter="tile" />
+    </HorizontalDiv>
+}

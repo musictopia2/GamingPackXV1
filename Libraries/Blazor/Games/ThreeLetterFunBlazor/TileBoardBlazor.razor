@@ -1,0 +1,35 @@
+﻿@inherits BasicGameView<ThreeLetterFunMainViewModel>
+@using System.Drawing;
+@if (DataContext == null || TargetHeight == 0)
+{
+    return;
+}
+@{
+    SizeF size = GetViewSize();
+    int rows = DataContext.GameBoard.Rows;
+    int columns = DataContext.GameBoard.Columns;
+    int z = 0;
+    float x;
+    float y = 1;
+}
+<svg @key="DataContext.GameBoard" height="@GetTargetString" viewBox="0 0 @size.Width @size.Height">
+
+    @for (int r = 0; r < rows; r++)
+    {
+        x = 1;
+        for (int c = 0; c < columns; c++)
+        {
+            if (z + 1 > DataContext.GameBoard.ObjectList.Count)
+            {
+                break;
+            }
+            var card = DataContext.GameBoard.ObjectList[z];
+            <svg x="@x" y="@y" @key="card.Deck">
+                <WordBlazor @key="card" DataContext="card" MainGame="DataContext.MainGame" />
+            </svg>
+            x += DefaultSize.Width + 2;
+            z++;
+        }
+        y += DefaultSize.Height + 2;
+    }
+</svg>

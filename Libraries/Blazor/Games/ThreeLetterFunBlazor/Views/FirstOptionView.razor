@@ -1,0 +1,16 @@
+﻿@inherits BasicGameView<FirstOptionViewModel>
+@if (DataContext == null)
+{
+    return;
+}
+<div style="margin-top: 5px;">
+    <ListChooserBlazor ListPicker="DataContext.Option1" TextWidth="100" TextHeight="30vh" />
+</div>
+<div>
+    <HorizontalDiv LeftOnly="0px">
+        <GameButtonComponent FontSize="20vh" Display="Submit" MethodName="@SubmitMethod" DataContext="DataContext" />
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="10px">
+        <GameButtonComponent AfterChange="ShowChange" FontSize="20vh" Display="Description" MethodName="@DescriptionMethod" DataContext="DataContext" />
+    </HorizontalDiv>
+</div>

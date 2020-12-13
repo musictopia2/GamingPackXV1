@@ -1,0 +1,47 @@
+﻿@using CommonBasicStandardLibraries.BasicDataSettingsAndProcesses;
+@using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
+@using System.Drawing; 
+@if (MainGame == null || DataContext == null || DataContext.CharList.Count != 3 || MainGame.SaveRoot.Level == EnumLevel.None || _lefts.Count != 3 || DataContext.Visible == false)
+{
+    return;
+}
+<svg width="74" height="37" viewBox="0 0 74 37">
+
+    <rect rx="4" ry="4" width="74" height="37" fill="@GetFillColor()" />
+    @{
+        int x = 0;
+    }
+    @foreach (var item in DataContext.CharList)
+    {
+
+
+        
+
+        <svg  height="30" width="19" x="@_lefts[x]" y="3">
+            <rect height="30" width="19" rx="2" ry="2" fill="white" />
+            @if (VBCompat.AscW(item) > 0)
+            {
+
+                string letter = item.ToString().ToUpper();
+                <CenteredSvgText FontSize="18" TextColor="@letter.GetColorOfLetter().ToWebColor()" Text="@letter" />
+            }
+            @{
+                x++;
+            }
+        </svg>
+
+    }
+
+    @foreach (var tile in DataContext.Tiles)
+    {
+        <TileCardBlazor PartOfBoard="true" DeckObject="tile" Location="new PointF(_lefts[tile.Index], 3) " />
+    }
+
+
+    <svg @onclick="() => WordClickedAsync(EnumClickPosition.Left)" width="37" height="37" viewBox="0 0 37 37">
+        <rect width="100%" height="100%" fill="transparent" />
+    </svg>
+    <svg x="37" @onclick="() => WordClickedAsync(EnumClickPosition.Right)" width="37" height="37" viewBox="0 0 37 37">
+        <rect width="100%" height="100%" fill="transparent" />
+    </svg>
+</svg>

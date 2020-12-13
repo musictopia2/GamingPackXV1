@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommonBasicStandardLibraries" Version="3.0.19" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
+    <ProjectReference Include="..\..\Standard\SpellingLibrary\SpellingLibrary.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\cardlist.json" />
+    <None Remove="Resources\tilelist.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\cardlist.json" />
+    <EmbeddedResource Include="Resources\tilelist.json" />
+  </ItemGroup>
+</Project>

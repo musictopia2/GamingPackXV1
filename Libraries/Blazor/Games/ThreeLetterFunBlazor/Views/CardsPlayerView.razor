@@ -1,0 +1,12 @@
+﻿@inherits BasicGameView<CardsPlayerViewModel>
+@if (DataContext == null)
+{
+    return;
+}
+<div style="margin-top: 5px;">
+    <ListChooserBlazor ListPicker="DataContext.CardList1" TotalColumns="2" TextWidth="75" TextHeight="20vh" />
+</div>
+
+<div>
+    <GameButtonComponent FontSize="30vh" Display="Submit" MethodName="@SubmitMethod" DataContext="DataContext" />
+</div>
