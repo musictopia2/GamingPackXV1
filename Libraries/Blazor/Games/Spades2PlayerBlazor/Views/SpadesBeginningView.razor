@@ -1,0 +1,23 @@
+﻿@inherits BasicGameView<SpadesBeginningViewModel>
+@if (DataContext == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsDrawPileBlazor R="Spades2PlayerCardInformation"
+                               DeckPile="DataContext.Model.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsSingleMiscPileBlazor R="Spades2PlayerCardInformation"
+                                     SinglePile="DataContext.Model.Pile1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <GameButtonComponent DataContext="DataContext"
+                         MethodName="@TakeMethod"
+                         Display="Take Card" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsSingleMiscPileBlazor R="Spades2PlayerCardInformation"
+                                     PileAnimationTag="otherpile"
+                                     SinglePile="DataContext.Model.OtherPile" />
+</HorizontalDiv>

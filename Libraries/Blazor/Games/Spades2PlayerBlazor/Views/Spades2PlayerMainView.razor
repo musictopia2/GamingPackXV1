@@ -1,0 +1,31 @@
+@inherits BasicGameView<Spades2PlayerMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<ParentControl VM="SpadesBeginningViewModel">
+    <SpadesBeginningView />
+</ParentControl>
+<div>
+    <DeckOfCardsTwoPlayerTrickBlazor T="Spades2PlayerCardInformation" DataContext="_vmData.TrickArea1" />
+</div>
+<ParentControl VM="SpadesBiddingViewModel">
+    <SpadesBiddingView />
+</ParentControl>
+<div>
+    <DeckOfCardsHandBlazor R="Spades2PlayerCardInformation" Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+<div>
+    <ScoreBoardBlazor P="Spades2PlayerPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
