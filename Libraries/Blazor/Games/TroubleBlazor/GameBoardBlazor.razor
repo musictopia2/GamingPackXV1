@@ -1,0 +1,70 @@
+﻿@inherits KeyComponentBase
+@if (GraphicsData == null || GameContainer == null || GameContainer!.SingleInfo == null || Cup == null)
+{
+    return;
+}
+<RawGameBoard TargetHeight="@TargetHeight"
+              BoardSize="@GraphicsData.OriginalSize">
+    <ResourceImage Height="100%" Width="100%" Assembly="@GetAssembly" FileName="troublegameboard.png" />
+    <BasePieceGraphics LongestSize="80"
+                       Location="new PointF(10, 10)">
+        <MarblePiece MainColor="@GetColor()" />
+    </BasePieceGraphics>
+    @foreach (var player in GameContainer.PlayerList!)
+    {
+        @foreach (var piece in player.PieceList)
+        {
+            var space = GraphicsData.SpaceList[piece];
+            <BasePieceGraphics LongestSize="@GraphicsData.SpaceSize.Width"
+                               @key="GetKey"
+                               Location="space.Location">
+                <MarblePiece MainColor="@GetColor(player)" />
+            </BasePieceGraphics>
+        }
+    }
+    @if (GameContainer.Animates.AnimationGoing)
+    {
+        var tempPlayer = GameContainer.PlayerList[GameContainer.PlayerGoingBack];
+        <UpdatePortionBoard>
+            <BasePieceGraphics LongestSize="@GraphicsData.SpaceSize.Width"
+                               Location="GameContainer.Animates.CurrentLocation">
+                <MarblePiece MainColor="@GetColor(tempPlayer)" />
+            </BasePieceGraphics>
+        </UpdatePortionBoard>
+        
+    }
+    @if (GameContainer.MovePlayer > 0)
+    {
+        <BasePieceGraphics LongestSize="@GraphicsData.SpaceSize.Width"
+                           Location="GraphicsData.SpaceList[GameContainer.MovePlayer].Location">
+            <MarblePiece MainColor="@GetColor()" />
+        </BasePieceGraphics>
+    }
+    @foreach (var space in GraphicsData.SpaceList)
+    {
+        if (GameContainer.IsValidMove!(space.Key) && GameContainer.Command.IsExecuting == false)
+        {
+            <BlankClickableSquare SpaceLocation="space.Value.Location"
+                                  SpaceSize="space.Value.Size"
+                                  SpaceClicked="() => GameContainer.MakeMoveAsync!.Invoke(space.Key)" />
+        }
+    }
+    @* for the dice *@
+    @{
+        PointF dicePoint = GraphicsData.RecommendedPointForDice;
+    }
+    @if (Cup.DiceList.Count == 1 && Cup.CanShowDice)
+    {
+        <StandardDiceBlazor X="dicePoint.X"
+                            Y="dicePoint.Y"
+                            TargetHeight="@GraphicsData.SuggestDiceHeight.ToString()"
+                            Dice="Cup.DiceList.Single()" />
+    }
+    @if (GameContainer.CanRollDice!.Invoke() && GameContainer.Command.IsExecuting == false)
+    {
+        <BlankClickableSquare
+                              SpaceLocation="GraphicsData.DiceRectangle.Location"
+                              SpaceSize="GraphicsData.DiceRectangle.Size"
+                              SpaceClicked="() => GameContainer.RollDiceAsync!()" />
+    }
+</RawGameBoard>

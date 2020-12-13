@@ -1,0 +1,17 @@
+@inherits BasicGameView<TroubleMainViewModel>
+<HorizontalDiv Margins="5">
+    <GameBoardBlazor Cup="DataContext!.GetCup"
+                     DiceHeight="15vh"
+                     TargetHeight="95vh"
+                     GameContainer="_gameContainer"
+                     GraphicsData="_graphicsData" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5">
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
