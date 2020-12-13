@@ -1,0 +1,12 @@
+﻿@if (VMData == null )
+{
+    return;
+}
+<GameButtonComponent DataContext="DataContext"
+                     Display="Roll Dice"
+                     MethodName="@RollMethod"
+                     StartOnNewLine="true"
+                     />
+<DiceListConrolBlazor D="SimpleDice"
+                      Cup="VMData.Cup"
+                      TargetHeight="12vh" />

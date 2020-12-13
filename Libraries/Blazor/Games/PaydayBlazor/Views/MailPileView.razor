@@ -1,0 +1,10 @@
+﻿@inherits KeyComponentBase
+@if (VMData == null || VMData.MailPile.CardsLeft() == 0)
+{
+    return;
+}
+<BaseSingleMiscPileBlazor D="MailCard" SinglePile="VMData.MailPile">
+    <MainTemplate Context="Card">
+        <PaydayCardBlazor TargetHeight="@RealHeight" DeckObject="Card" />
+    </MainTemplate>
+</BaseSingleMiscPileBlazor>

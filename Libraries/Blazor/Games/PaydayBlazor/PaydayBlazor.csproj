@@ -1,0 +1,98 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="CommonBasicStandardLibraries" Version="3.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+    <PackageReference Include="BasicBlazorLibrary" Version="1.0.0" />
+    <PackageReference Include="SvgHelper.Blazor" Version="1.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
+    <ProjectReference Include="..\..\Standard\BasicGamingUIBlazorLibrary\BasicGamingUIBlazorLibrary.csproj" />
+    <ProjectReference Include="..\..\..\CrossPlatform\Games\PaydayCP\PaydayCP.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\board.svg" />
+    <None Remove="Resources\Deal1.svg" />
+    <None Remove="Resources\Deal10.svg" />
+    <None Remove="Resources\Deal11.svg" />
+    <None Remove="Resources\Deal12.svg" />
+    <None Remove="Resources\Deal13.svg" />
+    <None Remove="Resources\Deal14.svg" />
+    <None Remove="Resources\Deal15.svg" />
+    <None Remove="Resources\Deal16.svg" />
+    <None Remove="Resources\Deal17.svg" />
+    <None Remove="Resources\Deal18.svg" />
+    <None Remove="Resources\Deal19.svg" />
+    <None Remove="Resources\Deal2.svg" />
+    <None Remove="Resources\Deal20.svg" />
+    <None Remove="Resources\Deal21.svg" />
+    <None Remove="Resources\Deal22.svg" />
+    <None Remove="Resources\Deal23.svg" />
+    <None Remove="Resources\Deal24.svg" />
+    <None Remove="Resources\Deal3.svg" />
+    <None Remove="Resources\Deal4.svg" />
+    <None Remove="Resources\Deal5.svg" />
+    <None Remove="Resources\Deal6.svg" />
+    <None Remove="Resources\Deal7.svg" />
+    <None Remove="Resources\Deal8.svg" />
+    <None Remove="Resources\Deal9.svg" />
+    <None Remove="Resources\MailEndangeredSpecies.svg" />
+    <None Remove="Resources\MailEnvironment.svg" />
+    <None Remove="Resources\MailMoveAhead.svg" />
+    <None Remove="Resources\MailPolution.svg" />
+    <None Remove="Resources\MailRecyling.svg" />
+    <None Remove="Resources\MailScholarship.svg" />
+    <None Remove="Resources\MailWhale.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\board.svg" />
+    <EmbeddedResource Include="Resources\Deal1.svg" />
+    <EmbeddedResource Include="Resources\Deal10.svg" />
+    <EmbeddedResource Include="Resources\Deal11.svg" />
+    <EmbeddedResource Include="Resources\Deal12.svg" />
+    <EmbeddedResource Include="Resources\Deal13.svg" />
+    <EmbeddedResource Include="Resources\Deal14.svg" />
+    <EmbeddedResource Include="Resources\Deal15.svg" />
+    <EmbeddedResource Include="Resources\Deal16.svg" />
+    <EmbeddedResource Include="Resources\Deal17.svg" />
+    <EmbeddedResource Include="Resources\Deal18.svg" />
+    <EmbeddedResource Include="Resources\Deal19.svg" />
+    <EmbeddedResource Include="Resources\Deal2.svg" />
+    <EmbeddedResource Include="Resources\Deal20.svg" />
+    <EmbeddedResource Include="Resources\Deal21.svg" />
+    <EmbeddedResource Include="Resources\Deal22.svg" />
+    <EmbeddedResource Include="Resources\Deal23.svg" />
+    <EmbeddedResource Include="Resources\Deal24.svg" />
+    <EmbeddedResource Include="Resources\Deal3.svg" />
+    <EmbeddedResource Include="Resources\Deal4.svg" />
+    <EmbeddedResource Include="Resources\Deal5.svg" />
+    <EmbeddedResource Include="Resources\Deal6.svg" />
+    <EmbeddedResource Include="Resources\Deal7.svg" />
+    <EmbeddedResource Include="Resources\Deal8.svg" />
+    <EmbeddedResource Include="Resources\Deal9.svg" />
+    <EmbeddedResource Include="Resources\MailEndangeredSpecies.svg" />
+    <EmbeddedResource Include="Resources\MailEnvironment.svg" />
+    <EmbeddedResource Include="Resources\MailMoveAhead.svg" />
+    <EmbeddedResource Include="Resources\MailPolution.svg" />
+    <EmbeddedResource Include="Resources\MailRecyling.svg" />
+    <EmbeddedResource Include="Resources\MailScholarship.svg" />
+    <EmbeddedResource Include="Resources\MailWhale.svg" />
+  </ItemGroup>
+  
+  
+  
+</Project>

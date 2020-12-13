@@ -1,0 +1,14 @@
+﻿@typeparam V
+@if (VMData == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <ListChooserBlazor ListPicker="VMData.PopUpList" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <GameButtonComponent 
+                         DataContext="DataContext"
+                         Display="Submit" 
+                         MethodName="@SubmitMethod" />
+</HorizontalDiv>

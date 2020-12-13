@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="33">
+	<defs>
+		<pattern id="pattern_0" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse" width="100" height="100" x="0" y="0">
+			<image id="img_0" x="0" y="0" width="100" height="100" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABHNCSVQICAgIfAhkiAAAAY1JREFUeJzt18FtwkAQQFGnny2C0uhx3c9yC0HEOQX4kt9c38EjrcbS/5pzXsYYl+1g9n3fxhhHzP/b11rX9WPmnOuv4a/1ba11/fQS/O5PF/KJJfh9Hh6kuuSZ/PBC3rUAf5zvBykud0b/9UIqy53Rtznn4S/r1R/nz65DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYq5DYn4DYkGWt7L0bggAAAAASUVORK5CYII="/>
+		</pattern>
+	</defs>
+	<ellipse fill="url(#pattern_0)" stroke="none" cx="12" cy="16.5" rx="12" ry="16.5"/>
+	<ellipse fill="none" stroke="rgb(211,211,211)" stroke-width="1" stroke-miterlimit="4" cx="12" cy="16.5" rx="12" ry="16.5"/>
+</svg>

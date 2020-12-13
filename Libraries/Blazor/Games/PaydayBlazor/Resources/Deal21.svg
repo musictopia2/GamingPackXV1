@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="33">
+	<defs>
+		<linearGradient id="gradient_0" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="24" y2="0">
+			<stop offset="0" stop-color="rgb(0,0,139)"/>
+			<stop offset="1" stop-color="rgb(255,0,255)"/>
+		</linearGradient>
+	</defs>
+	<rect fill="url(#gradient_0)" stroke="none" width="24" height="22"/>
+	<defs>
+		<linearGradient id="gradient_1" gradientUnits="userSpaceOnUse" x1="8" y1="9.9000006" x2="16" y2="9.9000006">
+			<stop offset="0" stop-color="rgb(255,255,0)"/>
+			<stop offset="1" stop-color="rgb(255,165,0)"/>
+		</linearGradient>
+	</defs>
+	<ellipse fill="url(#gradient_1)" stroke="none" cx="12" cy="13.900002" rx="4" ry="4.0000005"/>
+	<defs>
+		<linearGradient id="gradient_2" gradientUnits="userSpaceOnUse" x1="0" y1="22" x2="24" y2="22">
+			<stop offset="0" stop-color="rgb(0,0,255)"/>
+			<stop offset="1" stop-color="rgb(0,255,255)"/>
+		</linearGradient>
+	</defs>
+	<rect fill="url(#gradient_2)" stroke="none" y="22" width="24" height="11"/>
+	<path fill="rgb(0,0,0)" stroke="none" d="M0.672897 10.7406L2.35514 9.0283L5.49533 11.9858L6.16822 14.0094L5.15888 14.0094L5.27103 15.4104L6.16822 17.1226L5.27103 17.7453L4.26168 15.8774L3.47664 15.566L2.80374 14.7877L2.35514 14.9434L1.68224 20.0802L3.81308 22.8821L12 27.0849L20.1869 23.6604L22.0935 20.7028L21.757 16.1887L21.0841 18.8349L20.0748 19.1462L20.1869 16.967L20.1869 15.566L18.5047 17.2783L17.4953 16.5L18.6168 15.7217L20.0748 14.3208L18.6168 13.0755L19.0654 12.2972L21.4206 12.6085L21.757 13.5425L23.215 14.6321L23.5514 22.2594L23.4393 33L21.4206 32.8443L1.00935 32.6887L0 30.8208L0.11215 9.49528L0.672897 10.7406Z"/>
+	<rect fill="none" stroke="rgb(255,255,255)" stroke-width="1.6" stroke-miterlimit="4" width="24" height="33"/>
+</svg>

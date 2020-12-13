@@ -1,0 +1,9 @@
+﻿@if (VMData == null)
+{
+    return;
+}
+<BaseSingleMiscPileBlazor D="DealCard" SinglePile="VMData.DealPile">
+    <MainTemplate Context="Card">
+        <PaydayCardBlazor @key="Card.Deck" TargetHeight="@RealHeight" DeckObject="Card" />
+    </MainTemplate>
+</BaseSingleMiscPileBlazor>

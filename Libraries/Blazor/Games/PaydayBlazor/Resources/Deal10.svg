@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="33">
+	<defs>
+		<linearGradient id="gradient_0" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="16.799999" y2="23.1">
+			<stop offset="0" stop-color="rgb(255,255,0)"/>
+			<stop offset="1" stop-color="rgb(184,134,11)"/>
+		</linearGradient>
+	</defs>
+	<path fill="url(#gradient_0)" stroke="none" d="M0 11.55L16.8 0L16.8 11.55L0 23.1L0 11.55Z"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="0.83999997" cy="12.775001" rx="0.83999997" ry="8.085"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="3.6399999" cy="11.375" rx="0.84000003" ry="8.0849991"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="6.4399996" cy="9.9749994" rx="0.83999991" ry="8.085"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="9.2399998" cy="8.5749998" rx="0.84000015" ry="8.085"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="12.04" cy="7.1750002" rx="0.84000015" ry="8.085"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="14.84" cy="5.7750006" rx="0.84000015" ry="8.085"/>
+	<defs>
+		<linearGradient id="gradient_1" gradientUnits="userSpaceOnUse" x1="7.2000003" y1="9.9000006" x2="24" y2="33">
+			<stop offset="0" stop-color="rgb(255,255,0)"/>
+			<stop offset="1" stop-color="rgb(184,134,11)"/>
+		</linearGradient>
+	</defs>
+	<path fill="url(#gradient_1)" stroke="none" d="M7.2 21.45L24 9.9L24 21.45L7.2 33L7.2 21.45Z"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="8.04" cy="22.675001" rx="0.83999991" ry="8.0849991"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="10.84" cy="21.275" rx="0.84000015" ry="8.0849991"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="13.64" cy="19.875" rx="0.84000015" ry="8.0849991"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="16.440001" cy="18.475" rx="0.84000015" ry="8.0849991"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="19.24" cy="17.074999" rx="0.84000015" ry="8.0849991"/>
+	<ellipse fill="rgb(255,215,0)" stroke="none" cx="22.040001" cy="15.674999" rx="0.84000015" ry="8.0849991"/>
+</svg>

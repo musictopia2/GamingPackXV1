@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="33">
+	<path fill="rgb(218,112,214)" stroke="none" d="M0.15 11.9457L0.6 12.8416L1.65 30.4615L10.5 33L21.3 30.3122L22.2 12.8416L23.25 11.6471L0.15 11.9457Z"/>
+	<path fill="rgb(255,255,255)" stroke="none" d="M11.4 12.3937L13.5 28.0724L21 30.3122L22.2 25.6833L22.05 12.991L23.1 11.3484L11.4 12.3937Z"/>
+	<path fill="rgb(255,0,0)" stroke="none" d="M22.2 19.7104L19.35 19.5611L17.25 21.2036L17.55 24.19L20.85 26.4299L22.2 19.7104Z"/>
+	<path fill="none" stroke="rgb(128,0,128)" stroke-width="1.6" stroke-miterlimit="4" d="M0.15 11.9457L0.6 12.8416L1.65 30.4615L10.5 33L21.3 30.3122L22.2 12.8416L23.25 11.6471L0.15 11.9457Z"/>
+	<path fill="rgb(255,255,0)" stroke="none" d="M0 11.7964L11.4 14.0362L23.4 11.3484L12 8.80996L0 11.7964Z"/>
+	<path fill="none" stroke="rgb(128,0,128)" stroke-width="1.6" stroke-miterlimit="4" d="M0 11.7964L11.4 14.0362L23.4 11.3484L12 8.80996L0 11.7964Z"/>
+	<path fill="rgb(255,255,255)" stroke="none" d="M14.85 10.6018L21.9 0L24 1.04525L17.1 11.0498L14.85 10.6018Z"/>
+	<path fill="none" stroke="rgb(0,0,0)" stroke-width="1" stroke-miterlimit="4" d="M14.85 10.6018L21.9 0L24 1.04525L17.1 11.0498L14.85 10.6018Z"/>
+</svg>

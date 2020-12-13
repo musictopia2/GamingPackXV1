@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="33">
+	<defs>
+		<pattern id="pattern_0" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse" width="100" height="100" x="0" y="0">
+			<image id="img_0" x="0" y="0" width="100" height="100" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABHNCSVQICAgIfAhkiAAAAYxJREFUeJzt1zFug0AQQNHB4mDcLEcnhYvYMZSQL+VNt/u2Q4z0l31mm322WeY5+/zM6x2/xdfZZ5uZrzma/fCWX+jrKf7+ovwWf3w8WuZ8+OW+Hu621zO/1dfDR2fDL/e1sjv5cx5/vTP5+9X6hjPnvxW/xT9X1usEdup/cx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0Scx0S828cp45IsmLnTAAAAABJRU5ErkJggg=="/>
+		</pattern>
+	</defs>
+	<ellipse fill="url(#pattern_0)" stroke="none" cx="12" cy="22" rx="12" ry="11"/>
+	<ellipse fill="none" stroke="rgb(139,69,19)" stroke-width="2" stroke-miterlimit="4" cx="12" cy="22" rx="12" ry="11"/>
+	<path fill="rgb(255,215,0)" stroke="none" d="M6.16596 10.7317L6.06383 8.58537L3 4.56098L7.08511 7.64634L8.10638 6.84146L8.51489 2.54878L9.94468 6.57317L11.5787 6.57317L12.0894 3.7561L11.2723 3.08537L12.9064 0L14.9489 2.0122L13.8255 3.21951L13.9277 6.84146L16.2766 6.84146L16.9915 2.41463L17.7064 6.43902L18.9319 7.5122L22.2 4.42683L20.1574 9.2561L20.0553 11L6.16596 10.7317Z"/>
+	<path fill="none" stroke="rgb(0,0,0)" stroke-width="1" stroke-miterlimit="4" d="M6.16596 10.7317L6.06383 8.58537L3 4.56098L7.08511 7.64634L8.10638 6.84146L8.51489 2.54878L9.94468 6.57317L11.5787 6.57317L12.0894 3.7561L11.2723 3.08537L12.9064 0L14.9489 2.0122L13.8255 3.21951L13.9277 6.84146L16.2766 6.84146L16.9915 2.41463L17.7064 6.43902L18.9319 7.5122L22.2 4.42683L20.1574 9.2561L20.0553 11L6.16596 10.7317Z"/>
+</svg>

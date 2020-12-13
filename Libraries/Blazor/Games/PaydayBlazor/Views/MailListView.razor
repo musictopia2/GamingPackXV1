@@ -1,0 +1,9 @@
+﻿@if (VMData == null)
+{
+    return;
+}
+<BaseHandBlazor D="MailCard" HandType="EnumHandList.Vertical" Hand="VMData.CurrentMailList" Context="DeckObject">
+    <PaydayCardBlazor CommandParameter="DeckObject"
+                      DeckObject="DeckObject" 
+                      CommandObject="VMData.CurrentMailList.ObjectSingleClickCommand" />
+</BaseHandBlazor>

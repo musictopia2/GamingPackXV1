@@ -1,0 +1,43 @@
+﻿@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString
+@using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
+@if (GraphicsData == null)
+{
+    return;
+}
+<RawGameBoard TargetHeight="@TargetHeight"
+              BoardSize="GraphicsData.OriginalSize"
+              >
+    <ResourceImage Assembly="GetAssembly"
+                   Width="@GraphicsData.OriginalSize.Width.ToString()"
+                   FileName="board.svg"
+                   Height="@GraphicsData.OriginalSize.Height.ToString()" />
+    @foreach (var space in GraphicsData.GameContainer.PrivateSpaceList)
+    {
+        var position = GraphicsData.GetPositionList(space);
+        foreach (var item in position)
+        {
+            <BasePieceGraphics
+                               ForceRender="true"
+                               Location="item.Bounds.Location"
+                               LongestSize="item.Bounds.Width">
+                <PawnPiece MainColor="@item.Color" />
+            </BasePieceGraphics>
+        }
+    }
+    @if (GraphicsData.GameContainer.SaveRoot!.NumberHighlighted > -1)
+    {
+        if (GraphicsData.SpaceList.Keys.Contains(GraphicsData.GameContainer.SaveRoot.NumberHighlighted.ToString()))
+        {
+            var space = GraphicsData.SpaceList[GraphicsData.GameContainer.SaveRoot.NumberHighlighted.ToString()];
+            <TransparentButton
+                               BorderColor="@cc.Blue" 
+                               BorderWidth="4" 
+                               ButtonLocation="space.Bounds.Location"
+                               ButtonSize="space.Bounds.Size"
+                               ButtonClicked="() => SpaceClickedAsync(GraphicsData.GameContainer.SaveRoot.NumberHighlighted)" />
+        }
+    }
+    <RawRectangle Rectangle="GraphicsData.LotteryRectangle">
+        <CenteredTextBlazor TextColor="@cc.Aqua" BorderWidth="2" BorderColor="@cc.Black" FontSize="45" Text="@GraphicsData.GameContainer.SaveRoot.LotteryAmount.ToCurrency(0)" />
+    </RawRectangle>
+</RawGameBoard>

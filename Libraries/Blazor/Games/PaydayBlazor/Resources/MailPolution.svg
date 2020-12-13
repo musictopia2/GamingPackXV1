@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="85">
+	<text fill="rgb(255,0,0)" stroke="none" font-size="9.3500004" font-family="Tahoma" x="2.7873287" y="24.25">
+			Stop Polution
+	</text>
+	<text fill="rgb(255,0,0)" stroke="none" font-size="9.3500004" font-family="Tahoma" x="9.4049187" y="66.25">
+			Give $400
+	</text>
+	<rect fill="rgb(135,206,235)" stroke="none" x="60" y="4.25" width="54" height="59.5"/>
+	<defs>
+		<linearGradient id="gradient_0" gradientUnits="userSpaceOnUse" x1="60" y1="22.1" x2="114" y2="22.1">
+			<stop offset="0" stop-color="rgb(0,128,0)"/>
+			<stop offset="1" stop-color="rgb(50,205,50)"/>
+		</linearGradient>
+	</defs>
+	<path fill="url(#gradient_0)" stroke="none" d="M60 34L73.5 28.05L87 34L114 22.1L114 63L60 63L60 34Z"/>
+	<path fill="none" stroke="rgb(0,0,0)" stroke-width="1" stroke-miterlimit="4" d="M60 34L73.5 28.05L87 34L114 22.1L114 63L60 63L60 34Z"/>
+	<defs>
+		<linearGradient id="gradient_1" gradientUnits="userSpaceOnUse" x1="60" y1="4" x2="114" y2="4">
+			<stop offset="0" stop-color="rgb(47,79,79)"/>
+			<stop offset="1" stop-color="rgb(255,255,255)"/>
+		</linearGradient>
+	</defs>
+	<path fill="url(#gradient_1)" stroke="none" d="M60 13.9306L63.0337 12.5139L67.4831 19.125L74.1573 12.5139L79.0112 17.2361L82.8539 14.4028L86.2921 17L89.5281 12.5139L93.7753 16.5278L98.427 16.5278L99.0337 13.2222L103.281 17.4722L107.326 16.5278L107.933 11.0972L112.382 8.73611L114 4.25L114 4L60 4L60 13.9306Z"/>
+	<path fill="none" stroke="rgb(0,0,0)" stroke-width="1" stroke-miterlimit="4" d="M60 13.9306L63.0337 12.5139L67.4831 19.125L74.1573 12.5139L79.0112 17.2361L82.8539 14.4028L86.2921 17L89.5281 12.5139L93.7753 16.5278L98.427 16.5278L99.0337 13.2222L103.281 17.4722L107.326 16.5278L107.933 11.0972L112.382 8.73611L114 4.25L114 4L60 4L60 13.9306Z"/>
+	<defs>
+		<linearGradient id="gradient_2" gradientUnits="userSpaceOnUse" x1="83.219994" y1="19.125" x2="83.219994" y2="45.900002">
+			<stop offset="0" stop-color="rgb(0,0,0)"/>
+			<stop offset="1" stop-color="rgb(192,192,192)"/>
+		</linearGradient>
+	</defs>
+	<rect fill="url(#gradient_2)" stroke="none" x="83.219994" y="19.125" width="3.7799988" height="26.775002"/>
+	<defs>
+		<linearGradient id="gradient_3" gradientUnits="userSpaceOnUse" x1="91.724991" y1="19.125" x2="91.724991" y2="45.900002">
+			<stop offset="0" stop-color="rgb(0,0,0)"/>
+			<stop offset="1" stop-color="rgb(192,192,192)"/>
+		</linearGradient>
+	</defs>
+	<rect fill="url(#gradient_3)" stroke="none" x="91.724991" y="19.125" width="3.7799988" height="26.775002"/>
+	<defs>
+		<linearGradient id="gradient_4" gradientUnits="userSpaceOnUse" x1="100.23" y1="19.125" x2="100.23" y2="45.900002">
+			<stop offset="0" stop-color="rgb(0,0,0)"/>
+			<stop offset="1" stop-color="rgb(192,192,192)"/>
+		</linearGradient>
+	</defs>
+	<rect fill="url(#gradient_4)" stroke="none" x="100.23" y="19.125" width="3.7799988" height="26.775002"/>
+	<path fill="none" stroke="rgb(0,0,0)" stroke-width="1" stroke-miterlimit="4" d="M68.1 42.925L105.9 42.925L105.9 54.825L68.1 54.825L68.1 42.925ZM83.22 19.125L87 19.125L87 45.9L83.22 45.9L83.22 19.125ZM91.725 19.125L95.505 19.125L95.505 45.9L91.725 45.9L91.725 19.125ZM100.23 19.125L104.01 19.125L104.01 45.9L100.23 45.9L100.23 19.125Z"/>
+	<defs>
+		<linearGradient id="gradient_5" gradientUnits="userSpaceOnUse" x1="68.099998" y1="42.924999" x2="68.099998" y2="54.825001">
+			<stop offset="0" stop-color="rgb(0,0,0)"/>
+			<stop offset="1" stop-color="rgb(192,192,192)"/>
+		</linearGradient>
+	</defs>
+	<rect fill="url(#gradient_5)" stroke="none" x="68.099998" y="42.924999" width="18.900002" height="11.900002"/>
+	<defs>
+		<linearGradient id="gradient_6" gradientUnits="userSpaceOnUse" x1="87" y1="42.924999" x2="87" y2="54.825001">
+			<stop offset="0" stop-color="rgb(192,192,192)"/>
+			<stop offset="1" stop-color="rgb(0,0,0)"/>
+		</linearGradient>
+	</defs>
+	<rect fill="url(#gradient_6)" stroke="none" x="87" y="42.924999" width="18.900002" height="11.900002"/>
+	<rect fill="none" stroke="rgb(0,0,0)" stroke-width="1" stroke-miterlimit="4" x="68.099998" y="42.924999" width="37.799995" height="11.900002"/>
+	<rect fill="none" stroke="rgb(0,0,0)" stroke-width="3" stroke-miterlimit="4" x="60" y="4.25" width="54" height="59.5"/>
+</svg>
