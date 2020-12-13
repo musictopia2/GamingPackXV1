@@ -1,0 +1,42 @@
+﻿@using System.Drawing;
+@inherits KeyComponentBase
+@if (DataContext == null || DataContext.DominoList.Count != 3)
+{
+    return;
+}
+<BaseFrameBlazor Text="Display">
+    <svg @key="DataContext" height="@GetTargetString" viewBox="@ViewBox()">
+        @{
+            SimpleDominoInfo d = new SimpleDominoInfo();
+            SizeF size = d.DefaultSize;
+            PointF firstPoint = new PointF(0, 0);
+            PointF centerPoint = new PointF(size.Width / 2, 0);
+            PointF lastPoint = new PointF(size.Width, 0);
+        }
+        <BasicDominoBlazor D="SimpleDominoInfo"
+                           DataContext="DataContext"
+                           PartOfBoard="true"
+                           @key="GetKey"
+                           DeckObject="DataContext.DominoList[1]"
+                           Location="centerPoint" />
+        <BasicDominoBlazor D="SimpleDominoInfo"
+                           DataContext="DataContext"
+                           PartOfBoard="true"
+                           ClickBlank="true"
+                           CommandObject="DataContext.DominoCommand"
+                           CommandParameter="DataContext.DominoList.First()"
+                           DeckObject="DataContext.DominoList.First()"
+                           @key="GetKey"
+                           Location="firstPoint" />
+        <BasicDominoBlazor D="SimpleDominoInfo"
+                           DataContext="DataContext"
+                           PartOfBoard="true"
+                           ClickBlank="true"
+                           CommandObject="DataContext.DominoCommand"
+                           CommandParameter="DataContext.DominoList.Last()"
+                           DeckObject="DataContext.DominoList.Last()"
+                           @key="GetKey"
+                           Location="lastPoint" />
+
+    </svg>
+</BaseFrameBlazor>
