@@ -1,0 +1,38 @@
+@inherits BasicGameView<FlinchMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<CascadingValue Value="_vmData">
+    <HorizontalDiv Margins="5px">
+        <DrawPileBlazor DeckPile="_vmData.Deck1" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <ScoreBoardBlazor P="FlinchPlayerItem"
+                          Columns="_scores"
+                          Players="_gameContainer.SaveRoot.PlayerList" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <GameButtonComponent DataContext="DataContext" MethodName="@EndTurnMethod" Display="End Turn" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </HorizontalDiv>
+    <div>
+        <PublicPilesBlazor AnimationTag="public" />
+    </div>
+    <div>
+        <HandBlazor Hand="_vmData.PlayerHand1" />
+    </div>
+    <div>
+        <ParentControl VM="PlayerPilesViewModel">
+            <PlayerPilesView />
+        </ParentControl>
+    </div>
+    @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+    {
+        <ParentControl VM="RestoreViewModel">
+            <RestoreView />
+        </ParentControl>
+    }
+</CascadingValue>

@@ -1,0 +1,12 @@
+﻿@using BasicGamingUIBlazorLibrary.GameGraphics.Base
+@if (MainPiles == null || IndividualPile == null || IndividualPile.ObjectList.Count == 0)
+{
+    return;
+}
+<FlexibleDeckRenderComponent D="FlinchCardInformation" DeckObject="_card">
+    <CardGraphicsBlazor DeckObject="_card"
+                        CommandParameter="IndividualPile"
+                        CommandObject="MainPiles.PileCommand"
+                        DataContext="MainPiles"
+                        TargetHeight="@RealHeight" />
+</FlexibleDeckRenderComponent>
