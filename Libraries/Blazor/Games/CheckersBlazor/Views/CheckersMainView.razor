@@ -1,0 +1,43 @@
+@inherits BasicGameView<CheckersMainViewModel>
+<div style="margin-left: 5px; margin-top: 5px;">
+    <CheckersChessBoardBlazor E="EnumColorChoice"
+                              S="SpaceCP"
+                              TargetHeight="95vh"
+                              GameBoard="GameBoard">
+        <MainPiece Context="Piece">
+            <BasePieceGraphics LongestSize="@LongestSize">
+                <CheckerPiece MainColor="@PieceColor(Piece)" PieceCategory="CheckerCategory(Piece)" />
+            </BasePieceGraphics>
+        </MainPiece>
+        <AnimatePiece>
+            @if (GameContainer!.Animates.AnimationGoing)
+            {
+                var player = GameContainer.PlayerList!.GetWhoPlayer();
+
+                
+
+                <UpdatePortionBoard>
+                    <BasePieceGraphics @key="@GetKey" Location="GameContainer.Animates.CurrentLocation" LongestSize="@LongestSize">
+                        <CheckerPiece MainColor="@PieceColor(player.Color)"
+                                      PieceCategory="@AnimationCategory" />
+                    </BasePieceGraphics>
+                </UpdatePortionBoard>
+
+                return;
+            }
+        </AnimatePiece>
+    </CheckersChessBoardBlazor>
+    <HorizontalDiv LeftOnly="5px">
+        <GameButtonComponent Display="End Turn" DataContext="DataContext" MethodName="@EndMethod" />
+        <GameButtonComponent Display="Show Tie" DataContext="DataContext" MethodName="@TieMethod" />
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
+    </HorizontalDiv>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
