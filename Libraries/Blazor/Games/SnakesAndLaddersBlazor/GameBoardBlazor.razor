@@ -1,0 +1,62 @@
+﻿@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString 
+@if (PlayerList == null || _spaceList.Count != 100)
+{
+    <p>Problem</p>
+    return;
+}
+<RawGameBoard TargetHeight="90vh" BoardSize="new SizeF(500, 500)">
+    @foreach (var space in _spaceList)
+    {
+        <BorderedSpace FillColor="@space.Value.Fill"
+                       SpaceLocation="space.Value.Bounds.Location"
+                       SpaceSize="space.Value.Bounds.Size"
+                       BorderColor="@cc.Black"
+                       BorderWidth="1"
+                       Fixed="true"
+                       ShapeCategory="BorderedSpace.EnumShapeCategory.Rectangle">
+            @{
+                int number = space.Key;
+                string color;
+                int fontsize;
+                if (number == 100)
+                {
+                    color = cc.Yellow;
+                }
+                else if ((number % 10) == 0)
+                {
+                    color = cc.Red;
+                }
+                else
+                {
+                    color = cc.Red;
+                }
+                fontsize = 30;
+            }
+            <CenteredTextBlazor BorderColor="@cc.Transparent"
+                               Text="@number.ToString()"
+                               FontSize="@fontsize"
+                               TextColor="@color"
+                               FontFamily="Comic Sans MS" />
+        </BorderedSpace>
+    }
+    <ResourceImage Height="500" Width="500" FileName="snakeladder.png" Assembly="GetAssembly" X="0" Y="0" />
+    @{ 
+        var list = ModifiedList;
+    }
+    @foreach (var player in list)
+    {
+        if (player.SpaceNumber > 0)
+        {
+            TempSpace space = _spaceList[player.SpaceNumber];
+            <BasePieceGraphics Location="@space.Bounds.Location"
+                               @key ="space"
+                               LongestSize="@space.Bounds.Size.Height">
+                <PieceGraphicsBlazor Index="@player.Id" Number="@player.SpaceNumber" />
+            </BasePieceGraphics>
+        }
+    }
+    @foreach (var space in _spaceList)
+    {
+        <BlankClickableSquare Fixed="true" SpaceLocation="@space.Value.Bounds.Location" SpaceSize="@space.Value.Bounds.Size" SpaceClicked="() => SpaceClicked(space.Key)" />
+    }
+</RawGameBoard>

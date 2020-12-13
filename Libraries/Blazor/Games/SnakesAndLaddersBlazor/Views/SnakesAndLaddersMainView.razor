@@ -1,0 +1,25 @@
+@inherits BasicGameView<SnakesAndLaddersMainViewModel>
+@if (DataContext!.CurrentPlayer == null)
+{
+    return; //hopefully this works too.
+}
+<HorizontalDiv LeftOnly="0px">
+    <GameBoardBlazor PlayerList="DataContext!.GetPlayerList" />
+</HorizontalDiv>
+<HorizontalDiv LeftOnly="5px">
+    <GameButtonComponent DataContext="DataContext" MethodName="@RollMethod" Display="Roll Dice" />
+    <BasePieceGraphics TargetHeight="10vh"
+                       LongestSize="50">
+        <PieceGraphicsBlazor Index="@DataContext!.CurrentPlayer.Id" Number="@DataContext.CurrentPlayer.SpaceNumber" />
+    </BasePieceGraphics>
+    <DiceListConrolBlazor Cup="DataContext!.GetCup" D="SimpleDice" />
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </div>
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
