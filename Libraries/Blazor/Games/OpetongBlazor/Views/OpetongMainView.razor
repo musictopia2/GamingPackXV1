@@ -1,0 +1,46 @@
+@inherits BasicGameView<OpetongMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsDrawPileBlazor R="RegularRummyCard" DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsCardBoardBlazor R="RegularRummyCard" DataContext="_vmData.Pool1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsTempSetsBlazor RU="RegularRummyCard"
+                               TargetContainerSize="30vh"
+                               TempPiles="_vmData.TempSets" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <GameButtonComponent Display="Lay Down Single Set" DataContext="DataContext" MethodName="@LayDownMethod" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </div>
+    <div>
+        <ScoreBoardBlazor P="OpetongPlayerItem"
+                          Columns="_scores"
+                          Players="_gameContainer.SaveRoot.PlayerList" />
+    </div>
+</HorizontalDiv>
+<div>
+    <DeckOfCardsHandBlazor R="RegularRummyCard" Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <DeckOfCardsMainRummySetsBlazor 
+                                    RU="RegularRummyCard"
+                                    SE="RummySet"
+                                    T="SavedSet"
+                                    ContainerHeight="30vh"
+                                    DataContext="_vmData.MainSets" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
