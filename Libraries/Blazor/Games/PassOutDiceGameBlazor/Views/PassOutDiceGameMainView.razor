@@ -1,0 +1,17 @@
+@inherits BasicGameView<PassOutDiceGameMainViewModel>
+<HorizontalDiv Margins="5px">
+    <GameBoardBlazor GraphicsData="_graphicsData" TargetHeight="95vh" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <div style="height: 22vh">
+        <GameButtonComponent DataContext="@DataContext" MethodName="@EndMethod" Display="End Turn" />
+        <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
+    </div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

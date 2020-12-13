@@ -1,0 +1,72 @@
+﻿@using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions; 
+@if (GraphicsData == null || GraphicsData.GameContainer.SpaceList == null)
+{
+    return;
+}
+<RawGameBoard TargetHeight="@TargetHeight" BoardSize="GraphicsData.OriginalSize">
+    <RawRectangle Rectangle="@GraphicsData.GetBounds">
+        <svg>
+            <rect width="100%" height="100%" stroke="black" stroke-width="7" fill="maroon" />
+        </svg>
+    </RawRectangle>
+    @{ 
+        int x = 0;
+    }
+    @foreach (var space in GraphicsData.GameContainer.SpaceList)
+    {
+        x++;
+        <RawRectangle Rectangle="GraphicsData.SpaceRectangle(space.Value)">
+            <svg>
+                <rect width="100%" height="100%" fill="none" stroke="black" stroke-width="1" />
+            </svg>
+        </RawRectangle>
+        @if (space.Value.IsEnabled == false)
+        {
+            <RawRectangle Rectangle="GraphicsData.PassRectangle(space.Value)">
+                <CenteredSvgText Text="Pass" TextColor="white" FontSize="15" />
+            </RawRectangle>
+            <RawRectangle Rectangle="GraphicsData.OutRectangle(space.Value)">
+                <CenteredSvgText Text="Out" TextColor="white" FontSize="15" />
+            </RawRectangle>
+        }
+        else
+        {
+            if (x == GraphicsData.GameContainer.SaveRoot!.PreviousSpace)
+            {
+                <RawRectangle Rectangle="space.Value.Bounds">
+                    <svg>
+                        <rect width="100%" height="100%" fill="yellow" />
+                    </svg>
+                </RawRectangle>
+            }
+            var item = GraphicsData.GetDiceLocation(space.Value);
+            var firstDice = new SimpleDice();
+            firstDice.Populate(space.Value.FirstValue);
+            var secondDice = new SimpleDice();
+            secondDice.Populate(space.Value.SecondValue);
+            <StandardDiceBlazor
+                                Dice="firstDice" 
+                                TargetHeight="18"
+                                X="@item.firstDiceLocation.X"
+                                Y="@item.firstDiceLocation.Y" />
+            <StandardDiceBlazor 
+                                Dice="secondDice"
+                                TargetHeight="18"
+                                X="@item.secondDiceLocation.X"
+                                Y="@item.secondDiceLocation.Y" />
+                    if (space.Value.Player > 0)
+                    {
+                        <BasePieceGraphics LongestSize="space.Value.Bounds.Height"
+                                           Location="space.Value.Bounds.Location">
+                            <CheckerPiece PieceCategory="EnumCheckerPieceCategory.OnlyPiece" MainColor="@space.Value.Color.ToColor()" />
+                        </BasePieceGraphics>
+                    }
+                    @if (GraphicsData.GameContainer.Command.IsExecuting == false)
+                    {
+                        <BlankClickableSquare SpaceLocation="space.Value.Bounds.Location"
+                                              SpaceSize="space.Value.Bounds.Size"
+                                              SpaceClicked="() => SpaceClicked(space.Key)" />
+                    }
+        }
+    }
+</RawGameBoard>
