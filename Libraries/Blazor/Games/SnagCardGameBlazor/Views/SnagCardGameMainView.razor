@@ -1,0 +1,43 @@
+@inherits BasicGameView<SnagCardGameMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<GridContainer Inline="true" ColumnGap="10px" Columns="auto auto">
+    <GridItem>
+        <DeckOfCardsHandBlazor Rotated="true"
+                               HandType="EnumHandList.Vertical"
+                               Hand="_vmData.Bar1"
+                               R="SnagCardGameCardInformation" />
+    </GridItem>
+    <GridItem Column="2">
+        <DeckOfCardsSeveralPlayersTrickBlazor T="SnagCardGameCardInformation"
+                                              ExtraLongSecondColumn="true"
+                                              P="SnagCardGamePlayerItem"
+                                              B="SnagTrickObservable"
+                                              DataContext="_vmData.TrickArea1" />
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsHandBlazor R="SnagCardGameCardInformation" Hand="_vmData.Human1" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsHandBlazor R="SnagCardGameCardInformation" Hand="_vmData.Opponent1" />
+        </HorizontalDiv>
+        <div>
+            <DeckOfCardsHandBlazor R="SnagCardGameCardInformation" Hand="_vmData.PlayerHand1" />
+        </div>
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
+        <div>
+            <ScoreBoardBlazor P="SnagCardGamePlayerItem"
+                              Columns="_scores"
+                              Players="_gameContainer.SaveRoot.PlayerList" />
+        </div>
+    </GridItem>
+</GridContainer>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
