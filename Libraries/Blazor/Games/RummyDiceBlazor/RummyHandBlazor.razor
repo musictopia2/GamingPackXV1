@@ -1,0 +1,24 @@
+﻿@if (DataContext == null)
+{
+    return;
+}
+<BaseFrameBlazor FullFrame="true" PaddingHeight="10" Text="@TempSetName">
+    @if (DataContext.HandList.Count == 0)
+    {
+        <div style="height: @TargetHeight">
+
+        </div>
+    }
+    else
+    {
+        @foreach (var dice in DataContext.HandList)
+        {
+            <HorizontalDiv LeftOnly="5px">
+                <RummyGraphicsBlazor  DiceInfo="@dice" OnClick="OnClickAsync" TargetHeight="@TargetHeight" />
+            </HorizontalDiv>
+        }
+    }
+    <div>
+        <GameButtonComponent Display="Place Tiles" CommandObject="DataContext.BoardCommand" />
+    </div>
+</BaseFrameBlazor>

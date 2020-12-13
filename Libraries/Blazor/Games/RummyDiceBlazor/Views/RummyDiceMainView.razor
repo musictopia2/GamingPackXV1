@@ -1,0 +1,32 @@
+@inherits BasicGameView<RummyDiceMainViewModel>
+@if (DataContext == null || DataContext.MainGame.TempSets == null)
+{
+    return;
+}
+@foreach (var hand in DataContext.MainGame.TempSets)
+{
+    <div>
+        <RummyHandBlazor TargetHeight="15vh" DataContext="hand" />
+    </div>
+}
+<div>
+    <GameButtonComponent DataContext="DataContext" MethodName="@RollMethod" Display="Roll" />
+    <GameButtonComponent DataContext="DataContext" MethodName="@PutBackMethod" Display="Put Back" />
+    <GameButtonComponent DataContext="DataContext" MethodName="@ScoreMethod" Display="Score Hand" />
+    <GameButtonComponent DataContext="DataContext" MethodName="@EndTurnMethod" Display="End Turn" />
+    <HorizontalDiv LeftOnly="10px">
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="10px">
+        <ScoreBoardBlazor P="RummyDicePlayerItem" Columns="_scores" Players="DataContext.MainGame.PlayerList" />
+    </HorizontalDiv>
+</div>
+<div>
+    <RummyListBlazor TargetHeight="15vh" GameBoard="DataContext.MainGame.MainBoard1" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

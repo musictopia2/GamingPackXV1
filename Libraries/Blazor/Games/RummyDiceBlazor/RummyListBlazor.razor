@@ -1,0 +1,17 @@
+﻿
+@if (GameBoard == null)
+{
+    return;
+}
+@if (DiceList.Count == 0)
+{
+    return;
+}
+<span>
+    @foreach (var dice in DiceList)
+    {
+        <span style="margin-left: 8px;">
+            <RummyGraphicsBlazor TargetHeight="@TargetHeight" OnClick="OnClickAsync" DiceInfo="dice" />
+        </span>        
+    }
+</span>

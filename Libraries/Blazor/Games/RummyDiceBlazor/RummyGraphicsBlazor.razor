@@ -1,0 +1,13 @@
+﻿@if (DiceInfo == null || DiceInfo.Visible == false || DiceInfo.Color == EnumColorType.None || TargetHeight == "" || OnClick.HasDelegate == false)
+{
+    return;
+}
+<svg viewBox="0 0 100 100" height="@TargetHeight" @onclick="() => OnClick.InvokeAsync(DiceInfo)">
+
+    <rect fill="@GetFillColor()" rx="4" ry="4" stroke="@GetBorderColor()" stroke-width="6px" x="3" y="3" width="94" height="94" />
+    @if (DiceInfo.IsSelected)
+    {
+        <rect fill="black" rx="4" ry="4" x="3" y="3" opacity=".3" width="94" height="94" />
+    }
+    @((MarkupString)WhiteString())
+</svg>
