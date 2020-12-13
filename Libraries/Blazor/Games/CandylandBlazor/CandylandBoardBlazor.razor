@@ -1,0 +1,33 @@
+﻿@if (BoardViewModel == null || PlayerList == null)
+{
+    return;
+}
+<RawGameBoard TargetHeight="95vh" BoardSize="new SizeF(807, 675)">
+    <ResourceImage Height="675" Width="807" FileName="candylandboard.png" Assembly="GetAssembly" X="0" Y="0" />
+    @{
+        var list = ModifiedList;
+    }
+    @foreach (var player in list)
+    {
+        if (player.SpaceNumber > 0)
+        {
+            PointF point = _positionList[player.SpaceNumber - 1];
+            <BasePieceGraphics Location="@point" LongestSize="30" @key="point">
+                <CandylandPiece MainColor="@player.GetColor()" />
+            </BasePieceGraphics>
+        }
+    }
+    @if (DataContext!.CommandContainer.IsExecuting == false)
+    {
+        @if (BoardViewModel.IsCastleValid)
+        {
+            RectangleF rect = GetCastleRectangle;
+            <BlankClickableSquare SpaceClicked="(() => CastleClicked())" SpaceLocation="rect.Location" SpaceSize="rect.Size" />
+        }
+        else
+        {
+            int space = BoardViewModel.GetValidSpaceMove;
+            <ClickableCandylandSpaceBlazor SquareData="_clickSquares[space]" SpaceClicked="SpaceClicked" SpaceNumber="space" />
+        }
+    }
+</RawGameBoard>

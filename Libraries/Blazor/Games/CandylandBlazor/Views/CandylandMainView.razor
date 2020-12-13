@@ -1,0 +1,28 @@
+@inherits BasicGameView<CandylandMainViewModel>
+@if (DataContext!.CurrentPlayer == null)
+{
+    return;
+}
+<div style="background-color: white; height: 100vh; color: black">
+    <HorizontalDiv LeftOnly="0px">
+        <CandylandCardBlazor @key="DataContext!.CurrentCard" TargetHeight="15vh" DeckObject="DataContext!.CurrentCard" />
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
+        <div>
+            <BasePieceGraphics @key="DataContext.CurrentPlayer" TargetHeight="20vh"
+                               LongestSize="50">
+                <CandylandPiece MainColor="@DataContext!.CurrentPlayer.GetColor()" />
+            </BasePieceGraphics>
+        </div>
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="10px">
+        <CandylandBoardBlazor PlayerList="DataContext!.GetPlayerList" BoardViewModel="BoardModel" />
+    </HorizontalDiv>
+    @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+    {
+        <ParentControl VM="RestoreViewModel">
+            <RestoreView />
+        </ParentControl>
+    }
+</div>
