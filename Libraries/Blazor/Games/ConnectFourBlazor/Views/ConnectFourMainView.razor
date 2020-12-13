@@ -1,0 +1,28 @@
+@inherits BasicGameView<ConnectFourMainViewModel>
+@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString
+<LabelGridComponent DataContext="DataContext" Labels="_labels" />
+<div>
+    <GridGameBoard SpaceList="DataContext!.GetBoardList"
+                   TargetSpaceHeight="95"
+                   TargetSpaceWidth="95"
+                   GridWidth="100%"
+                   GridHeight="90vh"
+                   S="SpaceInfoCP">
+        <ItemTemplate Context="Space">
+            <BasePieceGraphics LongestSize="95" MethodName="@MethodName" CommandParameter="Space" DataContext="DataContext" AfterChange="ShowChange">
+                <CheckerPiece BlankColor="@cc.Aqua" HasImage="@Space.HasImage" MainColor="@Space.Color" PieceCategory="EnumCheckerPieceCategory.OnlyPiece" />
+            </BasePieceGraphics>
+        </ItemTemplate>
+        <Canvas>
+            <AnimationVectorCanvas S="SpaceInfoCP" Context="Space">
+                <AnimateCheckers Color="@Space.Color" LongestSize="95" PieceCategory="EnumCheckerPieceCategory.OnlyPiece" />
+            </AnimationVectorCanvas>
+        </Canvas>
+    </GridGameBoard>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
