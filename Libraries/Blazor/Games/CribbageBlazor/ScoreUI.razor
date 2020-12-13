@@ -1,0 +1,31 @@
+﻿@if (ScoreList == null || ScoreList.Count == 0)
+{
+    <BoldLabel Style="font-size: 25px" Text="No Scores" />
+    return;
+}
+<HorizontalDiv Width="300px">
+    <BoldLabel Text="Score Description" />
+</HorizontalDiv>
+<HorizontalDiv Margins="0px">
+    <BoldLabel Text="Score" />
+</HorizontalDiv>
+@foreach (var score in ScoreList)
+{
+    <div>
+        <HorizontalDiv Width="300px">
+            @score.Description
+        </HorizontalDiv>
+        <HorizontalDiv Margins="0px">
+            @score.Score
+        </HorizontalDiv>
+    </div>
+}
+<div>
+
+    <HorizontalDiv Width="300px">
+        <BoldLabel Text="Total Score" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="0px">
+        @ScoreList.Sum(x => x.Score)
+    </HorizontalDiv>
+</div>

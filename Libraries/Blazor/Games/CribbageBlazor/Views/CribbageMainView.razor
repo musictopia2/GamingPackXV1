@@ -1,0 +1,52 @@
+@inherits BasicGameView<CribbageMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsDrawPileBlazor R="CribbageCard" DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsSingleMiscPileBlazor R="CribbageCard" SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsHandBlazor R="CribbageCard" Hand="_vmData.MainFrame" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_counts" />
+    </div>
+    <div>
+        <ScoreUI ScoreList="_vmData.ScoreBoard1.ScoreList" />
+    </div>
+</HorizontalDiv>
+<GridContainer Inline="true" Columns="@Columns" ColumnGap="10px">
+    <GridItem>
+        <div>
+            <DeckOfCardsHandBlazor R="CribbageCard" Hand="_vmData.PlayerHand1" />
+        </div>
+        <div>
+            <GameButtonComponent Display="Continue" DataContext="DataContext" MethodName="@ContinueMethod" />
+            <GameButtonComponent Display="To Crib" DataContext="DataContext" MethodName="@CribMethod" />
+            <GameButtonComponent Display="Play" DataContext="DataContext" MethodName="@PlayMethod" />
+        </div>
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
+
+        <div>
+            <DeckOfCardsHandBlazor R="CribbageCard" Hand="_vmData.CribFrame" />
+        </div>
+    </GridItem>
+    <GridItem Column="2">
+        <ScoreBoardBlazor P="CribbagePlayerItem"
+                          Columns="_scores"
+                          Players="_gameContainer.SaveRoot.PlayerList" />
+    </GridItem>
+</GridContainer>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
