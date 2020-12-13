@@ -1,0 +1,22 @@
+@inherits BasicGameView<RollEmMainViewModel>
+<HorizontalDiv LeftOnly="0px">
+    <GameBoardBlazor BoardData="_boardData"
+                     TargetHeight="85vh" />
+</HorizontalDiv>
+<HorizontalDiv LeftOnly="10px">
+    <div style="height: 22vh">
+        <GameButtonComponent DataContext="@DataContext" MethodName="@RollMethod" Display="Roll Dice" />
+        <GameButtonComponent DataContext="@DataContext" MethodName="@EndMethod" Display="End Turn" />
+        <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
+    </div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    <div>
+        <ScoreBoardBlazor P="RollEmPlayerItem" Columns="@_scores" Players="@DataContext!.PlayerList" />
+    </div>
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

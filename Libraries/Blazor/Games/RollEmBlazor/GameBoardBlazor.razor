@@ -1,0 +1,38 @@
+﻿@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString;
+@if (BoardData == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="@BoardData.FrameText" IsEnabled="@BoardData.CanEnableMove">
+    <RawGameBoard TargetHeight="@TargetHeight" BoardSize="BoardData.OriginalSize">
+        @foreach (var number in _numbers)
+        {
+
+
+            <GameSpaceWithoutBorders ShapeCategory="GameSpaceWithoutBorders.EnumShapeCategory.Oval"
+                                     FillColor="@cc.Blue"
+                                     SpaceLocation="number.Bounds.Location"
+                                     SpaceClicked="() => SpaceClickedAsync(number)"
+                                     SpaceSize="number.Bounds.Size">
+                <CenteredTextBlazor FontSize="50"
+                                   Text="@number.Number.ToString()"
+                                   TextColor="@cc.White"
+                                   BorderWidth="3"
+                                   />
+
+                @if (number.IsCrossed || number.Recently)
+                {
+                    <svg>
+                        <line stroke-width="10" 
+                              stroke="@LineColor(number)"
+                              x1="0"
+                              y1="23"
+                              x2="@number.Bounds.Width"
+                              y2="23"
+                              />
+                    </svg>
+                }
+            </GameSpaceWithoutBorders>
+        }
+    </RawGameBoard>
+</BaseFrameBlazor>
