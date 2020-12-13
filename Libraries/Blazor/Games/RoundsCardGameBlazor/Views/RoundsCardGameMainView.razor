@@ -1,0 +1,31 @@
+@inherits BasicGameView<RoundsCardGameMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsDrawPileBlazor R="RoundsCardGameCardInformation" DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsSingleMiscPileBlazor R="RoundsCardGameCardInformation" SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<div>
+    <DeckOfCardsTwoPlayerTrickBlazor T="RoundsCardGameCardInformation" DataContext="_vmData.TrickArea1" />
+</div>
+<div>
+    <DeckOfCardsHandBlazor R="RoundsCardGameCardInformation" Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+<div>
+    <ScoreBoardBlazor P="RoundsCardGamePlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
