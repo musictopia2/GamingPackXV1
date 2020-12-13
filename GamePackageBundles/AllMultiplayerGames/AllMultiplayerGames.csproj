@@ -1,0 +1,198 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\A21DiceGameCP\A21DiceGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\A21DiceGameBlazor\A21DiceGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\A8RoundRummyCP\A8RoundRummyCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\A8RoundRummyBlazor\A8RoundRummyBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\AggravationCP\AggravationCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\AggravationBlazor\AggravationBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\BackgammonCP\BackgammonCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\BackgammonBlazor\BackgammonBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\BattleshipCP\BattleshipCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\BattleshipBlazor\BattleshipBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\BingoCP\BingoCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\BingoBlazor\BingoBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\BladesOfSteelCP\BladesOfSteelCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\BladesOfSteelBlazor\BladesOfSteelBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\BowlingDiceGameCP\BowlingDiceGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\BowlingDiceGameBlazor\BowlingDiceGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\CaliforniaJackCP\CaliforniaJackCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\CaliforniaJackBlazor\CaliforniaJackBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\CandylandCP\CandylandCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\CandylandBlazor\CandylandBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\CheckersCP\CheckersCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\CheckersBlazor\CheckersBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\ChessCP\ChessCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\ChessBlazor\ChessBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\ChinazoCP\ChinazoCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\ChinazoBlazor\ChinazoBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\ChineseCheckersCP\ChineseCheckersCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\ChineseCheckersBlazor\ChineseCheckersBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\ClueBoardGameCP\ClueBoardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\ClueBoardGameBlazor\ClueBoardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\ConcentrationCP\ConcentrationCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\ConcentrationBlazor\ConcentrationBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\ConnectFourCP\ConnectFourCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\ConnectFourBlazor\ConnectFourBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\ConnectTheDotsCP\ConnectTheDotsCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\ConnectTheDotsBlazor\ConnectTheDotsBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\CountdownCP\CountdownCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\CountdownBlazor\CountdownBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\CousinRummyCP\CousinRummyCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\CousinRummyBlazor\CousinRummyBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\CrazyEightsCP\CrazyEightsCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\CrazyEightsBlazor\CrazyEightsBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\CribbageCP\CribbageCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\CribbageBlazor\CribbageBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\DeadDie96CP\DeadDie96CP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\DeadDie96Blazor\DeadDie96Blazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\DiceDominosCP\DiceDominosCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\DiceDominosBlazor\DiceDominosBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\DominosMexicanTrainCP\DominosMexicanTrainCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\DominosMexicanTrainBlazor\DominosMexicanTrainBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\DominosRegularCP\DominosRegularCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\DominosRegularBlazor\DominosRegularBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\DummyRummyCP\DummyRummyCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\DummyRummyBlazor\DummyRummyBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\DutchBlitzCP\DutchBlitzCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\DutchBlitzBlazor\DutchBlitzBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\FillOrBustCP\FillOrBustCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\FillOrBustBlazor\FillOrBustBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\FiveCrownsCP\FiveCrownsCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\FiveCrownsBlazor\FiveCrownsBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\FlinchCP\FlinchCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\FlinchBlazor\FlinchBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\FluxxCP\FluxxCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\FluxxBlazor\FluxxBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\FourSuitRummyCP\FourSuitRummyCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\FourSuitRummyBlazor\FourSuitRummyBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\GalaxyCardGameCP\GalaxyCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\GalaxyCardGameBlazor\GalaxyCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\GermanWhistCP\GermanWhistCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\GermanWhistBlazor\GermanWhistBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\GoFishCP\GoFishCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\GoFishBlazor\GoFishBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\GolfCardGameCP\GolfCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\GolfCardGameBlazor\GolfCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\HitTheDeckCP\HitTheDeckCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\HitTheDeckBlazor\HitTheDeckBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\HorseshoeCardGameCP\HorseshoeCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\HorseshoeCardGameBlazor\HorseshoeCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\HuseHeartsCP\HuseHeartsCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\HuseHeartsBlazor\HuseHeartsBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\ItalianDominosCP\ItalianDominosCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\ItalianDominosBlazor\ItalianDominosBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\KismetCP\KismetCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\KismetBlazor\KismetBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\LifeBoardGameCP\LifeBoardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\LifeBoardGameBlazor\LifeBoardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\LifeCardGameCP\LifeCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\LifeCardGameBlazor\LifeCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\LottoDominosCP\LottoDominosCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\LottoDominosBlazor\LottoDominosBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\MancalaCP\MancalaCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\MancalaBlazor\MancalaBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\MilkRunCP\MilkRunCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\MilkRunBlazor\MilkRunBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\MillebournesCP\MillebournesCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\MillebournesBlazor\MillebournesBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\MonasteryCardGameCP\MonasteryCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\MonasteryCardGameBlazor\MonasteryCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\MonopolyCardGameCP\MonopolyCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\MonopolyCardGameBlazor\MonopolyCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\OldMaidCP\OldMaidCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\OldMaidBlazor\OldMaidBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\OpetongCP\OpetongCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\OpetongBlazor\OpetongBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\PassOutDiceGameCP\PassOutDiceGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\PassOutDiceGameBlazor\PassOutDiceGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\PaydayCP\PaydayCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\PaydayBlazor\PaydayBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\Phase10CP\Phase10CP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\Phase10Blazor\Phase10Blazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\PickelCardGameCP\PickelCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\PickelCardGameBlazor\PickelCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\Pinochle2PlayerCP\Pinochle2PlayerCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\Pinochle2PlayerBlazor\Pinochle2PlayerBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\RackoCP\RackoCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\RackoBlazor\RackoBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\RageCardGameCP\RageCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\RageCardGameBlazor\RageCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\RollEmCP\RollEmCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\RollEmBlazor\RollEmBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\RookCP\RookCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\RookBlazor\RookBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\RoundsCardGameCP\RoundsCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\RoundsCardGameBlazor\RoundsCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\Rummy500CP\Rummy500CP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\Rummy500Blazor\Rummy500Blazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\RummyDiceCP\RummyDiceCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\RummyDiceBlazor\RummyDiceBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\SequenceDiceCP\SequenceDiceCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\SequenceDiceBlazor\SequenceDiceBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\ShipCaptainCrewCP\ShipCaptainCrewCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\ShipCaptainCrewBlazor\ShipCaptainCrewBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\SinisterSixCP\SinisterSixCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\SinisterSixBlazor\SinisterSixBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\SixtySix2PlayerCP\SixtySix2PlayerCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\SixtySix2PlayerBlazor\SixtySix2PlayerBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\SkipboCP\SkipboCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\SkipboBlazor\SkipboBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\SkuckCardGameCP\SkuckCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\SkuckCardGameBlazor\SkuckCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\SnagCardGameCP\SnagCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\SnagCardGameBlazor\SnagCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\SnakesAndLaddersCP\SnakesAndLaddersCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\SnakesAndLaddersBlazor\SnakesAndLaddersBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\SorryCP\SorryCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\SorryBlazor\SorryBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\SorryCardGameCP\SorryCardGameCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\SorryCardGameBlazor\SorryCardGameBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\Spades2PlayerCP\Spades2PlayerCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\Spades2PlayerBlazor\Spades2PlayerBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\TeeItUpCP\TeeItUpCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\TeeItUpBlazor\TeeItUpBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\ThinkTwiceCP\ThinkTwiceCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\ThinkTwiceBlazor\ThinkTwiceBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\ThreeLetterFunCP\ThreeLetterFunCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\ThreeLetterFunBlazor\ThreeLetterFunBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\TicTacToeCP\TicTacToeCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\TicTacToeBlazor\TicTacToeBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\TileRummyCP\TileRummyCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\TileRummyBlazor\TileRummyBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\TroubleCP\TroubleCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\TroubleBlazor\TroubleBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\UnoCP\UnoCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\UnoBlazor\UnoBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\XactikaCP\XactikaCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\XactikaBlazor\XactikaBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\YachtRaceCP\YachtRaceCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\YachtRaceBlazor\YachtRaceBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\YahtzeeCP\YahtzeeCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\YahtzeeBlazor\YahtzeeBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Games\YahtzeeHandsDownCP\YahtzeeHandsDownCP.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Games\YahtzeeHandsDownBlazor\YahtzeeHandsDownBlazor.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Standard\BasicGameFrameworkLibrary\BasicGameFrameworkLibrary.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Standard\BasicGamingUIBlazorLibrary\BasicGamingUIBlazorLibrary.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Standard\GameLoaderBlazorLibrary\GameLoaderBlazorLibrary.csproj" />
+    <ProjectReference Include="..\..\Libraries\CrossPlatform\Standard\GamePackageSignalRClasses\GamePackageSignalRClasses.csproj" />
+    <ProjectReference Include="..\..\Libraries\Blazor\Standard\MultiplayerGamesBlazorLoaderLibrary\MultiplayerGamesBlazorLoaderLibrary.csproj" />
+  </ItemGroup>
+
+</Project>
