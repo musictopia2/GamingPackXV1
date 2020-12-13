@@ -1,0 +1,41 @@
+@inherits BasicGameView<Phase10MainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <HandBlazor Hand="_vmData.PlayerHand1" />
+</HorizontalDiv>
+<HorizontalDiv Width="10vw" Margins="5px">
+    <GameButtonComponent DataContext="DataContext" MethodName="@CompleteMethod" Display="Complete Phase" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DrawPileBlazor DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <ScoreBoardBlazor P="Phase10PlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</HorizontalDiv>
+<div>
+    <HorizontalDiv Margins="5px">
+        <TempSetsBlazor TargetContainerSize="80vh"
+                        TempPiles="_vmData.TempSets" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <MainRummySetsBlazor ContainerHeight="80vh"
+                             DataContext="_vmData.MainSets" />
+    </HorizontalDiv>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

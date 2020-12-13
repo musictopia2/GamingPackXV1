@@ -1,0 +1,22 @@
+﻿<BaseMainRummySetsBlazor SU="EnumColorTypes"
+                         CO="EnumColorTypes"
+                         SE="PhaseSet"
+                         RU="Phase10CardInformation"
+                         T="SavedSet"
+                         ContainerHeight="@ContainerHeight"
+                         ContainerWidth="@ContainerWidth"
+                         DataContext="DataContext"
+                         Context="Details">
+    <BaseIndividualRummySetBlazor SU="EnumColorTypes"
+                                  CO="EnumColorTypes"
+                                  SE="PhaseSet"
+                                  RU="Phase10CardInformation"
+                                  T="SavedSet"
+                                  Context="Item"
+                                  DataContext="Details">
+        <CardGraphicsBlazor DataContext="Details"
+                            CommandObject="Details.ObjectSingleClickCommand"
+                            CommandParameter="Item"
+                            DeckObject="Item" />
+    </BaseIndividualRummySetBlazor>
+</BaseMainRummySetsBlazor>
