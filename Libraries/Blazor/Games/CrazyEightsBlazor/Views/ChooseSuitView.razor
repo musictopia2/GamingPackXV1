@@ -1,0 +1,12 @@
+﻿@inherits BasicGameView<ChooseSuitViewModel>
+@if (_data == null)
+{
+    return;
+}
+<EnumPickerBlazor E="EnumSuitList"
+                  Context="piece"
+                  TargetSize="15vh"
+                  ListPicker="_data.SuitChooser">
+    <DeckPiece Suit="piece.EnumValue"
+               />
+</EnumPickerBlazor>

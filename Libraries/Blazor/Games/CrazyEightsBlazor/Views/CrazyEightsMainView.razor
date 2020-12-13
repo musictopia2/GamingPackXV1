@@ -1,0 +1,31 @@
+@inherits BasicGameView<CrazyEightsMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsDrawPileBlazor R="RegularSimpleCard" DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsSingleMiscPileBlazor R="RegularSimpleCard" SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<div>
+    <DeckOfCardsHandBlazor R="RegularSimpleCard" Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+<div>
+    <ScoreBoardBlazor P="CrazyEightsPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</div>
+<ParentControl VM="ChooseSuitViewModel">
+    <ChooseSuitView />
+</ParentControl>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
