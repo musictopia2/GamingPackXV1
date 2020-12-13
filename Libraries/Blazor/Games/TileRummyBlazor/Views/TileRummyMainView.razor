@@ -1,0 +1,38 @@
+@inherits BasicGameView<TileRummyMainViewModel>
+<HorizontalDiv LeftOnly="0px">
+    <BaseBoneyardPileBlazor D="TileInfo"
+                            LI="TileShuffler"
+                            BoneyardPile="DataContext!.GetPool">
+        <TileRummyImageBlazor TargetHeight="10vh" DeckObject="GetTile" />
+    </BaseBoneyardPileBlazor>
+</HorizontalDiv>
+<HorizontalDiv LeftOnly="5px">
+    <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="Create First Sets" MethodName="@FirstSetMethod" />
+    <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="Create New Set" MethodName="@NewSetMethod" />
+    <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="Reset Moves" MethodName="@ResetMethod" />
+    <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="End Turn" MethodName="@EndMethod" />
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </div>
+    <div>
+        <ScoreBoardBlazor Players="DataContext!.GetPlayers" P="TileRummyPlayerItem" Columns="_scores" />
+    </div>
+</HorizontalDiv>
+
+<HorizontalDiv LeftOnly="5px">
+    <TileRummyTempSetBlazor TargetContainerSize="30vh" TempPiles="DataContext!.GetTempTiles" />
+</HorizontalDiv>
+<div>
+    <BaseHandBlazor D="TileInfo" Context="Tile" Hand="DataContext!.GetHand">
+        <TileRummyImageBlazor CommandObject="DataContext.GetHand.ObjectSingleClickCommand" CommandParameter="Tile" DeckObject="Tile" />
+    </BaseHandBlazor>
+</div>
+<div>
+    <TileRummyMainSetBlazor ContainerHeight="40vh" ContainerWidth="90vw" DataContext="DataContext.GetMainSets" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

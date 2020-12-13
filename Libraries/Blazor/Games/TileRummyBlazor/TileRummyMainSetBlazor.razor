@@ -1,0 +1,23 @@
+﻿<BaseMainRummySetsBlazor SU="EnumColorType"
+                         CO="EnumColorType"
+                         SE="TileSet"
+                         RU="TileInfo"
+                         T="SavedSet"
+                         ContainerHeight="@ContainerHeight"
+                         ContainerWidth="@ContainerWidth"
+                         DataContext="DataContext"
+                         Context="Details">
+    <BaseIndividualRummySetBlazor SU="EnumColorType"
+                                  CO="EnumColorType"
+                                  SE="TileSet"
+                                  RU="TileInfo"
+                                  T="SavedSet"
+                                  Context="Item"
+                                  DataContext="Details">
+
+        <TileRummyImageBlazor DataContext="Details"
+                              CommandObject="Details.ObjectSingleClickCommand"
+                              CommandParameter="Item"
+                              DeckObject="Item" />
+    </BaseIndividualRummySetBlazor>
+</BaseMainRummySetsBlazor>
