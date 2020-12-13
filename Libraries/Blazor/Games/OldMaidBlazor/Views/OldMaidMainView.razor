@@ -1,0 +1,26 @@
+@inherits BasicGameView<OldMaidMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<ParentControl VM="OpponentCardsViewModel">
+    <DeckOfCardsHandBlazor Divider="2" R="RegularSimpleCard" Hand="_vmData.OpponentCards1" />
+</ParentControl>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsSingleMiscPileBlazor R="RegularSimpleCard" SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <GameButtonComponent Display="End Turn" DataContext="DataContext" MethodName="@EndMethod" />
+</HorizontalDiv>
+<div>
+    <DeckOfCardsHandBlazor Divider="2" R="RegularSimpleCard" Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
