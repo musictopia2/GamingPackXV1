@@ -1,0 +1,19 @@
+@inherits BasicGameView<AggravationMainViewModel>
+<HorizontalDiv Width="30vw" Margins="5px">
+    <div style="height: 22vh">
+        <GameButtonComponent DataContext="@DataContext" MethodName="@RollMethod" Display="Roll Dice" />
+        <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
+    </div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <GameBoardBlazor TargetHeight="90vh"
+                     GameContainer="_gameContainer"
+                     GraphicsData="_graphicsData" />
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

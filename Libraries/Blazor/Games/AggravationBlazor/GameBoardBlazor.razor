@@ -1,0 +1,62 @@
+﻿@inherits KeyComponentBase
+@if (GraphicsData == null || GameContainer == null || GameContainer!.SingleInfo == null)
+{
+    return;
+}
+<RawGameBoard TargetHeight="@TargetHeight"
+              BoardSize="@GraphicsData.OriginalSize">
+    <ResourceImage Height="100%" Width="100%" Assembly="@GetAssembly" FileName="aggravationgameboard.png" />
+    <BasePieceGraphics LongestSize="80"
+                       Location="new PointF(10, 10)">
+        <MarblePiece MainColor="@GetColor()" />
+    </BasePieceGraphics>
+    @foreach (var player in GameContainer.PlayerList!)
+    {
+        @foreach (var piece in player.PieceList)
+        {
+            var space = GraphicsData.SpaceList[piece];
+            <BasePieceGraphics LongestSize="@GraphicsData.SpaceSize.Width"
+                                @key="GetKey"
+                                Location="space.Location">
+                <MarblePiece MainColor="@GetColor(player)" />
+            </BasePieceGraphics>
+        }
+    }
+    @if (GameContainer.Animates.AnimationGoing)
+    {
+        var tempPlayer = GameContainer.PlayerList[GameContainer.PlayerGoingBack];
+        <UpdatePortionBoard>
+            <BasePieceGraphics LongestSize="@GraphicsData.SpaceSize.Width"
+                               @key="GetKey"
+                               Location="GameContainer.Animates.CurrentLocation">
+                <MarblePiece MainColor="@GetColor(tempPlayer)" />
+            </BasePieceGraphics>
+        </UpdatePortionBoard>
+    }
+    @if (GameContainer.MovePlayer > 0 && GameContainer.Animates.AnimationGoing == false)
+    {
+        <BasePieceGraphics LongestSize="@GraphicsData.SpaceSize.Width"
+                           @key="GetKey"
+                           Location="GraphicsData.SpaceList[GameContainer.MovePlayer].Location">
+            <MarblePiece MainColor="@GetColor()" />
+        </BasePieceGraphics>
+    }
+    @if (GameContainer.SaveRoot.PreviousSpace > 0)
+    {
+        <RawRectangle Rectangle="GraphicsData.SpaceList[GameContainer.SaveRoot.PreviousSpace]">
+            <svg>
+                <rect width="100%" height="100%" stroke="limegreen" fill="none" stroke-width="3" />
+            </svg>
+        </RawRectangle>
+    }
+    @foreach (var space in GraphicsData.SpaceList)
+    {
+        if (GameContainer.IsValidMove!(space.Key))
+        {
+            <BlankClickableSquare SpaceLocation="space.Value.Location"
+                          Fixed="true"
+                          SpaceSize="space.Value.Size"
+                          SpaceClicked="() => GameContainer.MakeMoveAsync!.Invoke(space.Key)" />
+        }
+    }
+</RawGameBoard>
