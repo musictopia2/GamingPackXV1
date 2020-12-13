@@ -1,0 +1,36 @@
+@inherits BasicGameView<TeeItUpMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DrawPileBlazor DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <SingleMiscPileBlazor SinglePile="_vmData.OtherPile" PileAnimationTag="otherpile" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <ScoreBoardBlazor P="TeeItUpPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</HorizontalDiv>
+<div>
+    @foreach (var player in _players)
+    {
+        <HorizontalDiv Margins="5px">
+            <CardBoardBlazor DataContext="player.PlayerBoard" />
+        </HorizontalDiv>
+    }
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
