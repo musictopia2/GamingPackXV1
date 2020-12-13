@@ -1,0 +1,16 @@
+﻿@if (DiceList == null || DiceList.Count != 10)
+{
+    return;
+}
+<svg width="90vw" viewBox="0 0 600 60">
+    @{ 
+        int x = 5;
+    }
+    @foreach (var dice in DiceList)
+    {
+        <svg width="50" y="5" height="50" x="@x">
+            <BowlingSingleDiceBlazor @key="dice" Dice="dice" />
+        </svg>
+        x += 60;
+    }
+</svg>

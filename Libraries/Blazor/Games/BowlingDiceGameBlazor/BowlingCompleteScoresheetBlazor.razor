@@ -1,0 +1,46 @@
+﻿@if (MainGame == null || MainGame.ScoreSheets == null)
+{
+    return;
+}
+<svg width="95vw" viewBox="@GetViewBox()">
+    <svg width="200" height="50">
+        <CenteredSvgText Text="Player:" FontSize="20" TextColor="@WhiteColor" />
+        @{
+            int x = 200;
+        }
+    </svg>
+    @foreach (var frame in MainGame.ScoreSheets.TextFrames)
+    {
+        <svg x="@x" y="0" width="150" height="50">
+            <CenteredSvgText Text="@frame" FontSize="20" TextColor="@WhiteColor" />
+        </svg>
+        x += 150;
+    }
+    @{
+        int y = 50;
+    }
+    @foreach (var player in MainGame.PlayerList)
+    {
+        <svg x="0" y="@y" width="200" height="100">
+            <CenteredSvgText Text="@player.NickName" FontSize="20" TextColor="@WhiteColor" />
+            @{ 
+                y += 100;
+            }
+        </svg>
+    }
+    @{ 
+        y = 50;
+    }
+    @foreach (var player in MainGame.PlayerList)
+    {
+        x = 200;
+        @foreach (var frame in player.FrameList)
+        {
+            <svg x="@x" y="@y" width="150" height="100">
+                <CompleteFrameBlazor @key="frame.Value" Frame="frame.Value" /> 
+            </svg>
+            x += 150;
+        }
+        y += 100;
+    }
+</svg>
