@@ -1,0 +1,60 @@
+@inherits BasicGameView<MilkRunMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DrawPileBlazor DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    @foreach (var player in _players)
+    {
+        string name;
+        if (player.NickName == _gameContainer.PlayerList!.GetSelf().NickName)
+        {
+            name = "Yours:";
+        }
+        else
+        {
+            name = "Opponent:";
+        }
+        <div style="text-align: center">
+            @name
+        </div>
+        <GridTwoByTwo ColumnGap="10px" RowGap="10px" Inline="true">
+            <GridItem>
+                <MultiplePilesBlazor AnimationTag="@AnimationPileName(player, EnumMilkType.Strawberry)" Piles="player.StrawberryPiles" />
+            </GridItem>
+            <GridItem Column="2">
+                <MultiplePilesBlazor AnimationTag="@AnimationPileName(player, EnumMilkType.Chocolate)" Piles="player.ChocolatePiles" />
+            </GridItem>
+            <GridItem Row="2" Column="1">
+                <div style="text-align: center; color: deeppink">
+                    Strawberry Deliveries @player.StrawberryDeliveries
+                </div>
+            </GridItem>
+            <GridItem Row="2" Column="2">
+                <div style="text-align: center; color: chocolate">
+                    Chocolate Deliveries @player.ChocolateDeliveries
+                </div>
+            </GridItem>
+        </GridTwoByTwo>
+    }
+</HorizontalDiv>
+<div style="margin: auto; width: 70%">
+    <div>
+        <HandBlazor Hand="_vmData.PlayerHand1" />
+    </div>
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </div>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
