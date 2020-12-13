@@ -1,0 +1,22 @@
+@inherits BasicGameView<ConcentrationMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<DeckOfCardsMultiplePilesBlazor Inline="true" R="RegularSimpleCard" Piles="_vmData.GameBoard1" />
+<HorizontalDiv Margins="5px">
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </div>
+    <div>
+        <ScoreBoardBlazor P="ConcentrationPlayerItem"
+                          Columns="_scores"
+                          Players="_gameContainer.SaveRoot.PlayerList" />
+    </div>
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
