@@ -1,0 +1,102 @@
+﻿@inherits KeyComponentBase
+@using CommonBasicStandardLibraries.CollectionClasses
+@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString
+@if (GraphicsData == null || ContainerData == null || BoardProcesses == null)
+{
+    return;
+}
+<RawGameBoard TargetHeight="@TargetHeight" BoardSize="@GraphicsData.OriginalSize">
+    <svg>
+        <ResourceImage ID="img_0" Assembly="GetAssembly" FileName="gameboard.png" Width="1200" Height="1600" />
+        <clipPath @key="GetKey" id="clip_0">
+            <rect width="800" height="800" clip-rule="evenodd" />
+        </clipPath>
+        <g @key="GetKey" clip-path="url(#clip_0)">
+            <use transform="@GetPortion()" href="#img_0" />
+        </g>
+        
+
+        @* draw whose turn it is*@
+        <BasePieceGraphics LongestSize="93" @key="GetKey" Location="@GetTurnPoint()">
+            <CarPieceBlazor Player="ContainerData.SingleInfo" />
+        </BasePieceGraphics>
+        @* show all cars on the board *@
+        @foreach (var player in ContainerData.PlayerList!)
+        {
+            PositionInfo position = GetPlayerPosition(player)!;
+            if (position != null && position.SpaceNumber > 0)
+            {
+        <BasePieceGraphics LongestSize="62" @key="GetKey" Location="position.SpacePoint">
+            <CarPieceBlazor Player="player" />
+        </BasePieceGraphics>
+            }
+        }
+        @{
+            CustomBasicList<ButtonInfo> mainButtons = GetMainButtons();
+            CustomBasicList<EndPositionInfo> country = GraphicsData.CountrysideAcresOptions();
+            CustomBasicList<EndPositionInfo> million = GraphicsData.MillionaireEstatesOptions();
+            _currentPoint = CalculateView();
+            CustomBasicList<ChooseSpaceInfo> spaceChoices = GraphicsData.GetSpaceChoices(_currentPoint);
+            CustomBasicList<RectangleF> goingLists = GraphicsData.GoingToProcesses(_currentPoint);
+            CustomBasicList<StartClickInfo> firsts = GraphicsData.GetFirstOptions();
+            CustomBasicList<RetirementClickInfo> lasts = GraphicsData.GetRetirementOptions();
+        }
+        @* show mains actions that can be performed *@
+        @foreach (var button in mainButtons)
+        {
+        <TransparentButton Text="@button.Display"
+                           @key="GetKey"
+                           ButtonClicked="() => PerformAction(button)"
+                           ButtonLocation="@button.Location"
+                           ButtonSize="@button.Size" />
+        }
+        @foreach (var end in country)
+        {
+        <BasePieceGraphics LongestSize="@end.Bounds.Height" @key="GetKey" Location="@end.Bounds.Location">
+            <CarPieceBlazor Player="end.Player" />
+        </BasePieceGraphics>
+        }
+        @foreach (var end in million)
+        {
+        <BasePieceGraphics @key="GetKey" LongestSize="@end.Bounds.Height" Location="@end.Bounds.Location">
+            <CarPieceBlazor Player="end.Player" />
+        </BasePieceGraphics>
+        }
+        @foreach (var choice in spaceChoices)
+        {
+        <TransparentButton Text=""
+                           BorderColor="@choice.Color"
+                           @key="GetKey"
+                           ButtonLocation="@choice.Bounds.Location"
+                           ButtonSize="@choice.Bounds.Size"
+                           ButtonClicked="() => SpaceChosenAsync(choice.Space)" />
+        }
+        @foreach (var going in goingLists)
+        {
+        <RawRectangle @key="GetKey" Rectangle="going">
+            <svg>
+                <rect width="100%" height="100%" fill="none" stroke="lime" stroke-width="4" />
+            </svg>
+        </RawRectangle>
+        }
+        @foreach (var first in firsts)
+        {
+        <TransparentButton @key="GetKey"
+                           BorderWidth="4"
+                           BorderColor="@cc.Black"
+                           ButtonLocation="first.Bounds.Location"
+                           ButtonSize="first.Bounds.Size"
+                           ButtonClicked="() => StartActions(first.OptionChosen)" />
+
+        }
+        @foreach (var retire in lasts)
+        {
+        <TransparentButton @key="GetKey"
+                           BorderWidth="4"
+                           BorderColor="@cc.Black"
+                           ButtonLocation="retire.Bounds.Location"
+                           ButtonSize="retire.Bounds.Size"
+                           ButtonClicked="() => RetirementActions(retire.OptionChosen)" />
+        }
+    </svg>
+</RawGameBoard>

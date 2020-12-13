@@ -1,0 +1,80 @@
+@inherits BasicGameView<LifeBoardGameMainViewModel>
+<CascadingValue Value="_vmData">
+    <CascadingValue Value="_gameContainer">
+        <HorizontalDiv LeftOnly="0px">
+            <LifeCompleteGameBoardBlazor BoardProcesses="_boardProcesses"
+                                         TargetHeight="85vh"
+                                         GraphicsData="_graphicsData" />
+        </HorizontalDiv>
+        <HorizontalDiv LeftOnly="5px">
+            @* screens to render *@
+            <div>
+                <ParentControl VM="ChooseCareerViewModel">
+                    <ChooseCareerView />
+                </ParentControl>
+            </div>
+            <div>
+                <ParentControl VM="ChooseSalaryViewModel">
+                    <ChooseSalaryView />
+                </ParentControl>
+            </div>
+            <div>
+                <ParentControl VM="ChooseHouseViewModel">
+                    <ChooseHouseView />
+                </ParentControl>
+            </div>
+            <div>
+                <ParentControl VM="ChooseStockViewModel">
+                    <ChooseStockView />
+                </ParentControl>
+            </div>
+            <div>
+                <ParentControl VM="LifeScoreboardViewModel">
+                    <LifeScoreboardView />
+                </ParentControl>
+            </div>
+            <div>
+                <ParentControl VM="ReturnStockViewModel">
+                    <ReturnStockView />
+                </ParentControl>
+            </div>
+            <div>
+                <ParentControl VM="ShowCardViewModel">
+                    <ShowCardView />
+                </ParentControl>
+            </div>
+            <div>
+                <ParentControl VM="SpinnerViewModel">
+                    <SpinnerView />
+                </ParentControl>
+            </div>
+            <div>
+                <ParentControl VM="StealTilesViewModel">
+                    <StealTilesView />
+                </ParentControl>
+            </div>
+            <div>
+                <ParentControl VM="TradeSalaryViewModel">
+                    <TradeSalaryView />
+                </ParentControl>
+            </div>
+        </HorizontalDiv>
+        <div>
+            <HorizontalDiv Width="25vw">
+                <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+            </HorizontalDiv>
+            <HorizontalDiv LeftOnly="5px">
+                Space Details:
+                <div>
+                    @DataContext!.GameDetails
+                </div>
+            </HorizontalDiv>
+        </div>
+        @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+        {
+            <ParentControl VM="RestoreViewModel">
+                <RestoreView />
+            </ParentControl>
+        }
+    </CascadingValue>
+</CascadingValue>

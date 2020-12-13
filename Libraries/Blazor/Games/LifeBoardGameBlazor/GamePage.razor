@@ -1,0 +1,46 @@
+@* you are forced to manually place it each time now unfortunately. *@
+@if (GameData == null || TestData == null || BasicData == null)
+{
+    if (GameData == null)
+    {
+        <div>No Game Data</div>
+    }
+    if (TestData == null)
+    {
+        <div>No Test Data</div>
+    }
+    if (BasicData == null)
+    {
+        <div>No Basic Data</div>
+    }
+    return;
+}
+<ParentControl VM="NewGameViewModel">
+    <NewGameView />
+</ParentControl>
+@if (GameData.GameType == EnumGameType.Rounds)
+{
+    <ParentControl VM="NewRoundViewModel">
+        <NewRoundView />
+    </ParentControl>
+}
+<CascadingValue Value="_targetImageSize">
+    <ParentControl VM="LifeBoardGameMainViewModel">
+        <LifeBoardGameMainView />
+    </ParentControl>
+    <ParentControl VM="MultiplayerOpeningViewModel<LifeBoardGamePlayerItem>">
+        <MultiplayerOpeningView P="LifeBoardGamePlayerItem" />
+    </ParentControl>
+    <ParentControl VM="BeginningChooseColorViewModel<EnumColorChoice, LifeBoardGamePlayerItem>">
+        <BeginningChooseColorView E="EnumColorChoice" Context="Piece" P="LifeBoardGamePlayerItem">
+            <CarPieceBlazor MainColor="@GetColor(Piece.EnumValue)" />
+        </BeginningChooseColorView>
+    </ParentControl>
+    <ParentControl VM="ChooseGenderViewModel">
+        <ChooseGenderView />
+    </ParentControl>
+    @if (TestData.ShowNickNameOnShell)
+    {
+        @BasicData.NickName
+    }
+</CascadingValue>

@@ -1,0 +1,9 @@
+﻿@typeparam B
+<LifeHandBlazor Hand="GameContainer!.HandList" TargetContainerSize="85vh" />
+<HorizontalDiv LeftOnly="5px">
+    <GameButtonComponent Display="@DataContext!.Text"
+                         FontSize="20vh"
+                         MethodName="@SubmitMethod"
+                         DataContext="DataContext"
+                         />
+</HorizontalDiv>

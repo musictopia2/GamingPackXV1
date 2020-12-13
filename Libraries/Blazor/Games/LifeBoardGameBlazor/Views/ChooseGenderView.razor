@@ -1,0 +1,10 @@
+﻿@inherits BasicGameView<ChooseGenderViewModel>
+<EnumPickerBlazor E="EnumGender" Context="Piece" ListPicker="DataContext!.GetGenderPicker">
+    <CirclePiece MainColor="@GetColor(Piece.EnumValue)" />
+</EnumPickerBlazor>
+<div>
+    <BasePieceGraphics LongestSize="93">
+        <CarPieceBlazor Player="DataContext.GetPlayer" />
+    </BasePieceGraphics>
+</div>
+<LabelGridComponent DataContext="DataContext" Labels="_labels" />

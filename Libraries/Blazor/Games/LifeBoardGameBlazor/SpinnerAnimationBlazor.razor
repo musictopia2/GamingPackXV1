@@ -1,0 +1,25 @@
+﻿@inherits KeyComponentBase
+@if (DataContext == null)
+{
+    return;
+}
+@if (DataContext.GameContainer.HighSpeedPhase == 0)
+{
+    <ResourceImage ID="arrow1" Fixed="false" FileName="arrows.png" Assembly="GetAssembly" Width="78" Height="360" Transform="@_matrixs[DataContext.GameContainer.SpinnerPosition]" />
+}
+else
+{
+    if (DataContext.GameContainer.HighSpeedPhase % 2 == 0)
+    {
+        <ResourceImage FileName="highspeed1.png" Assembly="GetAssembly" Height="100%" Width="100%" />
+    }
+    else
+    {
+        <ResourceImage FileName="highspeed2.png" Assembly="GetAssembly" Height="100%" Width="100%" />
+    }
+}
+@if (DataContext.CommandContainer.IsExecuting || DataContext.GameContainer.CanSpin == false)
+{
+    return;
+}
+<BlankClickableSquare @key="GetKey" Fixed="false" SpaceClicked="DataContext.SpinAsync" SpaceSize="new SizeF(260, 260)" />
