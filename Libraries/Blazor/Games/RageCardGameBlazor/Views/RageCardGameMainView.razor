@@ -1,0 +1,26 @@
+@inherits BasicGameView<RageCardGameMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<div>
+    <SeveralPlayersTrickBlazor DataContext="_vmData.TrickArea1" />
+</div>
+<div>
+    <HandBlazor Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+<div>
+    <ScoreBoardBlazor P="RageCardGamePlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</div>
+@* can adjust as needed.  what is shown is most common for regular card games. *@
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

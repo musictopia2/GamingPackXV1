@@ -1,0 +1,13 @@
+﻿@if (DataContext == null)
+{
+    return;
+}
+<BaseSeveralPlayersTrickBlazor S="EnumColor"
+                               T="RageCardGameCardInformation"
+                               B="SpecificTrickAreaObservable"
+                               P="RageCardGamePlayerItem"
+                               ExtraLongSecondColumn="ExtraLongSecondColumn"
+                               DataContext="DataContext"
+                               Context="Card">
+    <CardGraphicsBlazor TargetHeight="@RealHeight" DeckObject="Card" CommandParameter="Card" CommandObject="DataContext!.CardSingleClickCommand" />
+</BaseSeveralPlayersTrickBlazor>

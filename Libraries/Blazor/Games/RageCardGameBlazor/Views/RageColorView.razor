@@ -1,0 +1,20 @@
+﻿@inherits BasicGameView<RageColorViewModel>
+@if (DataContext == null)
+{
+    return;
+}
+<EnumPickerBlazor E="EnumColor" Context="Piece" ListPicker="DataContext.Model.Color1">
+    <CheckerPiece MainColor="@GetColor(Piece)" />
+</EnumPickerBlazor>
+<div>
+    <HandBlazor Hand="DataContext.Model.PlayerHand1" />
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext"
+                        Labels="_labels" />
+</div>
+<div>
+    <ScoreBoardBlazor P="RageCardGamePlayerItem"
+                      Columns="_scores"
+                      Players="DataContext.GameContainer.PlayerList" />
+</div>
