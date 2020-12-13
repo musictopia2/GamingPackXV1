@@ -1,0 +1,9 @@
+<BaseDrawPileBlazor D="YahtzeeHandsDownCardInformation" DeckAnimationTag="@DeckAnimationTag" DeckPile="@DeckPile">
+    <CanvasTemplate Context="Card">
+        <CardGraphicsBlazor TargetHeight="@RealHeight" DeckObject="Card" />
+
+    </CanvasTemplate>
+    <MainTemplate Context="Card">
+        <CardGraphicsBlazor ClickBlank="true" TargetHeight="@RealHeight" DeckObject="Card" CommandParameter="Card" CommandObject="DeckPile!.DeckObjectClickedCommand" />
+    </MainTemplate>
+</BaseDrawPileBlazor>

@@ -1,0 +1,48 @@
+@inherits BasicGameView<YahtzeeHandsDownMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<GridContainer Columns="@GetColumns" ColumnGap="10px">
+    <GridItem>
+        <HorizontalDiv Margins="5px">
+            <DrawPileBlazor DeckPile="_vmData.Deck1" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <ChancePileBlazor SinglePile="_vmData.ChancePile" />
+        </HorizontalDiv>
+        <div>
+            <HandBlazor Hand="_vmData.PlayerHand1" />
+        </div>
+        <div>
+            <GameButtonComponent DataContext="DataContext"
+                                 Display="Go Out"
+                                 MethodName="@OutMethod"
+                                 StartOnNewLine="true" />
+            <GameButtonComponent DataContext="DataContext"
+                                 Display="End Turn"
+                                 MethodName="@EndMethod"
+                                 StartOnNewLine="true" />
+        </div>
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
+        <div>
+            <ScoreBoardBlazor P="YahtzeeHandsDownPlayerItem"
+                              Columns="_scores"
+                              Players="_gameContainer.SaveRoot.PlayerList" />
+        </div>
+    </GridItem>
+    <GridItem Column="2">
+        <ComboListBlazor Hand="@_vmData.ComboHandList" />
+    </GridItem>
+</GridContainer>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
