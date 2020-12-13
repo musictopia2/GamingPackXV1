@@ -1,0 +1,34 @@
+@inherits BasicGameView<BattleshipMainViewModel>
+@if (_humanList == null)
+{
+    return;
+}
+<GridContainer Columns="@ColumnText">
+    <GridItem>
+        <GridGameBoard RowList="_rowList"
+                       ColumnList="_columnList"
+                       @key="BattleshipMainViewModel.GamesPlayed"
+                       S="FieldInfoCP"
+                       SpaceList="_humanList"
+                       GridHeight="90vh"
+                       GridWidth="100%"
+                       TargetSpaceHeight="50"
+                       TargetSpaceWidth="50">
+            <ItemTemplate Context="Space">
+                <SpaceControlBlazor DataContext="DataContext" Field="Space" CommandParameter="Space.Vector" MethodName="@SpaceMethod" />
+            </ItemTemplate>
+        </GridGameBoard>
+    </GridItem>
+    <GridItem Column="2">
+        <ShipControlBlazor Ships="@_ships" />
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        <GameButtonComponent DataContext="DataContext" Display="Horizontal" CommandParameter="true" BackgroundColor="@Color(true)" MethodName="@PositionMethod" StartOnNewLine="true" />
+        <GameButtonComponent DataContext="DataContext" Display="Vertical" CommandParameter="false" BackgroundColor="@Color(false)" MethodName="@PositionMethod" StartOnNewLine="true" />
+        @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+        {
+            <ParentControl VM="RestoreViewModel">
+                <RestoreView />
+            </ParentControl>
+        }
+    </GridItem>
+</GridContainer>

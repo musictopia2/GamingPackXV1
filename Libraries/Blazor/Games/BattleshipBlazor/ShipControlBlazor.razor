@@ -1,0 +1,10 @@
+﻿@if (Ships == null )
+{
+    return;
+}
+@foreach (var ship in Ships)
+{
+    <div>
+        <SpaceInfoBlazor @key="ship" Ship="@ship"  />
+    </div>
+}

@@ -1,0 +1,28 @@
+﻿@if (DataContext == null || Ship == null || Ship.PieceList == null)
+{
+    return;
+}
+<svg height="@TargetHeight" viewBox="0 0 600 60">
+    @{
+        int x = 0;
+    }
+    @foreach (var piece in Ship.PieceList)
+    {
+        <rect x="@x" fill="@PieceColor(piece.Value)" y="0" width="60" height="60" style="stroke: black; stroke-width: 4px" />
+        <svg x="@x" y="0" width="60" height="60">
+            <text x="50%" y="55%" font-size="30px" text-anchor="middle" dominant-baseline="middle" style="width: 100%; height: 100%">
+                @piece.Value.Location
+            </text>
+        </svg>
+        x += 60;
+    }
+    @if (Ship.Visible)
+    {
+        <svg @onclick="ChooseShip" x="350" y="0" width="200" height="60">
+            <rect fill="@ShipColor()" width="100%" height="100%" style="stroke: white; stroke-width: 4px;"  />
+            <text font-weight="bold" x="50%" y="55%" font-size="20px" text-anchor="middle" dominant-baseline="middle" style="width: 100%; height: 100%">
+                @Ship.ShipName
+            </text>
+        </svg>
+    }
+</svg>
