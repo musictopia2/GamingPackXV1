@@ -1,0 +1,66 @@
+@inherits BasicGameView<BladesOfSteelMainViewModel>
+@if (VMData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5">
+    <ScoringGuideBlazor />
+</HorizontalDiv>
+<HorizontalDiv Margins="5">
+    <ScoreBoardBlazor P="BladesOfSteelPlayerItem"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</HorizontalDiv>
+<div>
+    Instructions:
+</div>
+<div>
+    @DataContext.Instructions
+</div>
+<GridContainer Inline="true"
+               Rows="@GetRows()"
+               Columns="@GetColumns()"
+               RowGap="10px">
+    <GridItem>
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsDrawPileBlazor R="RegularSimpleCard" DeckPile="VMData.Deck1" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsSingleMiscPileBlazor R="RegularSimpleCard" SinglePile="VMData.Pile1" />
+        </HorizontalDiv>
+    </GridItem>
+    <GridItem Column="2">
+        <DeckOfCardsHandBlazor R="RegularSimpleCard" Hand="VMData.OpponentAttackPile" />
+    </GridItem>
+    <GridItem Column="3">
+        <DeckOfCardsHandBlazor R="RegularSimpleCard" Hand="VMData.OpponentDefensePile" />
+    </GridItem>
+    <GridItem Row="2" Column="1">
+        <DeckOfCardsHandBlazor R="RegularSimpleCard" Hand="VMData.MainDefense1" />
+    </GridItem>
+    <GridItem Row="2" Column="2">
+        <DeckOfCardsHandBlazor R="RegularSimpleCard" Hand="VMData.YourAttackPile" />
+    </GridItem>
+
+    <GridItem Row="2" Column="3">
+        <DeckOfCardsHandBlazor R="RegularSimpleCard" Hand="VMData.YourDefensePile" />
+    </GridItem>
+</GridContainer>
+<div>
+    <GameButtonComponent DataContext="DataContext"
+                         Display="End Turn"
+                         MethodName="@EndTurnMethod" />
+    <GameButtonComponent DataContext="DataContext"
+                         Display="Pass"
+                         MethodName="@PassMethod" />
+    <DeckOfCardsHandBlazor R="RegularSimpleCard" Hand="VMData.PlayerHand1" />
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

@@ -1,0 +1,16 @@
+﻿@if (VMData == null || DataContext == null)
+{
+    return;
+}
+<DeckOfCardsDrawPileBlazor R="RegularSimpleCard" DeckPile="VMData.Deck1" />
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+<div>
+    <HorizontalDiv Margins="5px">
+        <DeckOfCardsSingleMiscPileBlazor R="RegularSimpleCard" SinglePile="VMData.YourFaceOffCard" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <DeckOfCardsSingleMiscPileBlazor R="RegularSimpleCard" SinglePile="VMData.OpponentFaceOffCard" />
+    </HorizontalDiv>
+</div>
