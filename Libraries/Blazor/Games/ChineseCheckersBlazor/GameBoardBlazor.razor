@@ -1,0 +1,1021 @@
+﻿@inherits KeyComponentBase
+@using System.Drawing;
+@if (Graphics == null || TargetHeight == "" || Container == null || Container.SingleInfo == null)
+{
+    return;
+}
+<RawGameBoard BoardSize="Graphics.OriginalSize"
+              TargetHeight="@TargetHeight">
+    <svg xmlns="http://www.w3.org/2000/svg" @key="TargetHeight" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <linearGradient id="gradient_0" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="600" y2="600">
+                <stop offset="0" stop-color="rgb(255,255,255)" />
+                <stop offset="1" stop-color="rgb(211,211,211)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_0)" stroke="none" cx="300" cy="300" rx="300" ry="300" />
+        <ellipse fill="rgb(245,245,245)" stroke="none" cx="300" cy="300" rx="285" ry="285" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="1" stroke-miterlimit="4" d="M222.804 166.292L300 32.5847L300 32.5847L377.196 166.292L377.196 166.292L531.589 166.292L531.589 166.292L454.392 300L454.392 300L531.589 433.708L531.589 433.708L377.196 433.708L377.196 433.708L300 567.415L300 567.415L222.804 433.708L222.804 433.708L68.4115 433.708L68.4115 433.708L145.608 300L145.608 300L68.4115 166.292L68.4115 166.292L222.804 166.292" />
+        <path fill="rgb(0,0,255)" stroke="none" d="M300 50.5847L228 175.292L372 175.292L300 50.5847Z" />
+        <path fill="rgb(255,255,0)" stroke="none" d="M516 175.292L444 300L372 175.292L516 175.292Z" />
+        <path fill="rgb(128,128,128)" stroke="none" d="M516 424.708L372 424.708L444 300L516 424.708Z" />
+        <path fill="rgb(0,128,0)" stroke="none" d="M300 549.415L228 424.708L372 424.708L300 549.415Z" />
+        <path fill="rgb(128,0,128)" stroke="none" d="M84 424.708L228 424.708L156 300L84 424.708Z" />
+        <path fill="rgb(255,0,0)" stroke="none" d="M84 175.292L156 300L228 175.292L84 175.292Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M300 549.415L282 518.238L318 518.238L300 549.415Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M282 518.238L264 487.061L300 487.061L282 518.238Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M318 518.238L300 487.061L336 487.061L318 518.238Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M264 487.061L246 455.885L282 455.885L264 487.061Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M300 487.061L282 455.885L318 455.885L300 487.061Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M336 487.061L318 455.885L354 455.885L336 487.061Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M246 455.885L228 424.708L264 424.708L246 455.885Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M282 455.885L264 424.708L300 424.708L282 455.885Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M318 455.885L300 424.708L336 424.708L318 455.885Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M354 455.885L336 424.708L372 424.708L354 455.885Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M102 393.531L84 424.708L120 424.708L102 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M138 393.531L120 424.708L156 424.708L138 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M174 393.531L156 424.708L192 424.708L174 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M210 393.531L192 424.708L228 424.708L210 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M246 393.531L228 424.708L264 424.708L246 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M282 393.531L264 424.708L300 424.708L282 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M318 393.531L300 424.708L336 424.708L318 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M354 393.531L336 424.708L372 424.708L354 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M390 393.531L372 424.708L408 424.708L390 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M426 393.531L408 424.708L444 424.708L426 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M462 393.531L444 424.708L480 424.708L462 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M498 393.531L480 424.708L516 424.708L498 393.531Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M120 362.354L102 393.531L138 393.531L120 362.354Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M156 362.354L138 393.531L174 393.531L156 362.354Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M192 362.354L174 393.531L210 393.531L192 362.354Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M228 362.354L210 393.531L246 393.531L228 362.354Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M264 362.354L246 393.531L282 393.531L264 362.354Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M300 362.354L282 393.531L318 393.531L300 362.354Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M336 362.354L318 393.531L354 393.531L336 362.354Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M372 362.354L354 393.531L390 393.531L372 362.354Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M408 362.354L390 393.531L426 393.531L408 362.354Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M444 362.354L426 393.531L462 393.531L444 362.354Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M480 362.354L462 393.531L498 393.531L480 362.354Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M138 331.177L120 362.354L156 362.354L138 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M174 331.177L156 362.354L192 362.354L174 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M210 331.177L192 362.354L228 362.354L210 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M246 331.177L228 362.354L264 362.354L246 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M282 331.177L264 362.354L300 362.354L282 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M318 331.177L300 362.354L336 362.354L318 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M354 331.177L336 362.354L372 362.354L354 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M390 331.177L372 362.354L408 362.354L390 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M426 331.177L408 362.354L444 362.354L426 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M462 331.177L444 362.354L480 362.354L462 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M156 300L138 331.177L174 331.177L156 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M192 300L174 331.177L210 331.177L192 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M228 300L210 331.177L246 331.177L228 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M264 300L246 331.177L282 331.177L264 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M300 300L282 331.177L318 331.177L300 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M336 300L318 331.177L354 331.177L336 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M372 300L354 331.177L390 331.177L372 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M408 300L390 331.177L426 331.177L408 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M444 300L426 331.177L462 331.177L444 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M174 331.177L156 300L192 300L174 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M210 331.177L192 300L228 300L210 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M246 331.177L228 300L264 300L246 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M282 331.177L264 300L300 300L282 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M318 331.177L300 300L336 300L318 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M354 331.177L336 300L372 300L354 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M390 331.177L372 300L408 300L390 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M426 331.177L408 300L444 300L426 331.177Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M156 300L138 268.823L174 268.823L156 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M192 300L174 268.823L210 268.823L192 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M228 300L210 268.823L246 268.823L228 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M264 300L246 268.823L282 268.823L264 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M300 300L282 268.823L318 268.823L300 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M336 300L318 268.823L354 268.823L336 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M372 300L354 268.823L390 268.823L372 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M408 300L390 268.823L426 268.823L408 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M444 300L426 268.823L462 268.823L444 300Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M138 268.823L120 237.646L156 237.646L138 268.823Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M174 268.823L156 237.646L192 237.646L174 268.823Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M210 268.823L192 237.646L228 237.646L210 268.823Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M246 268.823L228 237.646L264 237.646L246 268.823Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M282 268.823L264 237.646L300 237.646L282 268.823Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M318 268.823L300 237.646L336 237.646L318 268.823Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M354 268.823L336 237.646L372 237.646L354 268.823Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M390 268.823L372 237.646L408 237.646L390 268.823Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M426 268.823L408 237.646L444 237.646L426 268.823Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M462 268.823L444 237.646L480 237.646L462 268.823Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M120 237.646L102 206.469L138 206.469L120 237.646Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M156 237.646L138 206.469L174 206.469L156 237.646Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M192 237.646L174 206.469L210 206.469L192 237.646Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M228 237.646L210 206.469L246 206.469L228 237.646Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M264 237.646L246 206.469L282 206.469L264 237.646Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M300 237.646L282 206.469L318 206.469L300 237.646Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M336 237.646L318 206.469L354 206.469L336 237.646Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M372 237.646L354 206.469L390 206.469L372 237.646Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M408 237.646L390 206.469L426 206.469L408 237.646Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M444 237.646L426 206.469L462 206.469L444 237.646Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M480 237.646L462 206.469L498 206.469L480 237.646Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M102 206.469L84 175.292L120 175.292L102 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M138 206.469L120 175.292L156 175.292L138 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M174 206.469L156 175.292L192 175.292L174 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M210 206.469L192 175.292L228 175.292L210 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M246 206.469L228 175.292L264 175.292L246 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M282 206.469L264 175.292L300 175.292L282 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M318 206.469L300 175.292L336 175.292L318 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M354 206.469L336 175.292L372 175.292L354 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M390 206.469L372 175.292L408 175.292L390 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M426 206.469L408 175.292L444 175.292L426 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M462 206.469L444 175.292L480 175.292L462 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M498 206.469L480 175.292L516 175.292L498 206.469Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M246 144.115L228 175.292L264 175.292L246 144.115Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M282 144.115L264 175.292L300 175.292L282 144.115Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M318 144.115L300 175.292L336 175.292L318 144.115Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M354 144.115L336 175.292L372 175.292L354 144.115Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M264 112.939L246 144.115L282 144.115L264 112.939Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M300 112.939L282 144.115L318 144.115L300 112.939Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M336 112.939L318 144.115L354 144.115L336 112.939Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M282 81.7616L264 112.939L300 112.939L282 81.7616Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M318 81.7616L300 112.939L336 112.939L318 81.7616Z" />
+        <path fill="none" stroke="rgb(0,0,0)" stroke-width="0.89999998" stroke-miterlimit="4" d="M300 50.5847L282 81.7616L318 81.7616L300 50.5847Z" />
+        <defs>
+            <linearGradient id="gradient_1" gradientUnits="userSpaceOnUse" x1="291" y1="540.41528" x2="309" y2="558.41528">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_1)" stroke="none" cx="300" cy="549.41528" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_2" gradientUnits="userSpaceOnUse" x1="273" y1="509.2384" x2="291" y2="527.2384">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_2)" stroke="none" cx="282" cy="518.2384" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_3" gradientUnits="userSpaceOnUse" x1="309" y1="509.2384" x2="327" y2="527.2384">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_3)" stroke="none" cx="318" cy="518.2384" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_4" gradientUnits="userSpaceOnUse" x1="255" y1="478.06149" x2="273" y2="496.06149">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_4)" stroke="none" cx="264" cy="487.06149" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_5" gradientUnits="userSpaceOnUse" x1="291" y1="478.06149" x2="309" y2="496.06149">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_5)" stroke="none" cx="300" cy="487.06149" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_6" gradientUnits="userSpaceOnUse" x1="327" y1="478.06149" x2="345" y2="496.06149">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_6)" stroke="none" cx="336" cy="487.06149" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_7" gradientUnits="userSpaceOnUse" x1="237" y1="446.88458" x2="255" y2="464.88458">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_7)" stroke="none" cx="246" cy="455.88458" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_8" gradientUnits="userSpaceOnUse" x1="273" y1="446.88458" x2="291" y2="464.88458">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_8)" stroke="none" cx="282" cy="455.88458" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_9" gradientUnits="userSpaceOnUse" x1="309" y1="446.88458" x2="327" y2="464.88458">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_9)" stroke="none" cx="318" cy="455.88458" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_10" gradientUnits="userSpaceOnUse" x1="345" y1="446.88458" x2="363" y2="464.88458">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_10)" stroke="none" cx="354" cy="455.88458" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_11" gradientUnits="userSpaceOnUse" x1="75" y1="415.70764" x2="93" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_11)" stroke="none" cx="84" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_12" gradientUnits="userSpaceOnUse" x1="111" y1="415.70764" x2="129" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_12)" stroke="none" cx="120" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_13" gradientUnits="userSpaceOnUse" x1="147" y1="415.70764" x2="165" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_13)" stroke="none" cx="156" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_14" gradientUnits="userSpaceOnUse" x1="183" y1="415.70764" x2="201" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_14)" stroke="none" cx="192" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_15" gradientUnits="userSpaceOnUse" x1="219" y1="415.70764" x2="237" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_15)" stroke="none" cx="228" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_16" gradientUnits="userSpaceOnUse" x1="255" y1="415.70764" x2="273" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_16)" stroke="none" cx="264" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_17" gradientUnits="userSpaceOnUse" x1="291" y1="415.70764" x2="309" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_17)" stroke="none" cx="300" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_18" gradientUnits="userSpaceOnUse" x1="327" y1="415.70764" x2="345" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_18)" stroke="none" cx="336" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_19" gradientUnits="userSpaceOnUse" x1="363" y1="415.70764" x2="381" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_19)" stroke="none" cx="372" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_20" gradientUnits="userSpaceOnUse" x1="399" y1="415.70764" x2="417" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_20)" stroke="none" cx="408" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_21" gradientUnits="userSpaceOnUse" x1="435" y1="415.70764" x2="453" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_21)" stroke="none" cx="444" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_22" gradientUnits="userSpaceOnUse" x1="471" y1="415.70764" x2="489" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_22)" stroke="none" cx="480" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_23" gradientUnits="userSpaceOnUse" x1="507" y1="415.70764" x2="525" y2="433.70764">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_23)" stroke="none" cx="516" cy="424.70764" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_24" gradientUnits="userSpaceOnUse" x1="93" y1="384.53076" x2="111" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_24)" stroke="none" cx="102" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_25" gradientUnits="userSpaceOnUse" x1="129" y1="384.53076" x2="147" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_25)" stroke="none" cx="138" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_26" gradientUnits="userSpaceOnUse" x1="165" y1="384.53076" x2="183" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_26)" stroke="none" cx="174" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_27" gradientUnits="userSpaceOnUse" x1="201" y1="384.53076" x2="219" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_27)" stroke="none" cx="210" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_28" gradientUnits="userSpaceOnUse" x1="237" y1="384.53076" x2="255" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_28)" stroke="none" cx="246" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_29" gradientUnits="userSpaceOnUse" x1="273" y1="384.53076" x2="291" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_29)" stroke="none" cx="282" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_30" gradientUnits="userSpaceOnUse" x1="309" y1="384.53076" x2="327" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_30)" stroke="none" cx="318" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_31" gradientUnits="userSpaceOnUse" x1="345" y1="384.53076" x2="363" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_31)" stroke="none" cx="354" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_32" gradientUnits="userSpaceOnUse" x1="381" y1="384.53076" x2="399" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_32)" stroke="none" cx="390" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_33" gradientUnits="userSpaceOnUse" x1="417" y1="384.53076" x2="435" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_33)" stroke="none" cx="426" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_34" gradientUnits="userSpaceOnUse" x1="453" y1="384.53076" x2="471" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_34)" stroke="none" cx="462" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_35" gradientUnits="userSpaceOnUse" x1="489" y1="384.53076" x2="507" y2="402.53076">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_35)" stroke="none" cx="498" cy="393.53076" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_36" gradientUnits="userSpaceOnUse" x1="111" y1="353.35382" x2="129" y2="371.35382">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_36)" stroke="none" cx="120" cy="362.35382" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_37" gradientUnits="userSpaceOnUse" x1="147" y1="353.35382" x2="165" y2="371.35382">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_37)" stroke="none" cx="156" cy="362.35382" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_38" gradientUnits="userSpaceOnUse" x1="183" y1="353.35382" x2="201" y2="371.35382">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_38)" stroke="none" cx="192" cy="362.35382" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_39" gradientUnits="userSpaceOnUse" x1="219" y1="353.35382" x2="237" y2="371.35382">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_39)" stroke="none" cx="228" cy="362.35382" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_40" gradientUnits="userSpaceOnUse" x1="255" y1="353.35382" x2="273" y2="371.35382">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_40)" stroke="none" cx="264" cy="362.35382" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_41" gradientUnits="userSpaceOnUse" x1="291" y1="353.35382" x2="309" y2="371.35382">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_41)" stroke="none" cx="300" cy="362.35382" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_42" gradientUnits="userSpaceOnUse" x1="327" y1="353.35382" x2="345" y2="371.35382">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_42)" stroke="none" cx="336" cy="362.35382" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_43" gradientUnits="userSpaceOnUse" x1="363" y1="353.35382" x2="381" y2="371.35382">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_43)" stroke="none" cx="372" cy="362.35382" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_44" gradientUnits="userSpaceOnUse" x1="399" y1="353.35382" x2="417" y2="371.35382">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_44)" stroke="none" cx="408" cy="362.35382" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_45" gradientUnits="userSpaceOnUse" x1="435" y1="353.35382" x2="453" y2="371.35382">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_45)" stroke="none" cx="444" cy="362.35382" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_46" gradientUnits="userSpaceOnUse" x1="471" y1="353.35382" x2="489" y2="371.35382">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_46)" stroke="none" cx="480" cy="362.35382" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_47" gradientUnits="userSpaceOnUse" x1="129" y1="322.17691" x2="147" y2="340.17691">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_47)" stroke="none" cx="138" cy="331.17691" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_48" gradientUnits="userSpaceOnUse" x1="165" y1="322.17691" x2="183" y2="340.17691">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_48)" stroke="none" cx="174" cy="331.17691" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_49" gradientUnits="userSpaceOnUse" x1="201" y1="322.17691" x2="219" y2="340.17691">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_49)" stroke="none" cx="210" cy="331.17691" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_50" gradientUnits="userSpaceOnUse" x1="237" y1="322.17691" x2="255" y2="340.17691">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_50)" stroke="none" cx="246" cy="331.17691" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_51" gradientUnits="userSpaceOnUse" x1="273" y1="322.17691" x2="291" y2="340.17691">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_51)" stroke="none" cx="282" cy="331.17691" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_52" gradientUnits="userSpaceOnUse" x1="309" y1="322.17691" x2="327" y2="340.17691">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_52)" stroke="none" cx="318" cy="331.17691" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_53" gradientUnits="userSpaceOnUse" x1="345" y1="322.17691" x2="363" y2="340.17691">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_53)" stroke="none" cx="354" cy="331.17691" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_54" gradientUnits="userSpaceOnUse" x1="381" y1="322.17691" x2="399" y2="340.17691">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_54)" stroke="none" cx="390" cy="331.17691" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_55" gradientUnits="userSpaceOnUse" x1="417" y1="322.17691" x2="435" y2="340.17691">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_55)" stroke="none" cx="426" cy="331.17691" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_56" gradientUnits="userSpaceOnUse" x1="453" y1="322.17691" x2="471" y2="340.17691">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_56)" stroke="none" cx="462" cy="331.17691" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_57" gradientUnits="userSpaceOnUse" x1="147" y1="291" x2="165" y2="309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_57)" stroke="none" cx="156" cy="300" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_58" gradientUnits="userSpaceOnUse" x1="183" y1="291" x2="201" y2="309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_58)" stroke="none" cx="192" cy="300" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_59" gradientUnits="userSpaceOnUse" x1="219" y1="291" x2="237" y2="309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_59)" stroke="none" cx="228" cy="300" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_60" gradientUnits="userSpaceOnUse" x1="255" y1="291" x2="273" y2="309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_60)" stroke="none" cx="264" cy="300" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_61" gradientUnits="userSpaceOnUse" x1="291" y1="291" x2="309" y2="309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_61)" stroke="none" cx="300" cy="300" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_62" gradientUnits="userSpaceOnUse" x1="327" y1="291" x2="345" y2="309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_62)" stroke="none" cx="336" cy="300" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_63" gradientUnits="userSpaceOnUse" x1="363" y1="291" x2="381" y2="309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_63)" stroke="none" cx="372" cy="300" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_64" gradientUnits="userSpaceOnUse" x1="399" y1="291" x2="417" y2="309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_64)" stroke="none" cx="408" cy="300" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_65" gradientUnits="userSpaceOnUse" x1="435" y1="291" x2="453" y2="309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_65)" stroke="none" cx="444" cy="300" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_66" gradientUnits="userSpaceOnUse" x1="129" y1="259.82309" x2="147" y2="277.82309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_66)" stroke="none" cx="138" cy="268.82309" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_67" gradientUnits="userSpaceOnUse" x1="165" y1="259.82309" x2="183" y2="277.82309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_67)" stroke="none" cx="174" cy="268.82309" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_68" gradientUnits="userSpaceOnUse" x1="201" y1="259.82309" x2="219" y2="277.82309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_68)" stroke="none" cx="210" cy="268.82309" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_69" gradientUnits="userSpaceOnUse" x1="237" y1="259.82309" x2="255" y2="277.82309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_69)" stroke="none" cx="246" cy="268.82309" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_70" gradientUnits="userSpaceOnUse" x1="273" y1="259.82309" x2="291" y2="277.82309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_70)" stroke="none" cx="282" cy="268.82309" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_71" gradientUnits="userSpaceOnUse" x1="309" y1="259.82309" x2="327" y2="277.82309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_71)" stroke="none" cx="318" cy="268.82309" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_72" gradientUnits="userSpaceOnUse" x1="345" y1="259.82309" x2="363" y2="277.82309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_72)" stroke="none" cx="354" cy="268.82309" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_73" gradientUnits="userSpaceOnUse" x1="381" y1="259.82309" x2="399" y2="277.82309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_73)" stroke="none" cx="390" cy="268.82309" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_74" gradientUnits="userSpaceOnUse" x1="417" y1="259.82309" x2="435" y2="277.82309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_74)" stroke="none" cx="426" cy="268.82309" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_75" gradientUnits="userSpaceOnUse" x1="453" y1="259.82309" x2="471" y2="277.82309">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_75)" stroke="none" cx="462" cy="268.82309" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_76" gradientUnits="userSpaceOnUse" x1="111" y1="228.64618" x2="129" y2="246.64618">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_76)" stroke="none" cx="120" cy="237.64618" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_77" gradientUnits="userSpaceOnUse" x1="147" y1="228.64618" x2="165" y2="246.64618">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_77)" stroke="none" cx="156" cy="237.64618" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_78" gradientUnits="userSpaceOnUse" x1="183" y1="228.64618" x2="201" y2="246.64618">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_78)" stroke="none" cx="192" cy="237.64618" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_79" gradientUnits="userSpaceOnUse" x1="219" y1="228.64618" x2="237" y2="246.64618">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_79)" stroke="none" cx="228" cy="237.64618" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_80" gradientUnits="userSpaceOnUse" x1="255" y1="228.64618" x2="273" y2="246.64618">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_80)" stroke="none" cx="264" cy="237.64618" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_81" gradientUnits="userSpaceOnUse" x1="291" y1="228.64618" x2="309" y2="246.64618">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_81)" stroke="none" cx="300" cy="237.64618" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_82" gradientUnits="userSpaceOnUse" x1="327" y1="228.64618" x2="345" y2="246.64618">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_82)" stroke="none" cx="336" cy="237.64618" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_83" gradientUnits="userSpaceOnUse" x1="363" y1="228.64618" x2="381" y2="246.64618">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_83)" stroke="none" cx="372" cy="237.64618" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_84" gradientUnits="userSpaceOnUse" x1="399" y1="228.64618" x2="417" y2="246.64618">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_84)" stroke="none" cx="408" cy="237.64618" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_85" gradientUnits="userSpaceOnUse" x1="435" y1="228.64618" x2="453" y2="246.64618">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_85)" stroke="none" cx="444" cy="237.64618" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_86" gradientUnits="userSpaceOnUse" x1="471" y1="228.64618" x2="489" y2="246.64618">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_86)" stroke="none" cx="480" cy="237.64618" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_87" gradientUnits="userSpaceOnUse" x1="93" y1="197.46925" x2="111" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_87)" stroke="none" cx="102" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_88" gradientUnits="userSpaceOnUse" x1="129" y1="197.46925" x2="147" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_88)" stroke="none" cx="138" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_89" gradientUnits="userSpaceOnUse" x1="165" y1="197.46925" x2="183" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_89)" stroke="none" cx="174" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_90" gradientUnits="userSpaceOnUse" x1="201" y1="197.46925" x2="219" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_90)" stroke="none" cx="210" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_91" gradientUnits="userSpaceOnUse" x1="237" y1="197.46925" x2="255" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_91)" stroke="none" cx="246" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_92" gradientUnits="userSpaceOnUse" x1="273" y1="197.46925" x2="291" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_92)" stroke="none" cx="282" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_93" gradientUnits="userSpaceOnUse" x1="309" y1="197.46925" x2="327" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_93)" stroke="none" cx="318" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_94" gradientUnits="userSpaceOnUse" x1="345" y1="197.46925" x2="363" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_94)" stroke="none" cx="354" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_95" gradientUnits="userSpaceOnUse" x1="381" y1="197.46925" x2="399" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_95)" stroke="none" cx="390" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_96" gradientUnits="userSpaceOnUse" x1="417" y1="197.46925" x2="435" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_96)" stroke="none" cx="426" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_97" gradientUnits="userSpaceOnUse" x1="453" y1="197.46925" x2="471" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_97)" stroke="none" cx="462" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_98" gradientUnits="userSpaceOnUse" x1="489" y1="197.46925" x2="507" y2="215.46925">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_98)" stroke="none" cx="498" cy="206.46925" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_99" gradientUnits="userSpaceOnUse" x1="75" y1="166.29234" x2="93" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_99)" stroke="none" cx="84" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_100" gradientUnits="userSpaceOnUse" x1="111" y1="166.29234" x2="129" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_100)" stroke="none" cx="120" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_101" gradientUnits="userSpaceOnUse" x1="147" y1="166.29234" x2="165" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_101)" stroke="none" cx="156" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_102" gradientUnits="userSpaceOnUse" x1="183" y1="166.29234" x2="201" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_102)" stroke="none" cx="192" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_103" gradientUnits="userSpaceOnUse" x1="219" y1="166.29234" x2="237" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_103)" stroke="none" cx="228" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_104" gradientUnits="userSpaceOnUse" x1="255" y1="166.29234" x2="273" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_104)" stroke="none" cx="264" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_105" gradientUnits="userSpaceOnUse" x1="291" y1="166.29234" x2="309" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_105)" stroke="none" cx="300" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_106" gradientUnits="userSpaceOnUse" x1="327" y1="166.29234" x2="345" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_106)" stroke="none" cx="336" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_107" gradientUnits="userSpaceOnUse" x1="363" y1="166.29234" x2="381" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_107)" stroke="none" cx="372" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_108" gradientUnits="userSpaceOnUse" x1="399" y1="166.29234" x2="417" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_108)" stroke="none" cx="408" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_109" gradientUnits="userSpaceOnUse" x1="435" y1="166.29234" x2="453" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_109)" stroke="none" cx="444" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_110" gradientUnits="userSpaceOnUse" x1="471" y1="166.29234" x2="489" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_110)" stroke="none" cx="480" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_111" gradientUnits="userSpaceOnUse" x1="507" y1="166.29234" x2="525" y2="184.29234">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_111)" stroke="none" cx="516" cy="175.29234" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_112" gradientUnits="userSpaceOnUse" x1="237" y1="135.11543" x2="255" y2="153.11543">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_112)" stroke="none" cx="246" cy="144.11543" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_113" gradientUnits="userSpaceOnUse" x1="273" y1="135.11543" x2="291" y2="153.11543">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_113)" stroke="none" cx="282" cy="144.11543" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_114" gradientUnits="userSpaceOnUse" x1="309" y1="135.11543" x2="327" y2="153.11543">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_114)" stroke="none" cx="318" cy="144.11543" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_115" gradientUnits="userSpaceOnUse" x1="345" y1="135.11543" x2="363" y2="153.11543">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_115)" stroke="none" cx="354" cy="144.11543" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_116" gradientUnits="userSpaceOnUse" x1="255" y1="103.93851" x2="273" y2="121.93851">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_116)" stroke="none" cx="264" cy="112.93851" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_117" gradientUnits="userSpaceOnUse" x1="291" y1="103.93851" x2="309" y2="121.93851">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_117)" stroke="none" cx="300" cy="112.93851" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_118" gradientUnits="userSpaceOnUse" x1="327" y1="103.93851" x2="345" y2="121.93851">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_118)" stroke="none" cx="336" cy="112.93851" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_119" gradientUnits="userSpaceOnUse" x1="273" y1="72.761597" x2="291" y2="90.761597">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_119)" stroke="none" cx="282" cy="81.761597" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_120" gradientUnits="userSpaceOnUse" x1="309" y1="72.761597" x2="327" y2="90.761597">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_120)" stroke="none" cx="318" cy="81.761597" rx="9" ry="9" />
+        <defs>
+            <linearGradient id="gradient_121" gradientUnits="userSpaceOnUse" x1="291" y1="41.584686" x2="309" y2="59.584686">
+                <stop offset="0" stop-color="rgb(0,0,0)" />
+                <stop offset="1" stop-color="rgb(112,128,144)" />
+            </linearGradient>
+        </defs>
+        <ellipse fill="url(#gradient_121)" stroke="none" cx="300" cy="50.584686" rx="9" ry="9" />
+    </svg>
+    @* other parts of the drawings here. *@
+    <BasePieceGraphics Location="new PointF(10, 260)" LongestSize="80">
+        <MarblePiece  MainColor="@Color(Container.SingleInfo)" />
+    </BasePieceGraphics>
+    @foreach (var player in Container.PlayerList!)
+    {
+        foreach (var piece in player.PieceList)
+        {
+            var space = Graphics.SpaceList[piece];
+            <BasePieceGraphics ForceRender="true"  Location="space.Location" LongestSize="space.Width">
+                <MarblePiece MainColor="@Color(player)" />
+            </BasePieceGraphics>
+        }
+    }
+    @if (Container.Animates.AnimationGoing)
+    {
+        <UpdatePortionBoard>
+            <BasePieceGraphics Animating="true" Location="Container.Animates.CurrentLocation" LongestSize="Graphics.SpaceList[1].Width">
+                <MarblePiece MainColor="@Color(Container.SingleInfo)" />
+            </BasePieceGraphics>
+        </UpdatePortionBoard>
+        return;
+    }
+    @if (Container.SaveRoot.PreviousSpace > 0)
+    {
+        var newRect = Graphics.SpaceList[Container.SaveRoot.PreviousSpace];
+        <svg x="@newRect.X" y="@newRect.Y" width="@newRect.Width" height="@newRect.Height">\
+            
+            <circle cx="50%" cy="50%" r="45%" fill="none" stroke="lime" stroke-width="2" />
+        </svg>
+    }
+
+    @foreach(var space in Graphics.SpaceList)
+    {
+        <BlankClickableSquare SpaceLocation="space.Value.Location" SpaceSize="space.Value.Size" SpaceClicked="() => SpaceClickedAsync(space.Key)" />
+    }
+</RawGameBoard>

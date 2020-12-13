@@ -1,0 +1,18 @@
+@inherits BasicGameView<ChineseCheckersMainViewModel>
+<HorizontalDiv Width="20vw">
+    <GameButtonComponent Display="End Turn" StartOnNewLine="true" DataContext="DataContext" MethodName="@EndMethod" />
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</HorizontalDiv>
+<HorizontalDiv LeftOnly="5px">
+    <div style="margin-top: 5px">
+        <GameBoardBlazor TargetHeight="95vh"
+                         Graphics="_graphics"
+                         Container="_container" />
+    </div>
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
