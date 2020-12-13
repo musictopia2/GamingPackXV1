@@ -1,0 +1,65 @@
+@inherits BasicGameView<ChessMainViewModel>
+<div style="margin-left: 5px; margin-top: 5px;">
+    <CheckersChessBoardBlazor E="EnumColorChoice"
+                              S="SpaceCP"
+                              TargetHeight="95vh"
+                              GameBoard="GameBoard">
+        <MainPiece Context="Piece">
+            <ChessPieceBlazor PieceCategory="@GetCategory(Piece)" LongestSize="@LongestSize" Color="@Piece.EnumValue" />
+        </MainPiece>
+        <AnimatePiece>
+            @if (GameContainer!.Animates.AnimationGoing)
+            {
+                var player = GameContainer.PlayerList!.GetWhoPlayer();
+                <UpdatePortionBoard>
+                    <ChessPieceBlazor PieceCategory="GameContainer.CurrentPiece" LongestSize="@LongestSize" Location="GameContainer.Animates.CurrentLocation" Color="@player.Color" />
+                </UpdatePortionBoard>
+                return;
+            }
+        </AnimatePiece>
+        @* highlight processes.  most likely dotted lines (?) *@
+        <HighlightPiece Context="Space">
+            @{
+                int index = HighlightedIndex(Space);
+            }
+            @if (GameContainer!.SaveRoot.PreviousMove.SpaceFrom == index || GameContainer.SaveRoot.PreviousMove.SpaceTo == index)
+            {
+                string color = GetPreviousColor;
+                <svg x="@Space.GetLocation().X"
+                     y="@Space.GetLocation().Y"
+                     width="@Space.GetSize().Width"
+                     height="@Space.GetSize().Height">
+                    <rect width="100%" height="100%" fill="transparent" stroke-width="5px" stroke-dasharray="5,5" stroke="@color" />
+                </svg>
+                return;
+            }
+            @if (GameContainer.SaveRoot.SpaceHighlighted == 0)
+            {
+                return;
+            }
+            @if (GameContainer.CurrentMoveList.Any(x => x.SpaceTo == Space.MainIndex))
+            {
+                <svg x="@Space.GetLocation().X"
+                     y="@Space.GetLocation().Y"
+                     width="@Space.GetSize().Width"
+                     height="@Space.GetSize().Height">
+                    <rect width="100%" height="100%" fill="green" style="opacity: .2" />
+                </svg>
+            }
+        </HighlightPiece>
+    </CheckersChessBoardBlazor>
+    <HorizontalDiv LeftOnly="5px">
+        <GameButtonComponent Display="End Turn" DataContext="DataContext" MethodName="@EndMethod" />
+        <GameButtonComponent Display="Undo Moves" DataContext="DataContext" MethodName="@UndoMethod" />
+        <GameButtonComponent Display="Show Tie" DataContext="DataContext" MethodName="@TieMethod" />
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
+    </HorizontalDiv>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
