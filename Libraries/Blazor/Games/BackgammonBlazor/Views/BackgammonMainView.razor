@@ -1,0 +1,20 @@
+@inherits BasicGameView<BackgammonMainViewModel>
+<HorizontalDiv Margins="5px">
+    <CascadingValue Value="_graphicsData">
+        <BackgammonCompleteBoard TargetHeight="90vh" />
+    </CascadingValue>
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <div style="height: 15vh">
+        <GameButtonComponent DataContext="@DataContext" MethodName="@EndMethod" Display="End Turn" />
+        <GameButtonComponent DataContext="@DataContext" MethodName="@UndoMethod" Display="Undo All Moves" />
+        <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="13vh" />
+    </div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

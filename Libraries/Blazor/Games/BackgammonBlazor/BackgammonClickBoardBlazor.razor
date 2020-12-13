@@ -1,0 +1,19 @@
+﻿@if (GraphicsData == null)
+{
+    return;
+}
+@if (GraphicsData.GameContainer.Command.IsExecuting)
+{
+    return; //because you can't click anywhere.
+}
+@if (GraphicsData.GameContainer.MoveInProgress || GraphicsData.GameContainer.MoveList.Count == 0 || GraphicsData.GameContainer.SaveRoot!.GameStatus == EnumGameStatus.EndingTurn)
+{
+    return;
+}
+@foreach (var space in GraphicsData.SpaceList)
+{
+    if (space.Key != 26 && space.Key != 27)
+    {
+        <BlankClickableSquare Fixed="true" SpaceLocation="space.Value.Location" SpaceSize="space.Value.Size" SpaceClicked="() => SpaceClickedAsync(space.Key)" />
+    }
+}

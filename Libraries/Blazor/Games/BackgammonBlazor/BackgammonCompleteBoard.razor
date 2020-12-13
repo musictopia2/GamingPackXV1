@@ -1,0 +1,109 @@
+﻿@inherits KeyComponentBase
+@using BasicBlazorLibrary.Components.RenderHelpers
+@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString; 
+@if (GraphicsData == null || GraphicsData.GameContainer.SingleInfo == null)
+{
+    return;
+}
+<RawGameBoard TargetHeight="@TargetHeight"
+              BoardSize="GraphicsData.OriginalSize">
+    <BackgammonGraphicsBoard />
+    <BasePieceGraphics Location="new PointF(20, 190)" LongestSize="50">
+        <CheckerPiece MainColor="@GetColor()" PieceCategory="EnumCheckerPieceCategory.OnlyPiece" />
+    </BasePieceGraphics>
+
+    <RefreshComponent CanRender="@(GraphicsData.GameContainer.RefreshPieces)">
+        @if (GraphicsData.GameContainer.RefreshPieces)
+        {
+            GraphicsData.GameContainer.RefreshPieces = false;
+        }
+        @foreach (var triangle in GraphicsData.GameContainer.TriangleList)
+        {
+            if (triangle.Value.NumberOfTiles > 0)
+            {
+                BackgammonPlayerItem currentPlayer = GraphicsData.GameContainer.PlayerList![triangle.Value.PlayerOwns];
+                string color = GetColor(currentPlayer);
+                int index = triangle.Key;
+                int newID = 0;
+                bool alreadyDrew = false;
+                if (index == 0 || index == 27)
+                {
+                    if (triangle.Value.NumberOfTiles > 4)
+                    {
+                        alreadyDrew = true;
+                        var point = triangle.Value.Locations[2];
+                        var bounds = new RectangleF(point, new SizeF(100, 50));
+                        <RawRectangle Rectangle="bounds">
+                            <CenteredSvgText Text="@triangle.Value.NumberOfTiles.ToString()" TextColor="@color.ToWebColor()" FontSize="45" />
+                        </RawRectangle>
+                    }
+                }
+                @foreach (var loc in triangle.Value.Locations)
+                {
+                    newID += 1;
+                    if (alreadyDrew == false || newID == 1)
+                    {
+                        <BasePieceGraphics Location="@loc"
+                                           @key="GetKey"
+                                           LongestSize="GraphicsData.SpaceSize.Width">
+                            <CheckerPiece MainColor="@color" PieceCategory="@GetCategory(index)" />
+                        </BasePieceGraphics>
+                    }
+                }
+            }
+        }
+    </RefreshComponent>
+
+
+    @if (GraphicsData.GameContainer.Animates.AnimationGoing)
+    {
+        var player = GraphicsData.GameContainer.PlayerList![GraphicsData.GameContainer.WhoTurn];
+        string color = GetColor(player);
+        <UpdatePortionBoard>
+            <BasePieceGraphics Location="GraphicsData.GameContainer.Animates.CurrentLocation"
+                               @key="GetKey"
+                               LongestSize="GraphicsData.SpaceSize.Width">
+                <CheckerPiece MainColor="@color" PieceCategory="EnumCheckerPieceCategory.OnlyPiece" />
+            </BasePieceGraphics>
+        </UpdatePortionBoard>
+        return;
+    }
+    @if (GraphicsData.GameContainer.SaveRoot!.GameStatus == EnumGameStatus.EndingTurn || GraphicsData.GameContainer.MoveInProgress)
+    {
+        <BackgammonBlazor.BackgammonClickBoardBlazor />
+        return;
+    }
+    @if (GraphicsData.GameContainer.MoveList.Count == 0)
+    {
+        <BackgammonBlazor.BackgammonClickBoardBlazor />
+        return;
+    }
+    @if (GraphicsData.GameContainer.SaveRoot.SpaceHighlighted > -1)
+    {
+        //this is for the new triangles
+        var thisList = GraphicsData.GameContainer.MoveList.Where(items => items.SpaceFrom == GraphicsData.GameContainer.SaveRoot.SpaceHighlighted).ToCustomBasicList();
+        var currentSpace = GraphicsData.SpaceList[GraphicsData.GameContainer.SaveRoot.SpaceHighlighted];
+        <BackgammonHintSpaceBlazor Bounds="currentSpace" SpaceNumber="@GraphicsData.GameContainer.SaveRoot.SpaceHighlighted" BorderColor="@cc.Red" />
+        @foreach (var move in thisList)
+        {
+            var newSpace = GraphicsData.SpaceList[move.SpaceTo];
+            <BackgammonHintSpaceBlazor Bounds="newSpace" SpaceNumber="@move.SpaceTo" BorderColor="@cc.LimeGreen" />
+        }
+        <BackgammonBlazor.BackgammonClickBoardBlazor />
+        return;
+    }
+    @foreach (var move in GraphicsData.GameContainer.MoveList)
+    {
+        var currentSpace = GraphicsData.SpaceList[move.SpaceFrom];
+        //try to double check.
+
+        var triangle = GraphicsData.GameContainer.TriangleList[move.SpaceFrom];
+        if (triangle.NumberOfTiles > 0)
+        {
+            <BackgammonHintSpaceBlazor Bounds="currentSpace" SpaceNumber="@move.SpaceFrom" BorderColor="@cc.Violet" />
+        }
+
+
+    }
+    <BackgammonBlazor.BackgammonClickBoardBlazor />
+</RawGameBoard>

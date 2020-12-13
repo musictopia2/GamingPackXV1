@@ -1,0 +1,15 @@
+﻿@if (SpaceNumber == 0 || SpaceNumber == 27 || SpaceNumber == 25 || SpaceNumber == 26)
+{
+    <RawRectangle Rectangle="Bounds">
+        <svg>
+            <rect width="100%" height="100%" fill="none" stroke="@BorderColor.ToWebColor()" style="stroke-width: 3;" />
+        </svg>
+    </RawRectangle>
+    return;
+}
+@if (SpaceNumber <= 12)
+{
+    <SimpleTriangle Bounds="Bounds" BorderColor="@BorderColor" TriangleInfo="SimpleTriangle.EnumTriangleInfo.TopCenter" />
+    return;
+}
+<SimpleTriangle Bounds="Bounds" BorderColor="@BorderColor" TriangleInfo="SimpleTriangle.EnumTriangleInfo.BottomCenter" />
