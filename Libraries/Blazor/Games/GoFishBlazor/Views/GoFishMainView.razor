@@ -1,0 +1,39 @@
+@inherits BasicGameView<GoFishMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<CascadingValue Value="_vmData">
+    <HorizontalDiv Margins="5px">
+        <DeckOfCardsDrawPileBlazor R="RegularSimpleCard" DeckPile="_vmData.Deck1" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <DeckOfCardsSingleMiscPileBlazor R="RegularSimpleCard" SinglePile="_vmData.Pile1" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <GameButtonComponent DataContext="DataContext"
+                             Display="End Turn"
+                             MethodName="@EndTurnMethod"
+                             StartOnNewLine="true" />
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
+        <div>
+            <ScoreBoardBlazor P="GoFishPlayerItem"
+                              Columns="_scores"
+                              Players="_gameContainer.SaveRoot.PlayerList" />
+        </div>
+    </HorizontalDiv>
+    <div>
+        <DeckOfCardsHandBlazor R="RegularSimpleCard" Hand="_vmData.PlayerHand1" />
+    </div>
+    <ParentControl VM="AskViewModel">
+        <AskView />
+    </ParentControl>
+    @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+    {
+        <ParentControl VM="RestoreViewModel">
+            <RestoreView />
+        </ParentControl>
+    }
+</CascadingValue>

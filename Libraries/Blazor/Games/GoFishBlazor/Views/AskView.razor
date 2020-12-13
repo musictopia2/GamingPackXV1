@@ -1,0 +1,16 @@
+﻿@if (Model == null || DataContext == null || Model.AskList.ItemList.Count == 15)
+{
+    return;
+}
+<BaseFrameBlazor Text="Choose Number To Ask">
+    <EnumPickerBlazor 
+                      E="EnumRegularCardValueList" 
+                      Context="Item"
+                      TargetSize="15vh"
+                      ListPicker="Model.AskList">
+        <GoFishPieceBlazor Value="Item.EnumValue" />
+    </EnumPickerBlazor>
+    <div>
+        <GameButtonComponent Display="Number To Ask" MethodName="@AskMethod" DataContext="DataContext" />
+    </div>
+</BaseFrameBlazor>

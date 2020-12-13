@@ -1,0 +1,38 @@
+@* you are forced to manually place it each time now unfortunately. *@
+@if (GameData == null || TestData == null || BasicData == null)
+{
+    if (GameData == null)
+    {
+        <div>No Game Data</div>
+    }
+    if (TestData == null)
+    {
+        <div>No Test Data</div>
+    }
+    if (BasicData == null)
+    {
+        <div>No Basic Data</div>
+    }
+    return;
+}
+<ParentControl VM="NewGameViewModel">
+    <NewGameView />
+</ParentControl>
+@if (GameData.GameType == EnumGameType.Rounds)
+{
+    <ParentControl VM="NewRoundViewModel">
+        <NewRoundView />
+    </ParentControl>
+}
+<CascadingValue Value="TargetHeight">
+    <ParentControl VM="GoFishMainViewModel">
+        <GoFishMainView />
+    </ParentControl>
+    <ParentControl VM="MultiplayerOpeningViewModel<GoFishPlayerItem>">
+        <MultiplayerOpeningView P="GoFishPlayerItem" />
+    </ParentControl>
+    @if (TestData.ShowNickNameOnShell)
+    {
+        @BasicData.NickName
+    }
+</CascadingValue>
