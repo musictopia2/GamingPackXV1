@@ -1,0 +1,14 @@
+﻿@if (VMData == null || DataContext == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5">
+    <DeckOfCardsCardBoardBlazor R="RegularSimpleCard"
+                                DataContext="VMData.Beginnings1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5">
+    <GameButtonComponent Display="Choose First Cards" MethodName="@ChooseMethod" DataContext="DataContext" />
+</HorizontalDiv>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>

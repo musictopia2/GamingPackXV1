@@ -1,0 +1,44 @@
+@inherits BasicGameView<GolfCardGameMainViewModel>
+@if (VMData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsDrawPileBlazor R="RegularSimpleCard" DeckPile="VMData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <DeckOfCardsSingleMiscPileBlazor R="RegularSimpleCard"
+                                     SinglePile="VMData.Pile1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <GameButtonComponent MethodName="@KnockMethod" Display="Knock" DataContext="DataContext" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <ScoreBoardBlazor P="GolfCardGamePlayerItem"
+                      UseAbbreviationForTrueFalse="true"
+                      Columns="_scores"
+                      Players="_gameContainer.SaveRoot.PlayerList" />
+</HorizontalDiv>
+<div>
+    <DeckOfCardsMultiplePilesBlazor R="RegularSimpleCard"
+                                    Piles="VMData.HiddenCards1" />
+</div>
+<div>
+    <HorizontalDiv LeftOnly="5px">
+        <DeckOfCardsCardBoardBlazor R="RegularSimpleCard" DataContext="VMData.GolfHand1" />
+    </HorizontalDiv>
+    <HorizontalDiv LeftOnly="5px">
+        <DeckOfCardsSingleMiscPileBlazor R="RegularSimpleCard"
+                                         SinglePile="VMData.OtherPile"
+                                         PileAnimationTag="" />
+    </HorizontalDiv>
+</div>
+<div>
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
