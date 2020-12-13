@@ -1,0 +1,48 @@
+@inherits BasicGameView<FourSuitRummyMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<CascadingValue Value="_gameContainer">
+    <div style="height: 13vh">
+        <DeckOfCardsHandBlazor R="RegularRummyCard" Hand="_vmData.PlayerHand1" />
+    </div>
+    <div>
+        <HorizontalDiv Margins="5px">
+            <GameButtonComponent Display="Play Sets" MethodName="@PlaySetsMethod" DataContext="DataContext" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsDrawPileBlazor R="RegularRummyCard" DeckPile="_vmData.Deck1" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsSingleMiscPileBlazor R="RegularRummyCard" SinglePile="_vmData.Pile1" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <ScoreBoardBlazor P="FourSuitRummyPlayerItem"
+                              Columns="_scores"
+                              Players="_gameContainer.SaveRoot.PlayerList" />
+        </HorizontalDiv>
+    </div>
+    <div>
+        <HorizontalDiv Margins="5px">
+            <DeckOfCardsTempSetsBlazor RU="RegularRummyCard"
+                                       TargetContainerSize="50vh"
+                                       TempPiles="_vmData.TempSets" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <PlayerSetsView PlayerUsed="GetSelf" />
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <PlayerSetsView PlayerUsed="GetOpponent" />
+        </HorizontalDiv>
+    </div>
+    @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+    {
+        <ParentControl VM="RestoreViewModel">
+            <RestoreView />
+        </ParentControl>
+    }
+</CascadingValue>

@@ -1,0 +1,11 @@
+﻿@if (GameContainer == null || PlayerUsed == null)
+{
+    return;
+}
+<DeckOfCardsMainRummySetsBlazor 
+                                RU="RegularRummyCard"
+                                SE="SetInfo"
+                                T="SavedSet"
+                                ContainerWidth="25vw"
+                                ContainerHeight="50vh"
+                                DataContext="PlayerUsed.MainSets" />
