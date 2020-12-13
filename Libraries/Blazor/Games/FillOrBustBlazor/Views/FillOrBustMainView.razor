@@ -1,0 +1,44 @@
+@inherits BasicGameView<FillOrBustMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <DrawPileBlazor DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <div>
+        <ScoreBoardBlazor P="FillOrBustPlayerItem"
+                          Columns="_scores"
+                          Players="_gameContainer.SaveRoot.PlayerList" />
+    </div>
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_temps" />
+    </div>
+    <div style="margin-top: 50px">
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </div>
+</HorizontalDiv>
+<div>
+    <GameButtonComponent DataContext="DataContext"
+                         MethodName="@RollMethod"
+                         Display="Roll Dice" />
+    <GameButtonComponent DataContext="DataContext"
+                         MethodName="@RemoveMethod"
+                         Display="Remove Dice" />
+    <GameButtonComponent DataContext="DataContext"
+                         MethodName="@EndMethod"
+                         Display="End Turn" />
+</div>
+<div>
+    <DiceListConrolBlazor D="SimpleDice" Cup="@_vmData.Cup" TargetHeight="20vh" />
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
