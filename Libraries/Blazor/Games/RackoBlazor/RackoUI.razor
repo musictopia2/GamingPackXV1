@@ -1,0 +1,18 @@
+﻿@using BasicGamingUIBlazorLibrary.GameGraphics.Base; 
+@if (_cardList == null || _otherList == null)
+{
+    return;
+}
+<BaseFrameBlazor IsEnabled="@IsEnabled" Text="Your Card List">
+    @foreach (var card in _cardList)
+    {
+        <div @onclick="() => ClickedRowAsync(card)">
+            <svg style="width: 5vw; height: @RealHeight" viewBox="0 0 40 30">
+                <CenteredSvgText FontSize="30" Text="@GetLabel(card)" TextColor="aqua" />
+            </svg>
+            <FlexibleDeckRenderComponent D="RackoCardInformation" DeckObject="card">
+                <CardGraphicsBlazor TargetHeight="@RealHeight" DeckObject="card" />
+            </FlexibleDeckRenderComponent>
+        </div>
+    }
+</BaseFrameBlazor>

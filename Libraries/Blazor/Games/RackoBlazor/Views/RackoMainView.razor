@@ -1,0 +1,47 @@
+@inherits BasicGameView<RackoMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<CascadingValue Value="_gameContainer">
+    <GridContainer Columns="@GetColumns" ColumnGap="5px">
+        <GridItem>
+            <div>
+                <DrawPileBlazor DeckPile="_vmData.Deck1" />
+            </div>
+            <div>
+                <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+            </div>
+            <div>
+                <SingleMiscPileBlazor PileAnimationTag="otherpile" SinglePile="_vmData.OtherPile" />
+            </div>
+            <GameButtonComponent StartOnNewLine="true"
+                                 DataContext="DataContext"
+                                 MethodName="@DiscardCurrentMethod"
+                                 Display="Discard Current Card" />
+            <div>
+                <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+            </div>
+            <div>
+                <GameButtonComponent StartOnNewLine="true"
+                                     DataContext="DataContext"
+                                     MethodName="@RackoMethod"
+                                     Display="Racko" />
+            </div>
+            <div>
+                <ScoreBoardBlazor P="RackoPlayerItem"
+                                  Columns="_scores"
+                                  Players="_gameContainer.SaveRoot.PlayerList" />
+            </div>
+        </GridItem>
+        <GridItem Column="2">
+            <RackoUI />
+        </GridItem>
+    </GridContainer>
+    @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+    {
+        <ParentControl VM="RestoreViewModel">
+            <RestoreView />
+        </ParentControl>
+    }
+</CascadingValue>
