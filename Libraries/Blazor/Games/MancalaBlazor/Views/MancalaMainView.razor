@@ -1,0 +1,13 @@
+@inherits BasicGameView<MancalaMainViewModel>
+<HorizontalDiv LeftOnly="0">
+    <MancalaBoardBlazor DataContext="OtherModel" />
+</HorizontalDiv>
+<HorizontalDiv LeftOnly="0">
+    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+</HorizontalDiv>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}

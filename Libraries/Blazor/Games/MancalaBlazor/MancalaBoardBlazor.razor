@@ -1,0 +1,20 @@
+﻿@using cc = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString;
+@if (DataContext == null)
+{
+    return;
+}
+<RawGameBoard TargetHeight="90vh" BoardSize="new SizeF(74, 310)">
+    @foreach (var space in DataContext.SpaceList)
+    {
+        <BorderedSpace BorderWidth="@StrokeWidth(space)"
+                       BorderColor="@StrokeColor(space)"
+                       ShapeCategory="BorderedSpace.EnumShapeCategory.Oval"
+                       SpaceLocation="@space.Bounds.Location"
+                       FillColor="@cc.White"
+                       SpaceSize="space.Bounds.Size"
+                       @key="space"
+                       SpaceClicked="() => DataContext.MakeMoveAsync(space)">
+            <CenteredTextBlazor Text="@space.Pieces.ToString()" @key="space" FontSize="20" />
+    </BorderedSpace>
+    }
+</RawGameBoard>
