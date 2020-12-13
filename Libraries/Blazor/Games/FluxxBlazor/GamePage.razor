@@ -1,0 +1,94 @@
+@if (GameData == null || TestData == null || BasicData == null)
+{
+    if (GameData == null)
+    {
+        <div>No Game Data</div>
+    }
+    if (TestData == null)
+    {
+        <div>No Test Data</div>
+    }
+    if (BasicData == null)
+    {
+        <div>No Basic Data</div>
+    }
+    return;
+}
+<CascadingValue Value="@TargetHeight">
+    <ParentControl VM="NewGameViewModel">
+        <NewGameView />
+    </ParentControl>
+    @if (GameData.GameType == EnumGameType.Rounds)
+    {
+        <ParentControl VM="NewRoundViewModel">
+            <NewRoundView />
+        </ParentControl>
+    }
+    <ParentControl VM="FluxxMainViewModel">
+        <CascadingValue Value="GetContainer">
+            <FluxxMainView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="ActionDirectionViewModel">
+        <CascadingValue Value="@GetContainer">
+            <ActionDirectionView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="ActionDiscardRulesViewModel">
+        <CascadingValue Value="GetContainer">
+            <ActionDiscardRulesView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="ActionDoAgainViewModel">
+        <CascadingValue Value="GetContainer">
+            <ActionDoAgainView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="ActionDrawUseViewModel">
+        <CascadingValue Value="GetContainer">
+            <ActionDrawUseView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="ActionEverybodyGetsOneViewModel">
+        <CascadingValue Value="@GetContainer">
+            <ActionEverybodyGetsOneView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="ActionFirstCardRandomViewModel">
+        <CascadingValue Value="@GetContainer">
+            <ActionFirstCardRandomView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="ActionTakeUseViewModel">
+        <CascadingValue Value="GetContainer">
+            <ActionTakeUseView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="KeeperExchangeViewModel">
+        <CascadingValue Value="GetContainer">
+            <KeeperExchangeView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="KeeperShowViewModel">
+        <CascadingValue Value="GetContainer">
+            <KeeperShowView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="KeeperStealViewModel">
+        <CascadingValue Value="GetContainer">
+            <KeeperStealView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="KeeperTrashViewModel">
+        <CascadingValue Value="GetContainer">
+            <KeeperTrashView />
+        </CascadingValue>
+    </ParentControl>
+    <ParentControl VM="MultiplayerOpeningViewModel<FluxxPlayerItem>">
+        <MultiplayerOpeningView P="FluxxPlayerItem" />
+    </ParentControl>
+    @if (TestData.ShowNickNameOnShell)
+    {
+        @BasicData.NickName
+    }
+</CascadingValue>

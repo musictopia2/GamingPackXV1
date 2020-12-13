@@ -1,0 +1,29 @@
+﻿@inherits SimpleActionView
+
+@if (CompleteContainer == null || DataContext == null)
+{
+    return;
+}
+<FinalActionLayout>
+    <div>
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </div>
+    <div>
+        <HorizontalDiv Margins="5px">
+            <div style="width: 50vw; height: 40vh; overflow: auto">
+                <ListChooserBlazor TextWidth="400" TextHeight="3vh" ListPicker="CompleteContainer.ActionContainer.Rule1" />
+            </div>
+        </HorizontalDiv>
+        <HorizontalDiv Margins="5px">
+            <GameButtonComponent StartOnNewLine="true"
+                                 DataContext="DataContext"
+                                 Display="View Card"
+                                 MethodName="@ViewMethod" />
+            <GameButtonComponent StartOnNewLine="true"
+                                 DataContext="DataContext"
+                                 Display="Discard Selected Rule(s)"
+                                 MethodName="@DiscardMethod" />
+            <KeeperButton K="ActionDiscardRulesViewModel" @key="GetKey" StartsOnNewLine="true" />
+        </HorizontalDiv>
+    </div>
+</FinalActionLayout>

@@ -1,0 +1,26 @@
+﻿@if (ChildContent == null || CompleteContainer == null)
+{
+    return;
+}
+<div>
+    <GridContainer Inline="true" Columns="@FirstGridColumns">
+        <GridItem>
+            <ShowCardUI ShowCategory="EnumShowCategory.MainAction" />
+        </GridItem>
+        <GridItem Column="2">
+            <ShowCardUI ShowCategory="EnumShowCategory.CurrentAction" />
+        </GridItem>
+        <GridItem Column="3">
+            <HandBlazor D="GoalCard" Hand="CompleteContainer.ActionContainer.PrivateGoals" />
+        </GridItem>
+    </GridContainer>
+</div>
+<div>
+    <HandBlazor D="KeeperCard" Hand="CompleteContainer.ActionContainer.YourKeepers" />
+</div>
+<div>
+    <HandBlazor D="FluxxCardInformation" Hand="CompleteContainer.ActionContainer.YourCards" />
+</div>
+<div>
+    @ChildContent
+</div>

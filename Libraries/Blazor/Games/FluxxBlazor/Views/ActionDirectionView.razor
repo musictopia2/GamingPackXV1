@@ -1,0 +1,18 @@
+﻿@inherits SimpleActionView
+@if (CompleteContainer == null || DataContext == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="Direction">
+    <FinalActionLayout>
+        <div>
+            <ListChooserBlazor ListPicker="CompleteContainer.ActionContainer.Direction1" />
+        </div>
+        <div>
+            <GameButtonComponent DataContext="DataContext"
+                                 MethodName="@DirectionMethod"
+                                 Display="Choose Direction" />
+            <KeeperButton K="ActionDirectionViewModel" @key="GetKey"  />
+        </div>
+    </FinalActionLayout>
+</BaseFrameBlazor>

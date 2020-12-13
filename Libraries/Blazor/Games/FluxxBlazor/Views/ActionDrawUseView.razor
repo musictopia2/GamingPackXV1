@@ -1,0 +1,16 @@
+﻿@inherits SimpleActionView
+
+@if (CompleteContainer == null || DataContext == null)
+{
+    return;
+}
+<FinalActionLayout>
+    <HandBlazor D="FluxxCardInformation" Hand="CompleteContainer.ActionContainer.TempHand" />
+    <div>
+        <GameButtonComponent DataContext="DataContext"
+                             StartOnNewLine="true"
+                             MethodName="@DrawUseMethod"
+                             Display="Choose Card" />
+        <KeeperButton K="ActionDrawUseViewModel" @key="GetKey"  StartsOnNewLine="true" />
+    </div>
+</FinalActionLayout>

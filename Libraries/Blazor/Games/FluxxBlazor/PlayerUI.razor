@@ -1,0 +1,15 @@
+﻿@if (CompleteContainer == null || DataContext == null)
+{
+    return;
+}
+<BaseFrameBlazor Text="Player List">
+    <ListChooserBlazor TextHeight="@ItemHeight"
+                       TextWidth="@ItemWidth"
+                       ListPicker="CompleteContainer.ActionContainer.Player1" />
+    @if (UsePlayerButton && CompleteContainer.ActionContainer.ButtonChoosePlayerVisible)
+    {
+        <GameButtonComponent DataContext="DataContext"
+                             MethodName="@ChooseMethod"
+                             Display="Choose Player" />
+    }
+</BaseFrameBlazor>

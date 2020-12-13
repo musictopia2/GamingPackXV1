@@ -1,0 +1,9 @@
+﻿@typeparam K
+@if (DataContext == null)
+{ 
+    return;
+}
+<GameButtonComponent DataContext="DataContext"
+                     MethodName="@ShowMethod"
+                     StartOnNewLine="@StartsOnNewLine"
+                     Display="Show Keepers" />

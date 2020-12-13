@@ -1,0 +1,70 @@
+@inherits BasicGameView<FluxxMainViewModel>
+@if (_vmData == null || DataContext == null || _gameContainer == null)
+{
+    return;
+}
+<HorizontalDiv Margins="5px">
+    <RuleUI />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <ShowCardUI ShowCategory="EnumShowCategory.MainScreen" />
+</HorizontalDiv>
+<HorizontalDiv Margins="5px">
+    <HandBlazor D="GoalCard" Hand="_vmData.Goal1" />
+</HorizontalDiv>
+<div>
+    <GameButtonComponent DataContext="DataContext"
+                         MethodName="@EndMethod"
+                         Display="End Turn" />
+    <GameButtonComponent DataContext="DataContext"
+                         MethodName="@DiscardMethod"
+                         Display="Discard" />
+    <HorizontalDiv Margins="0px">
+        <ParentControl VM="GiveViewModel">
+            <GiveView />
+        </ParentControl>
+        <ParentControl VM="PlayViewModel">
+            <PlayView />
+        </ParentControl>
+    </HorizontalDiv>
+    <GameButtonComponent DataContext="DataContext"
+                         MethodName="@UnselectMethod"
+                         Display="Unselect All" />
+    <GameButtonComponent DataContext="DataContext"
+                         MethodName="@SelectMethod"
+                         Display="Select All" />
+    <KeeperButton K="FluxxMainViewModel" @key="GetKey" />
+</div>
+<div>
+    <HorizontalDiv Margins="5px">
+        <DrawPileBlazor DeckPile="_vmData.Deck1" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <SingleMiscPileBlazor SinglePile="_vmData.Pile1" />
+    </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <HandBlazor D="KeeperCard" Hand="_vmData.Keeper1" />
+    </HorizontalDiv>
+</div>
+<div>
+    <HandBlazor D="FluxxCardInformation" Hand="_vmData.PlayerHand1" />
+</div>
+<div>
+    <GridContainer Inline="true" Columns="@GetColumns">
+        <GridItem>
+            <ScoreBoardBlazor P="FluxxPlayerItem"
+                              UseAbbreviationForTrueFalse="true"
+                              Columns="_scores"
+                              Players="_gameContainer.SaveRoot.PlayerList" />
+        </GridItem>
+        <GridItem Column="2">
+            <DetailGameInformationBlazor DataContext="DataContext" Labels="_labels" Text="Additional Information" />
+        </GridItem>
+    </GridContainer>
+</div>
+@if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
+{
+    <ParentControl VM="RestoreViewModel">
+        <RestoreView />
+    </ParentControl>
+}
