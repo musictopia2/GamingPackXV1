@@ -15,9 +15,13 @@ namespace BasicGameFrameworkLibrary.MiscProcesses
             set
             {
                 if (CanEnableFirst() == false)
+                {
                     value = false;// otherwise, value can always be false.
+                }
                 if (SetProperty(ref _isEnabled, value) == true)
+                {
                     EnableChange();
+                }
             }
         }
         public EnumCommandBusyCategory BusyCategory { get; set; } = EnumCommandBusyCategory.None; //most of the time, none.
