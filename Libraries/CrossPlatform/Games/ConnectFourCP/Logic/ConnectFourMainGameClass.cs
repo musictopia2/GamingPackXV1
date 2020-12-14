@@ -104,6 +104,11 @@ namespace ConnectFourCP.Logic
                 await ShowTieAsync();
                 return;
             }
+            if (Test!.ImmediatelyEndGame)
+            {
+                await ShowTieAsync();
+                return; //even if we need to immediately end game for testing, will show tie.
+            }
             if (thisWin.WinList.Count > 0)
             {
                 RepaintBoard();

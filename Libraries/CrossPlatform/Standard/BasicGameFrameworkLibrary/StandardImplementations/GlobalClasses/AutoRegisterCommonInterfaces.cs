@@ -2,8 +2,14 @@
 using BasicGameFrameworkLibrary.BasicDrawables.Interfaces;
 using BasicGameFrameworkLibrary.DIContainers;
 using BasicGameFrameworkLibrary.DrawableListsObservable;
+using BasicGameFrameworkLibrary.MiscProcesses;
+using BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses;
 using BasicGameFrameworkLibrary.MultiplayerClasses.BasicPlayerClasses;
+using BasicGameFrameworkLibrary.MultiplayerClasses.LoadingClasses;
+using BasicGameFrameworkLibrary.MultiplayerClasses.MiscHelpers;
+using BasicGameFrameworkLibrary.MultiplayerClasses.SavedGameClasses;
 using BasicGameFrameworkLibrary.RegularDeckOfCards;
+using BasicGameFrameworkLibrary.ViewModels;
 using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
 using CommonBasicStandardLibraries.CollectionClasses;
 using System;
@@ -59,5 +65,44 @@ namespace BasicGameFrameworkLibrary.StandardImplementations.GlobalClasses
                 }
             }
         }
+
+        //may improve eventually.  for now, do this way.
+        //OurContainer!.RegisterType<BasicGameLoader<ConnectFourPlayerItem, ConnectFourSaveInfo>>();
+        //    OurContainer.RegisterType<RetrieveSavedPlayers<ConnectFourPlayerItem, ConnectFourSaveInfo>>();
+        //    OurContainer.RegisterType<MultiplayerOpeningViewModel<ConnectFourPlayerItem>>(true); //had to be set to true after all.
+        public static void RegisterCommonMultplayerClasses<P, S>(this IGamePackageDIContainer container)
+            where P: class, IPlayerItem, new()
+            where S: BasicSavedGameClass<P>, new()
+        {
+            container.RegisterType<BasicGameLoader<P, S>>();
+            container.RegisterType<RetrieveSavedPlayers<P, S>>();
+            container.RegisterType<MultiplayerOpeningViewModel<P>>(); //obviously true
+        }
+
+        private static CustomBasicList<Type> ReplaceBoardGameColorClasses<E, P, S>()
+            where E : struct, Enum
+            where P : class, IPlayerBoardGame<E>, new()
+            where S : BasicSavedGameClass<P>, new()
+        {
+            CustomBasicList<Type> output = new CustomBasicList<Type>()
+            {
+                typeof(BeginningColorProcessorClass<E, P, S>),
+                typeof(BeginningColorModel<E, P>),
+                typeof(BeginningChooseColorViewModel<E, P>)
+            };
+            return output;
+        }
+
+        public static void RegisterBeginningColors<E, P, S>(this IGamePackageDIContainer container)
+            where E : struct, Enum
+            where P : class, IPlayerBoardGame<E>, new()
+            where S : BasicSavedGameClass<P>, new()
+        {
+            container.RegisterType<BeginningColorProcessorClass<E, P, S>>();
+            container.RegisterType<BeginningChooseColorViewModel<E, P>>();
+            container.RegisterType<BeginningColorModel<E, P>>();
+            MiscDelegates.GetMiscObjectsToReplace = ReplaceBoardGameColorClasses<E, P, S>;
+        }
+
     }
 }

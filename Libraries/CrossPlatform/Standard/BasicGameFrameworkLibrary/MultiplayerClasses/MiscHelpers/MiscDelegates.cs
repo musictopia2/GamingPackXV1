@@ -16,19 +16,7 @@ namespace BasicGameFrameworkLibrary.MultiplayerClasses.MiscHelpers
         public static Action? FillRestColors { get; set; }
         public static Action? ManuelSetColors { get; set; }
 
-        public static CustomBasicList<Type> ReplaceBoardGameColorClasses<E, P, S>()
-            where E : struct, Enum
-            where P : class, IPlayerBoardGame<E>, new()
-            where S : BasicSavedGameClass<P>, new()
-        {
-            CustomBasicList<Type> output = new CustomBasicList<Type>()
-            {
-                typeof(BeginningColorProcessorClass<E, P, S>),
-                typeof(BeginningColorModel<E, P>),
-                typeof(BeginningChooseColorViewModel<E, P>)
-            };
-            return output;
-        }
+        
 
     }
 }
