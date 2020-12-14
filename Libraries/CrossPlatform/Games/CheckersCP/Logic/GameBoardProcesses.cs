@@ -299,7 +299,6 @@ namespace CheckersCP.Logic
                 }
             }
             _gameContainer.CurrentMoveList.Clear();
-            _gameContainer.Aggregator.RepaintBoard();
             if (isGameOver || _gameContainer.Test.ImmediatelyEndGame)
             {
                 await _gameContainer.ShowWinAsync!(); //in this case, no problem sending that class to do the code for showwinasync.
@@ -317,7 +316,6 @@ namespace CheckersCP.Logic
             if (_gameContainer.SaveRoot.ForcedToMove)
             {
                 _gameContainer.SaveRoot.SpaceHighlighted = space;
-                _gameContainer.Aggregator.RepaintBoard();
                 _gameContainer.CompleteMoveList.Clear();
                 _gameContainer.CurrentMoveList.Clear();
                 GetActualMoves();
