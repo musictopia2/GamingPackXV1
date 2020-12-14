@@ -122,5 +122,9 @@ namespace LifeBoardGameBlazor
             ContainerData.Command.StartExecuting();
             await BoardProcesses!.RetirementAsync(final);
         }
+        protected override bool ShouldRender()
+        {
+            return ContainerData!.SingleInfo!.Color != EnumColorChoice.None;
+        }
     }
 }

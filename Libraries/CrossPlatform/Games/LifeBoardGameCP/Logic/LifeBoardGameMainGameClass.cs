@@ -434,7 +434,13 @@ namespace LifeBoardGameCP.Logic
                         _model!.Instructions = "Choose college or career";
                         break;
                     case EnumWhatStatus.NeedToSpin:
+                        if (Test!.ImmediatelyEndGame)
+                        {
+                            await ShowWinAsync();
+                            return;
+                        }
                         _model!.Instructions = "Spin to take your turn";
+
                         break;
                     case EnumWhatStatus.NeedToChooseSpace:
                         _model!.Instructions = "Decide Which Space";
