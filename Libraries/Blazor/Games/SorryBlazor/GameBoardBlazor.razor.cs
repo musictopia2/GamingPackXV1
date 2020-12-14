@@ -26,7 +26,7 @@ namespace SorryBlazor
         public GameBoardGraphicsCP? GraphicsData { get; set; } //this includes the container that is needed as well.
         [Parameter]
         public string TargetHeight { get; set; } = "";
-        private Assembly GetAssembly => Assembly.GetAssembly(GetType());
+        private Assembly GetAssembly => Assembly.GetAssembly(GetType())!;
         private string GetColor(SorryPlayerItem player) => player.Color.ToColor();
         private async Task SpaceClicked(int space)
         {
@@ -64,6 +64,10 @@ namespace SorryBlazor
                 return; //because you already drew.
             }
             await GraphicsData.Container.DrawClickAsync();
+        }
+        protected override bool ShouldRender()
+        {
+            return GraphicsData!.Container.SingleInfo!.Color != EnumColorChoice.None;
         }
     }
 }

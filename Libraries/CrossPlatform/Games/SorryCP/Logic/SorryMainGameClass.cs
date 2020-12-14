@@ -38,7 +38,7 @@ namespace SorryCP.Logic
             _shuffle = shuffle;
             _gameBoard = gameBoard;
             _shuffle.AfterDrawingAsync = AfterDrawingAsync;
-            _shuffle.CurrentPlayer = (() => SingleInfo!);
+            _shuffle.CurrentPlayer = () => SingleInfo!;
             _shuffle.AfterFirstShuffle = TestCardOnTop;
         }
         private void TestCardOnTop(IListShuffler<CardInfo> deck)
