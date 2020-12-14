@@ -1,13 +1,16 @@
 ﻿using BasicGameFrameworkLibrary.BasicGameDataClasses;
 using BasicGameFrameworkLibrary.CommandClasses;
 using BasicGameFrameworkLibrary.DIContainers;
+using BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses;
 using BasicGameFrameworkLibrary.MultiplayerClasses.BasicPlayerClasses;
 using BasicGameFrameworkLibrary.MultiplayerClasses.InterfacesForHelpers;
 using BasicGameFrameworkLibrary.MultiplayerClasses.MiscHelpers;
 using BasicGameFrameworkLibrary.MultiplayerClasses.SavedGameClasses;
 using BasicGameFrameworkLibrary.TestUtilities;
 using BasicGameFrameworkLibrary.ViewModelInterfaces;
+using CommonBasicStandardLibraries.CollectionClasses;
 using CommonBasicStandardLibraries.Exceptions;
+using System;
 using System.Threading.Tasks; //most of the time, i will be using asyncs.
 namespace BasicGameFrameworkLibrary.ViewModels
 {
@@ -28,12 +31,7 @@ namespace BasicGameFrameworkLibrary.ViewModels
         {
             MiscDelegates.ColorsFinishedAsync = CloseColorsAsync; //hopefully this simple this time.
         }
-        protected override Task PrepNewGameAsync()
-        {
-            IEraseColors erase = MainContainer.Resolve<IEraseColors>();
-            erase.EraseColors();
-            return Task.CompletedTask;
-        }
+        
         public IBeginningColorViewModel? ColorScreen { get; set; }
         protected override async Task GetStartingScreenAsync()
         {
@@ -61,5 +59,8 @@ namespace BasicGameFrameworkLibrary.ViewModels
             IAfterColorProcesses processes = MainContainer.Resolve<IAfterColorProcesses>();
             await processes.AfterChoosingColorsAsync(); //hopefully this simple.
         }
+
+        
+
     }
 }

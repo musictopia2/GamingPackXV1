@@ -5,6 +5,7 @@ using BasicGameFrameworkLibrary.CommandClasses;
 using BasicGameFrameworkLibrary.CommonInterfaces;
 using BasicGameFrameworkLibrary.Dice;
 using BasicGameFrameworkLibrary.DIContainers;
+using BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses;
 using BasicGameFrameworkLibrary.MultiplayerClasses.BasicPlayerClasses;
 using BasicGameFrameworkLibrary.MultiplayerClasses.EventModels;
 using BasicGameFrameworkLibrary.MultiplayerClasses.InterfaceMessages;
@@ -167,7 +168,7 @@ namespace BasicGameFrameworkLibrary.ViewModels
 
         public IMainScreen? MainVM { get; set; } //this is another one for the ui to know.
         protected virtual Task NewGameOrRoundRequestedAsync() => Task.CompletedTask;
-        protected virtual Task PrepNewGameAsync() => Task.CompletedTask;
+        //protected virtual Task PrepNewGameAsync() => Task.CompletedTask;
 
 
         /// <summary>
@@ -177,7 +178,8 @@ namespace BasicGameFrameworkLibrary.ViewModels
         /// <returns></returns>
         async Task IHandleAsync<NewGameEventModel>.HandleAsync(NewGameEventModel message)
         {
-            await PrepNewGameAsync();
+            //attempt to not even do prepnewgame anymore.  since clients on multiplayer games would not call this.
+            //await PrepNewGameAsync();
             if (_test.AlwaysNewGame)
             {
                 CommandContainer.ClearLists(); //try this too.
@@ -312,6 +314,9 @@ namespace BasicGameFrameworkLibrary.ViewModels
             MainContainer.ResetSeveralObjects(thisList);
             _mainGame = MainContainer.ReplaceObject<IBasicGameProcesses<P>>(); //hopefully this works
         }
+         
+       
+
         protected virtual CustomBasicList<Type> GetAdditionalObjectsToReset() => new CustomBasicList<Type>();
         private async Task CloseOpenScreenAsync(string message)
         {

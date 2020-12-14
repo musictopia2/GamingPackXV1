@@ -18,7 +18,7 @@ using System.Threading.Tasks; //most of the time, i will be using asyncs.
 using js = CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.JsonSerializers.NewtonJsonStrings; //just in case i need those 2.
 namespace BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses
 {
-    public abstract class SimpleBoardGameClass<P, S, E, M> : BasicGameClass<P, S>, IMoveProcesses<M>, IMoveNM, IAfterColorProcesses, IEraseColors
+    public abstract class SimpleBoardGameClass<P, S, E, M> : BasicGameClass<P, S>, IMoveProcesses<M>, IMoveNM, IAfterColorProcesses
         where E : struct, Enum
          where P : class, IPlayerBoardGame<E>, new()
 
@@ -60,10 +60,11 @@ namespace BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses
                 await MiscDelegates.ComputerChooseColorsAsync.Invoke();
             }
         }
-        public override Task ShowWinAsync()
+        public override async Task ShowWinAsync()
         {
             _currentMod.Instructions = "None";
-            return base.ShowWinAsync();
+            await base.ShowWinAsync();
+            EraseColors(); //try here instead.
         }
         public override Task ShowTieAsync()
         {
@@ -106,6 +107,7 @@ namespace BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses
             }
             await MiscDelegates.ContinueColorsAsync.Invoke();
         }
+        
         public void EraseColors()
         {
             PlayerList.EraseColors(); //should be this simple.  just for convenience.  maybe something else will do it (not sure).

@@ -8,7 +8,9 @@ namespace BasicGameFrameworkLibrary.MultiplayerClasses.Extensions
         {
             foreach (var player in players)
                 if (player.DidChooseColor == false && player.InGame)
+                {
                     return false;
+                }
             return true;
         }
         public static void EraseColors<P>(this PlayerCollection<P> players)
