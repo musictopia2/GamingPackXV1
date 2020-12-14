@@ -6,6 +6,8 @@ using BasicGameFrameworkLibrary.ViewModels;
 using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
 using CommonBasicStandardLibraries.CollectionClasses;
 using Microsoft.AspNetCore.Components;
+using System.Linq;
+
 namespace BasicGamingUIBlazorLibrary.Views
 {
     public partial class LoadPlayerOptionsComponent<P>
@@ -71,10 +73,14 @@ namespace BasicGamingUIBlazorLibrary.Views
             _completeList = OpenPlayersHelper.GetPossiblePlayers(GameData);
             if (PlayOption == EnumPlayOptions.ComputerExtra)
             {
-
+                
                 for (int i = 0; i < _completeList.Count; i++)
                 {
                     _completeList[i] = _completeList[i] - DataContext!.ClientsConnected;
+                }
+                if (_completeList.First() == 0)
+                {
+                    _completeList.RemoveFirstItem(); //because there is already an option to have no extra computer players.
                 }
 
             }
