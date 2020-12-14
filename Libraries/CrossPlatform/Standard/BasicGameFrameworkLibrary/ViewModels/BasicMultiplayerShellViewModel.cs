@@ -208,6 +208,7 @@ namespace BasicGameFrameworkLibrary.ViewModels
             }
             await CloseSpecificChildAsync(MainVM!);
             MainVM = null; //looks like i have to set to null manually.
+            await Task.Delay(50); //try to set here just in case.
         }
         private async Task LoadGameScreenAsync()
         {
