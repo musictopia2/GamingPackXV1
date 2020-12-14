@@ -1,12 +1,10 @@
 ﻿using BasicGameFrameworkLibrary.Attributes;
 using BasicGameFrameworkLibrary.BasicEventModels;
-using BasicGameFrameworkLibrary.BasicGameDataClasses;
 using BasicGameFrameworkLibrary.MultiplayerClasses.BasicPlayerClasses;
 using CheckersCP.Data;
 using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
 using CommonBasicStandardLibraries.CollectionClasses;
 using CommonBasicStandardLibraries.Exceptions;
-using CommonBasicStandardLibraries.MVVMFramework.UIHelpers;
 using System.Linq;
 using System.Threading.Tasks;
 using js = CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.JsonSerializers.NewtonJsonStrings; //just in case i need those 2.
@@ -64,7 +62,7 @@ namespace CheckersCP.Logic
                 {
                     wasReversed = NeedsReversed(thisPlayer.Id);
                     realIndex = GameBoardGraphicsCP.GetRealIndex(thisTemp.Index, wasReversed);
-                    var thisSpace = _gameContainer.SpaceList.Single(items => items.MainIndex == realIndex);
+                    var thisSpace = _gameContainer.SpaceList!.Single(items => items.MainIndex == realIndex);
                     thisSpace.PlayerOwns = thisPlayer.Id;
                     thisSpace.WasReversed = wasReversed;
                     thisSpace.IsCrowned = thisTemp.IsCrowned;
@@ -173,7 +171,7 @@ namespace CheckersCP.Logic
         private void GetActualMoves()
         {
             _currentReversed = NeedsReversed(_gameContainer.WhoTurn);
-            var tempList = _gameContainer.SpaceList.Where(items => items.PlayerOwns == _gameContainer.WhoTurn).ToCustomBasicList();
+            var tempList = _gameContainer.SpaceList!.Where(items => items.PlayerOwns == _gameContainer.WhoTurn).ToCustomBasicList();
             if (_gameContainer.SaveRoot!.SpaceHighlighted > 0)
             {
                 tempList.KeepConditionalItems(items => items.MainIndex == _gameContainer.SaveRoot.SpaceHighlighted);
@@ -223,19 +221,7 @@ namespace CheckersCP.Logic
             var thisPlayer = _gameContainer.PlayerList![player];
             var thisSpace = thisPlayer.CurrentPieceList.Single(items => items.Index == oldPosition);
             thisPlayer.CurrentPieceList.RemoveSpecificItem(thisSpace);
-
-            await _gameContainer.Animates.DoAnimateAsync(); //maybe no animation for removing if wasm.
-            //attempt to animate move no matter what since i fixed many performance problems now.
-
-            //if (BasicData.IsWasm == false)
-            //{
-                
-            //}
-            //else
-            //{
-            //    _gameContainer.Aggregator.RepaintBoard(); //i think
-            //    await Task.Delay(100);
-            //}
+            await _gameContainer.Animates.DoAnimateAsync(); 
             _gameContainer.WhoTurn = tempTurn;
             
         }
@@ -298,7 +284,7 @@ namespace CheckersCP.Logic
             bool isGameOver = false;
             if (thisMove.PlayerCaptured > 0)
             {
-                var tempSpace = _gameContainer.SpaceList.Single(items => items.MainIndex == thisMove.PlayerCaptured);
+                var tempSpace = _gameContainer.SpaceList!.Single(items => items.MainIndex == thisMove.PlayerCaptured);
                 var newPlayer = tempSpace.PlayerOwns;
                 var tempReverse = NeedsReversed(newPlayer);
                 var oldPosition = GameBoardGraphicsCP.GetRealIndex(tempSpace.MainIndex, tempReverse);
