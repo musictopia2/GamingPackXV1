@@ -3,6 +3,7 @@ using BasicGameFrameworkLibrary.MiscProcesses;
 using BasicGameFrameworkLibrary.MultiplayerClasses.BasicPlayerClasses;
 using BasicGameFrameworkLibrary.ViewModelInterfaces;
 using BasicGameFrameworkLibrary.ViewModels;
+using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
 using CommonBasicStandardLibraries.CollectionClasses;
 using Microsoft.AspNetCore.Components;
 namespace BasicGamingUIBlazorLibrary.Views
@@ -12,6 +13,8 @@ namespace BasicGamingUIBlazorLibrary.Views
     {
         [Parameter]
         public EnumPlayOptions PlayOption { get; set; }
+        //good news is with computerextra, can use that as a hint to see what should be displayed.
+
 
         [CascadingParameter]
         public IGameInfo? GameData { get; set; }
@@ -21,6 +24,8 @@ namespace BasicGamingUIBlazorLibrary.Views
         public MultiplayerOpeningViewModel<P>? DataContext { get; set; }
         private (string Method, int Parameter, string Display) CommandData(int amount)
         {
+            //hint, the amount being sent in here was wrong.
+
             int increment;
             if (PlayOption == EnumPlayOptions.HumanLocal)
             {
@@ -64,9 +69,14 @@ namespace BasicGamingUIBlazorLibrary.Views
                 return;
             }
             _completeList = OpenPlayersHelper.GetPossiblePlayers(GameData);
-            if (GameData.MinPlayers == 3 && BasicInfo!.MultiPlayer == false)
+            if (PlayOption == EnumPlayOptions.ComputerExtra)
             {
-                _completeList.RemoveFirstItem(); //try this way.  seemed to work.  hopefully causes no problems for multiplayer (?)
+
+                for (int i = 0; i < _completeList.Count; i++)
+                {
+                    _completeList[i] = _completeList[i] - DataContext!.ClientsConnected;
+                }
+
             }
             base.OnParametersSet();
         }

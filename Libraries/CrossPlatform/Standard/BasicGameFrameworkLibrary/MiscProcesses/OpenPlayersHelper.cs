@@ -33,10 +33,6 @@ namespace BasicGameFrameworkLibrary.MiscProcesses
             int x;
             x = 0;
             CustomBasicList<int> tempList = new CustomBasicList<int>();
-            if (game.MinPlayers == 3)
-            {
-                tempList.Add(1); //because you would already have at least 2 players.
-            }
             do
             {
                 x += 1;
@@ -44,13 +40,12 @@ namespace BasicGameFrameworkLibrary.MiscProcesses
                 {
                     break;
                 }
-                if (x + 1 >= game.MinPlayers && x + 1 != game.NoPlayers)
+                if (x  >= game.MinPlayers && x  != game.NoPlayers)
                 {
-                    tempList.Add(x);
+                    tempList.Add(x - 1); //has to do minus 1 because there is always at least one player because of self.
                 }
             }
             while (true);
-            tempList.RemoveLastItem(); //i think
             return tempList;
         }
     }
