@@ -128,13 +128,14 @@ namespace BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses
         {
             await PlayDominoAsync(deck);
         }
-        protected virtual void ReportCanExecuteChanged()
-        {
-            if (SingleInfo!.PlayerCategory != EnumPlayerCategory.Self)
-            {
-                return;
-            }
-            _command.ManualReport(); //try this way.
-        }
+        //looks like i have to attempt to not even have this since its not working anyways and nothing even used it.
+        //protected virtual void ReportCanExecuteChanged()
+        //{
+        //    if (SingleInfo!.PlayerCategory != EnumPlayerCategory.Self)
+        //    {
+        //        return;
+        //    }
+        //    _command.ManualReport(); //try this way.
+        //}
     }
 }

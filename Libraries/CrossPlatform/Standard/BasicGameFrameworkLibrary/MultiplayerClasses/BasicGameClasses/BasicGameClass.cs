@@ -143,6 +143,7 @@ namespace BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses
             _command.IsExecuting = false;
             _command.ManuelFinish = false; //does not have to manually be done anymore.
             _command.Processing = false; //just in case it was done another way.  hopefully i won't regret this.
+            _command.ManualReport(); //try here.  has to risk performance problems.
             await Task.CompletedTask;
         }
         public async Task SaveStateAsync()
