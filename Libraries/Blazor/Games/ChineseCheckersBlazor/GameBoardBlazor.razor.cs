@@ -39,9 +39,9 @@ namespace ChineseCheckersBlazor
             }
             await Container.MakeMoveAsync(index);
         }
-
-        //private string TestColor => EnumColorChoice.Blue.ToColor();
-
-        //private string Color(ChineseCheckersPlayerItem player) => EnumColorChoice.Gray.ToColor();
+        protected override bool ShouldRender()
+        {
+            return Container!.SingleInfo!.Color != EnumColorChoice.None;
+        }
     }
 }
