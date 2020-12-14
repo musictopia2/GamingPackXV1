@@ -66,10 +66,11 @@ namespace BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses
             await base.ShowWinAsync();
             EraseColors(); //try here instead.
         }
-        public override Task ShowTieAsync()
+        public override async Task ShowTieAsync()
         {
             _currentMod.Instructions = "None";
-            return base.ShowTieAsync();
+            await base.ShowTieAsync();
+            EraseColors(); //try here as well
         }
 
         public override bool CanMakeMainOptionsVisibleAtBeginning => PlayerList.DidChooseColors();
