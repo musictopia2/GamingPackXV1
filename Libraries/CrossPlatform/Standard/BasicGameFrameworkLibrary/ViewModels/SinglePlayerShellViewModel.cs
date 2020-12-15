@@ -113,6 +113,7 @@ namespace BasicGameFrameworkLibrary.ViewModels
             }
             MainVM = null; //looks like i have to set to null manually.
             await _saves.DeleteSinglePlayerGameAsync(); //i think.
+            await Task.Delay(50); //try to set here just in case.
             await NewGameRequestedAsync();
             await StartNewGameAsync();
         }
