@@ -24,5 +24,9 @@ namespace BackgammonBlazor
             }
             return EnumCheckerPieceCategory.OnlyPiece;
         }
+        protected override bool ShouldRender()
+        {
+            return GraphicsData!.GameContainer.SingleInfo!.Color != EnumColorChoice.None;
+        }
     }
 }

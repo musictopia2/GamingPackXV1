@@ -694,7 +694,7 @@ namespace BackgammonCP.Logic
             RepositionPieces();
             _gameContainer.SaveRoot.SpaceHighlighted = -1;
             Repaint();
-            if (CanEndGame())
+            if (CanEndGame() || _gameContainer.Test.ImmediatelyEndGame)
             {
                 await _gameContainer.ShowWinAsync!.Invoke();
                 return;

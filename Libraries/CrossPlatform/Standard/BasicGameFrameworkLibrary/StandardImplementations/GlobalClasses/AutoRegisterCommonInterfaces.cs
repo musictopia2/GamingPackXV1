@@ -91,7 +91,7 @@ namespace BasicGameFrameworkLibrary.StandardImplementations.GlobalClasses
             return output;
         }
 
-        public static void RegisterBeginningColors<E, P, S>(this IGamePackageDIContainer container, bool alsoStandardDice)
+        public static void RegisterBeginningColors<E, P, S>(this IGamePackageDIContainer container, bool alsoStandardDice = true)
             where E : struct, Enum
             where P : class, IPlayerBoardGame<E>, new()
             where S : BasicSavedGameClass<P>, new()
