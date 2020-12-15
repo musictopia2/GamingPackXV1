@@ -8,7 +8,6 @@ using BasicGameFrameworkLibrary.DIContainers;
 using BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses;
 using BasicGameFrameworkLibrary.MultiplayerClasses.Extensions;
 using BasicGameFrameworkLibrary.MultiplayerClasses.InterfaceMessages;
-using BasicGameFrameworkLibrary.MultiplayerClasses.MainGameInterfaces;
 using BasicGameFrameworkLibrary.MultiplayerClasses.SavedGameClasses;
 using BasicGameFrameworkLibrary.TestUtilities;
 using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
@@ -22,7 +21,7 @@ using System.Threading.Tasks;
 namespace CountdownCP.Logic
 {
     [SingletonGame]
-    public class CountdownMainGameClass : DiceGameClass<CountdownDice, CountdownPlayerItem, CountdownSaveInfo>, IMiscDataNM, IFinishStart
+    public class CountdownMainGameClass : DiceGameClass<CountdownDice, CountdownPlayerItem, CountdownSaveInfo>, IMiscDataNM
     {
         private readonly CountdownVMData _model;
         private readonly CommandContainer _command;
@@ -87,7 +86,7 @@ namespace CountdownCP.Logic
         }
         public override Task FinishGetSavedAsync()
         {
-            LoadControls();
+            LoadControls(); //stop statements don't work with webassembly unfortunately.
             AfterRestoreDice();
             if (Test!.DoubleCheck == true)
             {
@@ -97,7 +96,7 @@ namespace CountdownCP.Logic
                     throw new BasicBlankException("There should have been only 2 dice");
                 }
                 SaveRoot!.HintList = GetPossibleValues(thisList.First().Value, thisList.Last().Value);
-            }
+            } //okay here too.
             return Task.CompletedTask;
         }
         private void LoadControls()
@@ -304,12 +303,14 @@ namespace CountdownCP.Logic
             }
             return thisList;
         }
-        Task IFinishStart.FinishStartAsync()
-        {
-            ResetPlayers();
-            Aggregator.RepaintBoard();
-            return Task.CompletedTask;
-        }
+        //attempt to fix problem by not resetting at start because this would do even upon autoresume which is wrong.
+
+        //Task IFinishStart.FinishStartAsync()
+        //{
+        //    ResetPlayers();
+        //    Aggregator.RepaintBoard();
+        //    return Task.CompletedTask;
+        //}
         private void ResetPlayers()
         {
             PlayerList!.ForEach(thisPlayer =>
