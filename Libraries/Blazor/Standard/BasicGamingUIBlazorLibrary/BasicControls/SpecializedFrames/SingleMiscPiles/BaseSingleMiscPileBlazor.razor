@@ -23,35 +23,12 @@ hint.  may have to make it more flexible anyways.  for now, okay but should reth
             }
 
             <FlexibleRenderComponent CanRender="(_animates.CurrentYLocation == -1000 || _showPrevious)">
-                @if (AltShowImage != null)
-                {
-                    @*<PlainComponent @key="Guid.NewGuid().ToString()">
-                        @MainTemplate!(AltShowImage);
-                    </PlainComponent>*@
-                    <FlexibleDeckRenderComponent D="D" DeckObject="AltShowImage">
-                        @MainTemplate!(AltShowImage);
-                    </FlexibleDeckRenderComponent>
-
+                @{ 
+                    var card = GetCard;
                 }
-                else if (AnimateDeckImage != null)
-                {
-                    @*<PlainComponent @key="Guid.NewGuid().ToString()">
-                        @MainTemplate!(AnimateDeckImage);
-                    </PlainComponent>*@
-                    <FlexibleDeckRenderComponent D="D" DeckObject="AnimateDeckImage">
-                        @MainTemplate!(AnimateDeckImage);
-                    </FlexibleDeckRenderComponent>
-
-                }
-                else
-                {
-                    @*<PlainComponent @key="Guid.NewGuid().ToString()">
-                        @MainTemplate!(SinglePile.CurrentCard)
-                    </PlainComponent>*@
-                    <FlexibleDeckRenderComponent D="D" DeckObject="SinglePile.CurrentCard">
-                        @MainTemplate!(SinglePile.CurrentCard)
-                    </FlexibleDeckRenderComponent>
-                }
+                <FlexibleDeckRenderComponent D="D" DeckObject="card">
+                    @MainTemplate!(card)
+                </FlexibleDeckRenderComponent>
             </FlexibleRenderComponent>
         </div>
     </BaseFrameBlazor>

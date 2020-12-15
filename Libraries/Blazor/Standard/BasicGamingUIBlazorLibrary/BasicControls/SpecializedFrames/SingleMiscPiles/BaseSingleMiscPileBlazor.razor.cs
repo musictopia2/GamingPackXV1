@@ -22,7 +22,21 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SpecializedFrames.SingleMiscP
         [Parameter]
         public SingleObservablePile<D>? SinglePile { get; set; }
 
-
+        private D GetCard
+        {
+            get
+            {
+                if (AltShowImage is not null)
+                {
+                    return AltShowImage;
+                }
+                if (AnimateDeckImage is not null)
+                {
+                    return AnimateDeckImage;
+                }
+                return SinglePile!.CurrentCard;
+            }
+        }
 
         [Parameter]
         public string PileAnimationTag { get; set; } = "maindiscard";
