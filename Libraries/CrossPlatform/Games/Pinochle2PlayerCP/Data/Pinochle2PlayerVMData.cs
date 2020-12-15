@@ -34,6 +34,8 @@ namespace Pinochle2PlayerCP.Data
             OpponentMelds.Text = "Opponents";
             YourMelds.IgnoreMaxRules = true;
             OpponentMelds.IgnoreMaxRules = true;
+            YourMelds.Maximum = 8;
+            OpponentMelds.Maximum = 8; //if more than 8 then scrolling obviously.
             YourMelds.AutoSelect = EnumHandAutoType.SelectOneOnly;
         }
         public HandObservable<Pinochle2PlayerCardInformation> YourMelds;

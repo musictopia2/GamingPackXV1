@@ -128,7 +128,6 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SpecializedFrames.Hands
                 {
                     extras = defaultSize.Height / Divider;
                     extras += AdditionalSpacing;
-
                     currentPoint.Y += (float)extras;
                 }
             }
@@ -140,7 +139,7 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SpecializedFrames.Hands
             else
             {
                 currentPoint.Y += (float)extras;
-                _viewBox = new SizeF(defaultSize.Width - defaultSize.Height, currentPoint.Y);
+                _viewBox = new SizeF(defaultSize.Width, currentPoint.Y);
             }
         }
         protected override void OnParametersSet()
