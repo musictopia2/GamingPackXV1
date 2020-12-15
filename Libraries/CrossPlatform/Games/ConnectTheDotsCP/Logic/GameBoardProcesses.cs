@@ -263,14 +263,14 @@ namespace ConnectTheDotsCP.Logic
             _gameContainer.PreviousDot = new DotInfo();
             bool wins = DidWinSquare(_gameContainer.SaveRoot!.PlayOrder.WhoTurn, (int)_gameContainer.SingleInfo!.Color);
             _gameContainer.RepaintBoard();
-            if (_gameContainer.Test.ImmediatelyEndGame)
-            {
-                await _gameContainer.ShowWinAsync!.Invoke();
-                return;
-            }
             if (wins == false)
             {
                 await _gameContainer.EndTurnAsync!.Invoke();
+                return;
+            }
+            if (_gameContainer.Test.ImmediatelyEndGame)
+            {
+                await _gameContainer.ShowWinAsync!.Invoke();
                 return;
             }
             int totalPoints = CalculateTotalPoints;
