@@ -77,6 +77,7 @@ namespace PassOutDiceGameCP.Logic
             }
             SetUpDice();
             SaveRoot.LoadMod(_model);
+            SaveRoot.PreviousSpace = 0;
             SaveRoot!.ImmediatelyStartTurn = true;
             await FinishUpAsync(isBeginning);
         }
@@ -111,6 +112,11 @@ namespace PassOutDiceGameCP.Logic
         public override async Task MakeMoveAsync(int space)
         {
             _gameBoard.MakeMove(space);
+            if (Test!.ImmediatelyEndGame)
+            {
+                await ShowWinAsync();
+                return;
+            }
             int wons = _gameBoard.WhoWon;
             if (wons > 0)
             {
