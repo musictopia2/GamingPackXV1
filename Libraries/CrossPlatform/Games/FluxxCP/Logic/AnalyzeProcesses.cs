@@ -87,6 +87,10 @@ namespace FluxxCP.Logic
                 {
                     _gameContainer.SaveRoot.DrawBonus = possibleBonus;
                 }
+                else
+                {
+                    _gameContainer.SaveRoot.DrawBonus = 0; //try this as well.
+                }
             }
             if (_gameContainer.SaveRoot.RuleList.Any(items => items.Deck == EnumRuleText.RichBonus))
             {
@@ -94,9 +98,13 @@ namespace FluxxCP.Logic
                 {
                     _gameContainer.SaveRoot.PlayBonus = possibleBonus;
                 }
+                else
+                {
+                    _gameContainer.SaveRoot.PlayBonus = 0;
+                }
             }
             RuleCard thisRule;
-            thisRule = _gameContainer.SaveRoot.RuleList.Where(items => items.Category == EnumRuleCategory.Draw).SingleOrDefault();
+            thisRule = _gameContainer.SaveRoot.RuleList.Where(items => items.Category == EnumRuleCategory.Draw).SingleOrDefault()!;
             if (thisRule == null)
             {
                 _gameContainer.SaveRoot.DrawRules = possibleBonus;
@@ -109,7 +117,7 @@ namespace FluxxCP.Logic
                 }
                 _gameContainer.SaveRoot.DrawRules = extraAmount + thisRule.HowMany;
             }
-            thisRule = _gameContainer.SaveRoot.RuleList.Where(items => items.Category == EnumRuleCategory.Play).SingleOrDefault();
+            thisRule = _gameContainer.SaveRoot.RuleList.Where(items => items.Category == EnumRuleCategory.Play).SingleOrDefault()!;
             if (thisRule == null)
             {
                 _gameContainer.SaveRoot.PlayLimit = possibleBonus;
@@ -126,7 +134,7 @@ namespace FluxxCP.Logic
                 }
                 _gameContainer.SaveRoot.PlayLimit = extraAmount + thisRule.HowMany;
             }
-            thisRule = _gameContainer.SaveRoot.RuleList.Where(items => items.Category == EnumRuleCategory.Hand).SingleOrDefault();
+            thisRule = _gameContainer.SaveRoot.RuleList.Where(items => items.Category == EnumRuleCategory.Hand).SingleOrDefault()!;
             if (thisRule == null)
             {
                 _gameContainer.SaveRoot.HandLimit = -1; //means unlimited
@@ -135,7 +143,7 @@ namespace FluxxCP.Logic
             {
                 _gameContainer.SaveRoot.HandLimit = extraAmount + thisRule.HowMany;
             }
-            thisRule = _gameContainer.SaveRoot.RuleList.Where(items => items.Category == EnumRuleCategory.Keeper).SingleOrDefault();
+            thisRule = _gameContainer.SaveRoot.RuleList.Where(items => items.Category == EnumRuleCategory.Keeper).SingleOrDefault()!;
             if (thisRule == null)
             {
                 _gameContainer.SaveRoot.KeeperLimit = -1; //means unlimited

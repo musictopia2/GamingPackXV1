@@ -519,6 +519,11 @@ namespace FluxxCP.Logic
         }
         public override async Task ContinueTurnAsync()
         {
+            if (SingleInfo!.PlayerCategory == BasicGameFrameworkLibrary.MultiplayerClasses.BasicPlayerClasses.EnumPlayerCategory.Computer && Test.ComputerEndsTurn)
+            {
+                await EndTurnAsync(); //just end turn and don't bother even drawing more cards.
+                return;
+            }
             PlayerList.ForEach(player => player.UpdateKeepers());
             if (SaveRoot!.DoAnalyze)
             {
