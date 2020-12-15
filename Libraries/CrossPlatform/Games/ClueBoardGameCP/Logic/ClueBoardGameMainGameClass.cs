@@ -367,7 +367,7 @@ namespace ClueBoardGameCP.Logic
         private async Task EndStepAsync()
         {
             Aggregator.RepaintBoard();
-            if (Test!.ImmediatelyEndGame)
+            if (Test!.ImmediatelyEndGame && SaveRoot.GameStatus != EnumClueStatusList.StartTurn)
             {
                 await ShowWinAsync();
                 return;

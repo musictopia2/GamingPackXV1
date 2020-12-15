@@ -259,7 +259,7 @@ namespace BasicGameFrameworkLibrary.ViewModels
             MainVM = GetMainViewModel();
             await LoadScreenAsync(MainVM);
         }
-        protected async Task ShowNewGameAsync()
+        protected virtual async Task ShowNewGameAsync()
         {
             NewGameScreen = MainContainer.Resolve<INewGameVM>();
             await LoadScreenAsync(NewGameScreen);
@@ -296,9 +296,15 @@ namespace BasicGameFrameworkLibrary.ViewModels
             }
             await ShowNewGameAsync();
         }
-        protected virtual void ReplaceGame()
+
+        protected virtual void ReplaceVMData()
         {
             _ = MainContainer.ReplaceObject<IViewModelData>(); //this has to be replaced before the game obviously.
+        }
+
+        protected virtual void ReplaceGame()
+        {
+            ReplaceVMData();
             Assembly assembly = Assembly.GetAssembly(GetType())!;
             CustomBasicList<Type> thisList = assembly.GetTypes().Where(items => items.HasAttribute<AutoResetAttribute>()).ToCustomBasicList();
             thisList.AddRange(GetAdditionalObjectsToReset());
@@ -314,9 +320,6 @@ namespace BasicGameFrameworkLibrary.ViewModels
             MainContainer.ResetSeveralObjects(thisList);
             _mainGame = MainContainer.ReplaceObject<IBasicGameProcesses<P>>(); //hopefully this works
         }
-         
-       
-
         protected virtual CustomBasicList<Type> GetAdditionalObjectsToReset() => new CustomBasicList<Type>();
         private async Task CloseOpenScreenAsync(string message)
         {

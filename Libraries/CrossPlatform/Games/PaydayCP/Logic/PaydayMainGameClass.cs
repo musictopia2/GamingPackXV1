@@ -612,5 +612,10 @@ namespace PaydayCP.Logic
             }
             await ContinueTurnAsync();
         }
+        public override Task ShowWinAsync()
+        {
+            _model.Cup!.CanShowDice = false; //try this alone.
+            return base.ShowWinAsync();
+        }
     }
 }

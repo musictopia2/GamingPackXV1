@@ -12,11 +12,16 @@ namespace ClueBoardGameBlazor
         public Bootstrapper(IStartUp starts, EnumGamePackageMode mode) : base(starts, mode)
         {
         }
+        protected override Task RegisterTestsAsync()
+        {
+            TestData!.ImmediatelyEndGame = true;
+            return base.RegisterTestsAsync();
+        }
         protected override Task ConfigureAsync()
         {
             OurContainer!.RegisterNonSavedClasses<ClueBoardGameShellViewModel>();
             OurContainer.RegisterCommonMultplayerClasses<ClueBoardGamePlayerItem, ClueBoardGameSaveInfo>();
-            OurContainer.RegisterBeginningColors<EnumColorChoice, ClueBoardGamePlayerItem, ClueBoardGameSaveInfo>();
+            OurContainer.RegisterBeginningColors<EnumColorChoice, ClueBoardGamePlayerItem, ClueBoardGameSaveInfo>(true);
             return Task.CompletedTask;
         }
     }

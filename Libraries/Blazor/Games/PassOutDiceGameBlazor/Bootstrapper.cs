@@ -21,7 +21,7 @@ namespace PassOutDiceGameBlazor
         {
             OurContainer!.RegisterNonSavedClasses<PassOutDiceGameShellViewModel>();
             OurContainer.RegisterCommonMultplayerClasses<PassOutDiceGamePlayerItem, PassOutDiceGameSaveInfo>();
-            OurContainer.RegisterBeginningColors<EnumColorChoice, PassOutDiceGamePlayerItem, PassOutDiceGameSaveInfo>();
+            OurContainer.RegisterBeginningColors<EnumColorChoice, PassOutDiceGamePlayerItem, PassOutDiceGameSaveInfo>(true);
             return Task.CompletedTask;
         }
     }

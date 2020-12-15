@@ -9,6 +9,9 @@ using PaydayCP.Data;
 using PaydayCP.Graphics;
 using PaydayCP.ViewModels;
 using static CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.BasicDataFunctions;
+using System;
+using System.Threading.Tasks;
+
 namespace PaydayBlazor.Views
 {
     public partial class PaydayMainView

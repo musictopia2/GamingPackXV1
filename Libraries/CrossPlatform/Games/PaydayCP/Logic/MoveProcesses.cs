@@ -166,7 +166,7 @@ namespace PaydayCP.Logic
         }
         private void ProcessBirthday()
         {
-            decimal moneyGained = (_gameContainer.PlayerList.Count() - 1) * 100;
+            decimal moneyGained = (_gameContainer.PlayerList!.Count() - 1) * 100;
             _gameContainer.SingleInfo!.MoneyHas += moneyGained;
             CustomBasicList<PaydayPlayerItem> tempList = _gameContainer.PlayerList.Where(items => items.Id != _gameContainer.WhoTurn).ToCustomBasicList();
             tempList.ForEach(x => x.ReduceFromPlayer(100));

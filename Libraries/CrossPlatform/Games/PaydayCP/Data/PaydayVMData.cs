@@ -7,6 +7,7 @@ using BasicGameFrameworkLibrary.DrawableListsObservable;
 using BasicGameFrameworkLibrary.MultiplayerClasses.InterfaceModels;
 using BasicGameFrameworkLibrary.MultiplayerClasses.SavedGameClasses;
 using CommonBasicStandardLibraries.CollectionClasses;
+using CommonBasicStandardLibraries.Exceptions;
 using CommonBasicStandardLibraries.MVVMFramework.ViewModels;
 using PaydayCP.Cards;
 using System.Linq;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 namespace PaydayCP.Data
 {
     [SingletonGame]
-    [AutoReset]
+    //[AutoReset]
     public class PaydayVMData : ObservableObject, IDiceBoardGamesData
     {
         public string PopUpChosen { get; set; } = "";
@@ -160,5 +161,7 @@ namespace PaydayCP.Data
             Cup.HowManyDice = 1;
             Cup.Visible = true;
         }
+
+
     }
 }
