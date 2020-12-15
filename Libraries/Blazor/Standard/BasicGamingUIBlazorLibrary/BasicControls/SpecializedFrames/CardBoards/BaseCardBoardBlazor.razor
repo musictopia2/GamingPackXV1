@@ -44,7 +44,7 @@
     }
     else
     {
-        <BaseFrameBlazor @key="DataContext" Text="@DataContext.Text">
+        <BaseFrameBlazor @key="DataContext" IsEnabled="DataContext.IsEnabled" Text="@DataContext.Text">
             <svg height="@GetTargetString" viewBox="0 0 @size.Width @size.Height">
 
                 @for (int r = 0; r < rows; r++)

@@ -397,7 +397,10 @@ namespace TeeItUpCP.Logic
             SaveRoot!.GameStatus = EnumStatusType.FirstTurn;
             _model.NormalTurn = "None";
             _model.Instructions = "None";
-            await EndTurnAsync();
+            _command.ManuelFinish = true; //because it could be somebody else's turn.
+            WhoTurn = await PlayerList.CalculateWhoTurnAsync();
+            await StartNewTurnAsync(); //try this way.
+            //await EndTurnAsync();
         }
         public async Task FirstMulliganTradeAsync(int player, int deck)
         {
