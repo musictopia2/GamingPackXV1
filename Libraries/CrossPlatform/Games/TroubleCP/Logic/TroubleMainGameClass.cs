@@ -136,6 +136,11 @@ namespace TroubleCP.Logic
         public override async Task AfterRollingAsync()
         {
             SaveRoot.DiceNumber = _model.Cup!.ValueOfOnlyDice;
+            if (Test!.ImmediatelyEndGame)
+            {
+                await ShowWinAsync();
+                return;
+            }
             await _gameBoard.GetValidMovesAsync();
         }
     }

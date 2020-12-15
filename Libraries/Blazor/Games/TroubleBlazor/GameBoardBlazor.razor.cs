@@ -18,8 +18,12 @@ namespace TroubleBlazor
         public GameBoardGraphicsCP? GraphicsData { get; set; }
         [Parameter]
         public string TargetHeight { get; set; } = "";
-        private Assembly GetAssembly => Assembly.GetAssembly(GetType());
+        private Assembly GetAssembly => Assembly.GetAssembly(GetType())!;
         private string GetColor() => GetColor(GameContainer!.SingleInfo!);
         private string GetColor(TroublePlayerItem player) => player.Color.ToColor();
+        protected override bool ShouldRender()
+        {
+            return GameContainer!.SingleInfo!.Color != EnumColorChoice.None;
+        }
     }
 }

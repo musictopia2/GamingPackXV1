@@ -174,7 +174,7 @@ namespace TroubleCP.Logic
         }
         private int FindPlayer(EnumColorChoice thisColor)
         {
-            var thisPlayer = _gameContainer.PlayerList.SingleOrDefault(items => items.Color == thisColor);
+            var thisPlayer = _gameContainer.PlayerList!.SingleOrDefault(items => items.Color == thisColor);
             if (thisPlayer == null)
             {
                 return 0;
