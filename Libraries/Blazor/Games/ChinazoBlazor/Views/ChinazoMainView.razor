@@ -3,11 +3,11 @@
 {
     return;
 }
-<HorizontalDiv Margins="5px">
-    <DeckOfCardsHandBlazor R="ChinazoCard" TargetContainerSize="50vw" Hand="_vmData.PlayerHand1" />
-</HorizontalDiv>
-<HorizontalDiv Margins="5px">
-    <div>
+<GridContainer ColumnGap="5px" Columns="auto auto auto auto 1fr auto">
+    <GridItem Column="1">
+        <DeckOfCardsHandBlazor R="ChinazoCard" TargetContainerSize="50vw" Hand="_vmData.PlayerHand1" />
+    </GridItem>
+    <GridItem Column="2">
         <GameButtonComponent DataContext="DataContext"
                              MethodName="@PassMethod"
                              Display="Pass" />
@@ -18,22 +18,22 @@
                              MethodName="@LayDownMethod"
                              Display="Lay Down"
                              StartOnNewLine="true" />
-    </div>
-</HorizontalDiv>
-<HorizontalDiv Margins="5px">
-    <DeckOfCardsDrawPileBlazor R="ChinazoCard" DeckPile="_vmData.Deck1" />
-</HorizontalDiv>
-<HorizontalDiv Margins="5px">
-    <DeckOfCardsSingleMiscPileBlazor R="ChinazoCard" SinglePile="_vmData.Pile1" />
-</HorizontalDiv>
-<HorizontalDiv Margins="5px">
-    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
-</HorizontalDiv>
-<HorizontalDiv Margins="5px">
-    <ScoreBoardBlazor P="ChinazoPlayerItem"
-                      Columns="_scores"
-                      Players="_gameContainer.SaveRoot.PlayerList" />
-</HorizontalDiv>
+    </GridItem>
+    <GridItem Column="3">
+        <DeckOfCardsDrawPileBlazor R="ChinazoCard" DeckPile="_vmData.Deck1" />
+    </GridItem>
+    <GridItem Column="4">
+        <DeckOfCardsSingleMiscPileBlazor R="ChinazoCard" SinglePile="_vmData.Pile1" />
+    </GridItem>
+    <GridItem Column="5">
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </GridItem>
+    <GridItem Column="6">
+        <ScoreBoardBlazor P="ChinazoPlayerItem"
+                          Columns="_scores"
+                          Players="_gameContainer.SaveRoot.PlayerList" />
+    </GridItem>
+</GridContainer>
 <div>
     <HorizontalDiv Margins="5px">
         <DeckOfCardsTempSetsBlazor RU="ChinazoCard"
