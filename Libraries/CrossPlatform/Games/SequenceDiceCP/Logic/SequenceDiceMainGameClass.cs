@@ -125,7 +125,7 @@ namespace SequenceDiceCP.Logic
         {
             SpaceInfoCP newSpace = SaveRoot!.GameBoard[space.Vector];
             SaveRoot.GameBoard.MakeMove(newSpace, SingleInfo!);
-            if (SaveRoot.GameBoard.HasWon() == true)
+            if (SaveRoot.GameBoard.HasWon() == true || Test!.ImmediatelyEndGame)
             {
                 await ShowWinAsync();
                 return;
