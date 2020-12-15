@@ -5,7 +5,11 @@ using BasicGameFrameworkLibrary.DIContainers;
 using BasicGameFrameworkLibrary.MultiplayerClasses.SavedGameClasses;
 using BasicGameFrameworkLibrary.TestUtilities;
 using BasicGameFrameworkLibrary.ViewModels;
+using CommonBasicStandardLibraries.CollectionClasses;
 using SkipboCP.Data;
+using SkipboCP.Logic;
+using System;
+
 namespace SkipboCP.ViewModels
 {
     public class SkipboShellViewModel : BasicMultiplayerShellViewModel<SkipboPlayerItem>
@@ -23,6 +27,10 @@ namespace SkipboCP.ViewModels
         {
             var model = MainContainer.Resolve<SkipboMainViewModel>();
             return model;
+        }
+        protected override CustomBasicList<Type> GetAdditionalObjectsToReset()
+        {
+            return new CustomBasicList<Type>() { typeof(SkipboComputerAI) };
         }
     }
 }
