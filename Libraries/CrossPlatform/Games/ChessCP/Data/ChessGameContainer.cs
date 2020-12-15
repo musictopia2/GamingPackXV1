@@ -42,5 +42,6 @@ namespace ChessCP.Data
         public CustomBasicList<MoveInfo> CurrentMoveList { get; set; } = new CustomBasicList<MoveInfo>(); //needs to be public so blazor ui can use it.
         public CustomBasicList<SpaceCP>? SpaceList;
         public EnumPieceType CurrentPiece { get; set; } //has to be public so blazor can use it.
+        public bool CanUpdate { get; set; } = true;
     }
 }

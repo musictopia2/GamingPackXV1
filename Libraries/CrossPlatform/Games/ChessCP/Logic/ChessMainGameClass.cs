@@ -1,4 +1,5 @@
 using BasicGameFrameworkLibrary.Attributes;
+using BasicGameFrameworkLibrary.BasicEventModels;
 using BasicGameFrameworkLibrary.BasicGameDataClasses;
 using BasicGameFrameworkLibrary.CommandClasses;
 using BasicGameFrameworkLibrary.CommonInterfaces;
@@ -175,6 +176,18 @@ namespace ChessCP.Logic
                 return;
             }
             await ShowTieAsync();
+        }
+        public override Task ShowTieAsync()
+        {
+            Aggregator.RepaintBoard();
+            _gameContainer.CanUpdate = false;
+            return base.ShowTieAsync();
+        }
+        public override Task ShowWinAsync()
+        {
+            Aggregator.RepaintBoard();
+            _gameContainer.CanUpdate = false;
+            return base.ShowWinAsync();
         }
     }
 }
