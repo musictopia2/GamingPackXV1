@@ -311,6 +311,9 @@ namespace YahtzeeHandsDownCP.Logic
             _model.ComboHandList.HandList.RemoveSpecificItem(thisCombo);
             async Task AnimateRemovalOfCardsAsync()
             {
+                var copyList = _model.ComboHandList.HandList.ToRegularDeckDict();
+                _model.ComboHandList.HandList.ReplaceAllWithGivenItem(thisCombo);
+                _command.UpdateAll();
                 var finList = thisPlayer.MainHandList.ToRegularDeckDict();
                 await finList.ForEachAsync(async thisCard =>
                 {
@@ -321,6 +324,8 @@ namespace YahtzeeHandsDownCP.Logic
                         await Delay!.DelaySeconds(.5);
                     }
                 });
+                _model.ComboHandList.HandList.ReplaceRange(copyList);
+                _command.UpdateAll();
             };
             await AnimateRemovalOfCardsAsync();
             var pList = PlayerList.ToCustomBasicList();
