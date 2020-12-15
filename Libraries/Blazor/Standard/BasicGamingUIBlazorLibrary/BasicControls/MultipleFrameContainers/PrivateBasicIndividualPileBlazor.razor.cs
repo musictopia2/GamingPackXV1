@@ -16,6 +16,21 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.MultipleFrameContainers
         [Parameter]
         public RenderFragment<D>? ChildContent { get; set; }
 
+        private bool IsEnabled
+        {
+            get
+            {
+                if (IndividualPile!.IsEnabled == false)
+                {
+                    return false;
+                }
+                if (MainGroup!.Piles!.IsEnabled == false)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
 
         private D? _card;
         protected override void OnParametersSet()

@@ -5,7 +5,7 @@
 }
 @if (MainGroup.Piles.HasFrame)
 {
-    <BaseFrameBlazor Text="@IndividualPile!.Text" IsEnabled="@IndividualPile.IsEnabled">
+    <BaseFrameBlazor Text="@IndividualPile!.Text" IsEnabled="@IsEnabled">
         <FlexibleDeckRenderComponent D="D" DeckObject="_card">
             @ChildContent!(_card)
         </FlexibleDeckRenderComponent>
