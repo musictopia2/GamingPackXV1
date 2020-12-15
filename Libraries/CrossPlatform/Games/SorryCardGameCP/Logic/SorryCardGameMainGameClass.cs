@@ -27,7 +27,7 @@ using js = CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.Jso
 namespace SorryCardGameCP.Logic
 {
     [SingletonGame]
-    public class SorryCardGameMainGameClass : CardGameClass<SorryCardGameCardInformation, SorryCardGamePlayerItem, SorryCardGameSaveInfo>, IMiscDataNM, IAfterColorProcesses, IEraseColors
+    public class SorryCardGameMainGameClass : CardGameClass<SorryCardGameCardInformation, SorryCardGamePlayerItem, SorryCardGameSaveInfo>, IMiscDataNM, IAfterColorProcesses
     {
         private readonly SorryCardGameVMData _model;
         private readonly CommandContainer _command;
@@ -65,6 +65,11 @@ namespace SorryCardGameCP.Logic
         public void EraseColors()
         {
             PlayerList.EraseColors();
+        }
+        public override Task ShowWinAsync()
+        {
+            EraseColors();
+            return base.ShowWinAsync();
         }
         public override Task FinishGetSavedAsync()
         {
@@ -326,6 +331,7 @@ namespace SorryCardGameCP.Logic
             {
                 throw new BasicBlankException("Don't know what to do.  Could be a never ending loop.  Should have cleared the points first");
             }
+           
 
             if (PlayerList.Any(items => items.HowManyAtHome == 4))
             {
@@ -601,15 +607,16 @@ namespace SorryCardGameCP.Logic
                 throw new BasicBlankException("Can't choose player to sorry and play the cards");
             }
             _command.ManuelFinish = true;
-            if (Test!.ImmediatelyEndGame)
-            {
-                await ShowWinAsync();
-                return;
-            }
+            
             if (thisList.Count == 1)
             {
                 var tempCard = thisList.First();
                 await PlaySingleCardAsync(tempCard);
+                if (Test!.ImmediatelyEndGame)
+                {
+                    await ShowWinAsync();
+                    return;
+                }
                 if (tempCard.Sorry == EnumSorry.Regular)
                 {
                     if (PlayerList.Any(items => items.Id != WhoTurn && items.HowManyAtHome > 0))

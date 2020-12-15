@@ -26,24 +26,11 @@ namespace SorryCardGameBlazor
         protected override Task ConfigureAsync()
         {
             OurContainer!.RegisterNonSavedClasses<SorryCardGameShellViewModel>();
-            OurContainer!.RegisterType<BasicGameLoader<SorryCardGamePlayerItem, SorryCardGameSaveInfo>>();
-            OurContainer.RegisterType<RetrieveSavedPlayers<SorryCardGamePlayerItem, SorryCardGameSaveInfo>>();
-            OurContainer.RegisterType<MultiplayerOpeningViewModel<SorryCardGamePlayerItem>>(true);
+            OurContainer.RegisterCommonMultplayerClasses<SorryCardGamePlayerItem, SorryCardGameSaveInfo>();
+            OurContainer.RegisterBeginningColors<EnumColorChoices, SorryCardGamePlayerItem, SorryCardGameSaveInfo>();
             OurContainer.RegisterType<DeckObservablePile<SorryCardGameCardInformation>>(true);
             OurContainer.RegisterType<GenericCardShuffler<SorryCardGameCardInformation>>();
             OurContainer.RegisterSingleton<IDeckCount, SorryCardGameDeckCount>();
-            OurContainer.RegisterType<BeginningColorProcessorClass<EnumColorChoices, SorryCardGamePlayerItem, SorryCardGameSaveInfo>>();
-            OurContainer.RegisterType<BeginningChooseColorViewModel<EnumColorChoices, SorryCardGamePlayerItem>>(false);
-            OurContainer.RegisterType<BeginningColorModel<EnumColorChoices, SorryCardGamePlayerItem>>(true);
-            MiscDelegates.GetMiscObjectsToReplace = (() =>
-            {
-                CustomBasicList<Type> output = new CustomBasicList<Type>()
-                {
-                    typeof(BeginningColorProcessorClass<EnumColorChoices, SorryCardGamePlayerItem, SorryCardGameSaveInfo>),
-                    typeof(BeginningColorModel<EnumColorChoices, SorryCardGamePlayerItem>)
-                };
-                return output;
-            });
             return Task.CompletedTask;
         }
     }
