@@ -5,7 +5,10 @@ using BasicGameFrameworkLibrary.DIContainers;
 using BasicGameFrameworkLibrary.MultiplayerClasses.SavedGameClasses;
 using BasicGameFrameworkLibrary.TestUtilities;
 using BasicGameFrameworkLibrary.ViewModels;
+using CommonBasicStandardLibraries.CollectionClasses;
 using FlinchCP.Data;
+using FlinchCP.Logic;
+using System;
 namespace FlinchCP.ViewModels
 {
     public class FlinchShellViewModel : BasicMultiplayerShellViewModel<FlinchPlayerItem>
@@ -23,6 +26,10 @@ namespace FlinchCP.ViewModels
         {
             var model = MainContainer.Resolve<FlinchMainViewModel>();
             return model;
+        }
+        protected override CustomBasicList<Type> GetAdditionalObjectsToReset()
+        {
+            return new CustomBasicList<Type>(){ typeof(FlinchComputerAI)};
         }
     }
 }
