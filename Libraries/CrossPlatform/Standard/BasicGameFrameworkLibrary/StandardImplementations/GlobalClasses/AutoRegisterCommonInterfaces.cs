@@ -1,5 +1,6 @@
 ﻿using BasicGameFrameworkLibrary.Attributes;
 using BasicGameFrameworkLibrary.BasicDrawables.Interfaces;
+using BasicGameFrameworkLibrary.Dice;
 using BasicGameFrameworkLibrary.DIContainers;
 using BasicGameFrameworkLibrary.DrawableListsObservable;
 using BasicGameFrameworkLibrary.MiscProcesses;
@@ -65,19 +66,16 @@ namespace BasicGameFrameworkLibrary.StandardImplementations.GlobalClasses
                 }
             }
         }
-
-        //may improve eventually.  for now, do this way.
-        //OurContainer!.RegisterType<BasicGameLoader<ConnectFourPlayerItem, ConnectFourSaveInfo>>();
-        //    OurContainer.RegisterType<RetrieveSavedPlayers<ConnectFourPlayerItem, ConnectFourSaveInfo>>();
-        //    OurContainer.RegisterType<MultiplayerOpeningViewModel<ConnectFourPlayerItem>>(true); //had to be set to true after all.
+       
         public static void RegisterCommonMultplayerClasses<P, S>(this IGamePackageDIContainer container)
-            where P: class, IPlayerItem, new()
-            where S: BasicSavedGameClass<P>, new()
+           where P : class, IPlayerItem, new()
+           where S : BasicSavedGameClass<P>, new()
         {
             container.RegisterType<BasicGameLoader<P, S>>();
             container.RegisterType<RetrieveSavedPlayers<P, S>>();
             container.RegisterType<MultiplayerOpeningViewModel<P>>(); //obviously true
         }
+
 
         private static CustomBasicList<Type> ReplaceBoardGameColorClasses<E, P, S>()
             where E : struct, Enum
@@ -93,7 +91,7 @@ namespace BasicGameFrameworkLibrary.StandardImplementations.GlobalClasses
             return output;
         }
 
-        public static void RegisterBeginningColors<E, P, S>(this IGamePackageDIContainer container)
+        public static void RegisterBeginningColors<E, P, S>(this IGamePackageDIContainer container, bool alsoStandardDice)
             where E : struct, Enum
             where P : class, IPlayerBoardGame<E>, new()
             where S : BasicSavedGameClass<P>, new()
@@ -101,8 +99,24 @@ namespace BasicGameFrameworkLibrary.StandardImplementations.GlobalClasses
             container.RegisterType<BeginningColorProcessorClass<E, P, S>>();
             container.RegisterType<BeginningChooseColorViewModel<E, P>>();
             container.RegisterType<BeginningColorModel<E, P>>();
+            if (alsoStandardDice)
+            {
+                container.RegisterType<StandardRollProcesses<SimpleDice, P>>();
+                container.RegisterSingleton<IGenerateDice<int>, SimpleDice>();
+            }
             MiscDelegates.GetMiscObjectsToReplace = ReplaceBoardGameColorClasses<E, P, S>;
         }
+
+        //public static void RegisterBeginningColors<E, P, S>(this IGamePackageDIContainer container, bool a)
+        //    where E : struct, Enum
+        //    where P : class, IPlayerBoardGame<E>, new()
+        //    where S : BasicSavedGameClass<P>, new()
+        //{
+        //    container.RegisterType<BeginningColorProcessorClass<E, P, S>>();
+        //    container.RegisterType<BeginningChooseColorViewModel<E, P>>();
+        //    container.RegisterType<BeginningColorModel<E, P>>();
+        //    MiscDelegates.GetMiscObjectsToReplace = ReplaceBoardGameColorClasses<E, P, S>;
+        //}
 
     }
 }

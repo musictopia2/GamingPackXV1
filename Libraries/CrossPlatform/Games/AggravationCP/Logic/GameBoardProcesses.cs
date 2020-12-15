@@ -193,7 +193,7 @@ namespace AggravationCP.Logic
         }
         private int FindPlayer(EnumColorChoice thisColor)
         {
-            var thisPlayer = _gameContainer.PlayerList.SingleOrDefault(items => items.Color == thisColor);
+            var thisPlayer = _gameContainer.PlayerList!.SingleOrDefault(items => items.Color == thisColor);
             if (thisPlayer == null)
             {
                 return 0;
@@ -623,7 +623,7 @@ namespace AggravationCP.Logic
             {
                 newSpace.Player = _gameContainer.WhoTurn;
             }
-            if (IsGameOver)
+            if (IsGameOver || _gameContainer.Test.ImmediatelyEndGame)
             {
                 await _gameContainer.ShowWinAsync!.Invoke();
                 return;
