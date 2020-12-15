@@ -41,5 +41,7 @@ namespace CheckersCP.Data
         public CustomBasicList<MoveInfo> CompleteMoveList { get; set; } = new CustomBasicList<MoveInfo>();
         public CustomBasicList<MoveInfo> CurrentMoveList { get; set; } = new CustomBasicList<MoveInfo>();
         public CustomBasicList<SpaceCP>? SpaceList;
+        public bool CanUpdate { get; set; } = true;
+
     }
 }

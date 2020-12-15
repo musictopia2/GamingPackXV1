@@ -33,8 +33,7 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.GameBoards
         //attempt to not use isfixed.
         //because there is content inside this.
 
-
-
+        
         [Parameter]
         public string FillColor { get; set; } = cc.Transparent;
 

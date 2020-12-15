@@ -25,6 +25,8 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.GameBoards
         [Parameter]
         public RenderFragment? AnimatePiece { get; set; }
         [Parameter]
+        public bool CanRenderSpace { get; set; } = true;
+        [Parameter]
         public CheckersChessBaseBoard<E, S>? GameBoard { get; set; }
         private async Task MakeMoveAsync(int index)
         {

@@ -11,6 +11,8 @@ using CommonBasicStandardLibraries.CollectionClasses;
 using Microsoft.AspNetCore.Components;
 using static CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.BasicDataFunctions;
 using cs = CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.SColorString;
+using System.Linq;
+
 namespace CheckersBlazor.Views
 {
     public partial class CheckersMainView
@@ -20,6 +22,8 @@ namespace CheckersBlazor.Views
         private readonly CustomBasicList<LabelGridModel> _labels = new CustomBasicList<LabelGridModel>();
         private GameBoardGraphicsCP? GameBoard { get; set; }
         private CheckersGameContainer? GameContainer { get; set; }
+
+        private bool CanRenderSpace => GameContainer!.PlayerList!.First().Color != EnumColorChoice.None;
         protected override void OnInitialized()
         {
             GameBoard = cons!.Resolve<GameBoardGraphicsCP>();

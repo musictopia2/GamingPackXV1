@@ -1,4 +1,5 @@
 using BasicGameFrameworkLibrary.Attributes;
+using BasicGameFrameworkLibrary.BasicEventModels;
 using BasicGameFrameworkLibrary.BasicGameDataClasses;
 using BasicGameFrameworkLibrary.CommandClasses;
 using BasicGameFrameworkLibrary.CommonInterfaces;
@@ -145,6 +146,18 @@ namespace CheckersCP.Logic
             SaveRoot!.GameStatus = EnumGameStatus.None;
             _gameBoard.ClearBoard();
             await EndTurnAsync();
+        }
+        public override Task ShowTieAsync()
+        {
+            Aggregator.RepaintBoard();
+            _container.CanUpdate = false;
+            return base.ShowTieAsync();
+        }
+        public override Task ShowWinAsync()
+        {
+            Aggregator.RepaintBoard();
+            _container.CanUpdate = false;
+            return base.ShowWinAsync();
         }
         public async Task ProcessTieAsync()
         {

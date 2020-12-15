@@ -11,37 +11,43 @@
               TargetWidth="@TargetWidth"
               X="@X"
               Y="@Y">
-    @foreach (var space in CheckersChessBaseBoard<E, S>.PrivateSpaceList)
-    {
-        string color;
-        if (CheckersChessBaseBoard<E, S>.HasGreen && space.MainIndex == CheckersChessBaseBoard<E, S>.SpaceSelected)
+
+    <RefreshComponent CanRender="CanRenderSpace">
+        @foreach (var space in CheckersChessBaseBoard<E, S>.PrivateSpaceList)
         {
-            color = cc.Green;
-        }
-        else
-        {
-            color = space.Color; //i think.
-        }
-        var piece = space.GetGamePiece();
-        <GameSpaceWithoutBorders FillColor="@color"
-                                 SpaceLocation="@space.GetLocation()"
-                                 SpaceSize="@space.GetSize()"
-                                 @key="space"
-                                 SpaceClicked="() => MakeMoveAsync(space.MainIndex)">
-            @if (piece != null)
+            string color;
+            if (CheckersChessBaseBoard<E, S>.HasGreen && space.MainIndex == CheckersChessBaseBoard<E, S>.SpaceSelected)
             {
-                @if (GameBoard.GetGame() == EnumCheckerChessGame.Checkers && space.MainIndex == CheckersChessBaseBoard<E, S>.SpaceSelected && GameBoard.CanHighlight() == true)
-                {
-                    piece.Highlighted = true;
-                }
-                else
-                {
-                    piece.Highlighted = false;
-                }
-                @MainPiece(piece)
+                color = cc.Green;
             }
-        </GameSpaceWithoutBorders>
-    }
+            else
+            {
+                color = space.Color; //i think.
+            }
+            var piece = space.GetGamePiece();
+            <GameSpaceWithoutBorders FillColor="@color"
+                                     SpaceLocation="@space.GetLocation()"
+                                     SpaceSize="@space.GetSize()"
+                                     @key="space"
+                                     SpaceClicked="() => MakeMoveAsync(space.MainIndex)">
+                @if (piece != null)
+                {
+                    @if (GameBoard.GetGame() == EnumCheckerChessGame.Checkers && space.MainIndex == CheckersChessBaseBoard<E, S>.SpaceSelected && GameBoard.CanHighlight() == true)
+                    {
+                        piece.Highlighted = true;
+                    }
+                    else
+                    {
+                        piece.Highlighted = false;
+                    }
+                    @MainPiece(piece)
+                }
+            </GameSpaceWithoutBorders>
+            
+        }
+    </RefreshComponent>
+
+    
     @if (AnimatePiece != null)
     {
         @AnimatePiece
