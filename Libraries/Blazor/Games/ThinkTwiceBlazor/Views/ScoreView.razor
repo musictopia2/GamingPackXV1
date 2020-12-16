@@ -2,16 +2,15 @@
                  IsEnabled="@DataContext!.IsEnabled"
                  Text="@VMData!.DisplayScoreText"
                  >
-    @foreach (var text in VMData.TextList)
-    {
+
+
+    <GridList Context="text" Columns="2" RenderList="VMData.TextList">
         <GameButtonComponent DataContext="DataContext"
                              BackgroundColor="@GetButtonColor(text)"
                              Display="@text"
                              CommandParameter="@text"
-                             MethodName="@ChangeMethod"
-                             StartOnNewLine="true"
-                             />
-    }
+                             MethodName="@ChangeMethod" />
+    </GridList>
     <div>
         <GameButtonComponent MethodName="@ScoreMethod"
                              Display="Your Score"
@@ -20,4 +19,5 @@
                              Display="Description"
                              DataContext="DataContext" />
     </div>
+   
 </BaseFrameBlazor>
