@@ -3,6 +3,10 @@
 {
     return;
 }
+<HorizontalDiv Margins="5px">
+    @* needs the deck for this one so a person knows which card they will get for winning trick and also will know what the trump suit is easily *@
+    <DeckOfCardsDrawPileBlazor R="GermanWhistCardInformation" DeckPile="_vmData.Deck1" />
+</HorizontalDiv>
 <div>
     <DeckOfCardsTwoPlayerTrickBlazor T="GermanWhistCardInformation" DataContext="_vmData.TrickArea1" />
 </div>
