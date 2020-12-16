@@ -25,38 +25,38 @@
         </HorizontalDiv>
     }
 </div>
+
+
 <div>
     <HorizontalDiv Margins="5px">
         <DeckOfCardsHandBlazor R="GalaxyCardGameCardInformation" Hand="_vmData.PlayerHand1" />
     </HorizontalDiv>
     <HorizontalDiv Margins="5px">
         <LabelGridComponent DataContext="DataContext" Labels="_labels" />
-        <div>
-            <GameButtonComponent DataContext="DataContext"
-                                 MethodName="@EndMethod"
-                                 Display="End Turn"
-                                 StartOnNewLine="true" />
-            <GameButtonComponent DataContext="DataContext"
-                                 MethodName="@MoonMethod"
-                                 Display="Create New Moon"
-                                 StartOnNewLine="true" />
-        </div>
+        
     </HorizontalDiv>
 </div>
 <div>
-    @foreach (var player in _players)
-    {
-        <HorizontalDiv Margins="5px">
-            <DeckOfCardsHandBlazor R="GalaxyCardGameCardInformation" Hand="player.PlanetHand" />
-        </HorizontalDiv>
+    <HorizontalDiv Margins="5px">
+        <GameButtonComponent DataContext="DataContext"
+                             MethodName="@EndMethod"
+                             Display="End Turn" />
+        <GameButtonComponent DataContext="DataContext"
+                             MethodName="@MoonMethod"
+                             Display="Create New Moon" />
+    </HorizontalDiv>
+    <GridList Columns="2" Context="player" RenderList="_players">
+        <DeckOfCardsHandBlazor R="GalaxyCardGameCardInformation" Hand="player.PlanetHand" />
+    </GridList>
 
-    }
+
     <HorizontalDiv Margins="5px">
         <ScoreBoardBlazor P="GalaxyCardGamePlayerItem"
                           Columns="_scores"
                           Players="_gameContainer.SaveRoot.PlayerList" />
     </HorizontalDiv>
 </div>
+
 @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
 {
     <ParentControl VM="RestoreViewModel">

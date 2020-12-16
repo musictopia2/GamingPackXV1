@@ -12,7 +12,7 @@
   <ItemGroup>
     <PackageReference Include="CommonBasicStandardLibraries" Version="3.0.19" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
-    <PackageReference Include="BasicBlazorLibrary" Version="1.0.0" />
+    <PackageReference Include="BasicBlazorLibrary" Version="1.0.1" />
     <PackageReference Include="SvgHelper.Blazor" Version="1.0.0" />
   </ItemGroup>
 
