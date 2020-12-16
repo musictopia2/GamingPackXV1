@@ -11,7 +11,7 @@ namespace RackoCP.Data
     {
         EnumGameType IGameInfo.GameType => EnumGameType.Rounds;
 
-        bool IGameInfo.CanHaveExtraComputerPlayers => true;
+        bool IGameInfo.CanHaveExtraComputerPlayers => false; //can no longer have extra computer players because there was some bugs.  decided for now, not worth fixing.  not as important.
 
         EnumPlayerChoices IGameInfo.SinglePlayerChoice => EnumPlayerChoices.ComputerOnly;
 
