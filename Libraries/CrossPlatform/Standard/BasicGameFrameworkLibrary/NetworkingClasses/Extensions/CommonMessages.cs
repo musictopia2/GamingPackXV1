@@ -1,4 +1,8 @@
-﻿using BasicGameFrameworkLibrary.NetworkingClasses.Interfaces;
+﻿using BasicGameFrameworkLibrary.BasicDrawables.Dictionary;
+using BasicGameFrameworkLibrary.BasicDrawables.Interfaces;
+using BasicGameFrameworkLibrary.Extensions;
+using BasicGameFrameworkLibrary.NetworkingClasses.Interfaces;
+using CommonBasicStandardLibraries.CollectionClasses;
 using System.Threading.Tasks;
 namespace BasicGameFrameworkLibrary.NetworkingClasses.Extensions
 {
@@ -39,6 +43,12 @@ namespace BasicGameFrameworkLibrary.NetworkingClasses.Extensions
         public static async Task SendPlayDominoAsync(this INetworkMessages thisMessage, int deck)
         {
             await thisMessage.SendAllAsync("playdomino", deck);
+        }
+        public static async Task SendCustomDeckListAsync<D>(this INetworkMessages message, string status, DeckRegularDict<D> list)
+            where D: class, IDeckObject
+        {
+            var output = list.GetDeckListFromObjectList();
+            await message.SendAllAsync(status, output);
         }
     }
 }

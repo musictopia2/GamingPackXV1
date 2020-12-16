@@ -23,6 +23,8 @@ using js = CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.Jso
 using System.Threading.Tasks;
 using BasicGameFrameworkLibrary.MultiplayerClasses.GameContainers;
 using System.Linq;
+using System.Runtime.CompilerServices;
+
 namespace BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses
 {
     public abstract class CardGameClass<D, P, S> : BasicGameClass<P, S>, ICardGameMainProcesses<D>, IReshuffledCardsNM, IDrawCardNM,
@@ -676,6 +678,26 @@ namespace BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses
             SortCards();
             await AfterPickupFromDiscardAsync(); //forgot this line of code.
         }
+        protected async Task<DeckRegularDict<D>> PopulateCardsFromTurnHandAsync(string data)
+        {
+            //singleinfo has to already be populated.
+            //this will be used in cases where they have to be discarded in order like 8 round rummy.
+            CustomBasicList<int> firstList = await js.DeserializeObjectAsync<CustomBasicList<int>>(data);
+            DeckRegularDict<D> output = new DeckRegularDict<D>();
+            firstList.ForEach(index =>
+            {
+                D card = SingleInfo!.MainHandList.GetSpecificItem(index);
+                output.Add(card);
+                //D card = new D();
+                //card.Populate(index);
+                //output.Add(card);
+                //_gameContainer.DeckList!.RelinkObject(index, card); //maybe this is the only case where its needed.
+            });
+            return output;
+        }
+
+
+
         async Task IReshuffledCardsNM.ReshuffledCardsReceived(string data)
         {
             if (CardInfo!.ShowMessageWhenReshuffling == true)

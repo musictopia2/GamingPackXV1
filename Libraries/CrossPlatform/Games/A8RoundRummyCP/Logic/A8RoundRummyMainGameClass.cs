@@ -1,6 +1,7 @@
 using A8RoundRummyCP.Cards;
 using A8RoundRummyCP.Data;
 using BasicGameFrameworkLibrary.Attributes;
+using BasicGameFrameworkLibrary.BasicDrawables.Dictionary;
 using BasicGameFrameworkLibrary.BasicGameDataClasses;
 using BasicGameFrameworkLibrary.CommandClasses;
 using BasicGameFrameworkLibrary.CommonInterfaces;
@@ -8,13 +9,16 @@ using BasicGameFrameworkLibrary.DIContainers;
 using BasicGameFrameworkLibrary.Extensions;
 using BasicGameFrameworkLibrary.MultiplayerClasses.BasicGameClasses;
 using BasicGameFrameworkLibrary.MultiplayerClasses.BasicPlayerClasses;
+using BasicGameFrameworkLibrary.MultiplayerClasses.Extensions;
 using BasicGameFrameworkLibrary.MultiplayerClasses.InterfaceMessages;
 using BasicGameFrameworkLibrary.MultiplayerClasses.SavedGameClasses;
+using BasicGameFrameworkLibrary.NetworkingClasses.Extensions;
 using BasicGameFrameworkLibrary.TestUtilities;
 using CommonBasicStandardLibraries.CollectionClasses;
 using CommonBasicStandardLibraries.Exceptions;
 using CommonBasicStandardLibraries.Messenging;
 using CommonBasicStandardLibraries.MVVMFramework.UIHelpers;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using js = CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.JsonSerializers.NewtonJsonStrings;
@@ -140,6 +144,10 @@ namespace A8RoundRummyCP.Logic
                     WasGuarantee = thisOut.WasGuaranteed;
                     CardForDiscard = _gameContainer.DeckList!.GetSpecificItem(thisOut.Deck);
                     await GoOutAsync();
+                    break;
+                case "reversecards":
+                    var list = await PopulateCardsFromTurnHandAsync(content);
+                    await DiscardAllCardsAsync(list);
                     break;
                 default:
                     throw new BasicBlankException($"Nothing for status {status}  with the message of {content}");
@@ -343,16 +351,25 @@ namespace A8RoundRummyCP.Logic
                 {
                     ToastPlatform.ShowWarning($"{SingleInfo.NickName} has to discard all the cards and draw new cards");
                 }
-                var thisList = SingleInfo.MainHandList.ToRegularDeckDict();
-                await thisList.ForEachAsync(async NewCard =>
+                if (SingleInfo.PlayerCategory == EnumPlayerCategory.OtherHuman)
                 {
-                    SingleInfo.MainHandList.RemoveObjectByDeck(NewCard.Deck);
-                    await AnimatePlayAsync(NewCard);
-                });
-                LeftToDraw = 7;
-                _wasNew = true;
-                PlayerDraws = WhoTurn;
-                await DrawAsync();
+                    Check!.IsEnabled = true;
+                    return; //waiting for message from other player.
+                }
+                if (SingleInfo.PlayerCategory == EnumPlayerCategory.Computer && BasicData.MultiPlayer)
+                {
+                    throw new BasicBlankException("This game should not have had any extra computer players");
+                }
+                var list = SingleInfo.MainHandList.GetRandomList().ToRegularDeckDict(); //hopefully gets full list
+                if (list.Count != SingleInfo.MainHandList.Count)
+                {
+                    throw new BasicBlankException("After getting random cards, does not reconcile the count.  This means missing cards");
+                }
+                if (BasicData.MultiPlayer)
+                {
+                    await Network!.SendCustomDeckListAsync("reversecards", list);
+                }
+                await DiscardAllCardsAsync(list);
                 return;
             }
             if (SingleInfo.PlayerCategory != EnumPlayerCategory.Computer)
@@ -366,5 +383,19 @@ namespace A8RoundRummyCP.Logic
             await AnimatePlayAsync(thisCard);
             await EndTurnAsync();
         }
+        private async Task DiscardAllCardsAsync(DeckRegularDict<A8RoundRummyCardInformation> cards)
+        {
+            //the player whose turn it is has to already know what cards to send to other players to discard.
+            await cards.ForEachAsync(async card =>
+            {
+                SingleInfo!.MainHandList.RemoveObjectByDeck(card.Deck);
+                await AnimatePlayAsync(card);
+            });
+            LeftToDraw = 7;
+            _wasNew = true;
+            PlayerDraws = WhoTurn;
+            await DrawAsync();
+        }
+
     }
 }
