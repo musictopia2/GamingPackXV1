@@ -186,16 +186,19 @@ namespace BasicGameFrameworkLibrary.DrawableListsObservable
             D output = _objectList.GetSpecificItem(deck);
             _objectList.RemoveSpecificItem(output);
             output.IsUnknown = false;
+            UpdateCards();
             return output;
         }
         public void ManuallyRemoveSpecificCard(D thisCard)
         {
             thisCard.IsUnknown = false; // is not unknown because its being drawn manually (like in games like cousin)
             _objectList.RemoveSpecificItem(thisCard);
+            UpdateCards();
         }
         public void AddCard(D thisCard)
         {
             _objectList.Add(thisCard);
+            UpdateCards();
         }
         public void PutInMiddle(D thisCard)
         {
@@ -219,6 +222,7 @@ namespace BasicGameFrameworkLibrary.DrawableListsObservable
             index = _objectList.Count / 2;
             thisCard = _objectList[index];
             _objectList.RemoveSpecificItem(thisCard);
+            UpdateCards();
             return thisCard;
         }
         public CustomBasicList<int> GetCardIntegers()
