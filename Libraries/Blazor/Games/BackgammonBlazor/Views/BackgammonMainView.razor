@@ -7,12 +7,15 @@
         </CascadingValue>
     </GridItem>
     <GridItem Column="2">
+        <GameButtonComponent DataContext="@DataContext" MethodName="@EndMethod" Display="End Turn" />
+        <GameButtonComponent DataContext="@DataContext" MethodName="@UndoMethod" Display="Undo All Moves" />
+
         <div style="height: 15vh">
-            <GameButtonComponent DataContext="@DataContext" MethodName="@EndMethod" Display="End Turn" />
-            <GameButtonComponent DataContext="@DataContext" MethodName="@UndoMethod" Display="Undo All Moves" />
             <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="13vh" />
         </div>
-        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        <div>
+            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+        </div>
     </GridItem>
 </GridContainer>
 
