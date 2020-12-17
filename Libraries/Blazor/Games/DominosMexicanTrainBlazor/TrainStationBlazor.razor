@@ -1,7 +1,9 @@
 ﻿@inherits KeyComponentBase 
 @using System.Drawing;
+@using BasicBlazorLibrary.Components.RenderHelpers; 
 @using static DominosMexicanTrainCP.Logic.TrainStationBoardProcesses
-@using BasicGamingUIBlazorLibrary.BasicControls.GameBoards 
+@using BasicGamingUIBlazorLibrary.BasicControls.GameBoards
+@using BasicGamingUIBlazorLibrary.GameGraphics.Base; 
 @* risking using my custom frame instead of just fieldset (?) *@
 
 <CascadingValue Value="this">
@@ -12,43 +14,41 @@
             {
                 return;
             }
-            <BasicDominoBlazor @key="GameBoard!.CenterDomino" PartOfBoard="true" D="MexicanDomino" Location="new PointF(300, 349)" LongestSize="@GetLongestSize" DeckObject="GameBoard!.CenterDomino" />
-            @*<DominoComponent X="300" Y="349" LongestSize="@GetLongestSize" Rotated="false" HighestDomino="12" CurrentFirst="12" CurrentSecond="12" />*@
+            <RefreshComponent CanRender="GameBoard.GetAnimation.AnimationGoing == false">
+                <BasicDominoBlazor @key="GameBoard!.CenterDomino" PartOfBoard="true" D="MexicanDomino" Location="new PointF(300, 349)" LongestSize="@GetLongestSize" DeckObject="GameBoard!.CenterDomino" />
 
-            @foreach (var train in GameBoard.TrainList)
-            {
-                PrivateTrain privateTrain = GameBoard.PrivateList[train.Value.Index];
-                foreach (var domino in train.Value.DominoList)
+                @foreach (var train in GameBoard.TrainList)
                 {
-                    <BasicDominoBlazor @key="domino" D="MexicanDomino" PartOfBoard="true" DeckObject="domino" LongestSize="@GetLongestSize" Location="domino.Location" />
+                    PrivateTrain privateTrain = GameBoard.PrivateList[train.Value.Index];
+                    foreach (var domino in train.Value.DominoList)
+                    {
+                        <BasicDominoBlazor @key="domino" D="MexicanDomino" PartOfBoard="true" DeckObject="domino" LongestSize="@GetLongestSize" Location="domino.Location" />
+                    }
+                    <TrainPieceBlazor Self="@IsSelf(train.Key)"
+                                      PositionInfo="privateTrain"
+                                      Player="train.Key"
+                                      @key="train.Value"
+                                      TrainInfo="train.Value"
+                                      TrainClicked="TrainClicked"
+                                      WasDouble="GameBoard.Satisfy > 0"
+                                      Satisfy="Satisfy(train.Key)" />
                 }
-
-                @*<rect width="50" height="50" x="@privateTrain.TrainArea.X" y="@privateTrain.TrainArea.Y" fill="aqua" />*@
-
-                <TrainPieceBlazor Self="@IsSelf(train.Key)"
-                                  PositionInfo="privateTrain"
-                                  Player="train.Key"
-                                  @key="train.Value"
-                                  TrainInfo="train.Value"
-                                  TrainClicked="TrainClicked"
-                                  WasDouble="GameBoard.Satisfy > 0"
-                                  Satisfy="Satisfy(train.Key)" />
-            }
+            </RefreshComponent>
+            
 
 
             @* try to do this last *@
             @if (GameBoard.GetAnimation.AnimationGoing)
             {
-
                 <UpdatePortionBoard>
-                    <BasicDominoBlazor
-                                       @key="GetKey"
-                                       PartOfBoard="true"
+                    <BasicDominoBlazor PartOfBoard="true"
+                                       @key="GameBoard.GetMovingDomino"
                                        D="MexicanDomino"
                                        LongestSize="@GetLongestSize"
                                        Location="GameBoard.GetAnimation.CurrentLocation"
-                                       DeckObject="GameBoard.GetMovingDomino"
-                                       />
+                                       DeckObject="GameBoard.GetMovingDomino" />
+            
+
 
 
                 </UpdatePortionBoard>

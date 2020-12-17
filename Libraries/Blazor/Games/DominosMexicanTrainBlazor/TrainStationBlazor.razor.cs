@@ -14,7 +14,6 @@ namespace DominosMexicanTrainBlazor
 {
     public partial class TrainStationBlazor : IHandle<RepaintEventModel>, IDisposable
     {
-        private string Key { get; set; } = "";
         public Action? UpdateAnimation { get; set; }
 
         [Parameter]
@@ -26,12 +25,12 @@ namespace DominosMexicanTrainBlazor
         private IEventAggregator? _aggregator;
         protected override void OnInitialized()
         {
-            Key = GetKey;
             _aggregator = Resolve<IEventAggregator>();
             _aggregator.Subscribe(this, EnumRepaintCategories.Main.ToString());
             GameBoard!.DominoLocationNeeded = GetDominoPoint;
             base.OnInitialized();
         }
+        private string GetAnimationKey => $"Animate{GameBoard!.GetMovingDomino.Deck}";
         private bool IsSelf(int index)
         {
             return index == GameBoard!.Self;
