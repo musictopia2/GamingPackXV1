@@ -6,14 +6,15 @@
 <FlexibleRenderComponent Visible="SinglePile.Visible">
     <BaseFrameBlazor @key="SinglePile" IsEnabled="SinglePile.IsEnabled" Text="@SinglePile.Text">
         <div style="position:relative">
-
-            <VisibleHiddenComponent @key="PileAnimationTag" Visible="_animates.CurrentYLocation is not -1000">
+            @if (_animates.CurrentYLocation != -1000)
+            {
                 <div style="position: absolute; @GetTopText">
                     @CanvasTemplate!(AnimateDeckImage!)
                 </div>
-            </VisibleHiddenComponent>
+            }
+
             <FlexibleRenderComponent CanRender="(_animates.CurrentYLocation == -1000 || _showPrevious)">
-                @{ 
+                @{
                     var card = GetCard;
                 }
                 <FlexibleDeckRenderComponent D="D" DeckObject="card">
