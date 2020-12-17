@@ -23,7 +23,7 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.GameBoards
 
 
 
-        private CommandContainer _command;
+        private readonly CommandContainer _command;
 
         private float GetX()
         {
