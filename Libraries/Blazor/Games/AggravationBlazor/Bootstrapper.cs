@@ -14,7 +14,7 @@ namespace AggravationBlazor
         }
         protected override Task RegisterTestsAsync()
         {
-            TestData!.ImmediatelyEndGame = true;
+            TestData.SaveOption = BasicGameFrameworkLibrary.TestUtilities.EnumTestSaveCategory.RestoreOnly;
             return base.RegisterTestsAsync();
         }
         protected override Task ConfigureAsync()

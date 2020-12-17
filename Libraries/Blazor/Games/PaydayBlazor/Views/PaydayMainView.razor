@@ -4,74 +4,77 @@
     return;
 }
 <CascadingValue Value="_vmData">
-    <HorizontalDiv Margins="5px">
-        <GameBoardBlazor GraphicsData="_graphicsData"
-                         TargetHeight="95vh" />
-    </HorizontalDiv>
-    <HorizontalDiv Margins="5px">
-        <GridContainer Rows="@RowData">
-            <GridItem>
-                <HorizontalDiv Width="10vw">
-                    <ParentControl VM="MailPileViewModel">
-                        <MailPileView />
-                    </ParentControl>
-                    <ParentControl VM="DealPileViewModel">
-                        <DealPileView />
-                    </ParentControl>
-                    <ParentControl VM="RollerViewModel">
-                        <RollerView />
-                    </ParentControl>
-                </HorizontalDiv>
-                <HorizontalDiv Width="12vw">
-                    <div>
-                        Instructions:
-                    </div>
-                    <div style="overflow-y: auto; height: 13vh;">
-                        @DataContext.Instructions
-                    </div>
-                </HorizontalDiv>
-                <HorizontalDiv LeftOnly="5px">
-                    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
-                </HorizontalDiv>
-            </GridItem>
-            <GridItem Row="2">
-                <HorizontalDiv LeftOnly="5px">
-                    <BaseHandBlazor D="DealCard" HandType="EnumHandList.Vertical" Hand="_vmData.CurrentDealList" Context="DeckObject">
-                        <PaydayCardBlazor CommandParameter="DeckObject"
-                                          DeckObject="DeckObject"
-                                          CommandObject="_vmData.CurrentDealList.ObjectSingleClickCommand" />
-                    </BaseHandBlazor>
-                </HorizontalDiv>
-                <HorizontalDiv LeftOnly="5px">
-                    <ParentControl VM="MailListViewModel">
-                        <MailListView />
-                    </ParentControl>
-                    <ParentControl VM="DealOrBuyViewModel">
-                        <BasicPickerView V="DealOrBuyViewModel" />
-                    </ParentControl>
-                    <ParentControl VM="ChooseDealViewModel">
-                        <BasicPickerView V="ChooseDealViewModel" />
-                    </ParentControl>
-                    <ParentControl VM="LotteryViewModel">
-                        <BasicPickerView V="LotteryViewModel" />
-                    </ParentControl>
-                    <ParentControl VM="PlayerPickerViewModel">
-                        <BasicPickerView V="PlayerPickerViewModel" />
-                    </ParentControl>
-                </HorizontalDiv>
-            </GridItem>
-            <GridItem Row="3">
-                <BasePieceGraphics LongestSize="60" TargetHeight="10vh">
-                    <PawnPiece MainColor="@GetColor" />
-                </BasePieceGraphics>
-                <HorizontalDiv LeftOnly="5px">
-                    <ScoreBoardBlazor P="PaydayPlayerItem"
-                                      Players="_graphicsData.GameContainer.SaveRoot.PlayerList"
-                                      Columns="_scores" />
-                </HorizontalDiv>
-            </GridItem>
-        </GridContainer>
-    </HorizontalDiv>
+    <GridContainer Columns="@GetColumns">
+        <GridItem>
+            <GameBoardBlazor GraphicsData="_graphicsData"
+                             TargetHeight="95vh" />
+        </GridItem>
+        <GridItem Column="2">
+            <GridContainer Rows="@RowData">
+                <GridItem>
+                    <HorizontalDiv Width="10vw">
+                        <ParentControl VM="MailPileViewModel">
+                            <MailPileView />
+                        </ParentControl>
+                        <ParentControl VM="DealPileViewModel">
+                            <DealPileView />
+                        </ParentControl>
+                        <ParentControl VM="RollerViewModel">
+                            <RollerView />
+                        </ParentControl>
+                    </HorizontalDiv>
+                    <HorizontalDiv Width="12vw">
+                        <div>
+                            Instructions:
+                        </div>
+                        <div style="overflow-y: auto; height: 13vh;">
+                            @DataContext.Instructions
+                        </div>
+                    </HorizontalDiv>
+                    <HorizontalDiv LeftOnly="5px">
+                        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+                    </HorizontalDiv>
+                </GridItem>
+                <GridItem Row="2">
+                    <HorizontalDiv LeftOnly="5px">
+                        <BaseHandBlazor D="DealCard" HandType="EnumHandList.Vertical" Hand="_vmData.CurrentDealList" Context="DeckObject">
+                            <PaydayCardBlazor CommandParameter="DeckObject"
+                                              DeckObject="DeckObject"
+                                              CommandObject="_vmData.CurrentDealList.ObjectSingleClickCommand" />
+                        </BaseHandBlazor>
+                    </HorizontalDiv>
+                    <HorizontalDiv LeftOnly="5px">
+                        <ParentControl VM="MailListViewModel">
+                            <MailListView />
+                        </ParentControl>
+                        <ParentControl VM="DealOrBuyViewModel">
+                            <BasicPickerView V="DealOrBuyViewModel" />
+                        </ParentControl>
+                        <ParentControl VM="ChooseDealViewModel">
+                            <BasicPickerView V="ChooseDealViewModel" />
+                        </ParentControl>
+                        <ParentControl VM="LotteryViewModel">
+                            <BasicPickerView V="LotteryViewModel" />
+                        </ParentControl>
+                        <ParentControl VM="PlayerPickerViewModel">
+                            <BasicPickerView V="PlayerPickerViewModel" />
+                        </ParentControl>
+                    </HorizontalDiv>
+                </GridItem>
+                <GridItem Row="3">
+                    <BasePieceGraphics LongestSize="60" TargetHeight="10vh">
+                        <PawnPiece MainColor="@GetColor" />
+                    </BasePieceGraphics>
+                    <HorizontalDiv LeftOnly="5px">
+                        <ScoreBoardBlazor P="PaydayPlayerItem"
+                                          Players="_graphicsData.GameContainer.SaveRoot.PlayerList"
+                                          Columns="_scores" />
+                    </HorizontalDiv>
+                </GridItem>
+            </GridContainer>
+        </GridItem>
+    </GridContainer>
+    
     @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
     {
         <ParentControl VM="RestoreViewModel">

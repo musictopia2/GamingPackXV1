@@ -1,9 +1,16 @@
 @inherits BasicGameView<AggravationMainViewModel>
+@using BasicBlazorLibrary.Components.CssGrids; 
 <HorizontalDiv Width="30vw" Margins="5px">
-    <div style="height: 22vh">
-        <GameButtonComponent DataContext="@DataContext" MethodName="@RollMethod" Display="Roll Dice" />
-        <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
-    </div>
+    <GridContainer Columns="auto auto">
+        <GridItem>
+            <GameButtonComponent DataContext="@DataContext" MethodName="@RollMethod" Display="Roll Dice" />
+        </GridItem>
+        <GridItem Column="2">
+            <div style="height: 22vh">
+                <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
+            </div>
+        </GridItem>
+    </GridContainer>
     <LabelGridComponent DataContext="DataContext" Labels="_labels" />
 </HorizontalDiv>
 <HorizontalDiv Margins="5px">

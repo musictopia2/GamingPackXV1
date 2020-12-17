@@ -215,6 +215,10 @@ namespace AggravationCP.Logic
             {
                 return false;
             }
+            if (_gameContainer.SaveRoot.DiceNumber == 0)
+            {
+                return false; //because you have to roll.
+            }
             if (PreviousPiece == 0)
             {
                 return MoveList.Any(items => items.SpaceFrom == index);

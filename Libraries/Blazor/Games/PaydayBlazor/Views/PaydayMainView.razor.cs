@@ -11,11 +11,12 @@ using PaydayCP.ViewModels;
 using static CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.BasicDataFunctions;
 using System;
 using System.Threading.Tasks;
-
+using aa = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace PaydayBlazor.Views
 {
     public partial class PaydayMainView
     {
+        private string GetColumns => $"{aa.RepeatMinimum(1)} {aa.RepeatAuto(1)}";
         private string RowData => "20vh 60vh 15vh";
         private readonly CustomBasicList<ScoreColumnModel> _scores = new CustomBasicList<ScoreColumnModel>();
         private GameBoardGraphicsCP? _graphicsData;

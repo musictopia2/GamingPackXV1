@@ -49,12 +49,15 @@
             </svg>
         </RawRectangle>
     }
+    
     @foreach (var space in GraphicsData.SpaceList)
     {
         if (GameContainer.IsValidMove!(space.Key))
         {
             <BlankClickableSquare SpaceLocation="space.Value.Location"
                           Fixed="true"
+                          UseLargerSquares="true"
+                          @key="space.Key"
                           SpaceSize="space.Value.Size"
                           SpaceClicked="() => GameContainer.MakeMoveAsync!.Invoke(space.Key)" />
         }
