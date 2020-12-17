@@ -15,7 +15,6 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.MultipleFrameContainers
         public int TargetHeight { get; set; }
         [Parameter]
         public RenderFragment<D>? ChildContent { get; set; }
-
         private bool IsEnabled
         {
             get
@@ -39,7 +38,6 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.MultipleFrameContainers
             _card.IsSelected = IndividualPile!.IsSelected;
             base.OnParametersSet();
         }
-
         private D GetCard()
         {
             if (ShowPrevious() == false)

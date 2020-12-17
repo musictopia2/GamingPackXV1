@@ -37,18 +37,6 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.MultipleFrameContainers
 
         [Parameter]
         public string AnimationTag { get; set; } = ""; //you must have one.  otherwise can't show either.
-
-        //maybe we don't need this anymore (?)
-
-        //protected override bool ShouldRender()
-        //{
-        //    if (_animates.CurrentYLocation == -1000 && EventExtensions.AnimationCompleted == false && _removeCard == false)
-        //    {
-        //        return false;
-        //    }
-        //    return base.ShouldRender();
-        //}
-
         [CascadingParameter]
         public int TargetHeight { get; set; }
         [Parameter]
@@ -61,8 +49,6 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.MultipleFrameContainers
             Aggregator.Subscribe(this); //try this too.
             _animates.StateChanged = ShowChange;
             _animates.LongestTravelTime = 200;
-            CommandContainer command = cons.Resolve<CommandContainer>();
-            command.AddAction(ShowChange);
             base.OnInitialized();
         }
         protected override void OnParametersSet()
@@ -129,6 +115,31 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.MultipleFrameContainers
                 RenderCard = null;
             }
         }
+        //@if(AnimationTag != "" && _animates.CurrentYLocation != -1000 && AnimatePile != null && AnimatePile.Column == pile.Column && AnimatePile.Row == pile.Row)
+        //{
+        //    if (CanvasTemplate != null)
+        //    {
+
+
+        //    }
+        //}
+        private bool CanShowAnimateControl(BasicPileInfo<D> pile)
+        {
+            if (_animates.CurrentYLocation is not -1000)
+            {
+                return false;
+            }
+            if (AnimatePile is null)
+            {
+                return false;
+            }
+            if (AnimatePile.Column == pile.Column && AnimatePile.Row == pile.Row)
+            {
+                Console.WriteLine("should show animation");
+                return true;
+            }
+            return false;
+        }
 
         async Task IHandleAsync<AnimateCardInPileEventModel<D>>.HandleAsync(AnimateCardInPileEventModel<D> message)
         {
@@ -164,7 +175,6 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.MultipleFrameContainers
                 default:
                     break;
             }
-            Console.WriteLine(ShowPrevious);
             await _animates.DoAnimateAsync();
         }
 #pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
@@ -173,8 +183,6 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.MultipleFrameContainers
         {
             Aggregator!.Unsubscribe(this, AnimationTag);
             Aggregator.Unsubscribe(this);
-            CommandContainer command = cons!.Resolve<CommandContainer>();
-            command.RemoveAction(ShowChange);
         }
 
         void IHandle<ResetCardsEventModel>.Handle(ResetCardsEventModel message)
@@ -183,7 +191,6 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.MultipleFrameContainers
             AnimateDeckImage = null;
             AnimatePile = null; //try this too (?)
         }
-
         private string GetTopText => $"Top: {_animates.CurrentYLocation}vh; Left: 2px;";
     }
 }

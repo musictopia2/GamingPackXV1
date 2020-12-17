@@ -1,16 +1,8 @@
 ﻿@typeparam D
-@* 
-hint.  may have to make it more flexible anyways.  for now, okay but should rethink.
-    because may have to be used for cards as well.
-*@
-
-
-
 @if (SinglePile == null)
 {
     return;
 }
-
 <FlexibleRenderComponent Visible="SinglePile.Visible">
     <BaseFrameBlazor @key="SinglePile" IsEnabled="SinglePile.IsEnabled" Text="@SinglePile.Text">
         <div style="position:relative">
@@ -20,7 +12,6 @@ hint.  may have to make it more flexible anyways.  for now, okay but should reth
                     @CanvasTemplate!(AnimateDeckImage!)
                 </div>
             </VisibleHiddenComponent>
-
             <FlexibleRenderComponent CanRender="(_animates.CurrentYLocation == -1000 || _showPrevious)">
                 @{ 
                     var card = GetCard;
@@ -32,4 +23,3 @@ hint.  may have to make it more flexible anyways.  for now, okay but should reth
         </div>
     </BaseFrameBlazor>
 </FlexibleRenderComponent>
-

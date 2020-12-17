@@ -13,13 +13,15 @@
     </BaseFrameBlazor>
     return;
 }
-@if (_card.Visible == false)
-{
+
+<VisibleHiddenComponent Visible="_card.Visible == false">
     <svg viewBox="@GetViewBox(_card)" style="height: @GetString">
         <rect fill="none" width="100%" height="100%" />
     </svg>
-    return;
-}
-<FlexibleDeckRenderComponent D="D" DeckObject="_card">
-    @ChildContent!(_card)
-</FlexibleDeckRenderComponent>
+</VisibleHiddenComponent>
+
+<VisibleHiddenComponent Visible="_card.Visible">
+    <FlexibleDeckRenderComponent D="D" DeckObject="_card">
+        @ChildContent!(_card)
+    </FlexibleDeckRenderComponent>
+</VisibleHiddenComponent>

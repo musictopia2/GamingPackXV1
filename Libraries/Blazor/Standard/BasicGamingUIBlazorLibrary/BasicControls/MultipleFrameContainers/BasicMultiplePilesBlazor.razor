@@ -31,8 +31,6 @@
                     <GridItem Row="row" Column="item.column">
                         <div style="position: relative">
                             @MainTemplate!(pile)
-                            
-                            
                             @if (AnimationTag != "" && _animates.CurrentYLocation != -1000 && AnimatePile != null && AnimatePile.Column == pile.Column && AnimatePile.Row == pile.Row)
                             {
                                 if (CanvasTemplate != null)

@@ -1,7 +1,6 @@
 using BasicGameFrameworkLibrary.AnimationClasses;
 using BasicGameFrameworkLibrary.BasicDrawables.Interfaces;
 using BasicGameFrameworkLibrary.BasicEventModels;
-using BasicGameFrameworkLibrary.CommandClasses;
 using BasicGameFrameworkLibrary.DrawableListsObservable;
 using CommonBasicStandardLibraries.Messenging;
 using Microsoft.AspNetCore.Components;
@@ -61,8 +60,6 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SpecializedFrames.SingleMiscP
         {
             Aggregator!.Unsubscribe(this, PileAnimationTag);
             Aggregator.Unsubscribe(this);
-            CommandContainer command = cons!.Resolve<CommandContainer>();
-            command.RemoveAction(ShowChange);
         }
         protected override void OnInitialized()
         {
@@ -71,8 +68,6 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SpecializedFrames.SingleMiscP
             Aggregator.Subscribe(this);
             _animates.StateChanged = ShowChange;
             _animates.LongestTravelTime = 200;
-            CommandContainer command = cons.Resolve<CommandContainer>();
-            command.AddAction(ShowChange);
             base.OnInitialized();
         }
         protected override void OnParametersSet()
@@ -106,14 +101,12 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SpecializedFrames.SingleMiscP
                     break;
                 case EnumAnimcationDirection.StartCardToUp:
                     _showPrevious = true;
-                    //_removeCard = true;
                     AltShowImage = SinglePile!.CurrentCard;
                     _animates.LocationYFrom = ObjectLocation;
                     _animates.LocationYTo = TopLocation;
                     break;
                 case EnumAnimcationDirection.StartCardToDown:
                     _showPrevious = true;
-                    //_removeCard = true;
                     AltShowImage = SinglePile!.CurrentCard;
                     _animates.LocationYFrom = ObjectLocation;
                     _animates.LocationYTo = BottomLocation;
