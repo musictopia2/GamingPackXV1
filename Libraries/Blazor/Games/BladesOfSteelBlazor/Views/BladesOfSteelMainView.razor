@@ -54,9 +54,9 @@
                          Display="Pass"
                          MethodName="@PassMethod" />
     <DeckOfCardsHandBlazor R="RegularSimpleCard" Hand="VMData.PlayerHand1" />
-</div>
-<div>
-    <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    <HorizontalDiv Margins="5px">
+        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+    </HorizontalDiv>
 </div>
 @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
 {
