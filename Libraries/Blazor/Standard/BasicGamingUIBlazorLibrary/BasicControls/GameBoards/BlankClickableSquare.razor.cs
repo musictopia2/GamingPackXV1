@@ -76,6 +76,10 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.GameBoards
 
         private async Task PrivateClickAsync()
         {
+            if (_command.IsExecuting)
+            {
+                return; //try this too.
+            }
             _command.StartExecuting(); //try here so all board games would have it accounted for.
             await SpaceClicked.InvokeAsync();
         }

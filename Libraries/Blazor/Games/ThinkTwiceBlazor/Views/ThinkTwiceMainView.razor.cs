@@ -46,11 +46,8 @@ namespace ThinkTwiceBlazor.Views
             {
                 return;
             }
-            if (_gameContainer!.Command.IsExecuting)
-            {
-                return;
-            }
-            await _gameContainer.ProcessCustomCommandAsync(_gameContainer.CategoryClicked!);
+            await _gameContainer!.CategoryClicked!.Invoke(); //try this way.  because it already shows its processing now.  hopefully that fixes the problem.
+            //await _gameContainer.ProcessCustomCommandAsync(_gameContainer.CategoryClicked!);
         }
     }
 }
