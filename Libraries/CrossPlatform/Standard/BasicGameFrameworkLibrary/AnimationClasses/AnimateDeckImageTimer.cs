@@ -8,6 +8,9 @@ namespace BasicGameFrameworkLibrary.AnimationClasses
     public class AnimateDeckImageTimer : IDisposable
     {
         //looks like i have to do as timer for the cards.  not sure why others worked but not this one.  does not matter why.
+
+        //has to now attempt without timer since timer is causing other issues (especially on tablets over time)
+
         public Action? StateChanged { get; set; }
         public int LongestTravelTime { get; set; }
         private const float _interval = 20;

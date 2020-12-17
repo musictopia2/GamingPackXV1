@@ -15,12 +15,11 @@ hint.  may have to make it more flexible anyways.  for now, okay but should reth
     <BaseFrameBlazor @key="SinglePile" IsEnabled="SinglePile.IsEnabled" Text="@SinglePile.Text">
         <div style="position:relative">
 
-            @if (_animates.CurrentYLocation != -1000)
-            {
+            <VisibleHiddenComponent @key="PileAnimationTag" Visible="_animates.CurrentYLocation is not -1000">
                 <div style="position: absolute; @GetTopText">
                     @CanvasTemplate!(AnimateDeckImage!)
                 </div>
-            }
+            </VisibleHiddenComponent>
 
             <FlexibleRenderComponent CanRender="(_animates.CurrentYLocation == -1000 || _showPrevious)">
                 @{ 
