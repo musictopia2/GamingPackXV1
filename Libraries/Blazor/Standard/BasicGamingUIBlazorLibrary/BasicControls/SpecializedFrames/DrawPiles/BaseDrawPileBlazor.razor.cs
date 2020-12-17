@@ -1,6 +1,7 @@
 using BasicGameFrameworkLibrary.AnimationClasses;
 using BasicGameFrameworkLibrary.BasicDrawables.Interfaces;
 using BasicGameFrameworkLibrary.BasicEventModels;
+using BasicGameFrameworkLibrary.CommandClasses;
 using BasicGameFrameworkLibrary.DrawableListsObservable;
 using CommonBasicStandardLibraries.Messenging;
 using Microsoft.AspNetCore.Components;
@@ -43,6 +44,8 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SpecializedFrames.DrawPiles
         public void Dispose()
         {
             Aggregator!.Unsubscribe(this, DeckAnimationTag);
+            CommandContainer command = cons!.Resolve<CommandContainer>();
+            command.RemoveAction(ShowChange);
         }
         private float GetHalfTop()
         {
@@ -63,6 +66,8 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SpecializedFrames.DrawPiles
             Aggregator!.Subscribe(this, DeckAnimationTag);
             _animates.StateChanged = ShowChange; //tried the statechanged but still did not work.
             _animates.LongestTravelTime = 200;
+            CommandContainer command = cons.Resolve<CommandContainer>();
+            command.AddAction(ShowChange);
             base.OnInitialized();
         }
         protected override void OnParametersSet()
