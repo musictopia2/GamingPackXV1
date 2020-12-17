@@ -6,6 +6,7 @@ using BasicGameFrameworkLibrary.TestUtilities;
 using CommonBasicStandardLibraries.CollectionClasses;
 using Microsoft.AspNetCore.Components;
 using static CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.BasicDataFunctions;
+using aa = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BackgammonBlazor.Views
 {
     public partial class BackgammonMainView
@@ -14,6 +15,9 @@ namespace BackgammonBlazor.Views
         public TestOptions? TestData { get; set; }
         private readonly CustomBasicList<LabelGridModel> _labels = new CustomBasicList<LabelGridModel>();
         private GameBoardGraphicsCP? _graphicsData;
+
+        private string GetColumns => $"{aa.RepeatMinimum(1)} {aa.RepeatAuto(1)}";
+
         protected override void OnInitialized()
         {
             _graphicsData = cons!.Resolve<GameBoardGraphicsCP>();
