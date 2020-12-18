@@ -35,5 +35,7 @@ namespace BasicGameFrameworkLibrary.BasicGameDataClasses
 
         public Action? ChangeState { get; set; }
 
+        public bool FastAnimation { get; set; } = false; //have the possibility of doing fast animation.
+
     }
 }
