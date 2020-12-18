@@ -1,20 +1,17 @@
 @inherits BasicGameView<ClueBoardGameMainViewModel>
 
-<GridContainer RowGap="5px" Rows="auto auto" Columns="auto auto 1fr 1fr">
+<GridContainer RowGap="5px" Columns="auto auto 20vw 20vw">
     <GridItem>
         <GameBoardBlazor GraphicsData="_graphicsData"
                          TargetHeight="87vh" />
-    </GridItem>
-    <GridItem Row="2">
-        <HorizontalDiv Margins="5px">
+        <GridContainer Columns="auto auto">
             <BasePieceGraphics LongestSize="50" TargetHeight="9vh">
                 <PawnPiece MainColor="@GetColor" />
             </BasePieceGraphics>
-        </HorizontalDiv>
-        <HorizontalDiv Margins="5px">
             <LabelGridComponent DataContext="DataContext" Labels="_labels" />
-        </HorizontalDiv>
+        </GridContainer>
     </GridItem>
+    
     <GridItem Column="2">
         <ClueHandBlazor Hand="DataContext!.GetHand" />
         <div>

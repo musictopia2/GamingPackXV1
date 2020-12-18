@@ -7,6 +7,7 @@ using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExt
 using CommonBasicStandardLibraries.CollectionClasses;
 using Microsoft.AspNetCore.Components;
 using static CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.BasicDataFunctions;
+using aa = BasicBlazorLibrary.Components.CssGrids.RowColumnHelpers;
 namespace ClueBoardGameBlazor.Views
 {
     public partial class ClueBoardGameMainView
@@ -16,6 +17,7 @@ namespace ClueBoardGameBlazor.Views
         private readonly CustomBasicList<LabelGridModel> _labels = new CustomBasicList<LabelGridModel>();
         private readonly CustomBasicList<LabelGridModel> _clues = new CustomBasicList<LabelGridModel>();
         private GameBoardGraphicsCP? _graphicsData;
+        private string GetRows => $"{aa.MinContent}auto";
         protected override void OnInitialized()
         {
             _graphicsData = cons!.Resolve<GameBoardGraphicsCP>();

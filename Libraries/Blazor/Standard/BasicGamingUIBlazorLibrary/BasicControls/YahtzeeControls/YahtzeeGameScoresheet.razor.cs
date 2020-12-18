@@ -23,15 +23,10 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.YahtzeeControls
         public int BottomDescriptionWidth { get; set; }
         private async Task ProcessRowClickedAsync(RowInfo row)
         {
-            if (CommandContainer!.IsExecuting)
-            {
-                return;
-            }
             if (DataContext!.CanRow(row) == false)
             {
                 return;
             }
-            CommandContainer.StartExecuting();
             await DataContext.RowAsync(row); //i think.
         }
         private RowInfo GetBonus()
