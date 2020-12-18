@@ -104,6 +104,7 @@ namespace DominosMexicanTrainCP.Logic
             FirstLoad();
             _global.Animates = new AnimateBasicGameBoard();
             _global.Animates.LongestTravelTime = 75;
+            _global.Animates.FastAnimation = BasicData.FastAnimation;
             _model.PrivateTrain1.Text = "Your Train";
             IsLoaded = true; 
         }

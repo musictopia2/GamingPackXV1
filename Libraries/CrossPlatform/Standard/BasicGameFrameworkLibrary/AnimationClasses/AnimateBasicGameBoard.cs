@@ -77,7 +77,10 @@ namespace BasicGameFrameworkLibrary.AnimationClasses
                 upToy = _startY;
             });
             int loopTo = _totalSteps;
-            
+            if (FastAnimation)
+            {
+                loopTo = 1;
+            }
             for (x = 1; x <= loopTo; x++)
             {
                 upTox += eachx;
@@ -114,6 +117,12 @@ namespace BasicGameFrameworkLibrary.AnimationClasses
 
                 //await Task.Delay(1000); //for now.
 
+            }
+            if (FastAnimation)
+            {
+                CurrentLocation = LocationTo;
+                _thisE.RepaintMessage(EnumRepaintCategories.Main);
+                await Task.Delay(5);
             }
             AnimationGoing = false;
             RepaintEventModel.UpdatePartOfBoard = null; // no matter what.

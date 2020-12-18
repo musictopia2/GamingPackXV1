@@ -34,23 +34,17 @@
                                       Satisfy="Satisfy(train.Key)" />
                 }
             </RefreshComponent>
-            
-
 
             @* try to do this last *@
             @if (GameBoard.GetAnimation.AnimationGoing)
             {
                 <UpdatePortionBoard>
                     <BasicDominoBlazor PartOfBoard="true"
-                                       @key="GameBoard.GetMovingDomino"
                                        D="MexicanDomino"
+                                       @key="@Guid.NewGuid().ToString()"
                                        LongestSize="@GetLongestSize"
                                        Location="GameBoard.GetAnimation.CurrentLocation"
                                        DeckObject="GameBoard.GetMovingDomino" />
-            
-
-
-
                 </UpdatePortionBoard>
 
             }

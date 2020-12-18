@@ -30,7 +30,8 @@ namespace DominosMexicanTrainBlazor
             GameBoard!.DominoLocationNeeded = GetDominoPoint;
             base.OnInitialized();
         }
-        private string GetAnimationKey => $"Animate{GameBoard!.GetMovingDomino.Deck}";
+        //unfortunately, not working now.  this means i do have to use the guid afterall.
+        //private string GetAnimationKey => $"Animate{GameBoard!.GetMovingDomino.Deck}";
         private bool IsSelf(int index)
         {
             return index == GameBoard!.Self;
