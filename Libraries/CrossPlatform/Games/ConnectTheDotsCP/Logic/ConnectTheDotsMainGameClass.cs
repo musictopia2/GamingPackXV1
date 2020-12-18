@@ -39,7 +39,8 @@ namespace ConnectTheDotsCP.Logic
         {
             if (_gameBoard.IsValidMove(dot) == false)
             {
-                await UIPlatform.ShowMessageAsync("Illegal Move");
+                ToastPlatform.ShowError("Illegal Move");
+                _command.StopExecuting();
                 return;
             }
             if (BasicData.MultiPlayer)

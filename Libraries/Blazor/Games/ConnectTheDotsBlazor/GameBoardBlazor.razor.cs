@@ -32,7 +32,7 @@ namespace ConnectTheDotsBlazor
         }
         private async Task MakeMoveAsync(int index)
         {
-            if (Container!.Command.IsExecuting || Container.MakeMoveAsync == null)
+            if ( Container!.MakeMoveAsync == null)
             {
                 return;
             }
