@@ -5,6 +5,9 @@ namespace BasicGameFrameworkLibrary.StandardImplementations.Settings
     //eventually will add support for desktop/mobile native in .net 6.
     public class GlobalDataModel
     {
+
+        public bool FastAnimation { get; set; }
+
         public string NickName { get; set; } = ""; //decided class because it does need to change this time.
         public string CustomAzureEndPoint { get; set; } = "";
         public EnumAzureMode ServerMode = EnumAzureMode.Public; //default to public.
