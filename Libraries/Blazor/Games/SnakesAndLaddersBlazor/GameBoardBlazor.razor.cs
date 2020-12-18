@@ -1,5 +1,6 @@
 using CommonBasicStandardLibraries.AdvancedGeneralFunctionsAndProcesses.BasicExtensions;
 using CommonBasicStandardLibraries.CollectionClasses;
+using CommonBasicStandardLibraries.MVVMFramework.UIHelpers;
 using Microsoft.AspNetCore.Components;
 using SnakesAndLaddersCP.Data;
 using SnakesAndLaddersCP.ViewModels;
@@ -39,7 +40,7 @@ namespace SnakesAndLaddersBlazor
             public string Fill { get; set; } = ""; //i think.
         }
         private readonly Dictionary<int, TempSpace> _spaceList = new Dictionary<int, TempSpace>();
-        private Assembly GetAssembly => Assembly.GetAssembly(GetType());
+        private Assembly GetAssembly => Assembly.GetAssembly(GetType())!;
         protected override void OnInitialized()
         {
             _spaceList.Clear();
@@ -48,12 +49,10 @@ namespace SnakesAndLaddersBlazor
         }
         private async Task SpaceClicked(int number)
         {
-            if (DataContext!.CommandContainer.CanExecuteManually() == false)
+            if (DataContext!.CanMakeMove(number) == false)
             {
-                return;
-            }
-            if (DataContext.CanMakeMove(number) == false)
-            {
+                ToastPlatform.ShowError("Illegal Move");
+                DataContext.CommandContainer.StopExecuting(); //because it starts automatically now.
                 return;
             }
             await DataContext.CommandContainer.ProcessCustomCommandAsync(DataContext.MakeMoveAsync, number); //try this way.
