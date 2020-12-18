@@ -4,21 +4,25 @@
 }
 @{ 
     int x = 0;
+    int y;
 }
 <CascadingValue Value="MainPiles">
-    <div>
+    <GridContainer Columns="@GetColumns" Rows="65vh">
         @foreach (var pile in MainPiles.PileList)
         {
-            <HorizontalDiv LeftOnly="0">
+            x++;
+            y = x + 1;
+            <GridItem Column="y">
                 <IndividualSolitairePileBlazor SinglePile="pile" />
-                @{ 
-                    x++;
-                }
+
                 @if (x == PlaceAfter && ChildContent != null)
                 {
                     @ChildContent
                 }
-            </HorizontalDiv>
+            </GridItem>
+
         }
-    </div>
+
+    </GridContainer>
+    
 </CascadingValue>

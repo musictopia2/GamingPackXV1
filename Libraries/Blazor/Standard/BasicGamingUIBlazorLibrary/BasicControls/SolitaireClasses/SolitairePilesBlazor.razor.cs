@@ -1,5 +1,6 @@
 using BasicGameFrameworkLibrary.SolitaireClasses.GraphicsObservable;
 using Microsoft.AspNetCore.Components;
+using aa = BasicBlazorLibrary.Components.CssGrids.Helpers;
 namespace BasicGamingUIBlazorLibrary.BasicControls.SolitaireClasses
 {
     public partial class SolitairePilesBlazor
@@ -14,5 +15,7 @@ namespace BasicGamingUIBlazorLibrary.BasicControls.SolitaireClasses
         /// </summary>
         [Parameter]
         public int PlaceAfter { get; set; }
+
+        private string GetColumns => aa.RepeatMinimum(MainPiles!.PileList.Count);
     }
 }
