@@ -1,5 +1,4 @@
 ﻿using BasicGameFrameworkLibrary.BasicEventModels;
-using BasicGameFrameworkLibrary.BasicGameDataClasses;
 using CommonBasicStandardLibraries.Messenging;
 using System.Drawing;
 using System.Threading.Tasks;
@@ -12,6 +11,9 @@ namespace BasicGameFrameworkLibrary.AnimationClasses
         public PointF LocationFrom { get; set; }
         public PointF LocationTo { get; set; }
         public PointF CurrentLocation { get; set; }
+
+        public bool FastAnimation { get; set; } //mexican train dominos will use the option.  the game has to decide whether to enable this.
+
         public bool AnimationGoing { get; set; } // so the gameboard knows whether it needs something special or not.
         private float _destinationX;
         private float _destinationY;
@@ -40,6 +42,11 @@ namespace BasicGameFrameworkLibrary.AnimationClasses
             _yup = LocationTo.Y > LocationFrom.Y;
             AnimationGoing = true; // so when they access the information, they will do something different.
             _thisE.RepaintMessage(EnumRepaintCategories.Main); //try main this time
+
+
+
+
+
             float totalXDistance;
             float totalYDistance;
             float eachx = 0;
@@ -56,7 +63,10 @@ namespace BasicGameFrameworkLibrary.AnimationClasses
             //{
             //    _totalSteps = 3; //try 3 steps for web assembly.  that is the next thing to try.
             //}
-
+            if (FastAnimation)
+            {
+                _totalSteps = 2;
+            }
             await Task.Run(() =>
             {
                 totalXDistance = _destinationX - _startX;
@@ -90,7 +100,14 @@ namespace BasicGameFrameworkLibrary.AnimationClasses
                 }
                 CurrentLocation = new PointF(upTox, upToy);
                 _thisE.RepaintMessage(EnumRepaintCategories.Main);
-                await Task.Delay(_interval);
+                if (FastAnimation)
+                {
+                    await Task.Delay(5);
+                }
+                else
+                {
+                    await Task.Delay(_interval);
+                }
                 //await Task.Delay(10);
 
                 //no matter what, did not refresh properly.
