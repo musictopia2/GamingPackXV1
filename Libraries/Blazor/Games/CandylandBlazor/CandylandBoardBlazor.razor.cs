@@ -38,10 +38,6 @@ namespace CandylandBlazor
         private RectangleF GetCastleRectangle => new RectangleF(374.448f, 6.75f, 100.875f, 67.5f);
         private async Task CastleClicked()
         {
-            if (DataContext!.CommandContainer.IsExecuting)
-            {
-                return;
-            }
             await BoardViewModel!.CastleAsync();
         }
         private async Task SpaceClicked(int space)
