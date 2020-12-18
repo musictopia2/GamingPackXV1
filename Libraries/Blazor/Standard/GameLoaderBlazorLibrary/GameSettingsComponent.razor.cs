@@ -14,7 +14,7 @@ namespace GameLoaderBlazorLibrary
         public EventCallback CloseSettings { get; set; }
         [Inject]
         IJSRuntime? JS { get; set; } //this should have its own js.
-        private static string GetRows => aa.RepeatAuto(6);
+        private static string GetRows => aa.RepeatAuto(7);
         private static string GetColumns => aa.RepeatMaximum(2); //may eventually do a special grid control that specialize in adding in data and it would just work.
         private bool _beginaccept;
         protected override void OnInitialized()
@@ -42,6 +42,21 @@ namespace GameLoaderBlazorLibrary
             if (mode == EnumAzureMode.Custom)
             {
                 _useCustom = true;
+            }
+        }
+        private void ChangeFastAnimation()
+        {
+            GlobalDataModel.DataContext!.FastAnimation = !GlobalDataModel.DataContext.FastAnimation;
+        }
+        private string GetAnimationText
+        {
+            get
+            {
+                if (GlobalDataModel.DataContext!.FastAnimation)
+                {
+                    return "Use Regular Animation";
+                }
+                return "Use Fast Animation";
             }
         }
         private async Task SaveChangesAsync()

@@ -61,11 +61,16 @@
             For private option, only a few select people can host a game.
         </div>
     </GridItem>
-
     <GridItem Row="6" Column="1">
-
+        
     </GridItem>
     <GridItem Row="6" Column="2">
+        <GameButtonComponent CustomCallBack="ChangeFastAnimation" Display="@GetAnimationText" />
+    </GridItem>
+    <GridItem Row="7" Column="1">
+
+    </GridItem>
+    <GridItem Row="7" Column="2">
         <GameButtonComponent CustomCallBack="SaveChangesAsync" Display="Save Changes" />
         @if (_beginaccept)
         {

@@ -24,6 +24,7 @@ namespace MultiplayerGamesBlazorLoaderLibrary
                 throw new BasicBlankException("Must have the data filled out in order to get the nick names");
             }
             data.NickName = GlobalDataModel.DataContext.NickName;
+            data.FastAnimation = GlobalDataModel.DataContext.FastAnimation;
         }
     }
 }
