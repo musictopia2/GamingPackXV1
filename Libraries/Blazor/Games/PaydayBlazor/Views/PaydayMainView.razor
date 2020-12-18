@@ -33,7 +33,9 @@
                             </div>
                         </GridItem>
                         <GridItem Column="3">
-                            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+                            <ScoreBoardBlazor P="PaydayPlayerItem"
+                                              Players="_graphicsData.GameContainer.SaveRoot.PlayerList"
+                                              Columns="_scores" />
                         </GridItem>
                     </GridContainer>
                 </GridItem>
@@ -68,9 +70,7 @@
                         <PawnPiece MainColor="@GetColor" />
                     </BasePieceGraphics>
                     <HorizontalDiv LeftOnly="5px">
-                        <ScoreBoardBlazor P="PaydayPlayerItem"
-                                          Players="_graphicsData.GameContainer.SaveRoot.PlayerList"
-                                          Columns="_scores" />
+                        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
                     </HorizontalDiv>
                 </GridItem>
             </GridContainer>
