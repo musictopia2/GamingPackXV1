@@ -1,6 +1,9 @@
 @inherits BasicGameView<SorryMainViewModel>
 <HorizontalDiv Width="30vw">
     <div>
+        <GameButtonComponent Display="End Turn" DataContext="DataContext" MethodName="@EndMethod" />
+    </div>
+    <div>
         <LabelGridComponent DataContext="DataContext" Labels="_labels" />
     </div>
     <div>
@@ -9,7 +12,6 @@
             @DataContext!.CardDetails
         </div>
     </div>
-    <GameButtonComponent Display="End Turn" DataContext="DataContext" MethodName="@EndMethod" />
 </HorizontalDiv>
 <HorizontalDiv>
     <GameBoardBlazor GraphicsData="_graphics" TargetHeight="95vh" />

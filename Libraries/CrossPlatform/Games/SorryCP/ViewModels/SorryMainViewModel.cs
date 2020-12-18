@@ -48,6 +48,7 @@ namespace SorryCP.ViewModels
         {
             if (_gameBoard.IsValidMove(space) == false)
             {
+                _gameContainer.Command.StopExecuting(); //since command was not used now, this now has to be done.
                 return;
             }
             if (_gameContainer.CanSendMessage())
