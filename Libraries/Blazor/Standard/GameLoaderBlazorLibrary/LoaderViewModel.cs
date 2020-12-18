@@ -16,7 +16,7 @@ namespace GameLoaderBlazorLibrary
     {
         public GamePackageLoaderPickerCP? PackagePicker { get; set; }
         public Action? StateChanged { get; set; }
-        public string GameName { get; private set; } = "";
+        public string GameName { get; set; } = "";
         public RenderFragment? GameRendered { get; private set; }
         public abstract string Title { get; }
 

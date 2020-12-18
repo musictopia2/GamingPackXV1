@@ -38,4 +38,15 @@
     return;
 
 }
-@DataContext.GameRendered
+
+<GridContainer Rows="95vh auto">
+    <GridItem>
+        @DataContext.GameRendered
+    </GridItem>
+    <GridItem Row="2">
+        <GameButtonComponent CustomCallBack="BackToMain" Display="Back To Main" />
+        <span style="font-size: 2em">
+            @DataContext.GameName
+        </span>
+    </GridItem>
+</GridContainer>

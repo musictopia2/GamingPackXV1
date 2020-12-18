@@ -56,6 +56,11 @@ namespace GameLoaderBlazorLibrary
             return string.IsNullOrWhiteSpace(GlobalDataModel.DataContext.NickName) == false;
         }
 
+
+        private void BackToMain()
+        {
+            DataContext!.GameName = ""; //needs to be able to set the game name so the main page will load again.
+        }
         private void ClosedSettings()
         {
             _showSettings = false;
