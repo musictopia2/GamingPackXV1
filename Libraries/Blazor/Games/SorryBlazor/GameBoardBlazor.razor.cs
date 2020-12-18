@@ -30,7 +30,7 @@ namespace SorryBlazor
         private string GetColor(SorryPlayerItem player) => player.Color.ToColor();
         private async Task SpaceClicked(int space)
         {
-            if (GraphicsData!.Container.Command.IsExecuting || GraphicsData.Container.SpaceClickedAsync == null)
+            if (GraphicsData!.Container.SpaceClickedAsync == null)
             {
                 return;
             }
@@ -43,7 +43,7 @@ namespace SorryBlazor
         //only can click for whosever turn it is.
         private async Task HomeClicked()
         {
-            if (GraphicsData!.Container.Command.IsExecuting || GraphicsData.Container.HomeClickedAsync == null)
+            if (GraphicsData!.Container.HomeClickedAsync == null)
             {
                 return;
             }
@@ -55,7 +55,7 @@ namespace SorryBlazor
         }
         private async Task DrawClicked()
         {
-            if (GraphicsData!.Container.Command.IsExecuting || GraphicsData.Container.DrawClickAsync == null)
+            if ( GraphicsData!.Container.DrawClickAsync == null)
             {
                 return;
             }
