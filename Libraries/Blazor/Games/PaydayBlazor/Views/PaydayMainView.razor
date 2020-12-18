@@ -12,28 +12,30 @@
         <GridItem Column="2">
             <GridContainer Rows="@RowData">
                 <GridItem>
-                    <HorizontalDiv Width="10vw">
-                        <ParentControl VM="MailPileViewModel">
-                            <MailPileView />
-                        </ParentControl>
-                        <ParentControl VM="DealPileViewModel">
-                            <DealPileView />
-                        </ParentControl>
-                        <ParentControl VM="RollerViewModel">
-                            <RollerView />
-                        </ParentControl>
-                    </HorizontalDiv>
-                    <HorizontalDiv Width="12vw">
-                        <div>
-                            Instructions:
-                        </div>
-                        <div style="overflow-y: auto; height: 13vh;">
-                            @DataContext.Instructions
-                        </div>
-                    </HorizontalDiv>
-                    <HorizontalDiv LeftOnly="5px">
-                        <LabelGridComponent DataContext="DataContext" Labels="_labels" />
-                    </HorizontalDiv>
+                    <GridContainer Columns="8fr 10fr 11fr">
+                        <GridItem>
+                            <ParentControl VM="MailPileViewModel">
+                                <MailPileView />
+                            </ParentControl>
+                            <ParentControl VM="DealPileViewModel">
+                                <DealPileView />
+                            </ParentControl>
+                            <ParentControl VM="RollerViewModel">
+                                <RollerView />
+                            </ParentControl>
+                        </GridItem>
+                        <GridItem Column="2">
+                            <div>
+                                Instructions:
+                            </div>
+                            <div style="overflow-y: auto; height: 13vh;">
+                                @DataContext.Instructions
+                            </div>
+                        </GridItem>
+                        <GridItem Column="3">
+                            <LabelGridComponent DataContext="DataContext" Labels="_labels" />
+                        </GridItem>
+                    </GridContainer>
                 </GridItem>
                 <GridItem Row="2">
                     <HorizontalDiv LeftOnly="5px">
