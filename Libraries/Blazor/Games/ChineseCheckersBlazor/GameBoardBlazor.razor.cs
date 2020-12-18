@@ -29,11 +29,7 @@ namespace ChineseCheckersBlazor
 
         private async Task SpaceClickedAsync(int index)
         {
-            if (Container!.CanMove == null || Container.MakeMoveAsync == null)
-            {
-                return;
-            }
-            if (Container.CanMove.Invoke() == false)
+            if (Container!.MakeMoveAsync == null)
             {
                 return;
             }

@@ -36,9 +36,13 @@ namespace ChineseCheckersCP.Logic
             _gameContainer = container;
             _gameBoard = gameBoard;
             _gameContainer.Model = model;
-            _gameContainer.CanMove = (() => !command.IsExecuting);
             _gameContainer.MakeMoveAsync = PrivateMoveAsync;
             SaveRoot.Init(_gameContainer);
+        }
+
+        private void EnableControls()
+        {
+            _gameContainer.Command.StopExecuting(); //i think.
         }
         private async Task PrivateMoveAsync(int space)
         {
@@ -54,16 +58,19 @@ namespace ChineseCheckersCP.Logic
             }
             else if (SaveRoot.PreviousSpace == space)
             {
+                EnableControls();
                 return;
             }
             if (_gameBoard!.IsValidMove(space) == false)
             {
+                EnableControls();
                 return;
             }
             if (SaveRoot.PreviousSpace == 0)
             {
                 if (SingleInfo!.PieceList.Any(Items => Items == space) == false)
                 {
+                    EnableControls();
                     return;
                 }
                 SaveRoot.Instructions = "Select where to move to";

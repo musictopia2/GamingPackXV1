@@ -34,7 +34,6 @@ namespace ChineseCheckersCP.Data
         {
             Animates = new AnimateBasicGameBoard();
         }
-        public Func<bool>? CanMove { get; set; }
         public Func<int, Task>? MakeMoveAsync { get; set; }
         public AnimateBasicGameBoard Animates { get; set; }
         public ChineseCheckersVMData? Model { get; set; }

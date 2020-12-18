@@ -1016,6 +1016,6 @@
 
     @foreach(var space in Graphics.SpaceList)
     {
-        <BlankClickableSquare SpaceLocation="space.Value.Location" SpaceSize="space.Value.Size" SpaceClicked="() => SpaceClickedAsync(space.Key)" />
+        <BlankClickableSquare UseLargerSquares="true" SpaceLocation="space.Value.Location" SpaceSize="space.Value.Size" SpaceClicked="() => SpaceClickedAsync(space.Key)" />
     }
 </RawGameBoard>

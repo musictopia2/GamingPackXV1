@@ -1,6 +1,6 @@
 @inherits BasicGameView<ClueBoardGameMainViewModel>
 
-<GridContainer RowGap="5px" Rows="auto auto" Columns="auto auto auto">
+<GridContainer RowGap="5px" Rows="auto auto" Columns="auto auto 1fr 1fr">
     <GridItem>
         <GameBoardBlazor GraphicsData="_graphicsData"
                          TargetHeight="87vh" />
@@ -33,15 +33,21 @@
         <div>
             Instructions: @DataContext.Instructions
         </div>
+        <GameButtonComponent DataContext="@DataContext" MethodName="@RollMethod" StartOnNewLine="true" Display="Roll Dice" />
         <div style="font-size: 20vh; color: white">
             @DataContext.LeftToMove
             <DiceListConrolBlazor D="SimpleDice" Cup="@DataContext!.GetCup" TargetHeight="20vh" />
         </div>
-        <GameButtonComponent DataContext="@DataContext" MethodName="@RollMethod" StartOnNewLine="true" Display="Roll Dice" />
-        <GameButtonComponent DataContext="@DataContext" MethodName="@PredictMethod" StartOnNewLine="true" Display="Predict" />
-        <GameButtonComponent DataContext="@DataContext" MethodName="@AccusationMethod" StartOnNewLine="true" Display="Accusation" />
-        <GameButtonComponent DataContext="@DataContext" StartOnNewLine="true" MethodName="@EndMethod" Display="End Turn" />
-        <LabelGridComponent DataContext="DataContext" Labels="_clues" />
+
+    </GridItem>
+    <GridItem Column="4">
+        <div style="margin-top: 30vh">
+            <GameButtonComponent DataContext="@DataContext" MethodName="@PredictMethod" StartOnNewLine="true" Display="Predict" />
+            <GameButtonComponent DataContext="@DataContext" MethodName="@AccusationMethod" StartOnNewLine="true" Display="Accusation" />
+            <GameButtonComponent DataContext="@DataContext" StartOnNewLine="true" MethodName="@EndMethod" Display="End Turn" />
+            <LabelGridComponent DataContext="DataContext" Labels="_clues" />
+        </div>
+        
     </GridItem>
 </GridContainer>
 @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)
