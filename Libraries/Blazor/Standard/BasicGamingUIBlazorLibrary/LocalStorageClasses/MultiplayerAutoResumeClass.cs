@@ -142,13 +142,20 @@ namespace BasicGamingUIBlazorLibrary.LocalStorageClasses
                 return "";
             }
         }
+        //Task SaveStateAsync<T>(T thisState)
+        //    where T : IMappable, new();
 
-        async Task IMultiplayerSaveState.SaveStateAsync<T>(T thisState)
+
+        private async void CallSaveStateAsync<T>(T thisState)
+            where T: IMappable, new()
         {
-            //hardest part because needs to delete everything else except for certain keys.
+            await SaveStateAsync(thisState);
+        }
 
-
-
+        private async Task SaveStateAsync<T>(T thisState)
+             where T : IMappable, new()
+        {
+            await Task.Delay(5);
             if (CanChange() == false)
             {
                 return;
@@ -183,7 +190,14 @@ namespace BasicGamingUIBlazorLibrary.LocalStorageClasses
                 //await fs.SaveObjectAsync(pathUsed, _list); //hopefully okay.
                 await _js.UpdateLocalStorageAsync(name, _list); //hopefully this actually works out well.
             }
+        }
 
+
+        Task IMultiplayerSaveState.SaveStateAsync<T>(T thisState)
+        {
+            //hardest part because needs to delete everything else except for certain keys.
+            CallSaveStateAsync(thisState);
+            return Task.CompletedTask; //try this way now.  because too slow otherwise.
         }
 
         async Task<EnumRestoreCategory> IMultiplayerSaveState.SinglePlayerRestoreCategoryAsync()

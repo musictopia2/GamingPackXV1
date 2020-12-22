@@ -75,8 +75,17 @@ namespace BasicGamingUIBlazorLibrary.LocalStorageClasses
 
         }
 
-        async Task ISaveSinglePlayerClass.SaveSimpleSinglePlayerGameAsync<T>(T thisObject)
+
+        private async void CallSaveSimpleSinglePlayerGameAsync<T>(T thisObject)
+            where T: IMappable, new()
         {
+            await SaveSimpleSinglePlayerGameAsync(thisObject);
+        }
+
+        private async Task SaveSimpleSinglePlayerGameAsync<T>(T thisObject)
+            where T: IMappable, new()
+        {
+            await Task.Delay(5);
             if (_game.CanAutoSave == false)
             {
                 return;
@@ -111,6 +120,13 @@ namespace BasicGamingUIBlazorLibrary.LocalStorageClasses
                 _list.Add(_previousObject); //hopefully can handle this version without clearing out (?)
                 await _js.StorageSetItemAsync(_game.GameName, _list);
             }
+        }
+
+
+        Task ISaveSinglePlayerClass.SaveSimpleSinglePlayerGameAsync<T>(T thisObject)
+        {
+            CallSaveSimpleSinglePlayerGameAsync(thisObject);
+            return Task.CompletedTask;
         }
     }
 }

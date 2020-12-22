@@ -119,7 +119,7 @@ namespace SkipboCP.Logic
         }
         protected override async Task ComputerTurnAsync()
         {
-            if (Test!.NoAnimations == false)
+            if (Test!.NoAnimations == false )
             {
                 await Delay!.DelayMilli(200);
             }

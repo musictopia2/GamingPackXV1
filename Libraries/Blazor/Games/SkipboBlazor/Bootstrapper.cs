@@ -19,6 +19,11 @@ namespace SkipboBlazor
         public Bootstrapper(IStartUp starts, EnumGamePackageMode mode) : base(starts, mode)
         {
         }
+        //protected override Task RegisterTestsAsync()
+        //{
+        //    TestData.SaveOption = BasicGameFrameworkLibrary.TestUtilities.EnumTestSaveCategory.RestoreOnly;
+        //    return base.RegisterTestsAsync();
+        //}
         protected override Task ConfigureAsync()
         {
             OurContainer!.RegisterNonSavedClasses<SkipboShellViewModel>();

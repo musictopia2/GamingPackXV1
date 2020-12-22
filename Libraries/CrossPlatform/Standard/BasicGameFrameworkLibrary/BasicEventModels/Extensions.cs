@@ -1,4 +1,6 @@
 ﻿using BasicGameFrameworkLibrary.BasicDrawables.Interfaces;
+using static CommonBasicStandardLibraries.BasicDataSettingsAndProcesses.BasicDataFunctions;
+using BasicGameFrameworkLibrary.BasicGameDataClasses;
 using BasicGameFrameworkLibrary.CommonInterfaces;
 using BasicGameFrameworkLibrary.MiscProcesses;
 using BasicGameFrameworkLibrary.MultiplePilesObservable;
@@ -79,7 +81,7 @@ namespace BasicGameFrameworkLibrary.BasicEventModels
         {
             do
             {
-                await Task.Delay(10);
+                await Task.Delay(1);
                 if (AnimationCompleted == true)
                 {
                     return; //because done.
@@ -91,11 +93,25 @@ namespace BasicGameFrameworkLibrary.BasicEventModels
         {
             thisE.Publish(new ResetCardsEventModel()); //try this way.
         }
-
+        private static bool? _useFast;
         public static async Task AnimateCardAsync<D>(this IEventAggregator thisE,
             D thisCard, EnumAnimcationDirection direction, string tag
             , BasicPileInfo<D>? pile1 = null, Action? finalAction = null) where D : class, IDeckObject, new()
         {
+
+            //if (_useFast.HasValue == false)
+            //{
+            //    BasicData data = cons!.Resolve<BasicData>();
+            //    _useFast = data.FastAnimation;
+            //}
+            //if (_useFast == true)
+            //{
+            //    if (finalAction != null)
+            //    {
+            //        finalAction.Invoke();
+            //    }
+            //    return; //for now, no animations
+            //}
             //try with animations again.  hopefully i can get the animations to work for web assembly.
             AnimateCardInPileEventModel<D> thisA = new AnimateCardInPileEventModel<D>();
             thisA.Direction = direction;
@@ -106,6 +122,14 @@ namespace BasicGameFrameworkLibrary.BasicEventModels
             {
                 await thisE.PublishAsync(thisA, tag, false);
                 await CompleteAnimationAsync();
+                //if (_useFast == false)
+                //{
+                //    await CompleteAnimationAsync();
+                //}
+                //else
+                //{
+                //    await Task.Delay(20); //hopefully enough now.
+                //}
             }
             if (finalAction != null)
             {
