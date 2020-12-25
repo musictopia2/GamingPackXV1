@@ -25,7 +25,7 @@ namespace CousinRummyBlazor.Views
         private CousinRummyGameContainer? _gameContainer;
         private static string GetFirstRows => aa.RepeatAuto(3);
         //private string GetFirstColumns => aa.RepeatAuto(2);
-        private static string GetSecondColumns => aa.RepeatAuto(2);
+        private static string GetSecondColumns => aa.RepeatAuto(3);
         protected override void OnInitialized()
         {
             _vmData = cons!.Resolve<CousinRummyVMData>();
