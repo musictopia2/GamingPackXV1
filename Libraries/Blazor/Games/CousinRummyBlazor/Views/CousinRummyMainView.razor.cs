@@ -32,7 +32,6 @@ namespace CousinRummyBlazor.Views
             _gameContainer = cons.Resolve<CousinRummyGameContainer>();
             _labels.Clear();
             _labels.AddLabel("Turn", nameof(CousinRummyMainViewModel.NormalTurn))
-                .AddLabel("Status", nameof(CousinRummyMainViewModel.Status))
                 .AddLabel("Other Turn", nameof(CousinRummyMainViewModel.OtherLabel))
                 .AddLabel("Phase", nameof(CousinRummyMainViewModel.PhaseData));
             _scores.Clear();
