@@ -23,9 +23,9 @@ namespace CousinRummyBlazor.Views
         private readonly CustomBasicList<ScoreColumnModel> _scores = new CustomBasicList<ScoreColumnModel>();
         private CousinRummyVMData? _vmData;
         private CousinRummyGameContainer? _gameContainer;
-        private string GetFirstRows => aa.RepeatAuto(2);
-        private string GetFirstColumns => aa.RepeatAuto(2);
-        private string GetSecondColumns => aa.RepeatAuto(3);
+        private static string GetFirstRows => aa.RepeatAuto(3);
+        //private string GetFirstColumns => aa.RepeatAuto(2);
+        private static string GetSecondColumns => aa.RepeatAuto(2);
         protected override void OnInitialized()
         {
             _vmData = cons!.Resolve<CousinRummyVMData>();

@@ -6,7 +6,7 @@
 <div>
     <DeckOfCardsHandBlazor R="RegularRummyCard" Hand="_vmData.PlayerHand1" />
 </div>
-<GridContainer Rows="@GetFirstRows" Columns="@GetFirstColumns" RowGap="5px" ColumnGap="5px" Inline="true">
+<GridContainer Rows="@GetFirstRows" Columns="30vw 68vw" RowGap="5px" ColumnGap="5px" Inline="true">
     <GridItem>
         <div>
             <GameButtonComponent DataContext="DataContext"
@@ -43,7 +43,7 @@
                 <GridItem Row="2" Column="2">
                     <DeckOfCardsSingleMiscPileBlazor R="RegularRummyCard" SinglePile="_vmData.Pile1" />
                 </GridItem>
-                <GridItem Column="3" Row="1" RowSpan="2">
+                <GridItem Row="3" ColumnSpan="2">
                     <LabelGridComponent DataContext="DataContext" Labels="_labels" />
                 </GridItem>
             </GridContainer>
