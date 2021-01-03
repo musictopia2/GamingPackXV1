@@ -24,11 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\battleshipfire.png" />
+    <None Remove="Resources\battleshipfire.svg" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\battleshipfire.png" />
+    <EmbeddedResource Include="Resources\battleshipfire.svg" />
   </ItemGroup>
   
 </Project>

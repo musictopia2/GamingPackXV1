@@ -34,7 +34,7 @@ namespace BattleshipBlazor
                 Image image = new Image();
                 image.Width = "50";
                 image.Height = "50";
-                image.PopulateFullExternalImage(this, "battleshipfire.png");
+                image.PopulateFullExternalImage(this, "battleshipfire.svg");
                 svg.Children.Add(image);
             }
             CreateClick(svg);
