@@ -13,6 +13,22 @@ namespace BasicGamingUIBlazorLibrary.GameGraphics.MiscClasses
             RectangleF rect = new RectangleF(x, y, width, height);
             parent.DrawCardSuit(suit, rect, color);
         }
+        public static void DrawRoyalSuits(this IParentGraphic parent,RectangleF rectangle, string fillColor, string borderColor = "", int borderSize = 0)
+        {
+            ISvg svg = new SVG();
+            svg.PopulateSVGStartingPoint(rectangle);
+            svg.ViewBox = "0 0 792 792";
+            Path path = new Path();
+            svg.Children.Add(path);
+            path.D = "M727,280.9c-16,0-29,13.5-29,30c0,8.4,3.3,15.9,8.6,21.4c-31.8,32.3-92.1,88.7-116.4,78.1c-21.5-9.4-26.4-52.4-27.1-82.3c0.2,0,0.3,0,0.5,0c16,0,28.9-13.5,28.9-30c0-16.6-13-30-28.9-30c-16,0-29,13.4-29,30c0,13.1,8.1,24.2,19.4,28.3c-12.9,29.8-40.3,69.5-89.8,47.2c-38.4-17.2-55.5-89.8-62.9-141.8c13.4-2.6,23.5-14.8,23.5-29.5c0-16.6-13-30.1-28.9-30.1c-16,0-29,13.4-29,30.1c0,14.7,10.1,26.9,23.5,29.5c-7.4,52.1-24.5,124.6-62.9,141.8c-49.5,22.3-76.9-17.4-89.8-47.2c11.3-4.1,19.4-15.2,19.4-28.3c0-16.6-13-30-29-30c-16,0-29,13.4-29,30c0,16.6,13,30,29,30c0.2,0,0.3,0,0.5,0c-0.7,30-5.6,73-27.1,82.3C177.3,421,117,364.6,85.3,332.3c5.3-5.5,8.6-13,8.6-21.4c0-16.6-13-30-29-30c-16,0-29,13.5-29,30c0,16.6,13,30,29,30c4.5,0,8.7-1.1,12.6-3c26.1,57.6,83.5,191.4,78,245.6c0,0-14.2,16.6,0,27.6c14.2,11,240.5,8.3,240.5,8.3s226.3,2.8,240.5-8.3c14.2-11.1,0-27.6,0-27.6c-5.5-54.2,51.9-188,78-245.6c3.8,1.9,8,3,12.6,3c16,0,29-13.4,29-30C756,294.3,743,280.9,727,280.9z";
+            path.Fill = fillColor.ToWebColor();
+            if (borderSize > 0)
+            {
+                string reals = borderColor.ToWebColor();
+                path.PopulateStrokesToStyles(reals, borderSize);
+            }
+            parent.Children.Add(svg);
+        }
         public static void DrawCardSuit(this IParentGraphic parent, EnumSuitList suit, RectangleF rectangle, string color)
         {
             if (suit == EnumSuitList.Clubs)

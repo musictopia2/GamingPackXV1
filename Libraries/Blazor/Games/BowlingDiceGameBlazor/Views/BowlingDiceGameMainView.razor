@@ -2,7 +2,8 @@
 <BowlingCompleteScoresheetBlazor MainGame="@DataContext!.MainGame" />
 <BowlingDiceListBlazor DiceList="DataContext.MainGame.DiceBoard!.DiceList" />
 <LabelGridComponent DataContext="DataContext" Labels="_labels" />
-<GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="Roll" MethodName="@RollName" />
+<RollComponent DataContext="DataContext" MethodName="@RollName" />
+@*<GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="Roll" MethodName="@RollName" />*@
 <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="Contine" MethodName="@ContinueName" />
 <GameButtonComponent StartOnNewLine="true" DataContext="DataContext" Display="End Turn" MethodName="@EndTurnName" />
 @if (TestData!.SaveOption == EnumTestSaveCategory.RestoreOnly)

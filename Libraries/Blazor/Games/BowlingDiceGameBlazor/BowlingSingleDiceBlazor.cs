@@ -31,7 +31,7 @@ namespace BowlingDiceGameBlazor
                 Image image = new Image();
                 image.Width = "50";
                 image.Height = "50";
-                image.PopulateFullExternalImage(this, "bowlingdice.png");
+                image.PopulateFullExternalImage(this, "bowlingdice.svg");
                 svg.Children.Add(image);
             }
             render.RenderSvgTree(svg, 0, builder);

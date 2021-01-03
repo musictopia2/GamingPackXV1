@@ -85,11 +85,11 @@ namespace MilkRunBlazor
             string fileName;
             if (DeckObject.MilkCategory == EnumMilkType.Chocolate)
             {
-                fileName = "chocolate.png";
+                fileName = "chocolate.svg";
             }
             else if (DeckObject.MilkCategory == EnumMilkType.Strawberry)
             {
-                fileName = "strawberry.png";
+                fileName = "strawberry.svg";
             }
             else
             {

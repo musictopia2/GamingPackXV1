@@ -52,15 +52,18 @@ namespace BasicGamingUIBlazorLibrary.GameGraphics.MiscClasses
             parent.Children.Add(image);
         }
 
-        public static void DrawStar(this IParentGraphic parent, string solidColor, string borderColor, float borderSize)
+        public static void DrawStar(this IParentGraphic parent, RectangleF bounds, string solidColor, string borderColor, float borderSize)
         {
+            var svg = new SVG();
+            svg.PopulateSVGStartingPoint(bounds);
+            svg.ViewBox = "0 0 51 48";
+            parent.Children.Add(svg);
             Path path = new Path();
-            path.D = "M27 5.2L31.5 18.8L31.5 18.8L46 18.8L46 18.8L34 27.3L34 27.3L38.7 41.1L38.7 41.1L27 33L27 33L15.2 41.1L15.2 41.1L20 27.3L20 27.3L7.9 18.8L7.9 18.8L22.4 18.8L27 5.2Z";
+            path.D = "m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z";
             path.Fill = solidColor.ToWebColor();
             path.PopulateStrokesToStyles(borderColor.ToWebColor(), borderSize);
-            parent.Children.Add(path); //maybe this was missing.
+            svg.Children.Add(path);
         }
-
         public static void DrawSmiley(this IParentGraphic parent, RectangleF rectangle, string solidColor, string borderColor, string eyeColor, float borderSize) //i think
         {
             if (borderColor == "" || eyeColor == "")

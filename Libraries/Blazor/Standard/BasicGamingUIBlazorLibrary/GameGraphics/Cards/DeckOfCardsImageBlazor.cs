@@ -326,7 +326,11 @@ namespace BasicGamingUIBlazorLibrary.GameGraphics.Cards
                 color = cc.Red;
             }
             RectangleF rect = new RectangleF(40, 60, 75, 75);
-            MainGroup!.DrawCardSuit(suit, rect, color);
+            //next step is the crown part.
+            MainGroup!.DrawRoyalSuits(rect, color);
+            //hopefully this simple this time.
+            
+            //MainGroup!.DrawCardSuit(suit, rect, color);
         }
         private readonly float _suitSize = 32.4f;
         protected override void DrawImage()

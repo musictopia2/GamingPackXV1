@@ -25,12 +25,12 @@
 
   
   <ItemGroup>
-    <None Remove="Resources\chocolate.png" />
-    <None Remove="Resources\strawberry.png" />
+    <None Remove="Resources\chocolate.svg" />
+    <None Remove="Resources\strawberry.svg" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\chocolate.png" />
-    <EmbeddedResource Include="Resources\strawberry.png" />
+    <EmbeddedResource Include="Resources\chocolate.svg" />
+    <EmbeddedResource Include="Resources\strawberry.svg" />
   </ItemGroup>
   
   

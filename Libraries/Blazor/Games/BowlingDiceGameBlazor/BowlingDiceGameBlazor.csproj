@@ -24,11 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\bowlingdice.png" />
+    <None Remove="Resources\bowlingdice.svg" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\bowlingdice.png" />
+    <EmbeddedResource Include="Resources\bowlingdice.svg" />
   </ItemGroup>
   
 </Project>

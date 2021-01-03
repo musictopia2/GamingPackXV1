@@ -68,8 +68,8 @@ namespace XactikaBlazor
                 case EnumShapes.Stars:
                     {
                         newLeft = location.X + margins + heightWidth * 3 + margins * 3;
-                        newLeft -= 8;
-                        top2 -= 2;
+                        newLeft -= 4;
+                        //top2 -= 2;
                         break;
                     }
             }
@@ -109,12 +109,15 @@ namespace XactikaBlazor
         }
         public static void DrawStar(this IParentGraphic container, RectangleF bounds)
         {
-            var svg = new SVG();
-            bounds.Width += 2;
-            svg.PopulateSVGStartingPoint(bounds);
-            container.Children.Add(svg);
-            svg.ViewBox = "0 0 40 40";
-            svg.DrawStar(cc.Yellow, cc.Black, 1);
+
+            container.DrawStar(bounds, cc.Yellow, cc.Black, 1);
+
+            //var svg = new SVG();
+            //bounds.Width += 2;
+            //svg.PopulateSVGStartingPoint(bounds);
+            //container.Children.Add(svg);
+            //svg.ViewBox = "0 0 40 40";
+            //svg.DrawStar(cc.Yellow, cc.Black, 1);
         }
     }
 }
