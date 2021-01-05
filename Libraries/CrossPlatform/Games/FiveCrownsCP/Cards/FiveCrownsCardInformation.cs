@@ -13,7 +13,7 @@ namespace FiveCrownsCP.Cards
     {
         public FiveCrownsCardInformation()
         {
-            DefaultSize = new SizeF(55, 72);
+            DefaultSize = new SizeF(165, 216);
         }
         int IRummmyObject<EnumSuitList, EnumColorList>.GetSecondNumber => (int)CardValue;
         int ISimpleValueObject<int>.ReadMainValue => (int)CardValue;
